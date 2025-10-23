@@ -289,7 +289,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="navigation-theme" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );

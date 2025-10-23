@@ -25,6 +25,7 @@ import frMessages from '@/messages/fr.json';
 
 
 import ClientOnlyContactForm from './ClientOnlyContactForm';
+import HomePackagesSection from './HomePackagesSection';
 // Design selector hidden for launch (kept in repo)
 // import DesignSelector from './DesignSelector';
 import { ServiceGrid } from './ServiceGrid';
@@ -93,6 +94,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
   const heroMessages = locale === 'fr' ? frMessages.hero : enMessages.hero;
   const servicesMessages = locale === 'fr' ? frMessages.services : enMessages.services;
+  const serviceSubtitleLines = servicesMessages.subtitle.split('\n').filter(Boolean);
   const contactMessages = locale === 'fr' ? frMessages.contact : enMessages.contact;
   const whyMessages = locale === 'fr' ? frMessages.why : enMessages.why;
 
@@ -145,37 +147,37 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
   const processSteps = locale === 'fr' ? [
     {
-      title: 'Diagnostic 360',
-      description: 'Audit du site, des parcours clients et des outils deja en place.',
+      title: 'Découverte & Analyse',
+      description: 'Nous analysons vos besoins et définissons la stratégie optimale.',
     },
     {
-      title: 'Co-creation strategique',
-      description: 'Atelier bilingue pour aligner objectifs, audiences et offres.',
+      title: 'Planification & Design',
+      description: 'Conception détaillée et planification du projet avec votre équipe.',
     },
     {
-      title: 'Production et integration',
-      description: 'Design, contenu, developpement et automatisations delivres en sprints courts.',
+      title: 'Développement & Tests',
+      description: 'Implémentation avec tests rigoureux et assurance qualité.',
     },
     {
-      title: 'Activation continue',
-      description: 'Campagnes, experimentation et optimisation avec rapports mensuels.',
+      title: 'Déploiement & Support',
+      description: 'Mise en ligne et support continu pour assurer le succès.',
     },
   ] : [
     {
-      title: '360 diagnostic',
-      description: 'Audit of your digital presence, journeys, data, and compliance posture.',
+      title: 'Discovery & Analysis',
+      description: 'We analyze your needs and define the optimal strategy.',
     },
     {
-      title: 'Strategy co-design',
-      description: 'Bilingual workshop to align goals, audiences, and success metrics.',
+      title: 'Planning & Design',
+      description: 'Detailed project planning and design with your team.',
     },
     {
-      title: 'Production sprints',
-      description: 'Design, content, development, and automation delivered in focused sprints.',
+      title: 'Development & Testing',
+      description: 'Implementation with rigorous testing and quality assurance.',
     },
     {
-      title: 'Continuous activation',
-      description: 'Campaigns, experimentation, and optimization with monthly reporting.',
+      title: 'Deployment & Support',
+      description: 'Launch and ongoing support to ensure success.',
     },
   ];
 
@@ -320,7 +322,11 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
             <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
               {servicesMessages.title}
             </h2>
-            <p className="mt-4 text-base text-slate-300">{servicesMessages.subtitle}</p>
+            <div className="mt-4 space-y-4 text-base text-slate-300">
+              {serviceSubtitleLines.map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
             <div className="mt-6 flex items-center gap-3 rounded-3xl border border-amber-400/30 bg-amber-400/10 px-4 py-3 text-sm text-amber-100 shadow-[0_0_22px_rgba(251,191,36,0.25)] animate-pulse">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
               <span>
@@ -335,6 +341,25 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
             isLoading={!servicesLoaded}
             messages={svcMessages}
           />
+          <div className="mt-16 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 text-center shadow-lg shadow-cyan-500/10">
+            <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+              {locale === 'fr' ? 'Notre Processus de Livraison' : 'Our Delivery Process'}
+            </h3>
+            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {processSteps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="flex flex-col items-center rounded-2xl border border-white/5 bg-black/20 p-6 transition-all duration-300 hover:border-sky-400/30 hover:bg-black/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/20"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/15 text-base font-semibold text-sky-300">
+                    {index + 1}
+                  </span>
+                  <h4 className="mt-4 text-base font-semibold text-white">{step.title}</h4>
+                  <p className="mt-2 text-sm text-slate-300">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -478,6 +503,8 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
           </div>
         </div>
       </section>
+
+      <HomePackagesSection locale={locale} />
 
       <ClientOnlyContactForm locale={locale} className="bg-white text-slate-900" id="contact" />
 

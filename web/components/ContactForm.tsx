@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Building, Calendar, CheckCircle, Clock, Mail, Phone, Send, User } from 'lucide-react';
+import { Building, CheckCircle, Mail, Phone, Send, User } from 'lucide-react';
 
 import type { SupportedLocale } from '@/content';
 import { useAnalytics } from '@/lib/analytics';
@@ -28,19 +28,8 @@ const CONTENT = {
       success: "Message envoyé avec succès!",
       error: "Une erreur s'est produite. Veuillez réessayer.",
       required: "Ce champ est requis",
-      consultationToggle: "Réserver une consultation téléphonique",
       consultationCheckbox: "Je souhaite une consultation gratuite de 30 minutes"
-    },
-    info: {
-      hoursTitle: "Heures d'ouverture",
-      hours: "Lun-Ven: 9h-17h EST"
-    },
-    benefits: [
-      "Consultation gratuite de 30 minutes",
-      "Analyse personnalisée de vos besoins",
-      "Recommandations stratégiques",
-      "Devis détaillé sans engagement"
-    ]
+    }
   },
   en: {
     title: "Ready to Transform Your Digital Presence?",
@@ -57,19 +46,8 @@ const CONTENT = {
       success: "Message sent successfully!",
       error: "An error occurred. Please try again.",
       required: "This field is required",
-      consultationToggle: "Book a phone consultation",
       consultationCheckbox: "I would like a free 30-minute consultation"
-    },
-    info: {
-      hoursTitle: "Business hours",
-      hours: "Mon-Fri: 9AM-5PM EST"
-    },
-    benefits: [
-      "Free 30-minute consultation",
-      "Personalized needs analysis",
-      "Strategic recommendations",
-      "Detailed quote with no commitment"
-    ]
+    }
   }
 };
 
@@ -84,7 +62,6 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [showConsultation, setShowConsultation] = useState(false);
   const [wantsConsultation, setWantsConsultation] = useState(false);
 
   const content = CONTENT[locale];
@@ -206,62 +183,8 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Consultation Toggle */}
-          <div className="lg:col-span-1 space-y-8">
-            {/* Toggle Button */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
-              <button
-                onClick={() => setShowConsultation(!showConsultation)}
-                className={`w-full flex items-center justify-between p-4 rounded-lg transition-all duration-300 ${showConsultation
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
-                  }`}
-              >
-                <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5" />
-                  <span className="font-semibold">{content.form.consultationToggle}</span>
-                </div>
-                <div className={`w-12 h-6 bg-gray-300 dark:bg-gray-600 rounded-full p-1 transition-all ${showConsultation ? 'bg-blue-400' : ''
-                  }`}>
-                  <div className={`w-4 h-4 bg-white rounded-full transition-transform ${showConsultation ? 'translate-x-6' : 'translate-x-0'
-                    }`} />
-                </div>
-              </button>
-
-              {/* Benefits - shown when toggle is on */}
-              {showConsultation && (
-                <div className="mt-6 space-y-4 animate-fadeIn">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
-                    <h3 className="font-semibold text-sm mb-3 text-blue-900 dark:text-blue-300">
-                      {locale === 'fr' ? 'Ce que vous obtenez' : 'What you get'}
-                    </h3>
-                    <ul className="space-y-2">
-                      {content.benefits.map((benefit, index) => (
-                        <li key={index} className="flex items-start">
-                          <CheckCircle className="w-4 h-4 text-blue-600 dark:text-blue-400 mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-sm text-gray-700 dark:text-gray-300">{benefit}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Business Hours */}
-                  <div className="flex items-start p-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg">
-                    <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-3 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-sm mb-1">{content.info.hoursTitle}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{content.info.hours}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <form suppressHydrationWarning onSubmit={handleSubmit} autoComplete="off" data-lpignore="true" className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+        <div className="max-w-3xl mx-auto">
+          <form suppressHydrationWarning onSubmit={handleSubmit} autoComplete="off" data-lpignore="true" className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div>
@@ -428,8 +351,7 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                   {content.form.error}
                 </div>
               )}
-            </form>
-          </div>
+          </form>
         </div>
       </div>
     </section>

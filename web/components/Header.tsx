@@ -23,8 +23,8 @@ export default function Header({ locale, currentPath }: HeaderProps) {
     const { getLinkWithDesign } = useDesignAwareLinks();
 
     const navigationItems = [
-        { key: 'services', href: `/${locale}/services` },
-        { key: 'packages', href: `/${locale}/packages` },
+        { key: 'services', href: `/${locale}#services` },
+        { key: 'packages', href: `/${locale}#home-packages` },
         { key: 'whyUs', href: `/${locale}/why-us` },
         { key: 'process', href: `/${locale}/process` },
         { key: 'assessment', href: `/${locale}#assessment` },

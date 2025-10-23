@@ -102,7 +102,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container: newContainer } = render(
                 <TestWrapper>
                     <div data-testid="themed-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );
@@ -150,7 +150,7 @@ describe('Design Context End-to-End Integration', () => {
 
             render(
                 <TestWrapper>
-                    <Header locale="en" currentPath="/en/services" />
+                    <Header locale="en" currentPath="/en" />
                 </TestWrapper>
             );
 
@@ -175,7 +175,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="themed-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );
@@ -195,7 +195,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="themed-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );
@@ -232,7 +232,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="shared-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );
@@ -254,7 +254,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="page-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                         <div className="themed-card">Card Content</div>
                         <button className="themed-button">Button</button>
                     </div>
@@ -313,7 +313,7 @@ describe('Design Context End-to-End Integration', () => {
             const { container, rerender } = render(
                 <TestWrapper>
                     <div data-testid="recovery-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );
@@ -329,7 +329,7 @@ describe('Design Context End-to-End Integration', () => {
             rerender(
                 <TestWrapper>
                     <div data-testid="recovery-content" className="themed-page">
-                        <Header locale="en" currentPath="/en/services" />
+                        <Header locale="en" currentPath="/en" />
                     </div>
                 </TestWrapper>
             );

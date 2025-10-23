@@ -141,14 +141,17 @@ export const useDesignAwareLinks = () => {
     const { currentDesign } = useDesignContext();
 
     const getLinkWithDesign = useCallback((href: string, design?: BusinessType): string => {
+        if (href.includes('#')) {
+            return href;
+        }
         const designToUse = design || currentDesign;
         return buildRelativeURLWithDesign(href, designToUse);
     }, [currentDesign]);
 
     const getCurrentDesignLinks = useCallback(() => {
         return {
-            services: getLinkWithDesign('/services'),
-            packages: getLinkWithDesign('/packages'),
+            services: '/#services',
+            packages: '/#home-packages',
             pricing: getLinkWithDesign('/pricing'),
             process: getLinkWithDesign('/process'),
             whyUs: getLinkWithDesign('/why-us'),
