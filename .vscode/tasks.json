@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Web: Dev (Next.js)",
+			"type": "shell",
+			"command": "cd \"c:\\Users\\nakol\\Repos\\Nakoliss\\Daniel_SaaS_agency_Ernest\\web\"; npm run dev",
+			"args": [],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

@@ -1,0 +1,346 @@
+{
+  "websites": {
+    "title": "SITES WEB",
+    "description": "Solutions complètes de développement web",
+    "shortDescription": "Sites web adaptatifs et modernes conformes à la Loi 25",
+    "price": "700 $ – 8 000 $+",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Saisissez le tarif de lancement avant qu'il ne disparaisse.",
+      "originalHeadline": "1 000 $",
+      "specialHeadline": "700 $ – 8 000 $+"
+    },
+    "tiers": [
+      {
+        "name": "Site de base",
+        "price": "700 $ – 8 000 $+",
+        "launchPrice": {
+          "original": "1 000 $"
+        },
+        "bullets": [
+          "1–5 pages professionnelles",
+          "Design moderne et responsive",
+          "Optimisation SEO de base",
+          "Conformité Loi 25 incluse (politique + bannière cookies)"
+        ]
+      },
+      {
+        "name": "Site Premium",
+        "price": "3 500 $ – 15 000 $+",
+        "launchPrice": {
+          "original": "5 000 $"
+        },
+        "bullets": [
+          "6–15 pages avec design avancé",
+          "Animations et micro‑interactions",
+          "Optimisation de performance avancée (Core Web Vitals)",
+          "Support bilingue FR/EN"
+        ]
+      },
+      {
+        "name": "E‑commerce",
+        "price": "3 500 $ – 50 000 $+",
+        "launchPrice": {
+          "original": "5 000 $"
+        },
+        "bullets": [
+          "Boutique en ligne complète (Stripe, taxes, livraisons)",
+          "Gestion du catalogue et des commandes",
+          "Paiements sécurisés intégrés",
+          "Analytics et rapports avancés"
+        ]
+      }
+    ]
+  },
+  "maintenance": {
+    "title": "MAINTENANCE",
+    "description": "Support technique et maintenance continue",
+    "shortDescription": "Surveillance 24/7, sauvegardes et support technique",
+    "price": "35 $ – 75 $/mo+",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Profitez d'un démarrage à tarif réduit avant la fin de l'offre.",
+      "originalHeadline": "50 $/mo",
+      "specialHeadline": "35 $ – 75 $/mo+"
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "35 $ – 75 $/mo+",
+        "launchPrice": {
+          "original": "50 $"
+        },
+        "bullets": [
+          "Surveillance d'uptime 24/7",
+          "Vérifications SSL automatiques",
+          "Sauvegardes mensuelles sécurisées",
+          "Support technique de base"
+        ]
+      },
+      {
+        "name": "Standard",
+        "price": "55 $ – 150 $/mo",
+        "launchPrice": {
+          "original": "80 $"
+        },
+        "bullets": [
+          "Inclut toutes les fonctionnalités Basic",
+          "Mises à jour de contenu (2 h/mois)",
+          "Scans de performance mensuels",
+          "1 publication Google Business Profile / mois"
+        ]
+      },
+      {
+        "name": "Plus",
+        "price": "140 $ – 500 $+/mo",
+        "launchPrice": {
+          "original": "200 $"
+        },
+        "bullets": [
+          "Inclut toutes les fonctionnalités Standard",
+          "Corrections de bogues prioritaires",
+          "Mini-audit SEO mensuel",
+          "Vérification de visibilité IA (AEO/GEO)"
+        ]
+      }
+    ]
+  },
+  "seoOptimization": {
+    "title": "SEO, AEO, GEO & OPTIMISATION IA",
+    "description": "Programme continu pour moteurs de recherche et IA",
+    "shortDescription": "Optimisation pour Google, ChatGPT et moteurs IA",
+    "price": "350 $ – 1 000 $/mo+",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Optimisez votre visibilité dès maintenant à tarif réduit.",
+      "originalHeadline": "500 $/mo",
+      "specialHeadline": "350 $ – 1 000 $/mo+"
+    },
+    "tiers": [
+      {
+        "name": "SEO",
+        "price": "350 $ – 1 000 $/mo+",
+        "launchPrice": {
+          "original": "500 $"
+        },
+        "bullets": [
+          "Optimisation de contenu et mots-clés",
+          "Suivi des positions et analyse concurrentielle",
+          "Rapports mensuels détaillés",
+          "Stratégie éditoriale"
+        ]
+      },
+      {
+        "name": "AEO (Answer Engine Optimization)",
+        "price": "350 $ – 1 000 $/mo+",
+        "launchPrice": {
+          "original": "500 $"
+        },
+        "bullets": [
+          "Contenu Q&R structuré (FAQ/QAPage)",
+          "Schéma optimisé (ChatGPT, Claude, Perplexity)",
+          "Vérification régulière des mentions IA",
+          "Optimisation des réponses directes"
+        ]
+      },
+      {
+        "name": "GEO (Generative Engine Optimization)",
+        "price": "700 $ – 1 500 $/mo+",
+        "launchPrice": {
+          "original": "1 000 $"
+        },
+        "bullets": [
+          "Articles de fond optimisés pour l'attribution IA",
+          "Métadonnées & schémas avancés",
+          "Vérification des citations IA",
+          "Stratégie de contenu génératif"
+        ]
+      },
+      {
+        "name": "Audit SEO (ponctuel)",
+        "price": "700 $ – 2 000 $",
+        "launchPrice": {
+          "original": "1 000 $"
+        },
+        "bullets": [
+          "Diagnostic technique (crawl, balises, vitesse)",
+          "Analyse de contenu et conformité Loi 25",
+          "Rapport PDF bilingue détaillé",
+          "Plan d'action priorisé"
+        ]
+      }
+    ]
+  },
+  "advertising": {
+    "title": "PUBLICITÉ & CAMPAGNES",
+    "description": "Acquisition payante pilotée par la donnée",
+    "shortDescription": "Campagnes Google, Meta et TikTok optimisées ROI",
+    "price": "Configuration 560 $ + 800–4 000 $/mo",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Saisissez le tarif de lancement avant qu'il ne disparaisse.",
+      "originalHeadline": "Configuration 799 $",
+      "specialHeadline": "Configuration 560 $ + 800–4 000 $/mo"
+    },
+    "tiers": [
+      {
+        "name": "Google Ads",
+        "price": "Configuration 560 $ + 800–4 000 $/mo",
+        "launchPrice": {
+          "original": "Configuration 799 $"
+        },
+        "bullets": [
+          "Campagnes Search & Performance Max",
+          "Landing pages optimisées pour la conversion",
+          "Suivi des conversions (Analytics + Tag Manager)",
+          "Optimisation hebdomadaire du ROI"
+        ]
+      },
+      {
+        "name": "Meta Ads",
+        "price": "Configuration 350 $ + 600–2 000 $/mo",
+        "launchPrice": {
+          "original": "Configuration 499 $"
+        },
+        "bullets": [
+          "Funnels multi-audiences (froid, tiède, chaud)",
+          "Créatifs statiques + vidéos UGC",
+          "Tests A/B automatisés (audiences / placements)",
+          "Rapport ROI mensuel avec recommandations"
+        ]
+      },
+      {
+        "name": "TikTok Ads",
+        "price": "Configuration 210 $ + 300–800 $/mo",
+        "launchPrice": {
+          "original": "Configuration 300 $"
+        },
+        "bullets": [
+          "Créations vidéo courtes testées rapidement",
+          "Ciblages intérêts / lookalikes",
+          "Optimisation CPA + rapport mensuel",
+          "Coaching contenu pour l'équipe interne"
+        ]
+      }
+    ]
+  },
+  "reviewManagement": {
+    "title": "GESTION DES AVIS",
+    "description": "Obtenez plus d'avis, répondez plus vite",
+    "shortDescription": "Veille et réponses automatisées aux avis clients",
+    "price": "140 $/mo",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Installez votre gestion des avis à tarif réduit pour le lancement.",
+      "originalHeadline": "199 $/mo",
+      "specialHeadline": "140 $/mo"
+    },
+    "tiers": [
+      {
+        "name": "Gestion des avis",
+        "price": "140 $/mo",
+        "launchPrice": {
+          "original": "199 $"
+        },
+        "bullets": [
+          "Veille Google/Facebook en continu",
+          "Réponses bilingues générées par IA et validées",
+          "Demandes d'avis post-service par SMS/email (opt-in)",
+          "Rapport mensuel (note, volumes, temps de réponse)"
+        ]
+      }
+    ]
+  },
+  "marketingAutomation": {
+    "title": "AUTOMATISATION MARKETING & ANALYTICS",
+    "description": "Outils de marketing digital et analyse avancée",
+    "shortDescription": "SMS, email et analytics automatisés",
+    "price": "70 $ – 250 $/mo+",
+    "launchSpecial": {
+      "tag": "Offre de lancement",
+      "message": "Automatisez votre marketing pendant l'offre de lancement.",
+      "originalHeadline": "100 $/mo",
+      "specialHeadline": "70 $ – 250 $/mo+"
+    },
+    "tiers": [
+      {
+        "name": "Marketing SMS",
+        "price": "70 $ – 250 $/mo+",
+        "launchPrice": {
+          "original": "100 $"
+        },
+        "setupCost": "Configuration: 800 $",
+        "bullets": [
+          "Campagnes SMS ciblées (opt-in)",
+          "Listes et segments synchronisés",
+          "Flux et déclencheurs automatisés",
+          "Analyse des campagnes"
+        ]
+      },
+      {
+        "name": "Automatisation courriel",
+        "price": "100 $ – 600 $/mo",
+        "launchPrice": {
+          "original": "150 $"
+        },
+        "setupCost": "Configuration: 200 $",
+        "bullets": [
+          "Séquences de nurturing / drip",
+          "Segmentation avancée CRM",
+          "Relances paniers et transactions",
+          "Rapports performance (ouvertures, ventes)"
+        ]
+      },
+      {
+        "name": "Forfait Analytics (GA4 + Hotjar)",
+        "price": "70 $ – 300 $/mo",
+        "launchPrice": {
+          "original": "100 $"
+        },
+        "setupCost": "Configuration: 400 $",
+        "bullets": [
+          "Mise en place GA4 + Search Console",
+          "Dashboard et suivi des objectifs",
+          "Heatmaps, funnels et KPI",
+          "Insights et recommandations mensuelles"
+        ]
+      }
+    ]
+  },
+  "additionalServices": {
+    "title": "Et encore plus...",
+    "description": "Découvrez nos services spécialisés pour optimiser votre présence numérique",
+    "shortDescription": "Services spécialisés : sécurité, accessibilité, visuel",
+    "tiers": [
+      {
+        "name": "VISIBILITÉ IA (AEO/GEO)",
+        "bullets": [
+          "Optimisation pour moteurs de réponses (IA)",
+          "AEO, Google, ChatGPT/Perplexity"
+        ]
+      },
+      {
+        "name": "AUTOMATISATION IA AVANCÉE",
+        "bullets": ["Workflows CRM/marketing", "Connecteurs Zapier/Make"]
+      },
+      {
+        "name": "AUDIT SÉCURITÉ & PERFORMANCE",
+        "bullets": [
+          "Core Web Vitals & performance",
+          "Recommandations de correctifs"
+        ]
+      },
+      {
+        "name": "ACCESSIBILITÉ (WCAG)",
+        "bullets": ["Audit WCAG 2.1 AA", "Correctifs prioritaires"]
+      },
+      {
+        "name": "VISUEL & VIDÉO",
+        "bullets": [
+          "Templates et visuels sociaux",
+          "Courtes vidéos et animations"
+        ]
+      }
+    ]
+  }
+}

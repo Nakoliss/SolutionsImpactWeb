@@ -1,0 +1,254 @@
+/* Theme CSS Variables for Design Context Persistence */
+
+:root {
+    /* Default AI Agency theme variables */
+    --theme-primary: #2563eb;
+    --theme-secondary: #0f172a;
+    --theme-accent: #38bdf8;
+    --theme-background: #020617;
+    --theme-surface: #0b1120;
+    --theme-gradient: linear-gradient(135deg, #0ea5e9 0%, #312e81 100%);
+    --theme-text: #f8fafc;
+    --theme-border: rgba(99, 102, 241, 0.35);
+    --theme-muted: #94a3b8;
+    --theme-contrast-text: #0f172a;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(56, 189, 248, 0.2), 0 4px 6px -2px rgba(56, 189, 248, 0.1);
+    --theme-border-hover: rgba(56, 189, 248, 0.6);
+    --theme-card-background: rgba(11, 17, 32, 0.8);
+    --theme-card-border: rgba(56, 189, 248, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0ea5e9 0%, #312e81 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(56, 189, 248, 0.1);
+    --theme-link-color: #38bdf8;
+    --theme-link-hover: #0ea5e9;
+}
+
+/* AI Agency Theme */
+.theme-ai-agency {
+    --theme-primary: #2563eb;
+    --theme-secondary: #0f172a;
+    --theme-accent: #38bdf8;
+    --theme-background: #020617;
+    --theme-surface: #0b1120;
+    --theme-gradient: linear-gradient(135deg, #0ea5e9 0%, #312e81 100%);
+    --theme-text: #f8fafc;
+    --theme-border: rgba(99, 102, 241, 0.35);
+    --theme-muted: #94a3b8;
+    --theme-contrast-text: #0f172a;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(56, 189, 248, 0.2), 0 4px 6px -2px rgba(56, 189, 248, 0.1);
+    --theme-border-hover: rgba(56, 189, 248, 0.6);
+    --theme-card-background: rgba(11, 17, 32, 0.8);
+    --theme-card-border: rgba(56, 189, 248, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0ea5e9 0%, #312e81 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(56, 189, 248, 0.1);
+    --theme-link-color: #38bdf8;
+    --theme-link-hover: #0ea5e9;
+}
+
+/* Medical Clinic Theme */
+.theme-medical-clinic {
+    --theme-primary: #0ea5e9;
+    --theme-secondary: #1d4ed8;
+    --theme-accent: #38bdf8;
+    --theme-background: #04121f;
+    --theme-surface: #0b1c2c;
+    --theme-gradient: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
+    --theme-text: #f0f9ff;
+    --theme-border: rgba(56, 189, 248, 0.35);
+    --theme-muted: #94a3b8;
+    --theme-contrast-text: #04121f;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(14, 165, 233, 0.2), 0 4px 6px -2px rgba(14, 165, 233, 0.1);
+    --theme-border-hover: rgba(14, 165, 233, 0.6);
+    --theme-card-background: rgba(11, 28, 44, 0.8);
+    --theme-card-border: rgba(14, 165, 233, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0ea5e9 0%, #1d4ed8 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(14, 165, 233, 0.1);
+    --theme-link-color: #0ea5e9;
+    --theme-link-hover: #38bdf8;
+}
+
+/* Antique Shop Theme */
+.theme-antique-shop {
+    --theme-primary: #b45309;
+    --theme-secondary: #78350f;
+    --theme-accent: #facc15;
+    --theme-background: #1f1309;
+    --theme-surface: #3f2a1d;
+    --theme-gradient: linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%);
+    --theme-text: #fefce8;
+    --theme-border: rgba(244, 191, 117, 0.35);
+    --theme-muted: #d6d3c2;
+    --theme-contrast-text: #1f1309;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(250, 204, 21, 0.2), 0 4px 6px -2px rgba(250, 204, 21, 0.1);
+    --theme-border-hover: rgba(250, 204, 21, 0.6);
+    --theme-card-background: rgba(63, 42, 29, 0.8);
+    --theme-card-border: rgba(250, 204, 21, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #78350f 0%, #b45309 60%, #d97706 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(250, 204, 21, 0.1);
+    --theme-link-color: #facc15;
+    --theme-link-hover: #d97706;
+}
+
+/* Auto Garage Theme */
+.theme-auto-garage {
+    --theme-primary: #1f2937;
+    --theme-secondary: #0f172a;
+    --theme-accent: #f97316;
+    --theme-background: #05060a;
+    --theme-surface: #111827;
+    --theme-gradient: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #f97316 100%);
+    --theme-text: #f3f4f6;
+    --theme-border: rgba(249, 115, 22, 0.45);
+    --theme-muted: #9ca3af;
+    --theme-contrast-text: #05060a;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(249, 115, 22, 0.2), 0 4px 6px -2px rgba(249, 115, 22, 0.1);
+    --theme-border-hover: rgba(249, 115, 22, 0.6);
+    --theme-card-background: rgba(17, 24, 39, 0.8);
+    --theme-card-border: rgba(249, 115, 22, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0f172a 0%, #1f2937 60%, #f97316 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(249, 115, 22, 0.1);
+    --theme-link-color: #f97316;
+    --theme-link-hover: #ea580c;
+}
+
+/* Retail Store Theme */
+.theme-retail-store {
+    --theme-primary: #2563eb;
+    --theme-secondary: #1e3a8a;
+    --theme-accent: #22c55e;
+    --theme-background: #031224;
+    --theme-surface: #071b35;
+    --theme-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #22c55e 100%);
+    --theme-text: #f8fafc;
+    --theme-border: rgba(37, 99, 235, 0.35);
+    --theme-muted: #a5b4fc;
+    --theme-contrast-text: #031224;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(34, 197, 94, 0.2), 0 4px 6px -2px rgba(34, 197, 94, 0.1);
+    --theme-border-hover: rgba(34, 197, 94, 0.6);
+    --theme-card-background: rgba(7, 27, 53, 0.8);
+    --theme-card-border: rgba(34, 197, 94, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #22c55e 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(34, 197, 94, 0.1);
+    --theme-link-color: #22c55e;
+    --theme-link-hover: #16a34a;
+}
+
+/* Restaurant Theme */
+.theme-restaurant {
+    --theme-primary: #b91c1c;
+    --theme-secondary: #7f1d1d;
+    --theme-accent: #f97316;
+    --theme-background: #2c0a0a;
+    --theme-surface: #3f0f0f;
+    --theme-gradient: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 60%, #f97316 100%);
+    --theme-text: #fef2f2;
+    --theme-border: rgba(239, 68, 68, 0.4);
+    --theme-muted: #fca5a5;
+    --theme-contrast-text: #2c0a0a;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(249, 115, 22, 0.2), 0 4px 6px -2px rgba(249, 115, 22, 0.1);
+    --theme-border-hover: rgba(249, 115, 22, 0.6);
+    --theme-card-background: rgba(63, 15, 15, 0.8);
+    --theme-card-border: rgba(249, 115, 22, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 60%, #f97316 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(249, 115, 22, 0.1);
+    --theme-link-color: #f97316;
+    --theme-link-hover: #ea580c;
+}
+
+/* Law Firm Theme */
+.theme-law-firm {
+    --theme-primary: #1e3a8a;
+    --theme-secondary: #0f172a;
+    --theme-accent: #f59e0b;
+    --theme-background: #070b17;
+    --theme-surface: #111c33;
+    --theme-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 65%, #f59e0b 100%);
+    --theme-text: #f8fafc;
+    --theme-border: rgba(30, 64, 175, 0.45);
+    --theme-muted: #9ca3af;
+    --theme-contrast-text: #070b17;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(245, 158, 11, 0.2), 0 4px 6px -2px rgba(245, 158, 11, 0.1);
+    --theme-border-hover: rgba(245, 158, 11, 0.6);
+    --theme-card-background: rgba(17, 28, 51, 0.8);
+    --theme-card-border: rgba(245, 158, 11, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0f172a 0%, #1e3a8a 65%, #f59e0b 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(245, 158, 11, 0.1);
+    --theme-link-color: #f59e0b;
+    --theme-link-hover: #d97706;
+}
+
+/* Beauty Salon Theme */
+.theme-beauty-salon {
+    --theme-primary: #db2777;
+    --theme-secondary: #831843;
+    --theme-accent: #fbbf24;
+    --theme-background: #2f0217;
+    --theme-surface: #401020;
+    --theme-gradient: linear-gradient(135deg, #db2777 0%, #831843 60%, #fbbf24 100%);
+    --theme-text: #fdf2f8;
+    --theme-border: rgba(219, 39, 119, 0.35);
+    --theme-muted: #f9a8d4;
+    --theme-contrast-text: #2f0217;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(251, 191, 36, 0.2), 0 4px 6px -2px rgba(251, 191, 36, 0.1);
+    --theme-border-hover: rgba(251, 191, 36, 0.6);
+    --theme-card-background: rgba(64, 16, 32, 0.8);
+    --theme-card-border: rgba(251, 191, 36, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #db2777 0%, #831843 60%, #fbbf24 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(251, 191, 36, 0.1);
+    --theme-link-color: #fbbf24;
+    --theme-link-hover: #f59e0b;
+}
+
+/* Pet Grooming Theme */
+.theme-pet-grooming {
+    --theme-primary: #22c55e;
+    --theme-secondary: #0f766e;
+    --theme-accent: #f97316;
+    --theme-background: #06221c;
+    --theme-surface: #0b3028;
+    --theme-gradient: linear-gradient(135deg, #0f766e 0%, #22c55e 55%, #f97316 100%);
+    --theme-text: #f0fdf4;
+    --theme-border: rgba(34, 197, 94, 0.4);
+    --theme-muted: #a7f3d0;
+    --theme-contrast-text: #06221c;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(249, 115, 22, 0.2), 0 4px 6px -2px rgba(249, 115, 22, 0.1);
+    --theme-border-hover: rgba(249, 115, 22, 0.6);
+    --theme-card-background: rgba(11, 48, 40, 0.8);
+    --theme-card-border: rgba(249, 115, 22, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0f766e 0%, #22c55e 55%, #f97316 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(249, 115, 22, 0.1);
+    --theme-link-color: #f97316;
+    --theme-link-hover: #ea580c;
+}
+
+/* Home Services Theme */
+.theme-home-services {
+    --theme-primary: #0369a1;
+    --theme-secondary: #0f172a;
+    --theme-accent: #22c55e;
+    --theme-background: #06121f;
+    --theme-surface: #0b1f2c;
+    --theme-gradient: linear-gradient(135deg, #0f172a 0%, #0369a1 55%, #22c55e 100%);
+    --theme-text: #f8fafc;
+    --theme-border: rgba(3, 105, 161, 0.35);
+    --theme-muted: #94a3b8;
+    --theme-contrast-text: #06121f;
+    --theme-hover-shadow: 0 10px 25px -3px rgba(34, 197, 94, 0.2), 0 4px 6px -2px rgba(34, 197, 94, 0.1);
+    --theme-border-hover: rgba(34, 197, 94, 0.6);
+    --theme-card-background: rgba(11, 31, 44, 0.8);
+    --theme-card-border: rgba(34, 197, 94, 0.2);
+    --theme-button-primary: linear-gradient(135deg, #0f172a 0%, #0369a1 55%, #22c55e 100%);
+    --theme-button-secondary: transparent;
+    --theme-button-hover: rgba(34, 197, 94, 0.1);
+    --theme-link-color: #22c55e;
+    --theme-link-hover: #16a34a;
+}

@@ -1,0 +1,86 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "i18n:lint": "npx tsx scripts/i18n-lint.ts",
+    "content:validate": "npx tsx scripts/content-validate.ts",
+    "analyze": "ANALYZE=true next build",
+    "analyze:server": "BUNDLE_ANALYZE=server next build",
+    "analyze:browser": "BUNDLE_ANALYZE=browser next build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:a11y": "playwright test tests/accessibility.spec.ts",
+    "test:a11y:headed": "playwright test tests/accessibility.spec.ts --headed",
+    "prepare": "husky || true",
+    "i18n:fix-fr": "tsx scripts/fix-fr-encoding.ts",
+    "i18n:check": "tsx scripts/check-mojibake.ts",
+    "i18n:fix-mojibake": "tsx scripts/fix-mojibake.ts",
+    "i18n:translate-fr": "tsx scripts/translate-to-fr.ts messages/en.json messages/fr.json"
+  },
+  "engines": {
+    "node": ">=20.14 <21",
+    "npm": ">=10 <11"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix --max-warnings=1000"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "@mdx-js/loader": "^3.1.0",
+    "@mdx-js/react": "^3.1.0",
+    "@next/mdx": "^15.4.6",
+    "@sentry/nextjs": "^10.5.0",
+    "@types/mdx": "^2.0.13",
+    "@types/nodemailer": "^7.0.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.12",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.539.0",
+    "next": "15.4.6",
+    "next-intl": "^4.3.4",
+    "next-mdx-remote": "^5.0.0",
+    "next-seo": "^6.8.0",
+    "nodemailer": "^7.0.5",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.4.6",
+    "@playwright/test": "^1.54.2",
+    "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "^15.4.6",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
+    "lint-staged": "^16.1.5",
+    "playwright": "^1.54.2",
+    "prettier": "^3.6.2",
+    "tailwindcss": "^4",
+    "tsx": "^4.20.4",
+    "typescript": "^5",
+    "vitest": "^3.2.4"
+  }
+}

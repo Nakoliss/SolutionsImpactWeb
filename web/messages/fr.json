@@ -1,0 +1,313 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "packages": "Forfaits",
+    "whyUs": "Pourquoi nous",
+    "process": "Approche",
+    "assessment": "Diagnostic IA",
+
+    "contact": "Contact",
+    "book": "Diagnostic gratuit"
+  },
+  "hero": {
+    "title": "Agence web IA bilingue",
+    "subtitle": "Web Impact Solutions",
+    "description": "Nous créons des expériences web bilingues, conformes à la Loi 25 et optimisées par l'IA — spécialement pour les PME du Québec.",
+    "ctaPrimary": "Planifier un diagnostic",
+    "ctaSecondary": "Découvrir notre approche",
+    "stats": {
+      "clients": "FR / EN",
+      "clientsLabel": "Service bilingue natif",
+      "growth": "Loi 25",
+      "growthLabel": "Conformité intégrée",
+      "expertise": "IA",
+      "expertiseLabel": "Automatisation responsable"
+    }
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Stratégie, design et automatisation IA en français et en anglais",
+    "cta": "Voir les détails"
+  },
+  "packages": {
+    "title": "Forfaits signatures",
+    "subtitle": "Choisissez la formule adaptée à vos objectifs",
+    "popular": "Populaire",
+    "bestseller": "Meilleur choix",
+    "cta": "Demander ce forfait",
+    "contact": "Parler à l'équipe",
+    "savings": "Économiser",
+    "starter": {
+      "name": "Diagnostic et feuille de route",
+      "price": "À partir de 4 500 $",
+      "originalPrice": "Valeur : 6 500 $",
+      "description": "Idéal pour clarifier les priorités avant de lancer la production.",
+      "features": [
+        "Audit bilingue de votre présence actuelle",
+        "Atelier parties prenantes et cartographie des parcours",
+        "Feuille de route IA, SEO et UX priorisée",
+        "Liste de vérification Loi 25 et gabarits"
+      ]
+    },
+    "growth": {
+      "name": "Site bilingue + operations IA",
+      "price": "À partir de 18 500 $",
+      "originalPrice": "Valeur : 25 000 $",
+      "description": "Lancement d'un site performant avec automatisations intelligentes.",
+      "features": [
+        "UX personnalisée et bibliothèque de composants",
+        "Rédaction et SEO en français et en anglais",
+        "Intégrations CRM, formulaires et analytics",
+        "Gestion du consentement et actifs de confidentialité"
+      ]
+    },
+    "intelligent": {
+      "name": "Sprints de croissance",
+      "price": "À partir de 3 200 $ / mois",
+      "originalPrice": "Valeur : 4 500 $ / mois",
+      "description": "Optimisation continue, campagnes et expérimentation IA.",
+      "features": [
+        "Sprints d'optimisation SEO, CRO et UX",
+        "Campagnes automatisées multicanal",
+        "Tableaux de bord et analyses à chaque sprint",
+        "Veille conformité et sécurité continue"
+      ]
+    },
+    "enterprise": {
+      "name": "Partenariat enterprise",
+      "price": "Engagement sur mesure",
+      "originalPrice": "Valeur : nous contacter",
+      "description": "Équipe numérique fractionnaire pour écosystèmes complexes.",
+      "features": [
+        "Stratégie produit numérique omnicanal",
+        "Pipelines de données et personnalisation avancés",
+        "Support dédié conformité et gouvernance",
+        "Conseillers intégrés et formation des équipes"
+      ]
+    }
+  },
+  "why": {
+    "title": "Pourquoi travailler avec nous",
+    "subtitle": "Un partenaire bilingue, conforme et axé sur l'IA",
+    "bilingual": {
+      "title": "Livrables bilingues natifs",
+      "description": "Rédacteurs, stratèges et designers qui travaillent en français et en anglais dès le début."
+    },
+    "technology": {
+      "title": "Adoption IA responsable",
+      "description": "Automatisations et expériences pilotées par la valeur et la gouvernance."
+    },
+    "results": {
+      "title": "Impact mesurable",
+      "description": "Tableaux de bord et rituels de croissance reliés à vos indicateurs d'affaires."
+    },
+    "support": {
+      "title": "Équipe basée au Québec",
+      "description": "Experts sur le terrain qui connaissent la culture locale et la Loi 25."
+    }
+  },
+  "contact": {
+    "title": "Prêt à moderniser votre expérience numérique ?",
+    "subtitle": "Planifiez un diagnostic et recevez un plan d'action bilingue adapté à vos objectifs.",
+    "cta": "Planifier mon diagnostic",
+    "phone": "Appeler l'équipe",
+    "email": "Nous ecrire"
+  },
+  "footer": {
+    "rights": "Tous droits réservés",
+    "company": "Web Impact Solutions",
+    "tagline": "Web bilingue, automation IA et conformité Loi 25 pour les entreprises en croissance du Québec.",
+    "copyright": "(c) 2025 Web Impact Solutions - Division de Nakoliss Studios - Fondateur Daniel Germain"
+  },
+  "ui": {
+    "previous": "Précédent",
+    "next": "Suivant",
+    "dot": "*"
+  },
+  "assessment": {
+    "title": "Diagnostic de maturité IA",
+    "subtitle": "Mesurez la position de votre organisation",
+    "description": "Évaluez votre niveau de préparation à l'IA et recevez des recommandations personnalisées.",
+    "startAssessment": "Lancer le diagnostic",
+    "retakeAssessment": "Reprendre le diagnostic",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "business": {
+    "designSelector": {
+      "title": "Explorez nos designs par industrie",
+      "subtitle": "Solutions Impact Web : chaque expérience, à votre goût et à votre secteur.",
+      "previous": "Design précédent",
+      "next": "Design suivant",
+      "slidePosition": "Design {current} sur {total}",
+      "selectLabel": "Afficher le design {name}",
+      "selectedLabel": "Design {name} sélectionné"
+    },
+    "modal": {
+      "title": "Apercu design industrie",
+      "subtitle": "Découvrez la structure, le contenu et la conformité prévus pour votre marché.",
+      "closeButton": "Fermer le design"
+    },
+    "aiAgency": {
+      "name": "Solutions Impact Web",
+      "tagline": "Sites web modernes, SEO + IA (AEO/GEO), et conformité Loi 25 — bilingue FR/EN.",
+      "heroTitle": "Confiance et visibilité pour PME québécoises",
+      "heroBadge": "IA + humain",
+      "ctaText": "Solutions Impact Web",
+      "services": {
+        "websites": "Sites web intelligents avec IA intégrée",
+        "maintenance": "Maintenance et surveillance automatisée",
+        "seoOptimization": "Optimisation IA pour moteurs de recherche",
+        "marketingAutomation": "Automatisation marketing avancée",
+        "reviewManagement": "Gestion intelligente de la réputation",
+        "advertising": "Campagnes publicitaires pilotées par IA",
+        "additionalServices": "Intégrations et outils IA personnalisés"
+      }
+    },
+    "medical": {
+      "name": "Clinique médicale",
+      "tagline": "Parcours patients apaisants et conformes.",
+      "heroTitle": "Site médical conçu pour le confort et la conformité.",
+      "heroBadge": "Clinique bilingue",
+      "ctaText": "Voir le design medical",
+      "services": {
+        "websites": "Sites médicaux",
+        "maintenance": "Maintenance conformité",
+        "seoOptimization": "Visibilité santé",
+        "marketingAutomation": "Automatisation patient",
+        "reviewManagement": "Gestion reputation",
+        "advertising": "Campagnes santé",
+        "additionalServices": "Intégrations spécialisées"
+      }
+    },
+    "antique": {
+      "name": "Boutique antiquités",
+      "tagline": "Récits héritage pour collectionneurs et galeristes.",
+      "heroTitle": "Vitrine antiquités qui valorise la provenance.",
+      "heroBadge": "Commerce heritage",
+      "ctaText": "Voir le design antiquites",
+      "services": {
+        "websites": "Catalogues antiquités",
+        "maintenance": "Maintenance collection",
+        "seoOptimization": "Visibilité héritage",
+        "marketingAutomation": "Parcours collectionneur",
+        "reviewManagement": "Réputation et confiance",
+        "advertising": "Campagnes ciblées",
+        "additionalServices": "Intégrations expertise"
+      }
+    },
+    "autoGarage": {
+      "name": "Garage auto",
+      "tagline": "Design robuste avec réservation express et flotte.",
+      "heroTitle": "Site automobile conçu pour des rendez-vous rapides.",
+      "heroBadge": "Prêt parc auto",
+      "ctaText": "Voir le design garage",
+      "services": {
+        "websites": "Sites services auto",
+        "maintenance": "Entretien continue",
+        "seoOptimization": "Visibilité automobile",
+        "marketingAutomation": "Automatisation conducteurs",
+        "reviewManagement": "Réputation et CSI",
+        "advertising": "Publicité performance",
+        "additionalServices": "Intégrations diagnostics"
+      }
+    },
+    "retailStore": {
+      "name": "Boutique détail",
+      "tagline": "Commerce omnicanal mesuré et performant.",
+      "heroTitle": "Site détail conçu pour découverte produit.",
+      "heroBadge": "Prêt omnicanal",
+      "ctaText": "Voir le design détail",
+      "services": {
+        "websites": "Vitrines retail",
+        "maintenance": "Maintenance operations",
+        "seoOptimization": "SEO commerce",
+        "marketingAutomation": "Automatisation cycle client",
+        "reviewManagement": "Moteur preuve sociale",
+        "advertising": "Média performance",
+        "additionalServices": "Intégrations plateformes"
+      }
+    },
+    "restaurant": {
+      "name": "Restaurant",
+      "tagline": "Menus, réservations et livraison coordonnés.",
+      "heroTitle": "Site restaurant qui met en valeur menus et expérience.",
+      "heroBadge": "Réservations et livraison",
+      "ctaText": "Voir le design restaurant",
+      "services": {
+        "websites": "Sites restaurant",
+        "maintenance": "Maintenance menus",
+        "seoOptimization": "Visibilité restauration",
+        "marketingAutomation": "Parcours invités",
+        "reviewManagement": "Service réputation",
+        "advertising": "Campagnes restauration",
+        "additionalServices": "Intégrations PDV"
+      }
+    },
+    "lawFirm": {
+      "name": "Cabinet juridique",
+      "tagline": "Crédibilité professionnelle et intake sécurisé.",
+      "heroTitle": "Site juridique axé sur la confiance et la clarté.",
+      "heroBadge": "Confidentiel par design",
+      "ctaText": "Voir le design juridique",
+      "services": {
+        "websites": "Sites cabinets",
+        "maintenance": "Maintenance gouvernance",
+        "seoOptimization": "Visibilité juridique",
+        "marketingAutomation": "Automatisation client",
+        "reviewManagement": "Réputation et témoignages",
+        "advertising": "Campagnes juridiques",
+        "additionalServices": "Intégrations legal tech"
+      }
+    },
+    "beautySalon": {
+      "name": "Salon beauté",
+      "tagline": "Parcours de réservation élégants et fidélisation.",
+      "heroTitle": "Site salon qui convertit les visiteuses curieuses.",
+      "heroBadge": "Prêt à rayonner",
+      "ctaText": "Voir le design beauté",
+      "services": {
+        "websites": "Sites salon",
+        "maintenance": "Maintenance lookbook",
+        "seoOptimization": "Visibilité beauté",
+        "marketingAutomation": "Clienteling automatisé",
+        "reviewManagement": "Réputation éclat",
+        "advertising": "Campagnes beauté",
+        "additionalServices": "Intégrations PDV"
+      }
+    },
+    "petGrooming": {
+      "name": "Toilettage animaux",
+      "tagline": "Soin ludique avec profils et membres.",
+      "heroTitle": "Site toilettage conçu pour la fidélité.",
+      "heroBadge": "Experience pet first",
+      "ctaText": "Voir le design toilettage",
+      "services": {
+        "websites": "Sites toilettage",
+        "maintenance": "Maintenance horaire",
+        "seoOptimization": "Visibilité pet",
+        "marketingAutomation": "Automatisation pet parents",
+        "reviewManagement": "Réputation et confiance",
+        "advertising": "Campagnes pet",
+        "additionalServices": "Intégrations véto"
+      }
+    },
+    "homeServices": {
+      "name": "Services maison",
+      "tagline": "Maintenance fiable et urgence coordonnée.",
+      "heroTitle": "Portail services maison avec confiance bilingue.",
+      "heroBadge": "Prêt urgence",
+      "ctaText": "Voir le design maison",
+      "services": {
+        "websites": "Sites services maison",
+        "maintenance": "Programmes entretien",
+        "seoOptimization": "Visibilité locale",
+        "marketingAutomation": "Automatisation client",
+        "reviewManagement": "Moteur réputation",
+        "advertising": "Campagnes leads",
+        "additionalServices": "Intégrations terrain"
+      }
+    }
+  }
+}

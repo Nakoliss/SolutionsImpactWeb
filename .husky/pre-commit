@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+set -e
+
+# Run staged file formatting/linting
+(cd web && npx lint-staged)
+
+# i18n parity and content validation (warn-only for parity, hard-fail on mojibake)
+(cd web && npm run -s i18n:lint || true)
+(cd web && npm run -s content:validate || true)
+
+# Encoding/mojibake guard — must pass
+(cd web && npm run -s i18n:check)

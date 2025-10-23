@@ -1,0 +1,41 @@
+                    {m.contact.phone}
+                  </MotionButton>
+                </MotionDiv>
+              </MotionDiv>
+
+            </section>
+
+            {/* Contact form above footer */}
+            <ContactForm locale={locale} className="bg-slate-900/50" />
+
+            {/* Footer */}
+            <footer className="bg-slate-900/80 py-12 border-t border-slate-800">
+              <div className="max-w-7xl mx-auto px-6 md:px-8">
+                <div className="flex flex-col md:flex-row items-center justify-between">
+                  <div className="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                      <Brain className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-bold">{m.footer.company}</div>
+                      <div className="text-sm text-slate-400">{m.footer.tagline}</div>
+                    </div>
+                  </div>
+                  <div className="text-slate-400">
+                    {m.footer.copyright ?? `�© 2025 ${m.footer.company}`}
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </LazyMotionWrapper>
+      );
+    }
+
+    // NEW DESIGNS #2-10: Completely distinct layouts for each business type
+    const commonContent = {
+      hero: {
+        title: m.hero.title,
+        subtitle: m.hero.subtitle,
+        description: m.hero.description,
+        cta: m.hero.ctaPrimary,

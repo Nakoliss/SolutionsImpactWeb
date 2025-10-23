@@ -1,0 +1,120 @@
+---
+title: "Data Residency Guide - Law 25 (Bill 64)"
+description: "Comprehensive guide on Quebec Law 25 (formerly Bill 64) compliance for personal information protection and data residency requirements."
+slug: "bill-64-data-residency-guide"
+localeAvail: ["fr", "en"]
+leadForm: true
+category: "compliance"
+publishedAt: "2025-08-17T00:00:00.000Z"
+updatedAt: "2025-08-17T00:00:00.000Z"
+tags: ["law-25", "bill-64", "data-protection", "quebec", "compliance"]
+author: "AI Web Agency Compliance Team"
+readTime: 8
+---
+
+# Bill 64 (Law 25) – Data-Residency Logic Guide
+
+## 1. What is Bill 64 / Law 25?
+
+- **Official name**: *Act to modernize legislative provisions as regards the protection of personal information*
+- **In force**: September 22, 2022 (phased rollout through 2024)
+- **Governs**: Any organisation that **collects, holds, uses, or discloses personal information of Quebec residents**, regardless of where the organisation is located.
+
+## 2. Core Data-Residency & Transfer Rules
+
+| Requirement | Practical Impact on Code & Infrastructure |
+|---|---|
+| **PIA before cross-border transfer** | You must document why data leaves Quebec and what safeguards are in place. |
+| **"Comparable protection" standard** | If stored outside Quebec, encryption, access logging, breach detection, and contractual clauses are mandatory. |
+| **Sub-processor list & contracts** | Every cloud, CDN, e-mail, or AI service that touches the data must sign a Quebec-compliant DPA (data-processing addendum). |
+| **Data portability & erasure** | Provide endpoints or admin tools to export or fully delete any resident's data within **30 days** of request. |
+| **Breach notification** | If data is outside Quebec, you must detect, log, and **auto-report to CAI** within **72 hours** of discovery. |
+
+## 3. Technical Checklist for AI-Generated Projects
+
+✅ Host primary database & backups in **Canada Central (Montreal) AWS, Azure, or Google**.
+
+✅ Enable **server-side encryption at rest (AES-256)** and **TLS 1.2+ in transit**.
+
+✅ Log **all access events** (IP, timestamp, user ID) with 1-year retention.
+
+✅ Build **/export** and **/delete** endpoints for each personal-data entity.
+
+✅ Create **alert webhooks** to your incident-response channel if breach thresholds are met.
+
+## 4. What AI Cannot Automate (N/A)
+
+- Performing the **legal sufficiency review** of hosting regions.
+- Drafting **custom DPA clauses** for each sub-processor.
+- Deciding if a given encryption or tokenisation regime satisfies "comparable protection".
+
+> *Always have a Quebec-licensed privacy lawyer or DPO review the final design before go-live.*
+
+## 5. Specific Compliance Requirements
+
+### Data Residency
+- **Primary storage**: Canada Central (Montreal region)
+- **Backups**: Must also reside in Canada
+- **Logging**: Access log retention for minimum 1 year
+
+### Technical Security
+- **Encryption at rest**: AES-256 minimum
+- **Encryption in transit**: TLS 1.2+ mandatory
+- **Access management**: Complete logging with timestamps
+
+### Resident Rights
+- **Right to portability**: Data export in readable format
+- **Right to erasure**: Complete deletion within 30 days
+- **Right of access**: Access to personal data held
+
+### Breach Notification
+- **Detection**: Automated monitoring systems
+- **Notification deadline**: 72 hours to CAI
+- **Documentation**: Detailed breach registry
+
+## 6. Development Impact
+
+### Technical Architecture
+```typescript
+// Example region configuration
+const dbConfig = {
+  region: 'ca-central-1', // Canada Central (Montreal)
+  encryption: 'AES256',
+  backupRegion: 'ca-central-1',
+  accessLogging: true,
+  logRetentionDays: 365
+};
+```
+
+### Required Endpoints
+- `GET /api/users/{id}/export` - Data export
+- `DELETE /api/users/{id}/data` - Data deletion
+- `POST /api/incidents/breach` - Automated breach reporting
+
+### Contracts and Documentation
+- Data Processing Agreements (DPA) with all vendors
+- Privacy Impact Assessments (PIA)
+- "Comparable protection" documentation
+
+## 7. Resources and Support
+
+Our team can help you:
+- Audit your current architecture
+- Implement required technical controls
+- Draft compliance documentation
+- Train your team on best practices
+
+**Contact us for a free Law 25 compliance assessment.**
+
+## Download Our Complete Checklist
+
+Get our detailed Law 25 compliance checklist, including all technical points and implementation steps.
+
+<DownloadGate 
+  title="Bill 64/Law 25 Compliance Checklist"
+  description="Complete PDF guide with all technical elements to verify for your compliance."
+  downloadUrl="/downloads/bill-64-compliance-checklist.pdf"
+  fileName="bill-64-compliance-checklist.pdf"
+  locale="en"
+  source="bill-64-guide-en"
+/>

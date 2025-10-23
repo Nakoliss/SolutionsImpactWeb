@@ -1,0 +1,322 @@
+{
+  "websites": {
+    "title": "WEBSITES",
+    "description": "Complete web development solutions",
+    "shortDescription": "Modern responsive websites with Law 25 compliance",
+    "price": "$700 – $8,000+",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Limited-time launch pricing—grab it before it disappears.",
+      "originalHeadline": "$1,000",
+      "specialHeadline": "$700 – $8,000+"
+    },
+    "tiers": [
+      {
+        "name": "Basic Website",
+        "price": "$700 – $8,000+",
+        "bullets": [
+          "1–5 professional pages",
+          "Modern responsive design",
+          "Basic SEO optimization",
+          "Law 25 compliance included (policy + cookie banner)"
+        ],
+        "launchPrice": {
+          "original": "$1,000"
+        }
+      },
+      {
+        "name": "Premium Website",
+        "price": "$3,500 – $15,000+",
+        "bullets": [
+          "6–15 pages with advanced design",
+          "Animations and micro-interactions",
+          "Advanced performance optimization (Core Web Vitals)",
+          "Bilingual FR/EN support"
+        ],
+        "launchPrice": {
+          "original": "$5,000"
+        }
+      },
+      {
+        "name": "E-commerce",
+        "price": "$3,500 – $50,000+",
+        "bullets": [
+          "Complete online store (Stripe, taxes, shipping)",
+          "Catalog and order management",
+          "Integrated secure payments",
+          "Advanced analytics and reporting"
+        ],
+        "launchPrice": {
+          "original": "$5,000"
+        }
+      }
+    ]
+  },
+  "maintenance": {
+    "title": "MAINTENANCE",
+    "description": "Technical support and ongoing maintenance",
+    "shortDescription": "24/7 monitoring, backups and technical support",
+    "price": "$35 – $75/mo+",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Start strong with discounted onboarding before the offer ends.",
+      "originalHeadline": "$50/mo",
+      "specialHeadline": "$35 – $75/mo+"
+    },
+    "tiers": [
+      {
+        "name": "Basic",
+        "price": "$35 – $75/mo+",
+        "bullets": [
+          "24/7 uptime monitoring",
+          "Automatic SSL checks",
+          "Secure monthly backups",
+          "Basic technical support"
+        ],
+        "launchPrice": {
+          "original": "$50"
+        }
+      },
+      {
+        "name": "Standard",
+        "price": "$55 – $150/mo",
+        "bullets": [
+          "Includes all Basic features",
+          "Content updates (2h/month)",
+          "Monthly performance scans",
+          "1 Google Business Profile post/month"
+        ],
+        "launchPrice": {
+          "original": "$80"
+        }
+      },
+      {
+        "name": "Plus",
+        "price": "$140 – $500+/mo",
+        "bullets": [
+          "Includes all Standard features",
+          "Priority bug fixes",
+          "Monthly mini SEO audit",
+          "AI visibility verification (AEO/GEO)"
+        ],
+        "launchPrice": {
+          "original": "$200"
+        }
+      }
+    ]
+  },
+  "seoOptimization": {
+    "title": "SEO, AEO, GEO & AI OPTIMIZATION",
+    "description": "Ongoing program for search engines and AI",
+    "shortDescription": "Optimization for Google, ChatGPT and AI engines",
+    "price": "$350 – $1,000/mo+",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Boost visibility now with limited launch pricing.",
+      "originalHeadline": "$500/mo",
+      "specialHeadline": "$350 – $1,000/mo+"
+    },
+    "tiers": [
+      {
+        "name": "SEO",
+        "price": "$350 – $1,000/mo+",
+        "bullets": [
+          "Content and keyword optimization",
+          "Position tracking and competitor analysis",
+          "Detailed monthly reports",
+          "Editorial strategy"
+        ],
+        "launchPrice": {
+          "original": "$500"
+        }
+      },
+      {
+        "name": "AEO (Answer Engine Optimization)",
+        "price": "$350 – $1,000/mo+",
+        "bullets": [
+          "Structured Q&A content (FAQ/QAPage)",
+          "Optimized schema (ChatGPT, Claude, Perplexity)",
+          "Regular AI mention verification",
+          "Direct answer optimization"
+        ],
+        "launchPrice": {
+          "original": "$500"
+        }
+      },
+      {
+        "name": "GEO (Generative Engine Optimization)",
+        "price": "$700 – $1,500/mo+",
+        "bullets": [
+          "In-depth articles optimized for AI attribution",
+          "Advanced metadata & schemas",
+          "AI citation verification",
+          "Generative content strategy"
+        ],
+        "launchPrice": {
+          "original": "$1,000"
+        }
+      },
+      {
+        "name": "SEO Audit (one-time)",
+        "price": "$700 – $2,000",
+        "bullets": [
+          "Technical diagnosis (crawl, tags, speed)",
+          "Content and Law 25 compliance analysis",
+          "Detailed bilingual PDF report",
+          "Prioritized action plan"
+        ],
+        "launchPrice": {
+          "original": "$1,000"
+        }
+      }
+    ]
+  },
+  "advertising": {
+    "title": "ADVERTISING & CAMPAIGNS",
+    "description": "Data-driven paid acquisition",
+    "shortDescription": "Google, Meta and TikTok campaigns with ROI focus",
+    "price": "Setup $799 + $800–4,000/mo",
+    "tiers": [
+      {
+        "name": "Google Ads",
+        "price": "Setup $799 + $800–4,000/mo",
+        "bullets": [
+          "Search & Performance Max campaigns",
+          "Conversion-optimized landing pages",
+          "Conversion tracking (Analytics + Tag Manager)",
+          "Weekly ROI optimization"
+        ]
+      },
+      {
+        "name": "Meta Ads",
+        "price": "Setup $499 + $600–2,000/mo",
+        "bullets": [
+          "Multi-audience funnels (cold, warm, hot)",
+          "Static creatives + UGC videos",
+          "Automated A/B tests (audiences / placements)",
+          "Monthly ROI report with recommendations"
+        ]
+      },
+      {
+        "name": "TikTok Ads",
+        "price": "Setup $300 + $300–800/mo",
+        "bullets": [
+          "Short video creations tested quickly",
+          "Interest / lookalike targeting",
+          "CPA optimization + monthly report",
+          "Content coaching for internal team"
+        ]
+      }
+    ]
+  },
+  "reviewManagement": {
+    "title": "REVIEW MANAGEMENT",
+    "description": "Get more reviews, respond faster",
+    "shortDescription": "Automated monitoring and responses to customer reviews",
+    "price": "$140/mo",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Lock in review automation at launch pricing before it's gone.",
+      "originalHeadline": "$199/mo",
+      "specialHeadline": "$140/mo"
+    },
+    "tiers": [
+      {
+        "name": "Review Management",
+        "price": "$140/mo",
+        "bullets": [
+          "Continuous Google/Facebook monitoring",
+          "AI-generated and validated bilingual responses",
+          "Post-service review requests via SMS/email (opt-in)",
+          "Monthly report (rating, volumes, response time)"
+        ],
+        "launchPrice": {
+          "original": "$199"
+        }
+      }
+    ]
+  },
+  "marketingAutomation": {
+    "title": "MARKETING AUTOMATION & ANALYTICS",
+    "description": "Digital marketing tools and advanced analytics",
+    "shortDescription": "Automated SMS, email and analytics tools",
+    "price": "$70 – $250/mo+",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Automate marketing while the launch pricing lasts.",
+      "originalHeadline": "$100/mo",
+      "specialHeadline": "$70 – $250/mo+"
+    },
+    "tiers": [
+      {
+        "name": "SMS Marketing",
+        "price": "$70 – $250/mo+",
+        "setupCost": "Setup: $800",
+        "bullets": [
+          "Targeted SMS campaigns (opt-in)",
+          "Synchronized lists and segments",
+          "Automated flows and triggers",
+          "Campaign analytics"
+        ],
+        "launchPrice": {
+          "original": "$100"
+        }
+      },
+      {
+        "name": "Email Automation",
+        "price": "$100 – $600/mo",
+        "setupCost": "Setup: $200",
+        "bullets": [
+          "Nurture sequences / drip campaigns",
+          "Advanced CRM segmentation",
+          "Cart abandonment and transaction follow-ups",
+          "Performance reports (opens, sales)"
+        ],
+        "launchPrice": {
+          "original": "$150"
+        }
+      },
+      {
+        "name": "Analytics Pack (GA4 + Hotjar)",
+        "price": "$70 – $300/mo",
+        "setupCost": "Setup: $400",
+        "bullets": [
+          "GA4 + Search Console setup",
+          "Dashboard and goal tracking",
+          "Heatmaps, funnels and KPIs",
+          "Monthly insights and recommendations"
+        ],
+        "launchPrice": {
+          "original": "$100"
+        }
+      }
+    ]
+  },
+  "additionalServices": {
+    "title": "And even more...",
+    "description": "Discover our specialized services to optimize your digital presence",
+    "shortDescription": "Specialized services: security, accessibility, visual",
+    "tiers": [
+      {
+        "name": "AI VISIBILITY (AEO/GEO)",
+        "bullets": []
+      },
+      {
+        "name": "ADVANCED AI AUTOMATION",
+        "bullets": []
+      },
+      {
+        "name": "SECURITY & PERFORMANCE AUDIT",
+        "bullets": []
+      },
+      {
+        "name": "ACCESSIBILITY (WCAG)",
+        "bullets": []
+      },
+      {
+        "name": "VISUAL & VIDEO",
+        "bullets": []
+      }
+    ]
+  }
+}

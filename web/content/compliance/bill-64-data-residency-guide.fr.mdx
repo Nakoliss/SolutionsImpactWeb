@@ -1,0 +1,120 @@
+---
+title: "Guide de Résidence des Données - Loi 25 (Projet de loi 64)"
+description: "Guide complet sur la conformité à la Loi 25 du Québec (anciennement Projet de loi 64) pour la protection des renseignements personnels et les exigences de résidence des données."
+slug: "bill-64-data-residency-guide"
+localeAvail: ["fr", "en"]
+leadForm: true
+category: "compliance"
+publishedAt: "2025-08-17T00:00:00.000Z"
+updatedAt: "2025-08-17T00:00:00.000Z"
+tags: ["loi-25", "bill-64", "protection-données", "québec", "conformité"]
+author: "Équipe Conformité AI Web Agency"
+readTime: 8
+---
+
+# Projet de loi 64 (Loi 25) – Guide de la Logique de Résidence des Données
+
+## 1. Qu'est-ce que le Projet de loi 64 / Loi 25 ?
+
+- **Nom officiel** : *Loi modernisant des dispositions législatives en matière de protection des renseignements personnels*
+- **En vigueur** : 22 septembre 2022 (déploiement échelonné jusqu'en 2024)
+- **Régit** : Toute organisation qui **collecte, détient, utilise ou divulgue des renseignements personnels de résidents du Québec**, peu importe où l'organisation est située.
+
+## 2. Règles Fondamentales de Résidence et de Transfert de Données
+
+| Exigence | Impact Pratique sur le Code et l'Infrastructure |
+|---|---|
+| **EFV avant transfert transfrontalier** | Vous devez documenter pourquoi les données quittent le Québec et quelles sont les mesures de protection en place. |
+| **Standard de "protection comparable"** | Si stocké à l'extérieur du Québec, le chiffrement, la journalisation des accès, la détection des violations et les clauses contractuelles sont obligatoires. |
+| **Liste et contrats des sous-traitants** | Chaque service cloud, CDN, courriel ou IA qui touche aux données doit signer un accord de traitement des données conforme au Québec. |
+| **Portabilité et effacement des données** | Fournir des points d'accès ou des outils d'administration pour exporter ou supprimer complètement les données d'un résident dans les **30 jours** suivant la demande. |
+| **Notification de violation** | Si les données sont à l'extérieur du Québec, vous devez détecter, journaliser et **signaler automatiquement à la CAI** dans les **72 heures** suivant la découverte. |
+
+## 3. Liste de Vérification Technique pour les Projets Générés par IA
+
+✅ Héberger la base de données principale et les sauvegardes dans **Canada Central (Montréal) AWS, Azure ou Google**.
+
+✅ Activer le **chiffrement côté serveur au repos (AES-256)** et **TLS 1.2+ en transit**.
+
+✅ Journaliser **tous les événements d'accès** (IP, horodatage, ID utilisateur) avec rétention d'1 an.
+
+✅ Construire des points d'accès **/export** et **/delete** pour chaque entité de données personnelles.
+
+✅ Créer des **webhooks d'alerte** vers votre canal de réponse aux incidents si les seuils de violation sont atteints.
+
+## 4. Ce que l'IA ne Peut pas Automatiser (S/O)
+
+- Effectuer l'**examen de suffisance légale** des régions d'hébergement.
+- Rédiger des **clauses d'accord de traitement des données personnalisées** pour chaque sous-traitant.
+- Décider si un régime de chiffrement ou de tokenisation donné satisfait à la "protection comparable".
+
+> *Faites toujours réviser la conception finale par un avocat en protection de la vie privée licencié au Québec ou un responsable de la protection des données avant la mise en service.*
+
+## 5. Exigences de Conformité Spécifiques
+
+### Résidence des Données
+- **Stockage principal** : Canada Central (région de Montréal)
+- **Sauvegardes** : Doivent également résider au Canada
+- **Journalisation** : Conservation des logs d'accès pendant minimum 1 an
+
+### Sécurité Technique
+- **Chiffrement au repos** : AES-256 minimum
+- **Chiffrement en transit** : TLS 1.2+ obligatoire
+- **Gestion des accès** : Journalisation complète avec horodatage
+
+### Droits des Résidents
+- **Droit à la portabilité** : Export des données dans un format lisible
+- **Droit à l'effacement** : Suppression complète dans les 30 jours
+- **Droit d'accès** : Consultation des données personnelles détenues
+
+### Notification des Violations
+- **Détection** : Systèmes de surveillance automatisée
+- **Délai de notification** : 72 heures à la CAI
+- **Documentation** : Registre détaillé des violations
+
+## 6. Impact sur le Développement
+
+### Architecture Technique
+```typescript
+// Exemple de configuration de région
+const dbConfig = {
+  region: 'ca-central-1', // Canada Central (Montréal)
+  encryption: 'AES256',
+  backupRegion: 'ca-central-1',
+  accessLogging: true,
+  logRetentionDays: 365
+};
+```
+
+### Points d'Accès Obligatoires
+- `GET /api/users/{id}/export` - Export des données
+- `DELETE /api/users/{id}/data` - Suppression des données
+- `POST /api/incidents/breach` - Signalement automatique
+
+### Contrats et Documentation
+- Accords de traitement des données (DPA) avec tous les fournisseurs
+- Évaluation des facteurs relatifs à la vie privée (EFVP)
+- Documentation de "protection comparable"
+
+## 7. Ressources et Support
+
+Notre équipe peut vous aider à :
+- Auditer votre architecture actuelle
+- Implémenter les contrôles techniques requis
+- Rédiger la documentation de conformité
+- Former votre équipe sur les bonnes pratiques
+
+**Contactez-nous pour une évaluation gratuite de votre conformité à la Loi 25.**
+
+## Téléchargez Notre Checklist Complète
+
+Obtenez notre liste de vérification détaillée pour la conformité à la Loi 25, incluant tous les points techniques et les étapes d'implémentation.
+
+<DownloadGate 
+  title="Checklist de Conformité Bill 64/Loi 25"
+  description="Guide PDF complet avec tous les éléments techniques à vérifier pour votre conformité."
+  downloadUrl="/downloads/bill-64-compliance-checklist.pdf"
+  fileName="bill-64-compliance-checklist.pdf"
+  locale="fr"
+  source="bill-64-guide-fr"
+/>
