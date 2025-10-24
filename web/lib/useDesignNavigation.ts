@@ -153,8 +153,8 @@ export const useDesignAwareLinks = () => {
             services: '/#services',
             packages: '/#home-packages',
             pricing: getLinkWithDesign('/pricing'),
-            process: getLinkWithDesign('/process'),
-            whyUs: getLinkWithDesign('/why-us'),
+            process: '/#process',
+            whyUs: '/#why',
             contact: getLinkWithDesign('/contact'),
         };
     }, [getLinkWithDesign]);

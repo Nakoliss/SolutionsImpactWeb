@@ -174,18 +174,18 @@
   "advertising": {
     "title": "PUBLICITÉ & CAMPAGNES",
     "description": "Acquisition payante pilotée par la donnée",
-    "shortDescription": "Campagnes Google, Meta et TikTok optimisées ROI",
-    "price": "Configuration 560 $ + 800–4 000 $/mo",
+    "shortDescription": "Campagnes Google, Meta et TikTok optimisées pour le ROI (retour sur investissement)",
+    "price": "Configuration 560 $ + forfait 800 $ – 4 000 $/mo",
     "launchSpecial": {
       "tag": "Offre de lancement",
       "message": "Saisissez le tarif de lancement avant qu'il ne disparaisse.",
       "originalHeadline": "Configuration 799 $",
-      "specialHeadline": "Configuration 560 $ + 800–4 000 $/mo"
+      "specialHeadline": "Configuration 560 $ + forfait 800 $ – 4 000 $/mo"
     },
     "tiers": [
       {
         "name": "Google Ads",
-        "price": "Configuration 560 $ + 800–4 000 $/mo",
+        "price": "Configuration 560 $ + forfait 800 $ – 4 000 $/mo",
         "launchPrice": {
           "original": "Configuration 799 $"
         },
@@ -198,7 +198,7 @@
       },
       {
         "name": "Meta Ads",
-        "price": "Configuration 350 $ + 600–2 000 $/mo",
+        "price": "Configuration 350 $ + forfait 600 $ – 2 000 $/mo",
         "launchPrice": {
           "original": "Configuration 499 $"
         },
@@ -211,7 +211,7 @@
       },
       {
         "name": "TikTok Ads",
-        "price": "Configuration 210 $ + 300–800 $/mo",
+        "price": "Configuration 210 $ + forfait 300 $ – 800 $/mo",
         "launchPrice": {
           "original": "Configuration 300 $"
         },
@@ -321,7 +321,10 @@
       },
       {
         "name": "AUTOMATISATION IA AVANCÉE",
-        "bullets": ["Workflows CRM/marketing", "Connecteurs Zapier/Make"]
+        "bullets": [
+          "Workflows CRM/marketing",
+          "Connecteurs Zapier/Make"
+        ]
       },
       {
         "name": "AUDIT SÉCURITÉ & PERFORMANCE",
@@ -332,7 +335,10 @@
       },
       {
         "name": "ACCESSIBILITÉ (WCAG)",
-        "bullets": ["Audit WCAG 2.1 AA", "Correctifs prioritaires"]
+        "bullets": [
+          "Audit WCAG 2.1 AA",
+          "Correctifs prioritaires"
+        ]
       },
       {
         "name": "VISUEL & VIDÉO",

@@ -141,7 +141,7 @@ const SERVICE_CATALOG: Record<SupportedLocale, Array<ServiceDefinition & {
     {
       id: 'diagnostic',
       name: 'Diagnostic et feuille de route',
-      description: 'Audit bilingue, atelier strategique et plan IA/SEO conforme a la Loi 25.',
+      description: 'Audit bilingue, atelier strategique et plan couvrant automatisations intelligentes et visibilite Google conforme a la Loi 25.',
       serviceType: 'Consulting',
       category: 'Diagnostic',
       price: '4500',
@@ -161,12 +161,12 @@ const SERVICE_CATALOG: Record<SupportedLocale, Array<ServiceDefinition & {
     {
       id: 'automation',
       name: 'Sprints de croissance',
-      description: "Optimisation continue SEO/CRO avec automatisations d'acquisition et nurturing IA.",
+      description: "Optimisation continue de la visibilite Google/CRO avec automatisations d'acquisition et nurturing IA.",
       serviceType: 'Marketing Automation',
       category: 'Marketing Automation',
       price: '3200',
       offerName: "Sprint d'automatisation et optimisation",
-      offerDescription: "Iterations SEO/CRO, sequences d'engagement et suivi du pipeline.",
+      offerDescription: "Iterations visibilite Google/CRO, sequences d'engagement et suivi du pipeline.",
     },
     {
       id: 'compliance',
@@ -192,7 +192,7 @@ const SERVICE_CATALOG: Record<SupportedLocale, Array<ServiceDefinition & {
     {
       id: 'diagnostic',
       name: 'Diagnostic and roadmap',
-      description: 'Bilingual audit, stakeholder workshop, and AI/SEO plan built for Law 25 compliance.',
+      description: 'Bilingual audit, stakeholder workshop, and plan covering automation and Google visibility work built for Law 25 compliance.',
       serviceType: 'Consulting',
       category: 'Diagnostic',
       price: '4500',
@@ -212,7 +212,7 @@ const SERVICE_CATALOG: Record<SupportedLocale, Array<ServiceDefinition & {
     {
       id: 'automation',
       name: 'Growth sprints',
-      description: 'Ongoing SEO/CRO optimisation with AI-driven nurture and automation workflows.',
+      description: 'Ongoing Google visibility and CRO optimisation with AI-driven nurture and automation workflows.',
       serviceType: 'Marketing Automation',
       category: 'Marketing Automation',
       price: '3200',

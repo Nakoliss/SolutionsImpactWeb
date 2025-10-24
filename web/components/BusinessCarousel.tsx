@@ -2,15 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Award,
-  Brain,
-  CheckCircle,
-  Globe,
-  Sparkles,
-  TrendingUp,
-} from 'lucide-react';
+import { ArrowRight, CheckCircle, Globe, Sparkles } from 'lucide-react';
 
 import type { SupportedLocale } from '@/content';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
@@ -97,17 +89,72 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
   const serviceSubtitleLines = servicesMessages.subtitle.split('\n').filter(Boolean);
   const contactMessages = locale === 'fr' ? frMessages.contact : enMessages.contact;
   const whyMessages = locale === 'fr' ? frMessages.why : enMessages.why;
+  // Content borrowed from the Why Us page (strengths grid)
+  const strengths = locale === 'fr'
+    ? [
+        {
+          icon: '\u{1F310}',
+          title: 'Cohérence de contenu',
+          description:
+            "Équipe qui harmonise stratégie, design et rédaction dès le départ",
+        },
+        {
+          icon: '\u{1F916}',
+          title: 'IA éthique et responsable',
+          description:
+            'Automatisations alignées avec vos valeurs et objectifs',
+        },
+        {
+          icon: '\u{1F4CA}',
+          title: 'Métriques et ROI mesurables',
+          description:
+            'Résultats concrets et transparents à chaque étape',
+        },
+        {
+          icon: '\u269C',
+          title: 'Équipe locale au Québec',
+          description:
+            'Compréhension profonde du marché et de la culture',
+        },
+        {
+          icon: '\u{1F680}',
+          title: 'Support continu et proactif',
+          description:
+            'Accompagnement personnalisé pour votre croissance',
+        },
+      ]
+    : [
+        {
+          icon: '\u{1F310}',
+          title: 'Content consistency',
+          description:
+            'Team aligning strategy, design, and copy from day one',
+        },
+        {
+          icon: '\u{1F916}',
+          title: 'Ethical and responsible AI',
+          description:
+            'Automations aligned with your values and objectives',
+        },
+        {
+          icon: '\u{1F4CA}',
+          title: 'Measurable metrics and ROI',
+          description:
+            'Concrete and transparent results at every step',
+        },
+        {
+          icon: '\u269C',
+          title: 'Local Quebec team',
+          description: 'Deep understanding of the market and culture',
+        },
+        {
+          icon: '\u{1F680}',
+          title: 'Continuous and proactive support',
+          description: 'Personalized support for your growth',
+        },
+      ];
 
   const eyebrow = pickBrandLocale(locale, brandConfig.tagline);
-  const stats = [
-    {
-      value: servicesLoaded ? String(serviceCatalog.totalServices) : '...',
-      label: heroMessages.stats.expertiseLabel,
-    },
-    { value: heroMessages.stats.clients, label: heroMessages.stats.clientsLabel },
-    { value: heroMessages.stats.growth, label: heroMessages.stats.growthLabel },
-  ];
-
   const heroStyle = {
     background: designConfig.theme.gradient,
     color: designConfig.theme.text,
@@ -124,69 +171,72 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
   const highlights = [
     {
-      icon: Globe,
-      title: whyMessages.bilingual.title,
-      description: whyMessages.bilingual.description,
+      icon: '\u269C',
+      title: whyMessages.support.title,
+      description: whyMessages.support.description,
     },
     {
-      icon: Brain,
+      icon: '\u{1F916}',
       title: whyMessages.technology.title,
       description: whyMessages.technology.description,
     },
     {
-      icon: TrendingUp,
+      icon: '\u{1F4C8}',
       title: whyMessages.results.title,
       description: whyMessages.results.description,
-    },
-    {
-      icon: Award,
-      title: whyMessages.support.title,
-      description: whyMessages.support.description,
     },
   ];
 
   const processSteps = locale === 'fr' ? [
     {
-      title: 'Découverte & Analyse',
-      description: 'Nous analysons vos besoins et définissons la stratégie optimale.',
+      title: 'Découverte & Évaluation',
+      description: 'Analyse complète de vos besoins, objectifs et contraintes.',
     },
     {
-      title: 'Planification & Design',
-      description: 'Conception détaillée et planification du projet avec votre équipe.',
+      title: 'Stratégie & Planification',
+      description: 'Architecture, plan de projet et critères de succès détaillés.',
     },
     {
       title: 'Développement & Tests',
-      description: 'Implémentation avec tests rigoureux et assurance qualité.',
+      description: 'Production en sprints avec validations et contrôles qualité.',
     },
     {
-      title: 'Déploiement & Support',
-      description: 'Mise en ligne et support continu pour assurer le succès.',
+      title: 'Déploiement & Lancement',
+      description: 'Mise en production sécurisée accompagnée d’un support actif.',
+    },
+    {
+      title: 'Optimisation & Croissance',
+      description: 'Améliorations continues guidées par vos données et retours.',
     },
   ] : [
     {
-      title: 'Discovery & Analysis',
-      description: 'We analyze your needs and define the optimal strategy.',
+      title: 'Discovery & Assessment',
+      description: 'Complete review of your needs, goals, and constraints.',
     },
     {
-      title: 'Planning & Design',
-      description: 'Detailed project planning and design with your team.',
+      title: 'Strategy & Planning',
+      description: 'Architecture, project plan, and detailed success criteria.',
     },
     {
       title: 'Development & Testing',
-      description: 'Implementation with rigorous testing and quality assurance.',
+      description: 'Sprint delivery backed by validation and quality checks.',
     },
     {
-      title: 'Deployment & Support',
-      description: 'Launch and ongoing support to ensure success.',
+      title: 'Deployment & Launch',
+      description: 'Secure go-live with guided rollout and active support.',
+    },
+    {
+      title: 'Optimization & Growth',
+      description: 'Continuous improvements driven by data and feedback.',
     },
   ];
 
   const compliancePoints = locale === 'fr' ? [
-    'Politiques de confidentialite bilingues et registre des fournisseurs tenus a jour.',
+    'Politiques de confidentialite et registre des fournisseurs tenus a jour.',
     'Banniere de consentement bloquante et gestion granulaire des cookies.',
     'Formulaires d acces et suppression des donnees avec suivi interne.',
   ] : [
-    'Bilingual privacy policies and vendor registry kept current.',
+    'Privacy policies and vendor registry kept current.',
     'Blocking consent banner with granular cookie controls.',
     'Documented data access and deletion workflows.',
   ];
@@ -239,7 +289,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
             <div className="space-y-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-white/80">
+              <span className="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80 text-left leading-tight whitespace-normal">
                 {eyebrow}
               </span>
               <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
@@ -270,31 +320,13 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </div>
-              <dl className="mt-8 grid grid-cols-1 gap-4 text-sm text-white/90 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="rounded-2xl border border-white/20 bg-black/30 p-4"
-                  >
-                    <dt className="text-xs uppercase tracking-[0.3em] text-white/60">
-                      {stat.label}
-                    </dt>
-                    <dd className="mt-2 text-2xl font-semibold text-white">
-                      {stat.value}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
             </div>
             <div className="rounded-3xl border border-white/10 bg-black/30 p-8 shadow-xl transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105">
               <h3 className="text-lg font-semibold text-white">
                 {contactMessages.title}
               </h3>
-              <p className="mt-3 text-sm text-white/80">
-                {contactMessages.subtitle}
-              </p>
               <ul className="mt-6 space-y-3 text-sm text-white/75">
-                {[contactMessages.subtitle, whyMessages.bilingual.title, whyMessages.results.title].map((item) => (
+                {[contactMessages.subtitle, whyMessages.results.title, whyMessages.support.title].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <CheckCircle className="mt-0.5 h-4 w-4 text-white" />
                     <span>{item}</span>
@@ -341,23 +373,84 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
             isLoading={!servicesLoaded}
             messages={svcMessages}
           />
-          <div className="mt-16 rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 text-center shadow-lg shadow-cyan-500/10">
-            <h3 className="text-2xl font-semibold text-white sm:text-3xl">
-              {locale === 'fr' ? 'Notre Processus de Livraison' : 'Our Delivery Process'}
-            </h3>
-            <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {processSteps.map((step, index) => (
-                <div
-                  key={step.title}
-                  className="flex flex-col items-center rounded-2xl border border-white/5 bg-black/20 p-6 transition-all duration-300 hover:border-sky-400/30 hover:bg-black/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/20"
+          <div className="mt-16 space-y-16">
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 text-center shadow-lg shadow-cyan-500/10">
+              <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+                {locale === 'fr' ? 'Notre Méthodologie' : 'Our Methodology'}
+              </h3>
+              <p className="mt-4 text-base text-slate-300">
+                {locale === 'fr'
+                  ? 'Nous combinons les meilleures pratiques agiles avec notre expertise technique pour garantir le succès de vos projets.'
+                  : 'We combine agile best practices with technical expertise to ensure your projects succeed.'}
+              </p>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {(locale === 'fr'
+              ? [
+                      {
+                        title: 'Agilité',
+                        description: 'Sprints courts, feedback régulier et adaptation continue aux besoins changeants.',
+                      },
+                      {
+                        title: 'Transparence',
+                        description: 'Communication ouverte, rapports réguliers et accès aux outils de suivi.',
+                      },
+                      {
+                        title: 'Qualité',
+                        description: 'Tests rigoureux, revues de code et respect des standards industriels.',
+                      },
+                      {
+                        title: 'Collaboration',
+                        description: 'Travail en équipe intégrée avec vos parties prenantes internes.',
+                      },
+                    ]
+                  : [
+                      {
+                        title: 'Agility',
+                        description: 'Short sprints, regular feedback, and continuous adaptation to changing needs.',
+                      },
+                      {
+                        title: 'Transparency',
+                        description: 'Open communication, regular reporting, and shared tracking tools.',
+                      },
+                      {
+                        title: 'Quality',
+                        description: 'Rigorous testing, code reviews, and adherence to industry standards.',
+                      },
+                      {
+                        title: 'Collaboration',
+                        description: 'Integrated teamwork with your internal stakeholders.',
+                      },
+                    ]).map((principle) => (
+                  <div
+                    key={principle.title}
+                    className="rounded-2xl border border-white/10 bg-black/20 px-6 py-5 text-left transition-all duration-300 hover:border-sky-400/30 hover:bg-black/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-sky-500/20 sm:px-8 sm:py-6"
+                  >
+                    <h4 className="text-lg font-semibold text-white">{principle.title}</h4>
+                    <p className="mt-2 text-sm text-slate-300">{principle.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-6 py-8 text-center shadow-lg shadow-cyan-500/10 sm:px-10 sm:py-12">
+              <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+                {locale === 'fr' ? 'Prêt à Commencer Votre Projet ?' : 'Ready to Start Your Project?'}
+              </h3>
+              <p className="mt-4 text-base text-slate-300">
+                {locale === 'fr'
+                  ? 'Discutons de vos besoins et voyons comment notre processus peut vous aider à atteindre vos objectifs.'
+                  : 'Let’s discuss your goals and see how our process can help you achieve them.'}
+              </p>
+              <div className="mt-6 flex justify-center">
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-blue-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:from-sky-400 hover:to-blue-500 hover:-translate-y-1 hover:shadow-2xl"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/15 text-base font-semibold text-sky-300">
-                    {index + 1}
-                  </span>
-                  <h4 className="mt-4 text-base font-semibold text-white">{step.title}</h4>
-                  <p className="mt-2 text-sm text-slate-300">{step.description}</p>
-                </div>
-              ))}
+                  {locale === 'fr' ? 'Démarrer un Projet' : 'Start a Project'}
+                  <ArrowRight className="h-5 w-5" aria-hidden="true" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -381,10 +474,12 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                 {highlights.map((highlight) => (
                   <div
                     key={highlight.title}
-                    className="group flex flex-col gap-4 rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 p-6 transition-all duration-300 hover:border-sky-400/30 hover:bg-gradient-to-br hover:from-sky-950/20 hover:via-black/30 hover:to-black/20 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 hover:scale-105"
+                    className="group flex flex-col gap-4 rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 px-6 py-5 transition-all duration-300 hover:border-sky-400/30 hover:bg-gradient-to-br hover:from-sky-950/20 hover:via-black/30 hover:to-black/20 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 hover:scale-105 sm:px-7 sm:py-6"
                   >
                     <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-400/20 to-cyan-500/20 text-sky-300 ring-1 ring-sky-400/20 transition-all duration-300 group-hover:from-sky-400/30 group-hover:to-cyan-400/30 group-hover:text-sky-200 group-hover:ring-sky-400/40 group-hover:shadow-lg group-hover:shadow-sky-400/20">
-                      <highlight.icon className="h-7 w-7" />
+                      <span className="text-3xl leading-none" aria-hidden="true">
+                        {highlight.icon}
+                      </span>
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-white group-hover:text-sky-100 transition-colors duration-300">
@@ -409,7 +504,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                 {processSteps.map((step, index) => (
                   <li
                     key={step.title}
-                    className="rounded-2xl border border-white/10 bg-black/20 p-5 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105"
+                    className="rounded-2xl border border-white/10 bg-black/20 px-5 py-5 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105 sm:px-7 sm:py-6"
                   >
                     <div className="flex items-center gap-3">
                       <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500/15 text-sm font-semibold text-sky-300">
@@ -426,6 +521,42 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                 ))}
               </ol>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Distinctive strengths grid (from Why Us page) */}
+      <section
+        id="distinctives"
+        className="border-t border-white/10 bg-slate-950 scroll-mt-16"
+      >
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {locale === 'fr' ? 'Nos Forces Distinctives' : 'Our Distinctive Strengths'}
+            </h2>
+            <p className="mt-3 text-slate-300">
+              {locale === 'fr'
+                ? 'Ce qui fait notre succès et celui de nos clients'
+                : 'What drives our success and that of our clients'}
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {strengths.map((item) => (
+              <div
+                key={item.title}
+                className="flex flex-col items-center rounded-2xl border border-white/10 bg-black/30 p-6 text-center transition-all duration-300 hover:border-cyan-400/30 hover:bg-black/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/20"
+              >
+                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-sky-400/20 to-cyan-500/20 text-sky-300 ring-1 ring-sky-400/20">
+                  <span className="text-3xl leading-none" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                </div>
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm text-slate-300">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -472,12 +603,9 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
           <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
             {contactMessages.title}
           </h2>
-          <p className="mt-4 text-base text-slate-100 sm:text-lg">
-            {contactMessages.subtitle}
-          </p>
-          <ul className="mt-6 flex flex-wrap justify-center gap-3 text-sm text-slate-200">
-            {[whyMessages.bilingual.title, whyMessages.results.title, whyMessages.support.title].map((point) => (
-              <li
+            <ul className="mt-6 flex flex-wrap justify-center gap-3 text-sm text-slate-200">
+              {[whyMessages.technology.title, whyMessages.results.title, whyMessages.support.title].map((point) => (
+                <li
                 key={point}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2"
               >

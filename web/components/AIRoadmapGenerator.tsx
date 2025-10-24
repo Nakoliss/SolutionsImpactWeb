@@ -39,8 +39,8 @@ const AI_CAPABILITIES: AICapability[] = [
       en: 'Responsive Landing Page'
     },
     description: {
-      fr: 'Page unique optimisée pour la conversion avec design responsive, SEO intégré et contenu bilingue.',
-      en: 'Single conversion-optimized page with responsive design, built-in SEO and bilingual content.'
+      fr: 'Page unique optimisée pour la conversion avec design responsive, visibilité Google intégrée et contenu bilingue.',
+      en: 'Single conversion-optimized page with responsive design, built-in Google visibility work and bilingual content.'
     },
     duration: { min: 1, max: 2 },
     effort: 'low',
@@ -50,7 +50,7 @@ const AI_CAPABILITIES: AICapability[] = [
     benefits: [
       { fr: 'Présence web immédiate', en: 'Immediate web presence' },
       { fr: 'Optimisé pour conversions', en: 'Conversion optimized' },
-      { fr: 'SEO intégré', en: 'Built-in SEO' }
+      { fr: 'visibilité Google intégrée', en: 'Built-in Google visibility work' }
     ],
     compliance: false
   },
@@ -62,8 +62,8 @@ const AI_CAPABILITIES: AICapability[] = [
       en: 'Complete Business Website'
     },
     description: {
-      fr: 'Site de 5-7 pages avec front-end moderne, SEO on-page, contenu bilingue et CMS intégré.',
-      en: '5-7 page website with modern front-end, on-page SEO, bilingual content and integrated CMS.'
+      fr: 'Site de 5-7 pages avec front-end moderne, optimisation Google on-page, contenu bilingue et CMS intégré.',
+      en: '5-7 page website with modern front-end, on-page work to help you show up on Google, bilingual content and integrated CMS.'
     },
     duration: { min: 2, max: 4 },
     effort: 'medium',
@@ -85,8 +85,8 @@ const AI_CAPABILITIES: AICapability[] = [
       en: 'Complete E-commerce Site'
     },
     description: {
-      fr: 'Boutique en ligne Shopify/WooCommerce avec produits, paiements, SEO et interface bilingue.',
-      en: 'Shopify/WooCommerce online store with products, payments, SEO and bilingual interface.'
+      fr: 'Boutique en ligne Shopify/WooCommerce avec produits, paiements, visibilité Google et interface bilingue.',
+      en: 'Shopify/WooCommerce online store with products, payments, Google visibility work and bilingual interface.'
     },
     duration: { min: 4, max: 8 },
     effort: 'high',
@@ -127,8 +127,8 @@ const AI_CAPABILITIES: AICapability[] = [
     id: 'seo-audit',
     category: 'seo-marketing',
     name: {
-      fr: 'Audit SEO technique',
-      en: 'Technical SEO Audit'
+      fr: 'Audit audit technique de visibilité Google',
+      en: 'Technical Google visibility audit'
     },
     description: {
       fr: 'Analyse complète de jusqu\'à 50 URLs avec rapport sur la vitesse, l\'accessibilité et le schema.',
@@ -150,8 +150,8 @@ const AI_CAPABILITIES: AICapability[] = [
     id: 'seo-retainer',
     category: 'seo-marketing',
     name: {
-      fr: 'Abonnement SEO mensuel',
-      en: 'Monthly SEO Retainer'
+      fr: 'Abonnement mensuel pour la visibilité Google',
+      en: 'Monthly Google visibility retainer'
     },
     description: {
       fr: 'Optimisation continue avec suivi des mots-clés, mises à jour et 4 articles de blog bilingues.',
@@ -296,7 +296,7 @@ const CONTENT = {
         description: 'Sites web et applications personnalisées'
       },
       'seo-marketing': {
-        name: 'SEO et Marketing',
+        name: 'Visibilité Google et marketing',
         description: 'Optimisation et visibilité en ligne'
       },
       'ai-integration': {
@@ -357,7 +357,7 @@ const CONTENT = {
         description: 'Websites and custom applications'
       },
       'seo-marketing': {
-        name: 'SEO & Marketing',
+        name: 'Google visibility & marketing',
         description: 'Optimization and online visibility'
       },
       'ai-integration': {

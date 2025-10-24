@@ -166,7 +166,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`relative overflow-hidden rounded-lg border-2 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-xl ${
+                className={`relative flex h-full flex-col overflow-hidden rounded-lg border-2 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-xl ${
                   pkg.popular ? 'ring-2' : ''
                 }`}
                 style={{
@@ -200,7 +200,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
                   </div>
                 )}
 
-                <div className="p-6">
+                <div className="flex h-full flex-col p-6">
                   <h3 className="text-xl font-semibold" style={{ color: 'var(--theme-text)' }}>
                     {pkg.name}
                   </h3>
@@ -211,7 +211,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
                     {pkg.description}
                   </p>
 
-                  <ul className="mt-6 space-y-3">
+                  <ul className="mt-6 flex-1 space-y-3">
                     {pkg.features.map((feature, index) => (
                       <li key={index} className="flex items-start">
                         <svg
@@ -230,26 +230,28 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
                     ))}
                   </ul>
 
-                  <button
-                    className="mt-8 w-full rounded-lg px-4 py-3 font-medium transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
-                    style={pkg.popular ? buttonPrimaryStyle : buttonSecondaryStyle}
-                    onClick={() => {
-                      const contactSection = document.getElementById('contact');
-                      if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
-                      } else {
-                        window.location.href = `/${locale}#contact`;
-                      }
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = 'var(--theme-hover-shadow)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = '';
-                    }}
-                  >
-                    {locale === 'fr' ? 'Choisir ce forfait' : 'Choose Package'}
-                  </button>
+                  <div className="mt-auto pt-8">
+                    <button
+                      className="w-full rounded-lg px-4 py-3 font-medium transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-xl"
+                      style={pkg.popular ? buttonPrimaryStyle : buttonSecondaryStyle}
+                      onClick={() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                          contactSection.scrollIntoView({ behavior: 'smooth' });
+                        } else {
+                          window.location.href = `/${locale}#contact`;
+                        }
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = 'var(--theme-hover-shadow)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = '';
+                      }}
+                    >
+                      {locale === 'fr' ? 'Choisir ce forfait' : 'Choose Package'}
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}

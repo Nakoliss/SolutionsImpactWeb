@@ -10,14 +10,14 @@
     "book": "Diagnostic gratuit"
   },
   "hero": {
-    "title": "Agence web IA bilingue",
+    "title": "Agence web IA",
     "subtitle": "Web Impact Solutions",
-    "description": "Nous créons des expériences web bilingues, conformes à la Loi 25 et optimisées par l'IA — spécialement pour les PME du Québec.",
+    "description": "Nous créons des expériences web conformes à la Loi 25 et optimisées par l'IA — spécialement pour les PME du Québec.",
     "ctaPrimary": "Planifier un diagnostic",
     "ctaSecondary": "Découvrir notre approche",
     "stats": {
-      "clients": "FR / EN",
-      "clientsLabel": "Service bilingue natif",
+      "clients": "24/7",
+      "clientsLabel": "Support en continu",
       "growth": "Loi 25",
       "growthLabel": "Conformité intégrée",
       "expertise": "IA",
@@ -37,62 +37,38 @@
     "cta": "Demander ce forfait",
     "contact": "Parler à l'équipe",
     "savings": "Économiser",
-    "starter": {
+    "diagnostic": {
       "name": "Diagnostic et feuille de route",
-      "price": "À partir de 4 500 $",
-      "originalPrice": "Valeur : 6 500 $",
+      "price": "À partir de 4 500 $",
+      "originalPrice": "Valeur : 6 500 $",
       "description": "Idéal pour clarifier les priorités avant de lancer la production.",
-      "features": [
-        "Audit bilingue de votre présence actuelle",
-        "Atelier parties prenantes et cartographie des parcours",
-        "Feuille de route IA, SEO et UX priorisée",
-        "Liste de vérification Loi 25 et gabarits"
-      ]
+      "features": "Audit bilingue de votre présence actuelle|Atelier parties prenantes et cartographie des parcours|Feuille de route priorisée couvrant automatisations intelligentes, visibilité Google et améliorations UX|Liste de vérification Loi 25 et gabarits"
+    },
+    "bilingual": {
+      "name": "Site bilingue + operations IA",
+      "price": "À partir de 18 500 $",
+      "originalPrice": "Valeur : 25 000 $",
+      "description": "Lancement d'un site performant avec automatisations intelligentes.",
+      "features": "UX personnalisée et bibliothèque de composants|Rédaction optimisée pour le français et l'anglais afin d'être trouvée sur Google|Intégrations CRM, formulaires et analytics|Gestion du consentement et actifs de confidentialité"
     },
     "growth": {
-      "name": "Site bilingue + operations IA",
-      "price": "À partir de 18 500 $",
-      "originalPrice": "Valeur : 25 000 $",
-      "description": "Lancement d'un site performant avec automatisations intelligentes.",
-      "features": [
-        "UX personnalisée et bibliothèque de composants",
-        "Rédaction et SEO en français et en anglais",
-        "Intégrations CRM, formulaires et analytics",
-        "Gestion du consentement et actifs de confidentialité"
-      ]
-    },
-    "intelligent": {
       "name": "Sprints de croissance",
-      "price": "À partir de 3 200 $ / mois",
-      "originalPrice": "Valeur : 4 500 $ / mois",
+      "price": "À partir de 3 200 $ / mois",
+      "originalPrice": "Valeur : 4 500 $ / mois",
       "description": "Optimisation continue, campagnes et expérimentation IA.",
-      "features": [
-        "Sprints d'optimisation SEO, CRO et UX",
-        "Campagnes automatisées multicanal",
-        "Tableaux de bord et analyses à chaque sprint",
-        "Veille conformité et sécurité continue"
-      ]
+      "features": "Sprints d'optimisation pour la visibilité Google, la conversion et l'UX|Campagnes automatisées multicanal|Tableaux de bord et analyses à chaque sprint|Veille conformité et sécurité continue"
     },
     "enterprise": {
       "name": "Partenariat enterprise",
       "price": "Engagement sur mesure",
       "originalPrice": "Valeur : nous contacter",
       "description": "Équipe numérique fractionnaire pour écosystèmes complexes.",
-      "features": [
-        "Stratégie produit numérique omnicanal",
-        "Pipelines de données et personnalisation avancés",
-        "Support dédié conformité et gouvernance",
-        "Conseillers intégrés et formation des équipes"
-      ]
+      "features": "Stratégie produit numérique omnicanal|Pipelines de données et personnalisation avancés|Support dédié conformité et gouvernance|Conseillers intégrés et formation des équipes"
     }
   },
   "why": {
     "title": "Pourquoi travailler avec nous",
-    "subtitle": "Un partenaire bilingue, conforme et axé sur l'IA",
-    "bilingual": {
-      "title": "Livrables bilingues natifs",
-      "description": "Rédacteurs, stratèges et designers qui travaillent en français et en anglais dès le début."
-    },
+    "subtitle": "Un partenaire conforme et axé sur l'IA",
     "technology": {
       "title": "Adoption IA responsable",
       "description": "Automatisations et expériences pilotées par la valeur et la gouvernance."
@@ -108,7 +84,7 @@
   },
   "contact": {
     "title": "Prêt à moderniser votre expérience numérique ?",
-    "subtitle": "Planifiez un diagnostic et recevez un plan d'action bilingue adapté à vos objectifs.",
+    "subtitle": "Planifiez un diagnostic et recevez un plan d'action adapté à vos objectifs.",
     "cta": "Planifier mon diagnostic",
     "phone": "Appeler l'équipe",
     "email": "Nous ecrire"
@@ -116,7 +92,7 @@
   "footer": {
     "rights": "Tous droits réservés",
     "company": "Web Impact Solutions",
-    "tagline": "Web bilingue, automation IA et conformité Loi 25 pour les entreprises en croissance du Québec.",
+    "tagline": "Web, automation IA et conformité Loi 25 pour les entreprises en croissance du Québec.",
     "copyright": "(c) 2025 Web Impact Solutions - Division de Nakoliss Studios - Fondateur Daniel Germain"
   },
   "ui": {

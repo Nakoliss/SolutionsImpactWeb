@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import {
   BarChart3,
@@ -69,7 +69,7 @@ const LOCALE_COPY = {
       },
       {
         id: 'seoOptimization',
-        title: 'Commerce SEO + AI',
+        title: 'Commerce Google visibility + intelligent automation',
         description: 'Search and AI visibility for products, categories, and buying guides.',
         bullets: [
           'Schema for products, reviews, availability',
@@ -196,7 +196,7 @@ const LOCALE_COPY = {
       },
       {
         id: 'seoOptimization',
-        title: 'SEO commerce et IA',
+        title: 'Visibilite Google commerce et automatisation intelligente',
         description: 'Visibilite recherche et reponses IA pour produits et guides.',
         bullets: [
           'Schema produits, avis, disponibilite',
@@ -227,7 +227,7 @@ const LOCALE_COPY = {
       {
         id: 'advertising',
         title: 'Media performance',
-        description: 'Campagnes payantes optimisées revenue et ROAS.',
+        description: 'Campagnes payantes optimis�es revenue et ROAS.',
         bullets: [
           'Shopping ads avec gouvernance flux',
           'Remarketing dynamique multi canaux',
@@ -428,3 +428,6 @@ export function RetailStoreModal({
 }
 
 export default RetailStoreModal;
+
+
+

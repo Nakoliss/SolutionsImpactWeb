@@ -1,313 +1,289 @@
-﻿{
-    "nav":  {
-                "home":  "Home",
-                "services":  "Services",
-                "packages":  "Packages",
-                "whyUs":  "Why us",
-                "process":  "Process",
-                "assessment":  "AI assessment",
-
-                "contact":  "Contact",
-                "book":  "Book a diagnostic"
-            },
-    "hero":  {
-                 "title":  "Bilingual AI web agency",
-                 "subtitle":  "Web Impact Solutions",
-                 "description":  "We build bilingual, compliance-ready digital experiences and AI automations for Québec SMBs.",
-                 "ctaPrimary":  "Plan a free diagnostic",
-                 "ctaSecondary":  "See how we work",
-                 "stats":  {
-                               "clients":  "FR / EN",
-                               "clientsLabel":  "Native bilingual delivery",
-                               "growth":  "Law 25",
-                               "growthLabel":  "Compliance built in",
-                               "expertise":  "AI",
-                               "expertiseLabel":  "Responsible automation"
-                           }
-             },
-    "services":  {
-                     "title":  "What we deliver",
-                     "subtitle":  "Strategy, design, and AI implementation in both languages",
-                     "cta":  "View service details"
-                 },
-    "packages":  {
-                     "title":  "Signature packages",
-                     "subtitle":  "Pick the partnership that fits your roadmap",
-                     "popular":  "Popular",
-                     "bestseller":  "Best choice",
-                     "cta":  "Request this package",
-                     "contact":  "Talk to our team",
-                     "savings":  "Save",
-                     "starter":  {
-                                     "name":  "Diagnostic and roadmap",
-                                     "price":  "Starting at $4,500",
-                                     "originalPrice":  "Value: $6,500",
-                                     "description":  "Ideal for teams that need clarity before investing in delivery.",
-                                     "features":  [
-                                                      "Bilingual audit of your current presence",
-                                                      "Stakeholder workshop and journey mapping",
-                                                      "Prioritized AI, SEO, and UX roadmap",
-                                                      "Law 25 compliance checklist and templates"
-                                                  ]
-                                 },
-                     "growth":  {
-                                    "name":  "Bilingual site + AI ops",
-                                    "price":  "Starting at $18,500",
-                                    "originalPrice":  "Value: $25,000",
-                                    "description":  "Launch a high-performing website with intelligent automations.",
-                                    "features":  [
-                                                     "Custom UX and component library",
-                                                     "Copywriting and SEO in French and English",
-                                                     "CRM, form, and analytics integrations",
-                                                     "Consent management and privacy assets included"
-                                                 ]
-                                },
-                     "intelligent":  {
-                                         "name":  "Growth sprints",
-                                         "price":  "Starting at $3,200 / month",
-                                         "originalPrice":  "Value: $4,500 / month",
-                                         "description":  "Iterative optimization and campaign support with AI experimentation.",
-                                         "features":  [
-                                                          "SEO, CRO, and UX optimization cycles",
-                                                          "Automated nurture and outbound sequences",
-                                                          "Dashboards and insights every sprint",
-                                                          "Compliance and security monitoring"
-                                                      ]
-                                     },
-                     "enterprise":  {
-                                        "name":  "Enterprise partnership",
-                                        "price":  "Custom engagement",
-                                        "originalPrice":  "Value: contact us",
-                                        "description":  "Fractional digital team for complex, multi-brand ecosystems.",
-                                        "features":  [
-                                                         "Omnichannel digital product strategy",
-                                                         "Advanced data pipelines and personalization",
-                                                         "Dedicated compliance and governance support",
-                                                         "Embedded advisors and training for internal teams"
-                                                     ]
-                                    }
-                 },
-    "why":  {
-                "title":  "Why teams work with us",
-                "subtitle":  "The bilingual, compliant, AI-first partner your customers expect",
-                "bilingual":  {
-                                  "title":  "Native bilingual delivery",
-                                  "description":  "Writers, strategists, and designers that work in French and English from day one."
-                              },
-                "technology":  {
-                                   "title":  "Responsible AI adoption",
-                                   "description":  "Automations, copilots, and experiments aligned with clear ROI and governance."
-                               },
-                "results":  {
-                                "title":  "Measurable impact",
-                                "description":  "Dashboards and growth rituals that connect marketing to revenue, not vanity metrics."
-                            },
-                "support":  {
-                                "title":  "Québec-based team",
-                                "description":  "On-the-ground experts who understand local regulations, culture, and expectations."
-                            }
-            },
-    "contact":  {
-                    "title":  "Ready to modernize your digital experience?",
-                    "subtitle":  "Book a diagnostic and get a bilingual action plan tailored to your goals.",
-                    "cta":  "Plan my diagnostic",
-                    "phone":  "Call the team",
-                    "email":  "Email us"
-                },
-    "footer":  {
-                   "rights":  "All rights reserved",
-                   "company":  "Web Impact Solutions",
-                   "tagline":  "Bilingual web, AI automation, and Law 25 compliance for growing Québec businesses.",
-                   "copyright":  "(c) 2025 Web Impact Solutions - A division of Nakoliss Studios - Founded by Daniel Germain"
-               },
-    "ui":  {
-               "previous":  "Previous",
-               "next":  "Next",
-               "dot":  "*"
-           },
-    "assessment":  {
-                       "title":  "AI readiness assessment",
-                       "subtitle":  "Discover where your organization stands",
-                       "description":  "Assess your AI readiness level and get personalized recommendations.",
-                       "startAssessment":  "Start the assessment",
-                       "retakeAssessment":  "Retake the assessment",
-                       "loading":  "Loading...",
-                       "error":  "An error occurred. Please try again."
-                   },
-    "business":  {
-                     "designSelector":  {
-                                            "title":  "Explore industry designs",
-                                            "subtitle":  "Solutions Impact Web: each experience, to your taste and your sector.",
-                                            "previous":  "Previous design",
-                                            "next":  "Next design",
-                                            "slidePosition":  "Design {current} of {total}",
-                                            "selectLabel":  "Show {name} design",
-                                            "selectedLabel":  "{name} design selected"
-                                        },
-                     "modal":  {
-                                   "title":  "Industry design preview",
-                                   "subtitle":  "Discover the structure, copy, and compliance we activate for your market.",
-                                   "closeButton":  "Close design"
-                               },
-                     "aiAgency":  {
-                                      "name":  "Solutions Impact Web",
-                                      "tagline":  "Modern websites, SEO + AI (AEO/GEO), and Law 25 compliance — bilingual FR/EN.",
-                                      "heroTitle":  "Trust and visibility for Québec SMBs",
-                                      "heroBadge":  "AI + human delivery",
-                                      "ctaText":  "Solutions Impact Web",
-                                      "services":  {
-                                                       "websites":  "Intelligent websites with integrated AI",
-                                                       "maintenance":  "Automated maintenance and monitoring",
-                                                       "seoOptimization":  "AI-powered search engine optimization",
-                                                       "marketingAutomation":  "Advanced marketing automation",
-                                                       "reviewManagement":  "Intelligent reputation management",
-                                                       "advertising":  "AI-driven advertising campaigns",
-                                                       "additionalServices":  "Custom AI integrations and tools"
-                                                   }
-                                  },
-                     "medical":  {
-                                     "name":  "Medical Clinic",
-                                     "tagline":  "Patient-first experiences with compliant intake.",
-                                     "heroTitle":  "Healthcare website designed for comfort and compliance.",
-                                     "heroBadge":  "Clinic ready bilingual",
-                                     "ctaText":  "View medical design",
-                                     "services":  {
-                                                      "websites":  "Medical websites",
-                                                      "maintenance":  "Compliance maintenance",
-                                                      "seoOptimization":  "Healthcare visibility",
-                                                      "marketingAutomation":  "Patient automation",
-                                                      "reviewManagement":  "Reputation management",
-                                                      "advertising":  "Healthcare campaigns",
-                                                      "additionalServices":  "Specialized integrations"
-                                                  }
-                                 },
-                     "antique":  {
-                                     "name":  "Antique Shop",
-                                     "tagline":  "Vintage storytelling for collectors and curators.",
-                                     "heroTitle":  "Antique storefront celebrating provenance and craft.",
-                                     "heroBadge":  "Heritage commerce",
-                                     "ctaText":  "View antique design",
-                                     "services":  {
-                                                      "websites":  "Antique catalogues",
-                                                      "maintenance":  "Collection maintenance",
-                                                      "seoOptimization":  "Heritage visibility",
-                                                      "marketingAutomation":  "Collector journeys",
-                                                      "reviewManagement":  "Reputation and trust",
-                                                      "advertising":  "Curated campaigns",
-                                                      "additionalServices":  "Appraisal integrations"
-                                                  }
-                                 },
-                     "autoGarage":  {
-                                        "name":  "Auto Garage",
-                                        "tagline":  "Industrial styling with fleet ready booking.",
-                                        "heroTitle":  "Automotive repair site built for quick bookings.",
-                                        "heroBadge":  "Fleet friendly",
-                                        "ctaText":  "View auto garage design",
-                                        "services":  {
-                                                         "websites":  "Auto service sites",
-                                                         "maintenance":  "Maintenance retainers",
-                                                         "seoOptimization":  "Automotive visibility",
-                                                         "marketingAutomation":  "Driver automation",
-                                                         "reviewManagement":  "Reputation and CSI",
-                                                         "advertising":  "Performance ads",
-                                                         "additionalServices":  "Diagnostics integrations"
-                                                     }
-                                    },
-                     "retailStore":  {
-                                         "name":  "Retail Store",
-                                         "tagline":  "Omnichannel commerce made measurable.",
-                                         "heroTitle":  "Retail website engineered for product discovery.",
-                                         "heroBadge":  "Omnichannel ready",
-                                         "ctaText":  "View retail design",
-                                         "services":  {
-                                                          "websites":  "Retail storefronts",
-                                                          "maintenance":  "Operations maintenance",
-                                                          "seoOptimization":  "Commerce SEO",
-                                                          "marketingAutomation":  "Lifecycle automation",
-                                                          "reviewManagement":  "Social proof engine",
-                                                          "advertising":  "Performance media",
-                                                          "additionalServices":  "Platform integrations"
-                                                      }
-                                     },
-                     "restaurant":  {
-                                        "name":  "Restaurant",
-                                        "tagline":  "Reservations, menu storytelling, and delivery in sync.",
-                                        "heroTitle":  "Restaurant site elevating menus and experience.",
-                                        "heroBadge":  "Bookings and delivery",
-                                        "ctaText":  "View restaurant design",
-                                        "services":  {
-                                                         "websites":  "Restaurant sites",
-                                                         "maintenance":  "Menu maintenance",
-                                                         "seoOptimization":  "Hospitality visibility",
-                                                         "marketingAutomation":  "Guest journeys",
-                                                         "reviewManagement":  "Reputation service",
-                                                         "advertising":  "Restaurant campaigns",
-                                                         "additionalServices":  "POS integrations"
-                                                     }
-                                    },
-                     "lawFirm":  {
-                                     "name":  "Law Firm",
-                                     "tagline":  "Professional credibility with secure intake.",
-                                     "heroTitle":  "Law firm website focused on trust and clarity.",
-                                     "heroBadge":  "Confidential by design",
-                                     "ctaText":  "View law firm design",
-                                     "services":  {
-                                                      "websites":  "Law firm websites",
-                                                      "maintenance":  "Governance maintenance",
-                                                      "seoOptimization":  "Legal search visibility",
-                                                      "marketingAutomation":  "Client automation",
-                                                      "reviewManagement":  "Reputation and testimonials",
-                                                      "advertising":  "Legal campaigns",
-                                                      "additionalServices":  "Legal tech integrations"
-                                                  }
-                                 },
-                     "beautySalon":  {
-                                         "name":  "Beauty Salon",
-                                         "tagline":  "Elegant booking journeys for beauty brands.",
-                                         "heroTitle":  "Salon website that converts curious visitors.",
-                                         "heroBadge":  "Glow ready",
-                                         "ctaText":  "View beauty salon design",
-                                         "services":  {
-                                                          "websites":  "Salon websites",
-                                                          "maintenance":  "Lookbook maintenance",
-                                                          "seoOptimization":  "Beauty visibility",
-                                                          "marketingAutomation":  "Clienteling automation",
-                                                          "reviewManagement":  "Reputation glow",
-                                                          "advertising":  "Beauty campaigns",
-                                                          "additionalServices":  "POS integrations"
-                                                      }
-                                     },
-                     "petGrooming":  {
-                                         "name":  "Pet Grooming",
-                                         "tagline":  "Playful pet care with member ready bookings.",
-                                         "heroTitle":  "Pet grooming site built for loyal clients.",
-                                         "heroBadge":  "Pet first CX",
-                                         "ctaText":  "View pet grooming design",
-                                         "services":  {
-                                                          "websites":  "Pet grooming sites",
-                                                          "maintenance":  "Schedule maintenance",
-                                                          "seoOptimization":  "Pet care visibility",
-                                                          "marketingAutomation":  "Pet parent automation",
-                                                          "reviewManagement":  "Reputation and trust",
-                                                          "advertising":  "Pet campaigns",
-                                                          "additionalServices":  "Vet integrations"
-                                                      }
-                                     },
-                     "homeServices":  {
-                                          "name":  "Home Services",
-                                          "tagline":  "Reliable maintenance bookings for homeowners.",
-                                          "heroTitle":  "Home services portal with bilingual trust.",
-                                          "heroBadge":  "Emergency ready",
-                                          "ctaText":  "View home services design",
-                                          "services":  {
-                                                           "websites":  "Home service websites",
-                                                           "maintenance":  "Maintenance programmes",
-                                                           "seoOptimization":  "Local search visibility",
-                                                           "marketingAutomation":  "Customer automation",
-                                                           "reviewManagement":  "Reputation engine",
-                                                           "advertising":  "Lead generation campaigns",
-                                                           "additionalServices":  "Field integrations"
-                                                       }
-                                      }
-                 }
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "packages": "Packages",
+    "whyUs": "Why us",
+    "process": "Process",
+    "assessment": "AI assessment",
+    "contact": "Contact",
+    "book": "Book a diagnostic"
+  },
+  "hero": {
+    "title": "AI web agency",
+    "subtitle": "Web Impact Solutions",
+    "description": "We build compliance-ready digital experiences and AI automations for Québec SMBs.",
+    "ctaPrimary": "Plan a free diagnostic",
+    "ctaSecondary": "See how we work",
+    "stats": {
+      "clients": "24/7",
+      "clientsLabel": "Always-on support",
+      "growth": "Law 25",
+      "growthLabel": "Compliance built in",
+      "expertise": "AI",
+      "expertiseLabel": "Responsible automation"
+    }
+  },
+  "services": {
+    "title": "What we deliver",
+    "subtitle": "Strategy, design, and AI implementation in both languages",
+    "cta": "View service details"
+  },
+  "packages": {
+    "title": "Signature packages",
+    "subtitle": "Pick the partnership that fits your roadmap",
+    "popular": "Popular",
+    "bestseller": "Best choice",
+    "cta": "Request this package",
+    "contact": "Talk to our team",
+    "savings": "Save",
+    "diagnostic": {
+      "name": "Diagnostic and roadmap",
+      "price": "Starting at $4,500",
+      "originalPrice": "Value: $6,500",
+      "description": "Ideal for teams that need clarity before investing in delivery.",
+      "features": "Bilingual audit of your current presence|Stakeholder workshop and journey mapping|Prioritized roadmap covering intelligent automation, Google visibility, and UX improvements|Law 25 compliance checklist and templates"
+    },
+    "bilingual": {
+      "name": "Bilingual site + AI ops",
+      "price": "Starting at $18,500",
+      "originalPrice": "Value: $25,000",
+      "description": "Launch a high-performing website with intelligent automations.",
+      "features": "Custom UX and component library|Copywriting tailored for French and English audiences so people find you on Google|CRM, form, and analytics integrations|Consent management and privacy assets included"
+    },
+    "growth": {
+      "name": "Growth sprints",
+      "price": "Starting at $3,200 / month",
+      "originalPrice": "Value: $4,500 / month",
+      "description": "Iterative optimization and campaign support with AI experimentation.",
+      "features": "Optimization cycles that improve Google visibility, conversion rates, and UX|Automated nurture and outbound sequences|Dashboards and insights every sprint|Compliance and security monitoring"
+    },
+    "enterprise": {
+      "name": "Enterprise partnership",
+      "price": "Custom engagement",
+      "originalPrice": "Value: contact us",
+      "description": "Fractional digital team for complex, multi-brand ecosystems.",
+      "features": "Omnichannel digital product strategy|Advanced data pipelines and personalization|Dedicated compliance and governance support|Embedded advisors and training for internal teams"
+    }
+  },
+  "why": {
+    "title": "Why teams work with us",
+    "subtitle": "The compliant, AI-first partner your customers expect",
+    "technology": {
+      "title": "Responsible AI adoption",
+      "description": "Automations, copilots, and experiments aligned with clear ROI and governance."
+    },
+    "results": {
+      "title": "Measurable impact",
+      "description": "Dashboards and growth rituals that connect marketing to revenue, not vanity metrics."
+    },
+    "support": {
+      "title": "Québec-based team",
+      "description": "On-the-ground experts who understand local regulations, culture, and expectations."
+    }
+  },
+  "contact": {
+    "title": "Ready to modernize your digital experience?",
+    "subtitle": "Book a diagnostic and get an action plan tailored to your goals.",
+    "cta": "Plan my diagnostic",
+    "phone": "Call the team",
+    "email": "Email us"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "company": "Web Impact Solutions",
+    "tagline": "Web, AI automation, and Law 25 compliance for growing Québec businesses.",
+    "copyright": "(c) 2025 Web Impact Solutions - A division of Nakoliss Studios - Founded by Daniel Germain"
+  },
+  "ui": {
+    "previous": "Previous",
+    "next": "Next",
+    "dot": "*"
+  },
+  "assessment": {
+    "title": "AI readiness assessment",
+    "subtitle": "Discover where your organization stands",
+    "description": "Assess your AI readiness level and get personalized recommendations.",
+    "startAssessment": "Start the assessment",
+    "retakeAssessment": "Retake the assessment",
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again."
+  },
+  "business": {
+    "designSelector": {
+      "title": "Explore industry designs",
+      "subtitle": "Solutions Impact Web: each experience, to your taste and your sector.",
+      "previous": "Previous design",
+      "next": "Next design",
+      "slidePosition": "Design {current} of {total}",
+      "selectLabel": "Show {name} design",
+      "selectedLabel": "{name} design selected"
+    },
+    "modal": {
+      "title": "Industry design preview",
+      "subtitle": "Discover the structure, copy, and compliance we activate for your market.",
+      "closeButton": "Close design"
+    },
+    "aiAgency": {
+      "name": "Solutions Impact Web",
+      "tagline": "Modern websites, Google visibility and AI-powered answer engine coverage, plus Law 25 compliance.",
+      "heroTitle": "Trust and visibility for Québec SMBs",
+      "heroBadge": "AI + human delivery",
+      "ctaText": "Solutions Impact Web",
+      "services": {
+        "websites": "Intelligent websites with integrated AI",
+        "maintenance": "Automated maintenance and monitoring",
+        "seoOptimization": "AI-powered search engine optimization",
+        "marketingAutomation": "Advanced marketing automation",
+        "reviewManagement": "Intelligent reputation management",
+        "advertising": "AI-driven advertising campaigns",
+        "additionalServices": "Custom AI integrations and tools"
+      }
+    },
+    "medical": {
+      "name": "Medical Clinic",
+      "tagline": "Patient-first experiences with compliant intake.",
+      "heroTitle": "Healthcare website designed for comfort and compliance.",
+      "heroBadge": "Clinic ready bilingual",
+      "ctaText": "View medical design",
+      "services": {
+        "websites": "Medical websites",
+        "maintenance": "Compliance maintenance",
+        "seoOptimization": "Healthcare visibility",
+        "marketingAutomation": "Patient automation",
+        "reviewManagement": "Reputation management",
+        "advertising": "Healthcare campaigns",
+        "additionalServices": "Specialized integrations"
+      }
+    },
+    "antique": {
+      "name": "Antique Shop",
+      "tagline": "Vintage storytelling for collectors and curators.",
+      "heroTitle": "Antique storefront celebrating provenance and craft.",
+      "heroBadge": "Heritage commerce",
+      "ctaText": "View antique design",
+      "services": {
+        "websites": "Antique catalogues",
+        "maintenance": "Collection maintenance",
+        "seoOptimization": "Heritage visibility",
+        "marketingAutomation": "Collector journeys",
+        "reviewManagement": "Reputation and trust",
+        "advertising": "Curated campaigns",
+        "additionalServices": "Appraisal integrations"
+      }
+    },
+    "autoGarage": {
+      "name": "Auto Garage",
+      "tagline": "Industrial styling with fleet ready booking.",
+      "heroTitle": "Automotive repair site built for quick bookings.",
+      "heroBadge": "Fleet friendly",
+      "ctaText": "View auto garage design",
+      "services": {
+        "websites": "Auto service sites",
+        "maintenance": "Maintenance retainers",
+        "seoOptimization": "Automotive visibility",
+        "marketingAutomation": "Driver automation",
+        "reviewManagement": "Reputation and CSI",
+        "advertising": "Performance ads",
+        "additionalServices": "Diagnostics integrations"
+      }
+    },
+    "retailStore": {
+      "name": "Retail Store",
+      "tagline": "Omnichannel commerce made measurable.",
+      "heroTitle": "Retail website engineered for product discovery.",
+      "heroBadge": "Omnichannel ready",
+      "ctaText": "View retail design",
+      "services": {
+        "websites": "Retail storefronts",
+        "maintenance": "Operations maintenance",
+        "seoOptimization": "Google visibility for commerce",
+        "marketingAutomation": "Lifecycle automation",
+        "reviewManagement": "Social proof engine",
+        "advertising": "Performance media",
+        "additionalServices": "Platform integrations"
+      }
+    },
+    "restaurant": {
+      "name": "Restaurant",
+      "tagline": "Reservations, menu storytelling, and delivery in sync.",
+      "heroTitle": "Restaurant site elevating menus and experience.",
+      "heroBadge": "Bookings and delivery",
+      "ctaText": "View restaurant design",
+      "services": {
+        "websites": "Restaurant sites",
+        "maintenance": "Menu maintenance",
+        "seoOptimization": "Hospitality visibility",
+        "marketingAutomation": "Guest journeys",
+        "reviewManagement": "Reputation service",
+        "advertising": "Restaurant campaigns",
+        "additionalServices": "POS integrations"
+      }
+    },
+    "lawFirm": {
+      "name": "Law Firm",
+      "tagline": "Professional credibility with secure intake.",
+      "heroTitle": "Law firm website focused on trust and clarity.",
+      "heroBadge": "Confidential by design",
+      "ctaText": "View law firm design",
+      "services": {
+        "websites": "Law firm websites",
+        "maintenance": "Governance maintenance",
+        "seoOptimization": "Legal search visibility",
+        "marketingAutomation": "Client automation",
+        "reviewManagement": "Reputation and testimonials",
+        "advertising": "Legal campaigns",
+        "additionalServices": "Legal tech integrations"
+      }
+    },
+    "beautySalon": {
+      "name": "Beauty Salon",
+      "tagline": "Elegant booking journeys for beauty brands.",
+      "heroTitle": "Salon website that converts curious visitors.",
+      "heroBadge": "Glow ready",
+      "ctaText": "View beauty salon design",
+      "services": {
+        "websites": "Salon websites",
+        "maintenance": "Lookbook maintenance",
+        "seoOptimization": "Beauty visibility",
+        "marketingAutomation": "Clienteling automation",
+        "reviewManagement": "Reputation glow",
+        "advertising": "Beauty campaigns",
+        "additionalServices": "POS integrations"
+      }
+    },
+    "petGrooming": {
+      "name": "Pet Grooming",
+      "tagline": "Playful pet care with member ready bookings.",
+      "heroTitle": "Pet grooming site built for loyal clients.",
+      "heroBadge": "Pet first CX",
+      "ctaText": "View pet grooming design",
+      "services": {
+        "websites": "Pet grooming sites",
+        "maintenance": "Schedule maintenance",
+        "seoOptimization": "Pet care visibility",
+        "marketingAutomation": "Pet parent automation",
+        "reviewManagement": "Reputation and trust",
+        "advertising": "Pet campaigns",
+        "additionalServices": "Vet integrations"
+      }
+    },
+    "homeServices": {
+      "name": "Home Services",
+      "tagline": "Reliable maintenance bookings for homeowners.",
+      "heroTitle": "Home services portal with bilingual trust.",
+      "heroBadge": "Emergency ready",
+      "ctaText": "View home services design",
+      "services": {
+        "websites": "Home service websites",
+        "maintenance": "Maintenance programmes",
+        "seoOptimization": "Local search visibility",
+        "marketingAutomation": "Customer automation",
+        "reviewManagement": "Reputation engine",
+        "advertising": "Lead generation campaigns",
+        "additionalServices": "Field integrations"
+      }
+    }
+  }
 }
+

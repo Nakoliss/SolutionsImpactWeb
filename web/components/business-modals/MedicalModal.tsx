@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import {
   Activity,
@@ -73,7 +73,7 @@ const LOCALE_COPY = {
         title: 'Health search visibility',
         description: 'Community search and AI answer optimization for clinics and specialists.',
         bullets: [
-          'Bilingual SEO for local care teams',
+          'Bilingual Google visibility for local care teams',
           'Structured FAQ for symptom keywords',
           'AI snippet governance for health boards',
         ],
@@ -161,7 +161,7 @@ const LOCALE_COPY = {
         },
         {
           label: 'Cadre juridique',
-          value: 'Loi 25 + PIPEDA (aligné)',
+          value: 'Loi 25 + PIPEDA (align�)',
           caption: 'Registre de consentement integre',
           icon: ShieldCheck,
         },
@@ -200,7 +200,7 @@ const LOCALE_COPY = {
         title: 'Visibilite sante',
         description: 'Optimisation locale et IA pour cliniques, specialistes et GMF.',
         bullets: [
-          'SEO bilingue pour territoires desservis',
+          'Visibilite Google bilingue pour les territoires desservis',
           'FAQ structurees selon symptomes',
           'Gouvernance des extraits IA sante',
         ],
@@ -429,3 +429,4 @@ export function MedicalModal({
 }
 
 export default MedicalModal;
+

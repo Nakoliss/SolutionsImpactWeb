@@ -158,7 +158,7 @@ describe('Design Context End-to-End Integration', () => {
             const navigationLinks = screen.getAllByRole('link');
             navigationLinks.forEach(link => {
                 const href = link.getAttribute('href');
-                if (href && !href.startsWith('#')) {
+                if (href && !href.includes('#')) {
                     expect(href).toContain('design=fitness');
                 }
             });

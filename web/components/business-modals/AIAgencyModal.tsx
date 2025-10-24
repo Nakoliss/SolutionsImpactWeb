@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import {
   BrainCircuit,
@@ -196,7 +196,7 @@ const LOCALE_COPY = {
       },
       {
         id: 'seoOptimization',
-        title: 'Autorite IA et SEO',
+        title: 'Autorite IA et visibilite Google',
         description: 'Referencement IA, automatisation et gouvernance des donnees.',
         bullets: [
           'Programmes contenu leadership',
@@ -428,3 +428,4 @@ export function AIAgencyModal({
 }
 
 export default AIAgencyModal;
+

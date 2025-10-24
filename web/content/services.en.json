@@ -17,7 +17,7 @@
         "bullets": [
           "1–5 professional pages",
           "Modern responsive design",
-          "Basic SEO optimization",
+          "Basic work to help you show up on Google",
           "Law 25 compliance included (policy + cookie banner)"
         ],
         "launchPrice": {
@@ -96,8 +96,8 @@
         "bullets": [
           "Includes all Standard features",
           "Priority bug fixes",
-          "Monthly mini SEO audit",
-          "AI visibility verification (AEO/GEO)"
+          "Monthly check on how you appear in Google results",
+          "Visibility check on answer engines such as ChatGPT or Perplexity"
         ],
         "launchPrice": {
           "original": "$200"
@@ -106,9 +106,9 @@
     ]
   },
   "seoOptimization": {
-    "title": "SEO, AEO, GEO & AI OPTIMIZATION",
-    "description": "Ongoing program for search engines and AI",
-    "shortDescription": "Optimization for Google, ChatGPT and AI engines",
+    "title": "Google visibility & AI answer engine coverage",
+    "description": "Ongoing program to stay visible on Google and in AI-powered answer engines",
+    "shortDescription": "Optimization for Google, ChatGPT, and other answer engines",
     "price": "$350 – $1,000/mo+",
     "launchSpecial": {
       "tag": "Launch special",
@@ -118,7 +118,7 @@
     },
     "tiers": [
       {
-        "name": "SEO",
+        "name": "Google visibility",
         "price": "$350 – $1,000/mo+",
         "bullets": [
           "Content and keyword optimization",
@@ -131,7 +131,7 @@
         }
       },
       {
-        "name": "AEO (Answer Engine Optimization)",
+        "name": "Answer engine optimization (ChatGPT, Perplexity, etc.)",
         "price": "$350 – $1,000/mo+",
         "bullets": [
           "Structured Q&A content (FAQ/QAPage)",
@@ -144,7 +144,7 @@
         }
       },
       {
-        "name": "GEO (Generative Engine Optimization)",
+        "name": "Generative engine optimization (AI-written answers)",
         "price": "$700 – $1,500/mo+",
         "bullets": [
           "In-depth articles optimized for AI attribution",
@@ -157,7 +157,7 @@
         }
       },
       {
-        "name": "SEO Audit (one-time)",
+        "name": "Google visibility audit (one-time)",
         "price": "$700 – $2,000",
         "bullets": [
           "Technical diagnosis (crawl, tags, speed)",
@@ -174,12 +174,12 @@
   "advertising": {
     "title": "ADVERTISING & CAMPAIGNS",
     "description": "Data-driven paid acquisition",
-    "shortDescription": "Google, Meta and TikTok campaigns with ROI focus",
-    "price": "Setup $799 + $800–4,000/mo",
+    "shortDescription": "Google, Meta, and TikTok campaigns optimized for ROI (return on investment)",
+    "price": "Setup  + monthly  – ,000/mo",
     "tiers": [
       {
         "name": "Google Ads",
-        "price": "Setup $799 + $800–4,000/mo",
+        "price": "Setup  + monthly  – ,000/mo",
         "bullets": [
           "Search & Performance Max campaigns",
           "Conversion-optimized landing pages",
@@ -189,7 +189,7 @@
       },
       {
         "name": "Meta Ads",
-        "price": "Setup $499 + $600–2,000/mo",
+        "price": "Setup  + monthly  – ,000/mo",
         "bullets": [
           "Multi-audience funnels (cold, warm, hot)",
           "Static creatives + UGC videos",
@@ -199,7 +199,7 @@
       },
       {
         "name": "TikTok Ads",
-        "price": "Setup $300 + $300–800/mo",
+        "price": "Setup  + monthly  – /mo",
         "bullets": [
           "Short video creations tested quickly",
           "Interest / lookalike targeting",
@@ -298,12 +298,18 @@
     "shortDescription": "Specialized services: security, accessibility, visual",
     "tiers": [
       {
-        "name": "AI VISIBILITY (AEO/GEO)",
-        "bullets": []
+        "name": "Answer engine visibility",
+        "bullets": [
+          "Optimization for answer engines like ChatGPT and Perplexity",
+          "Monitoring how AI tools mention your brand"
+        ]
       },
       {
-        "name": "ADVANCED AI AUTOMATION",
-        "bullets": []
+        "name": "Advanced intelligent automation",
+        "bullets": [
+          "CRM and marketing workflows powered by automation",
+          "Zapier/Make connectors configured for you"
+        ]
       },
       {
         "name": "SECURITY & PERFORMANCE AUDIT",

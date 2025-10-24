@@ -25,9 +25,8 @@ export default function Header({ locale, currentPath }: HeaderProps) {
     const navigationItems = [
         { key: 'services', href: `/${locale}#services` },
         { key: 'packages', href: `/${locale}#home-packages` },
-        { key: 'whyUs', href: `/${locale}/why-us` },
-        { key: 'process', href: `/${locale}/process` },
-        { key: 'assessment', href: `/${locale}#assessment` },
+        { key: 'whyUs', href: `/${locale}#why` },
+        { key: 'process', href: `/${locale}#process` },
         { key: 'contact', href: `/${locale}#contact` }
     ];
 

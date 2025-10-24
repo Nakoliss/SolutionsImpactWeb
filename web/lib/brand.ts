@@ -38,16 +38,16 @@ export const brandConfig: BrandConfig = {
   name: 'Agence web: Solutions Impact Web',
   legalName: '',
   tagline: {
-    fr: 'Sites web modernes, SEO + IA (AEO/GEO), et conformité Loi 25 — bilingue FR/EN.',
-    en: 'Modern websites, SEO + AI (AEO/GEO), and Law 25 compliance — bilingual FR/EN.',
+    fr: 'Sites web modernes, visibilité Google et moteurs de réponses propulsés par l’intelligence artificielle, avec conformité Loi 25.',
+    en: 'Modern websites, Google visibility and AI-powered answer engine coverage, plus Law 25 compliance.',
   },
   heroTitle: {
     fr: 'Sites web stratégiques et marketing automatisé',
     en: 'Strategic websites and automated marketing',
   },
   description: {
-    fr: 'Solutions Impact Web conçoit des expériences web bilingues qui convertissent, respectent la Loi 25 et soutiennent votre croissance.',
-    en: 'Solutions Impact Web builds bilingual web experiences that convert, stay Law 25 compliant, and support long‑term growth.',
+    fr: 'Solutions Impact Web conçoit des expériences web performantes qui respectent la Loi 25 et soutiennent votre croissance.',
+    en: 'Solutions Impact Web builds high-performing web experiences that stay Law 25 compliant and support long-term growth.',
   },
   mission: {
     fr: 'Accompagner les équipes marketing du Québec avec des plateformes web efficaces et des automatisations responsables.',
@@ -56,16 +56,16 @@ export const brandConfig: BrandConfig = {
   keywords: {
     fr: [
       'solutions impact web',
-      'sites web bilingues',
-      'seo local québec',
+      'stratégie web intelligence artificielle',
+      'visibilité Google Québec',
       'marketing automatisé',
       'conformité loi 25',
       'agence numérique montréal',
     ],
     en: [
       'solutions impact web',
-      'bilingual websites',
-      'quebec local seo',
+      'Quebec Google visibility',
+      'Québec google visibility',
       'marketing automation',
       'law 25 compliance',
       'montreal digital agency',
@@ -74,7 +74,7 @@ export const brandConfig: BrandConfig = {
   values: {
     fr: [
       'Performance et transparence',
-      'Collaboration bilingue',
+      'Collaboration proactive',
       'Innovation responsable',
     ],
     en: [
@@ -85,16 +85,16 @@ export const brandConfig: BrandConfig = {
   },
   meta: {
     defaultTitle: {
-      fr: 'Solutions Impact Web — Agence web bilingue et marketing automatisé',
-      en: 'Solutions Impact Web — Bilingual web agency and marketing automation',
+      fr: 'Solutions Impact Web - Agence web et marketing automatisé',
+      en: 'Solutions Impact Web - Web agency and marketing automation',
     },
     titleTemplate: {
       fr: '%s | Solutions Impact Web',
       en: '%s | Solutions Impact Web',
     },
     description: {
-      fr: 'Agence web bilingue spécialisée en conception de sites, SEO local, automatisation marketing et conformité Loi 25.',
-      en: 'Bilingual web agency specialized in websites, local SEO, marketing automation, and Law 25 compliance.',
+      fr: 'Agence web spécialisée en conception de sites, visibilité Google locale, automatisations intelligentes et conformité Loi 25.',
+      en: 'Web agency specialized in websites, local Google visibility, smart automation, and Law 25 compliance.',
     },
   },
   contact: {
