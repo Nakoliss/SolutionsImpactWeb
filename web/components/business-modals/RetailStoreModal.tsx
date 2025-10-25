@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import {
   BarChart3,
@@ -74,7 +74,7 @@ const LOCALE_COPY = {
         bullets: [
           'Schema for products, reviews, availability',
           'Buying guides and lookbooks for AI answers',
-          'Content sprints for seasonal demand',
+          'Content cycles for seasonal demand',
         ],
       },
       {
@@ -201,7 +201,7 @@ const LOCALE_COPY = {
         bullets: [
           'Schema produits, avis, disponibilite',
           'Guides achat et lookbooks pour IA',
-          'Sprints contenu saisons',
+          'Cycles de contenu selon les saisons',
         ],
       },
       {
@@ -227,7 +227,7 @@ const LOCALE_COPY = {
       {
         id: 'advertising',
         title: 'Media performance',
-        description: 'Campagnes payantes optimis�es revenue et ROAS.',
+        description: 'Campagnes payantes optimisées revenue et ROAS.',
         bullets: [
           'Shopping ads avec gouvernance flux',
           'Remarketing dynamique multi canaux',

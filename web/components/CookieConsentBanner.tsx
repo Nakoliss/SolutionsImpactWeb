@@ -88,25 +88,25 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
     },
   },
   fr: {
-    bannerTitle: 'Nous respectons votre vie privee',
+    bannerTitle: 'Nous respectons votre vie privée',
     bannerDescription:
-      'Nous utilisons des temoins essentiels pour assurer le fonctionnement du site et des temoins optionnels (analyse, preferences, marketing) pour ameliorer votre experience. Conformement a la Loi 25, nous activons seulement les cookies non essentiels apres votre consentement.',
+      'Nous utilisons des témoins essentiels pour assurer le fonctionnement du site et des témoins optionnels (analyse, préférences, marketing) pour améliorer votre expérience. Conformément à la Loi 25, nous activons seulement les cookies non essentiels après votre consentement.',
     buttons: {
       acceptAll: 'Tout accepter',
       reject: 'Refuser le non essentiel',
-      manage: 'Gerer les preferences',
+      manage: 'Gérer les préférences',
     },
     categories: {
       essential: {
         title: 'Essentiels',
-        description: 'Necessaires pour afficher le site, maintenir la session et assurer la securite.',
+        description: 'Nécessaires pour afficher le site, maintenir la session et assurer la sécurité.',
       },
       analytics: {
         title: 'Analytiques',
-        description: 'Mesurent la performance, detectent les anomalies et guident les ameliorations.',
+        description: 'Mesurent la performance, détectent les anomalies et guident les améliorations.',
       },
       preferences: {
-        title: 'Preferences',
+        title: 'Préférences',
         description: 'Retiennent vos choix de langue, de localisation et de personnalisation.',
       },
       marketing: {
@@ -115,16 +115,16 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
       },
     },
     modal: {
-      title: 'Parametres des cookies',
-      description: 'Activez les categories qui vous conviennent. Vous pouvez modifier vos choix en tout temps.',
+      title: 'Paramètres des cookies',
+      description: 'Activez les catégories qui vous conviennent. Vous pouvez modifier vos choix en tout temps.',
       save: 'Enregistrer mes choix',
       cancel: 'Annuler',
       acceptAll: 'Accepter tous les cookies',
       policyLabel: 'Consulter la politique des cookies',
-      openLabel: 'Parametres des cookies',
+      openLabel: 'Paramètres des cookies',
       alwaysOn: 'Toujours actif',
-      toggleOn: 'Active',
-      toggleOff: 'Desactive',
+      toggleOn: 'Activé',
+      toggleOff: 'Désactivé',
     },
   },
 };

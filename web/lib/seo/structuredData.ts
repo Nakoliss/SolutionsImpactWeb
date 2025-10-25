@@ -160,13 +160,13 @@ const SERVICE_CATALOG: Record<SupportedLocale, Array<ServiceDefinition & {
     },
     {
       id: 'automation',
-      name: 'Sprints de croissance',
+      name: 'Cycles de croissance',
       description: "Optimisation continue de la visibilite Google/CRO avec automatisations d'acquisition et nurturing IA.",
       serviceType: 'Marketing Automation',
       category: 'Marketing Automation',
       price: '3200',
-      offerName: "Sprint d'automatisation et optimisation",
-      offerDescription: "Iterations visibilite Google/CRO, sequences d'engagement et suivi du pipeline.",
+      offerName: "Cycle d'automatisation et d'optimisation",
+      offerDescription: "Itérations visibilité Google/CRO, séquences d'engagement et suivi du pipeline.",
     },
     {
       id: 'compliance',

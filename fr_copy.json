@@ -52,11 +52,11 @@
       "features": "UX personnalisée et bibliothèque de composants|Rédaction optimisée pour le français et l'anglais afin d'être trouvée sur Google|Intégrations CRM, formulaires et analytics|Gestion du consentement et actifs de confidentialité"
     },
     "growth": {
-      "name": "Cycles de croissance",
+      "name": "Sprints de croissance",
       "price": "À partir de 3 200 $ / mois",
       "originalPrice": "Valeur : 4 500 $ / mois",
       "description": "Optimisation continue, campagnes et expérimentation IA.",
-      "features": "Cycles d'optimisation pour la visibilité Google, la conversion et l'UX|Campagnes automatisées multicanal|Tableaux de bord et analyses à chaque cycle|Veille conformité et sécurité continues"
+      "features": "Sprints d'optimisation pour la visibilité Google, la conversion et l'UX|Campagnes automatisées multicanal|Tableaux de bord et analyses à chaque sprint|Veille conformité et sécurité continue"
     },
     "enterprise": {
       "name": "Partenariat enterprise",
@@ -68,18 +68,18 @@
   },
   "why": {
     "title": "Pourquoi travailler avec nous",
-    "subtitle": "Simple, responsable et proche de vous.",
+    "subtitle": "Un partenaire conforme et axé sur l'IA",
     "technology": {
-      "title": "IA responsable",
-      "description": "Automatiser ce qui compte, avec des règles claires."
+      "title": "Adoption IA responsable",
+      "description": "Automatisations et expériences pilotées par la valeur et la gouvernance."
     },
     "results": {
       "title": "Impact mesurable",
-      "description": "Vos résultats suivis sur vos indicateurs, avec tableaux de bord et points réguliers."
+      "description": "Tableaux de bord et rituels de croissance reliés à vos indicateurs d'affaires."
     },
     "support": {
-      "title": "Équipe au Québec",
-      "description": "Des gens d’ici qui comprennent votre réalité et la Loi 25."
+      "title": "Équipe basée au Québec",
+      "description": "Experts sur le terrain qui connaissent la culture locale et la Loi 25."
     }
   },
   "contact": {

@@ -312,7 +312,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
               <div className="mt-6 space-y-4">
                 {(
                   locale === 'fr'
-                    ? ['Diagnostic & Roadmap', 'Site Bilingue + IA', 'Sprints de Croissance', 'Partenariat Entreprise']
+                    ? ['Diagnostic & Roadmap', 'Site bilingue + IA', 'Cycles de croissance', 'Partenariat entreprise']
                     : ['Diagnostic & Roadmap', 'Bilingual site + AI', 'Growth sprints', 'Enterprise partnership']
                 ).map((step, index) => (
                   <div key={step} className="flex items-center">

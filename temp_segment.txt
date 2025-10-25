@@ -1,0 +1,22 @@
+  const processSteps = locale === 'fr' ? [
+    {
+      title: 'Découverte & Évaluation',
+      description: 'Analyse complète de vos besoins, objectifs et contraintes.',
+    },
+    {
+      title: 'Stratégie & Planification',
+      description: 'Architecture, plan de projet et critères de succès détaillés.',
+    },
+    {
+      title: 'Développement & Tests',
+      description: 'Production en sprints avec validations et contrôles qualité.',
+    },
+    {
+      title: 'Déploiement & Lancement',
+      description: 'Mise en production sécurisée accompagnée d’un support actif.',
+    },
+    {
+      title: 'Optimisation & Croissance',
+      description: 'Améliorations continues guidées par vos données et retours.',
+    },
+  ] : [

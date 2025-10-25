@@ -153,6 +153,15 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
           description: 'Personalized support for your growth',
         },
       ];
+  // Adjust phrasing for FR: keep it simple
+  const strengthsDisplay =
+    locale === 'fr'
+      ? strengths.map((s) =>
+          s.icon === '\\u269C'
+            ? { ...s, description: 'On connaît le marché et la culture d’ici.' }
+            : s,
+        )
+      : strengths;
 
   const eyebrow = pickBrandLocale(locale, brandConfig.tagline);
   const heroStyle = {
@@ -169,23 +178,54 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
   const serviceEntries = Object.entries(designMessages.services);
   const catalogServices = serviceCatalog.services;
 
-  const highlights = [
-    {
-      icon: '\u269C',
-      title: whyMessages.support.title,
-      description: whyMessages.support.description,
-    },
-    {
-      icon: '\u{1F916}',
-      title: whyMessages.technology.title,
-      description: whyMessages.technology.description,
-    },
-    {
-      icon: '\u{1F4C8}',
-      title: whyMessages.results.title,
-      description: whyMessages.results.description,
-    },
-  ];
+  const highlights = locale === 'fr'
+    ? [
+        {
+          icon: '\u269C',
+          title: 'Équipe au Québec',
+          description:
+            'Des gens d’ici qui comprennent votre réalité et la Loi 25.',
+        },
+        {
+          icon: '\u{1F916}',
+          title: 'IA responsable',
+          description:
+            'Automatiser ce qui compte, avec des règles claires.',
+        },
+        {
+          icon: '\u{1F4C8}',
+          title: 'Impact mesurable',
+          description:
+            'Vos résultats suivis sur vos indicateurs, avec tableaux de bord et points réguliers.',
+        },
+      ]
+    : [
+        {
+          icon: '\u269C',
+          title: whyMessages.support.title,
+          description: whyMessages.support.description,
+        },
+        {
+          icon: '\u{1F916}',
+          title: whyMessages.technology.title,
+          description: whyMessages.technology.description,
+        },
+        {
+          icon: '\u{1F4C8}',
+          title: whyMessages.results.title,
+          description: whyMessages.results.description,
+        },
+      ];
+
+  // Simplified FR copy for the three highlights
+  const highlightsDisplay =
+    locale === 'fr'
+      ? [
+          { icon: '\u269C', title: 'Équipe locale au Québec', description: 'On connaît le marché local et la Loi 25.' },
+          { icon: '\u{1F916}', title: 'IA responsable', description: 'Automatiser ce qui compte, avec des règles claires.' },
+          { icon: '\u{1F4C8}', title: 'Impact mesurable', description: 'Vos résultats suivis sur vos indicateurs, avec tableaux de bord et points réguliers.' },
+        ]
+      : highlights;
 
   const processSteps = locale === 'fr' ? [
     {
@@ -198,7 +238,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
     },
     {
       title: 'Développement & Tests',
-      description: 'Production en sprints avec validations et contrôles qualité.',
+      description: 'Nous avançons par étapes et validons chaque livrable avec vous.',
     },
     {
       title: 'Déploiement & Lancement',
@@ -231,10 +271,22 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
     },
   ];
 
+  // Display overrides for simpler, client-friendly FR copy
+  const displayedSteps =
+    locale === 'fr'
+      ? [
+          { title: 'Découverte & évaluation', description: 'On cerne vos besoins et contraintes.' },
+          { title: 'Stratégie & planification', description: 'Un plan clair et des critères de succès partagés.' },
+          { title: 'Réalisation', description: 'Nous construisons par petites étapes et vérifions avec vous que tout fonctionne.' },
+          { title: 'Déploiement & lancement', description: 'Mise en production encadrée et sécurisée.' },
+          { title: 'Optimisation & croissance', description: 'Améliorations continues guidées par vos données.' },
+        ]
+      : processSteps;
+
   const compliancePoints = locale === 'fr' ? [
-    'Politiques de confidentialite et registre des fournisseurs tenus a jour.',
-    'Banniere de consentement bloquante et gestion granulaire des cookies.',
-    'Formulaires d acces et suppression des donnees avec suivi interne.',
+    'Politiques de confidentialité et registre des fournisseurs tenus à jour.',
+    'Bannière de consentement bloquante et gestion granulaire des cookies.',
+    'Formulaires d’accès et suppression des données avec suivi interne.',
   ] : [
     'Privacy policies and vendor registry kept current.',
     'Blocking consent banner with granular cookie controls.',
@@ -380,7 +432,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
               </h3>
               <p className="mt-4 text-base text-slate-300">
                 {locale === 'fr'
-                  ? 'Nous combinons les meilleures pratiques agiles avec notre expertise technique pour garantir le succès de vos projets.'
+                  ? 'Une méthode claire et efficace pour faire avancer votre projet, étape par étape.'
                   : 'We combine agile best practices with technical expertise to ensure your projects succeed.'}
               </p>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -388,19 +440,19 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
               ? [
                       {
                         title: 'Agilité',
-                        description: 'Sprints courts, feedback régulier et adaptation continue aux besoins changeants.',
+                        description: 'Nous avançons par petites étapes, avec des retours fréquents, pour nous adapter vite.',
                       },
                       {
                         title: 'Transparence',
-                        description: 'Communication ouverte, rapports réguliers et accès aux outils de suivi.',
+                        description: 'Vous savez toujours où en est le projet : échanges clairs, points réguliers et accès au suivi.',
                       },
                       {
                         title: 'Qualité',
-                        description: 'Tests rigoureux, revues de code et respect des standards industriels.',
+                        description: 'Des livrables fiables : contrôles qualité soignés et respect de standards reconnus.',
                       },
                       {
                         title: 'Collaboration',
-                        description: 'Travail en équipe intégrée avec vos parties prenantes internes.',
+                        description: 'Nous travaillons main dans la main avec vos équipes et parties prenantes.',
                       },
                     ]
                   : [
@@ -471,7 +523,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                 {whyMessages.title}
               </h2>
               <div className="mt-8 grid gap-6 sm:grid-cols-2">
-                {highlights.map((highlight) => (
+                {highlightsDisplay.map((highlight) => (
                   <div
                     key={highlight.title}
                     className="group flex flex-col gap-4 rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 px-6 py-5 transition-all duration-300 hover:border-sky-400/30 hover:bg-gradient-to-br hover:from-sky-950/20 hover:via-black/30 hover:to-black/20 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-2 hover:scale-105 sm:px-7 sm:py-6"
@@ -498,10 +550,10 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
                 {locale === 'fr' ? 'Notre approche' : 'Our delivery approach'}
               </h2>
               <p className="mt-4 text-base text-slate-300">
-                {locale === 'fr' ? 'Un parcours en quatre phases pour passer de la vision a la croissance.' : 'Four phases to move from vision to measurable impact.'}
+                {locale === 'fr' ? 'Un parcours en cinq phases pour passer de la vision à la croissance.' : 'Five phases to move from vision to measurable impact.'}
               </p>
               <ol className="mt-8 space-y-6">
-                {processSteps.map((step, index) => (
+                {displayedSteps.map((step, index) => (
                   <li
                     key={step.title}
                     className="rounded-2xl border border-white/10 bg-black/20 px-5 py-5 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105 sm:px-7 sm:py-6"
@@ -543,7 +595,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
           </div>
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {strengths.map((item) => (
+            {strengthsDisplay.map((item) => (
               <div
                 key={item.title}
                 className="flex flex-col items-center rounded-2xl border border-white/10 bg-black/30 p-6 text-center transition-all duration-300 hover:border-cyan-400/30 hover:bg-black/40 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/20"
@@ -563,13 +615,13 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
       <section id="packages" className="border-t border-white/10 bg-slate-950 scroll-mt-16">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,320px)] lg:gap-16">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-8 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105">
+          <div className="grid grid-cols-1 place-items-center lg:gap-16">
+            <div className="rounded-3xl border border-white/10 bg-black/40 p-8 transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105 max-w-3xl w-full mx-auto">
               <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-                {locale === 'fr' ? 'Conformite Loi 25 integree' : 'Law 25 compliance built in'}
+                {locale === 'fr' ? 'Conformité Loi 25 intégrée' : 'Law 25 compliance built in'}
               </h2>
               <p className="mt-4 text-base text-slate-300">
-                {locale === 'fr' ? 'Des modeles et processus internes pour operer en toute transparence.' : 'Internal templates and processes keep operations transparent.'}
+                {locale === 'fr' ? 'Des modèles et processus internes pour opérer en toute transparence.' : 'Internal templates and processes keep operations transparent.'}
               </p>
               <ul className="mt-6 space-y-3 text-sm text-slate-200">
                 {compliancePoints.map((point) => (
@@ -581,7 +633,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
               </ul>
             </div>
             {/* Testimonials card (right column) */}
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-slate-100 shadow-lg transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105">
+            <div className="hidden rounded-3xl border border-white/10 bg-white/5 p-8 text-slate-100 shadow-lg transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20 hover:-translate-y-1 hover:scale-105">
               <h3 className="text-2xl font-semibold text-white">{locale === 'fr' ? 'Témoignages' : 'Testimonials'}</h3>
               <blockquote className="mt-4 text-slate-200">
                 {locale === 'fr'
@@ -604,7 +656,15 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
             {contactMessages.title}
           </h2>
             <ul className="mt-6 flex flex-wrap justify-center gap-3 text-sm text-slate-200">
-              {[whyMessages.technology.title, whyMessages.results.title, whyMessages.support.title].map((point) => (
+              {(
+                locale === 'fr'
+                  ? ['IA responsable', 'Impact mesurable', 'Équipe au Québec']
+                  : [
+                      whyMessages.technology.title,
+                      whyMessages.results.title,
+                      whyMessages.support.title,
+                    ]
+              ).map((point) => (
                 <li
                 key={point}
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2"
