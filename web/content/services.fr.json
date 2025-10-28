@@ -19,9 +19,9 @@
         },
         "bullets": [
           "1–5 pages professionnelles",
-          "Design moderne et responsive",
-          "Optimisation SEO de base",
-          "Conformité Loi 25 incluse (politique + bannière cookies)"
+          "Design moderne et responsive (s'adapte aux mobiles et tablettes)",
+          "Optimisation SEO (référencement naturel sur Google) de base",
+          "Conformité Loi 25 (protection des données) incluse : politique + bannière cookies"
         ]
       },
       {
@@ -32,8 +32,8 @@
         },
         "bullets": [
           "6–15 pages avec design avancé",
-          "Animations et micro‑interactions",
-          "Optimisation de performance avancée (Core Web Vitals)",
+          "Animations et micro‑interactions (effets interactifs au survol/clic)",
+          "Optimisation de performance avancée (Core Web Vitals, indicateurs Google)",
           "Support bilingue FR/EN"
         ]
       },
@@ -44,10 +44,10 @@
           "original": "5 000 $"
         },
         "bullets": [
-          "Boutique en ligne complète (Stripe, taxes, livraisons)",
+          "Boutique en ligne complète (Stripe pour les paiements, taxes, livraisons)",
           "Gestion du catalogue et des commandes",
           "Paiements sécurisés intégrés",
-          "Analytics et rapports avancés"
+          "Analytics (statistiques de trafic) et rapports avancés"
         ]
       }
     ]
@@ -71,8 +71,8 @@
           "original": "50 $"
         },
         "bullets": [
-          "Surveillance d'uptime 24/7",
-          "Vérifications SSL automatiques",
+          "Surveillance de l'uptime (disponibilité du site) 24/7",
+          "Vérifications SSL (certificat HTTPS) automatiques",
           "Sauvegardes mensuelles sécurisées",
           "Support technique de base"
         ]
@@ -86,8 +86,8 @@
         "bullets": [
           "Inclut toutes les fonctionnalités Basic",
           "Mises à jour de contenu (2 h/mois)",
-          "Scans de performance mensuels",
-          "1 publication Google Business Profile / mois"
+          "Scans de performance mensuels (tests de vitesse)",
+          "1 publication Google Business Profile (fiche entreprise) / mois"
         ]
       },
       {
@@ -99,8 +99,8 @@
         "bullets": [
           "Inclut toutes les fonctionnalités Standard",
           "Corrections de bogues prioritaires",
-          "Mini-audit SEO mensuel",
-          "Vérification de visibilité IA (AEO/GEO)"
+          "Mini-audit SEO mensuel (analyse de visibilité organique)",
+          "Vérification de visibilité IA (AEO/GEO : moteurs de réponse et IA générative)"
         ]
       }
     ]
@@ -124,8 +124,8 @@
           "original": "500 $"
         },
         "bullets": [
-          "Optimisation de contenu et mots-clés",
-          "Suivi des positions et analyse concurrentielle",
+          "Optimisation de contenu et mots-clés (termes recherchés)",
+          "Suivi des positions (classements Google) et analyse concurrentielle",
           "Rapports mensuels détaillés",
           "Stratégie éditoriale"
         ]
@@ -137,10 +137,10 @@
           "original": "500 $"
         },
         "bullets": [
-          "Contenu Q&R structuré (FAQ/QAPage)",
-          "Schéma optimisé (ChatGPT, Claude, Perplexity)",
-          "Vérification régulière des mentions IA",
-          "Optimisation des réponses directes"
+          "Contenu Q&R structuré (FAQ/QAPage, balises question-réponse)",
+          "Schéma optimisé (données structurées pour ChatGPT, Claude, Perplexity)",
+          "Vérification régulière des mentions IA (comment les IA parlent de vous)",
+          "Optimisation des réponses directes (snippets/IA)"
         ]
       },
       {
@@ -150,10 +150,10 @@
           "original": "1 000 $"
         },
         "bullets": [
-          "Articles de fond optimisés pour l'attribution IA",
-          "Métadonnées & schémas avancés",
-          "Vérification des citations IA",
-          "Stratégie de contenu génératif"
+          "Articles de fond optimisés pour l'attribution IA (sources citées par les IA)",
+          "Métadonnées & schémas avancés (balises structurées)",
+          "Vérification des citations IA (références utilisées par les IA)",
+          "Stratégie de contenu génératif (idées alimentées par l'IA)"
         ]
       },
       {
@@ -163,8 +163,8 @@
           "original": "1 000 $"
         },
         "bullets": [
-          "Diagnostic technique (crawl, balises, vitesse)",
-          "Analyse de contenu et conformité Loi 25",
+          "Diagnostic technique (crawl = exploration des robots, balises, vitesse)",
+          "Analyse de contenu et conformité Loi 25 (protection des données)",
           "Rapport PDF bilingue détaillé",
           "Plan d'action priorisé"
         ]
@@ -190,10 +190,10 @@
           "original": "Configuration 799 $"
         },
         "bullets": [
-          "Campagnes Search & Performance Max",
-          "Landing pages optimisées pour la conversion",
-          "Suivi des conversions (Analytics + Tag Manager)",
-          "Optimisation hebdomadaire du ROI"
+          "Campagnes Search (réseau de recherche) & Performance Max (automatisation Google)",
+          "Landing pages (pages d'atterrissage) optimisées pour la conversion",
+          "Suivi des conversions (Google Analytics + Tag Manager pour la mesure)",
+          "Optimisation hebdomadaire du ROI (retour sur investissement)"
         ]
       },
       {
@@ -203,10 +203,10 @@
           "original": "Configuration 499 $"
         },
         "bullets": [
-          "Funnels multi-audiences (froid, tiède, chaud)",
-          "Créatifs statiques + vidéos UGC",
-          "Tests A/B automatisés (audiences / placements)",
-          "Rapport ROI mensuel avec recommandations"
+          "Funnels (parcours marketing) multi-audiences (froid, tiède, chaud)",
+          "Créatifs statiques + vidéos UGC (contenu généré par les utilisateurs)",
+          "Tests A/B automatisés (comparaison de variantes d'audiences/placements)",
+          "Rapport ROI (retour sur investissement) mensuel avec recommandations"
         ]
       },
       {
@@ -216,9 +216,9 @@
           "original": "Configuration 300 $"
         },
         "bullets": [
-          "Créations vidéo courtes testées rapidement",
-          "Ciblages intérêts / lookalikes",
-          "Optimisation CPA + rapport mensuel",
+          "Créations vidéo courtes (formats TikTok) testées rapidement",
+          "Ciblages intérêts / lookalikes (audiences similaires)",
+          "Optimisation CPA (coût par acquisition) + rapport mensuel",
           "Coaching contenu pour l'équipe interne"
         ]
       }
@@ -244,8 +244,8 @@
         },
         "bullets": [
           "Veille Google/Facebook en continu",
-          "Réponses bilingues générées par IA et validées",
-          "Demandes d'avis post-service par SMS/email (opt-in)",
+          "Réponses bilingues générées par IA (intelligence artificielle) et validées",
+          "Demandes d'avis post-service par SMS/email (opt-in = consentement)",
           "Rapport mensuel (note, volumes, temps de réponse)"
         ]
       }
@@ -271,9 +271,9 @@
         },
         "setupCost": "Configuration: 800 $",
         "bullets": [
-          "Campagnes SMS ciblées (opt-in)",
-          "Listes et segments synchronisés",
-          "Flux et déclencheurs automatisés",
+          "Campagnes SMS ciblées (opt-in = consentement clients)",
+          "Listes et segments synchronisés (groupes clients à jour)",
+          "Flux (workflows) et déclencheurs automatisés",
           "Analyse des campagnes"
         ]
       },
@@ -285,9 +285,9 @@
         },
         "setupCost": "Configuration: 200 $",
         "bullets": [
-          "Séquences de nurturing / drip",
-          "Segmentation avancée CRM",
-          "Relances paniers et transactions",
+          "Séquences de nurturing / drip (relances automatisées)",
+          "Segmentation avancée CRM (gestion de la relation client)",
+          "Relances paniers abandonnés et transactions",
           "Rapports performance (ouvertures, ventes)"
         ]
       },
@@ -299,9 +299,9 @@
         },
         "setupCost": "Configuration: 400 $",
         "bullets": [
-          "Mise en place GA4 + Search Console",
-          "Dashboard et suivi des objectifs",
-          "Heatmaps, funnels et KPI",
+          "Mise en place GA4 (Google Analytics 4) + Search Console",
+          "Dashboard (tableau de bord) et suivi des objectifs",
+          "Heatmaps (cartes de chaleur), funnels (parcours) et KPI (indicateurs clés)",
           "Insights et recommandations mensuelles"
         ]
       }
@@ -315,35 +315,35 @@
       {
         "name": "VISIBILITÉ IA (AEO/GEO)",
         "bullets": [
-          "Optimisation pour moteurs de réponses (IA)",
-          "AEO, Google, ChatGPT/Perplexity"
+          "Optimisation pour moteurs de réponses (IA : Answer Engine Optimization)",
+          "AEO (Answer Engine Optimization), Google, ChatGPT/Perplexity"
         ]
       },
       {
         "name": "AUTOMATISATION IA AVANCÉE",
         "bullets": [
-          "Workflows CRM/marketing",
-          "Connecteurs Zapier/Make"
+          "Workflows (processus automatisés) CRM/marketing",
+          "Connecteurs Zapier/Make (plateformes d'automatisation)"
         ]
       },
       {
         "name": "AUDIT SÉCURITÉ & PERFORMANCE",
         "bullets": [
-          "Core Web Vitals & performance",
+          "Core Web Vitals (indicateurs Google) & performance",
           "Recommandations de correctifs"
         ]
       },
       {
         "name": "ACCESSIBILITÉ (WCAG)",
         "bullets": [
-          "Audit WCAG 2.1 AA",
+          "Audit WCAG 2.1 AA (norme d'accessibilité)",
           "Correctifs prioritaires"
         ]
       },
       {
         "name": "VISUEL & VIDÉO",
         "bullets": [
-          "Templates et visuels sociaux",
+          "Templates (gabarits) et visuels sociaux",
           "Courtes vidéos et animations"
         ]
       }
