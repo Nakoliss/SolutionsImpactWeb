@@ -7,13 +7,13 @@ import { type SupportedLocale } from '@/content';
 import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
 
 interface AssessmentPageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
-  }>;
+  };
 }
 
 export async function generateMetadata({ params }: AssessmentPageProps) {
-  const { locale } = await params;
+  const { locale } = params;
   
   const title = locale === 'fr' 
     ? 'Évaluation de maturité IA | AI Web Agency'
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: AssessmentPageProps) {
 }
 
 export default async function AssessmentPage({ params }: AssessmentPageProps) {
-  const { locale } = await params;
+  const { locale } = params;
   
   if (!['fr', 'en'].includes(locale)) {
     notFound();
