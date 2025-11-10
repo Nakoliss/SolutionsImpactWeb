@@ -2,12 +2,12 @@
 
 ## Overview
 
-AI Web Agency is a bilingual digital marketing agency website built with Next.js 15, focusing on Quebec businesses with French/English internationalization support. The homepage features an interactive business carousel showcasing 10 distinct website designs for different business types, demonstrating the agency's versatility across various industries.
+Solutions Impact Web is a bilingual digital marketing agency website built with Next.js 15, focusing on Quebec businesses with French/English internationalization support. The homepage features an interactive business carousel showcasing 10 distinct website designs for different business types, demonstrating the agency's versatility across various industries.
 
 ## Project Structure
 
 ```
-AI_Web_Agency/
+SolutionsImpactWeb/
 ├── web/                    # Main Next.js application (authoritative source)
 │   ├── app/               # Next.js App Router
 │   │   ├── [locale]/      # Internationalized routes

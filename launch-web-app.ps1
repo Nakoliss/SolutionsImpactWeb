@@ -1,6 +1,6 @@
 # Launch Web App
 Clear-Host
-Write-Host "Starting AI Web Agency Web App..." -ForegroundColor Green
+Write-Host "Starting Solutions Impact Web App..." -ForegroundColor Green
 
 # Remember current location and move into web directory
 $originalLocation = Get-Location

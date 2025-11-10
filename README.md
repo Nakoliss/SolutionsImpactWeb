@@ -1,4 +1,4 @@
-# AI Web Agency
+# Solutions Impact Web
 
 A bilingual (French/English) digital marketing agency website for Quebec businesses, specializing in landing page creation, SEO services, and AI-powered marketing solutions.
 
@@ -13,7 +13,7 @@ A bilingual (French/English) digital marketing agency website for Quebec busines
 ## Project Structure
 
 ```
-AI_Web_Agency/
+SolutionsImpactWeb/
 ├── web/                    # Main Next.js application (authoritative source)
 │   ├── app/               # App Router pages and layouts
 │   ├── components/        # React components

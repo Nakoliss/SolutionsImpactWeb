@@ -1,6 +1,6 @@
 # Launch Web App - Web Folder Script (delegates to root script)
 Clear-Host
-Write-Host "Starting AI Web Agency Web App..." -ForegroundColor Green
+Write-Host "Starting Solutions Impact Web App..." -ForegroundColor Green
 
 # Compute repository root from this script's directory and call the root script
 $repoRoot = Split-Path -Parent $PSScriptRoot
