@@ -98,8 +98,8 @@ export const brandConfig: BrandConfig = {
     },
   },
   contact: {
-    email: 'contact@example.com',
-    phone: '+1-555-555-5555',
+    email: 'info@solutionsimpactweb.com',
+    phone: '(438)503-3898',
     calendar: '',
   },
   location: {

@@ -73,7 +73,7 @@ export default function EnWaitlistOverlay() {
                   {status==='pending' ? 'Sending…' : 'Notify me at launch'}
                 </button>
                 <Link href="/fr" className="rounded-full border border-white/20 px-5 py-2 text-white hover:bg-white/10">Go to French</Link>
-                <a href="mailto:contact@example.com" className="rounded-full border border-white/20 px-5 py-2 text-white hover:bg-white/10">Contact us</a>
+                <a href="mailto:info@solutionsimpactweb.com" className="rounded-full border border-white/20 px-5 py-2 text-white hover:bg-white/10">Contact us</a>
               </div>
             </form>
           </>

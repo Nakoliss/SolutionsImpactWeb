@@ -40,7 +40,7 @@ const EMAIL_CONFIG = {
 };
 
 // Destination email
-const TO_EMAIL = '';
+const TO_EMAIL = 'info@solutionsimpactweb.com';
 
 /**
  * Create nodemailer transporter
