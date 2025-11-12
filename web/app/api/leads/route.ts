@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
     // Send email notification if this is a contact form submission
     if (body.message && (body.name || body.email)) {
       try {
-        await sendContactFormEmail({
+        const emailResult = await sendContactFormEmail({
           name: leadData.name,
           email: leadData.email,
           phone: body.phone,
@@ -79,10 +79,30 @@ export async function POST(request: NextRequest) {
           locale: leadData.locale as 'fr' | 'en',
           timestamp: leadData.timestamp
         });
-        console.log('Contact form email sent successfully');
+
+        if (emailResult.success) {
+          console.log('Contact form email sent successfully');
+        } else {
+          console.error('Contact form email failed:', emailResult.error);
+          if (process.env.NODE_ENV === 'development') {
+            console.warn('[dev] Email dispatch failed or disabled; proceeding without error.');
+          } else {
+            return NextResponse.json(
+              { error: 'Failed to send contact notification', details: emailResult.error },
+              { status: 502 }
+            );
+          }
+        }
       } catch (emailError) {
         console.error('Failed to send contact form email:', emailError);
-        // Don't fail the whole request if email fails
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('[dev] Email dispatch threw; proceeding without error.');
+        } else {
+          return NextResponse.json(
+            { error: 'Failed to send contact notification' },
+            { status: 502 }
+          );
+        }
       }
     }
     

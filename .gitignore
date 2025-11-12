@@ -46,3 +46,6 @@ next-env.d.ts
 *.msi
 nvm-setup.exe
 .env
+
+# local lead storage
+web/data/

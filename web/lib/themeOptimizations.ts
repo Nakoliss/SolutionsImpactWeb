@@ -166,6 +166,10 @@ export const analyzeThemePerformance = (): {
  * Preload critical theme resources
  */
 export const preloadCriticalThemeResources = async (): Promise<void> => {
+    // In development, skip preloading to avoid noisy console errors and SSL-mismatch warnings
+    if (process.env.NODE_ENV !== 'production') {
+        return;
+    }
     // Preload theme CSS if not already loaded
     const themeStylesheets = [
         '/styles/themes.css',

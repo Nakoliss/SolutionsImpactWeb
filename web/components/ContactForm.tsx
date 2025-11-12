@@ -134,7 +134,11 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
           wantsConsultation,
           source: 'contact_form',
           locale,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          companySize: 'unknown',
+          interest: wantsConsultation
+            ? 'contact_form_consultation'
+            : 'contact_form_message'
         }),
       });
 

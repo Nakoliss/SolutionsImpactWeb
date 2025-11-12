@@ -29,18 +29,24 @@ export interface DataRequestEmail {
 }
 
 // Email configuration from environment variables
+const resolvedPort = parseInt(process.env.SMTP_PORT || '587');
+const resolvedSecure = (process.env.SMTP_SECURE === 'true') || resolvedPort === 465;
+const requireTLS = process.env.SMTP_REQUIRE_TLS === 'true';
+
 const EMAIL_CONFIG = {
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: false, // true for 465, false for other ports
+  port: resolvedPort,
+  secure: resolvedSecure, // true for 465 (SSL), false for 587 (STARTTLS)
+  requireTLS,
   auth: {
-    user: process.env.SMTP_USER, // Gmail email
-    pass: process.env.SMTP_PASS  // Gmail app password
+    user: process.env.SMTP_USER, // mailbox address (e.g., user@domain.com)
+    pass: process.env.SMTP_PASS  // app-specific password
   }
 };
 
-// Destination email
-const TO_EMAIL = 'info@solutionsimpactweb.com';
+// Destination email (configurable via env, fallback to info@solutionsimpactweb.com)
+const CONTACT_FORM_TO_EMAIL =
+  process.env.CONTACT_FORM_EMAIL_TO?.trim() || 'info@solutionsimpactweb.com';
 
 /**
  * Create nodemailer transporter
@@ -171,13 +177,16 @@ Please prioritize this request and contact them within 24 hours.
 export async function sendContactFormEmail(formData: ContactFormEmail): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
     const transporter = createTransporter();
-    if (!TO_EMAIL) {
-      console.log('[email disabled] Contact form submission would be sent:', formData);
-      return { success: true, messageId: 'disabled' };
+    if (!CONTACT_FORM_TO_EMAIL) {
+      const errorMessage = 'Contact form destination email is not configured';
+      console.error(errorMessage);
+      return { success: false, error: errorMessage };
     }
     
     if (!transporter) {
-      console.log('Email service not configured, logging form submission instead:');
+      const errorMessage = 'Email service not configured (missing SMTP credentials)';
+      console.error(errorMessage);
+      console.log('Logging contact form submission for follow-up:');
       console.log('------- CONTACT FORM SUBMISSION -------');
       console.log(`Name: ${formData.name}`);
       console.log(`Email: ${formData.email}`);
@@ -189,18 +198,14 @@ export async function sendContactFormEmail(formData: ContactFormEmail): Promise<
       console.log(`Timestamp: ${formData.timestamp}`);
       console.log('----------------------------------------');
       
-      return { 
-        success: true, 
-        messageId: 'logged-only',
-        error: 'Email service not configured - logged to console'
-      };
+      return { success: false, error: errorMessage };
     }
 
     const { subject, html, text } = formatEmailContent(formData);
 
     const mailOptions = {
       from: `"Solutions Impact Web — Contact" <${EMAIL_CONFIG.auth.user}>`,
-      to: TO_EMAIL,
+      to: CONTACT_FORM_TO_EMAIL,
       replyTo: formData.email, // Allow replying directly to the person who submitted
       subject,
       html,
