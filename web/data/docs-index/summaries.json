@@ -1,0 +1,144 @@
+{
+  "interne": {
+    "interne/gbp_bilingual_guide_fr_en": {
+      "docPath": "Documents/Interne/Google Business/GBP_Bilingual_Guide_FR_EN.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 28471
+    },
+    "interne/module1-tech-stack": {
+      "docPath": "Documents/Interne/Module1 Tech Stack Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 6272
+    },
+    "interne/module2-onboarding": {
+      "docPath": "Documents/Interne/Module2 Onboarding Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 5539
+    },
+    "interne/module3-seo": {
+      "docPath": "Documents/Interne/Module3 Seo Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 5902
+    },
+    "interne/module4-maintenance": {
+      "docPath": "Documents/Interne/Module4 Maintenance Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 4006
+    },
+    "interne/module5-add-ons": {
+      "docPath": "Documents/Interne/Module5 Add Ons Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 6415
+    },
+    "interne/module6-finance-pricing": {
+      "docPath": "Documents/Interne/Module6 Finance Pricing Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 5218
+    },
+    "interne/module7-operations-scaling": {
+      "docPath": "Documents/Interne/Module7 Operations Scaling Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 4748
+    },
+    "interne/module8-master-checklist-roadmap": {
+      "docPath": "Documents/Interne/Module8 Master Checklist Roadmap Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 4688
+    },
+    "interne/playbook-v3": {
+      "docPath": "Documents/Interne/Playbook V3 Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 4479
+    },
+    "interne/québec-bill-64-_-loi-25-guide-(v0-first,-stack-aligned)-—": {
+      "docPath": "Documents/Interne/Québec Bill 64 _ Loi 25 Guide (v0-first, Stack-aligned) — Updated.docx",
+      "lang": "fr",
+      "firstLine": "📘 Québec Bill 64 (Loi 25) – Data Residency & Compliance Guide (v0-first workflow)",
+      "approxChars": 4401
+    },
+    "interne/maximizing-your-website’s-visibility-with-seo,-aeo,-and-geo_-a-beginner-friendly-guide": {
+      "docPath": "Documents/Interne/SEO/Maximizing Your Website’s Visibility with SEO, AEO, and GEO_ A Beginner-Friendly Guide.pdf",
+      "lang": "en",
+      "firstLine": "",
+      "approxChars": 101935
+    },
+    "interne/solutions-impact-web-brand": {
+      "docPath": "Documents/Interne/Solutions Impact Web Brand.docx",
+      "lang": "en",
+      "firstLine": "Solutions Impact Web / Web Impact Solutions",
+      "approxChars": 1066
+    }
+  },
+  "clients": {
+    "clients/compliance-package-loi25": {
+      "docPath": "Documents/Clients/Compliance Package Loi25.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2592
+    },
+    "clients/guide-utilisation-documents-client-flowchart": {
+      "docPath": "Documents/Clients/Guide Utilisation Documents Client Flowchart.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 955
+    },
+    "clients/guide-utilisation-documents-client": {
+      "docPath": "Documents/Clients/Guide Utilisation Documents Client.docx",
+      "lang": "fr",
+      "firstLine": "📘 Guide d’utilisation des documents client (Interne)",
+      "approxChars": 1758
+    },
+    "clients/maintenance-report-template": {
+      "docPath": "Documents/Clients/Maintenance Report Template.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2271
+    },
+    "clients/onboarding-questionnaire-client": {
+      "docPath": "Documents/Clients/Onboarding Questionnaire Client.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2590
+    },
+    "clients/proposal-template-client": {
+      "docPath": "Documents/Clients/Proposal Template Client.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2057
+    },
+    "clients/quickstart-guide-client": {
+      "docPath": "Documents/Clients/Quickstart Guide Client.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2379
+    },
+    "clients/roadmap-to-growth-client": {
+      "docPath": "Documents/Clients/Roadmap To Growth Client.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2832
+    },
+    "clients/seo-aeo-report-template": {
+      "docPath": "Documents/Clients/Seo Aeo Report Template.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 2422
+    },
+    "clients/service-catalogue": {
+      "docPath": "Documents/Clients/Service Catalogue Updated.pdf",
+      "lang": "fr",
+      "firstLine": "",
+      "approxChars": 3792
+    }
+  }
+}
