@@ -40,6 +40,36 @@ export default function Header({ locale, currentPath }: HeaderProps) {
         return getLinkWithDesign(href);
     };
 
+    const smoothScrollTo = (element: HTMLElement, speed: number = 2200) => {
+        const start = window.pageYOffset;
+        const target = element.getBoundingClientRect().top + window.pageYOffset - 80; // 80px offset for header
+        const distance = Math.abs(target - start); // Absolute distance in pixels
+        const duration = (distance / speed) * 1000; // Duration in milliseconds based on distance and speed
+        let startTime: number | null = null;
+
+        // Linear easing function - constant speed throughout (no acceleration/deceleration)
+        const linearEase = (t: number): number => {
+            return t; // Linear progression - constant speed
+        };
+
+        const animation = (currentTime: number) => {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const progress = Math.min(timeElapsed / duration, 1);
+            const ease = linearEase(progress);
+
+            // This formula works identically for both scroll up and scroll down
+            // When distance is negative (scroll up), we subtract; when positive (scroll down), we add
+            window.scrollTo(0, start + (target - start) * ease);
+
+            if (timeElapsed < duration) {
+                requestAnimationFrame(animation);
+            }
+        };
+
+        requestAnimationFrame(animation);
+    };
+
     const handleNavClick = (href: string, e?: React.MouseEvent) => {
         if (href.includes('#')) {
             e?.preventDefault();
@@ -53,10 +83,7 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                 // We're on the home page, scroll to the section
                 const element = document.getElementById(section);
                 if (element) {
-                    element.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    smoothScrollTo(element, 2200); // 2200 pixels per second - constant scroll speed
                 }
             }
         }
@@ -79,6 +106,39 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                         <Link
                             href={getLinkWithDesign(`/${locale}`)}
                             className="text-2xl font-bold text-white hover:text-purple-300 transition-colors"
+                            onClick={(e) => {
+                                const homePage = `/${locale}`;
+                                if (currentPath === homePage) {
+                                    e.preventDefault();
+                                    // Scroll to top with constant scroll speed
+                                    const scrollToTop = () => {
+                                        const start = window.pageYOffset;
+                                        const target = 0;
+                                        const distance = Math.abs(target - start);
+                                        const speed = 2200; // pixels per second
+                                        const duration = (distance / speed) * 1000; // Duration based on distance
+                                        let startTime: number | null = null;
+
+                                        const linearEase = (t: number): number => t;
+
+                                        const animation = (currentTime: number) => {
+                                            if (startTime === null) startTime = currentTime;
+                                            const timeElapsed = currentTime - startTime;
+                                            const progress = Math.min(timeElapsed / duration, 1);
+                                            const ease = linearEase(progress);
+
+                                            window.scrollTo(0, start + (target - start) * ease);
+
+                                            if (timeElapsed < duration) {
+                                                requestAnimationFrame(animation);
+                                            }
+                                        };
+
+                                        requestAnimationFrame(animation);
+                                    };
+                                    scrollToTop();
+                                }
+                            }}
                         >
                             Solutions Impact Web
                         </Link>
