@@ -65,7 +65,7 @@ export default function Header({ locale, currentPath }: HeaderProps) {
 
     const isActive = (href: string) => {
         if (href.includes('#')) {
-            return currentPath === `/${locale}`;
+            return false;
         }
         return currentPath === href;
     };
@@ -89,18 +89,24 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                         <div className="ml-10 flex items-center space-x-6">
                             {navigationItems.map((item) => {
                                 const designAwareHref = getDesignAwareHref(item.href);
+                                const isActiveItem = isActive(item.href);
+
                                 return (
                                     <Link
                                         key={item.key}
                                         href={designAwareHref}
                                         onClick={(e) => handleNavClick(designAwareHref, e)}
-                                        className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${isActive(item.href)
-                                            ? 'bg-gradient-to-r from-purple-500/20 to-sky-500/20 text-purple-300 shadow-sm'
-                                            : 'text-slate-300 hover:text-purple-200 hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-sky-500/10'
-                                            }`}
-                                        aria-current={isActive(item.href) ? 'page' : undefined}
+                                        className="inline-block"
+                                        aria-current={isActiveItem ? 'page' : undefined}
                                     >
-                                        {t(item.key)}
+                                        <span
+                                            className={`inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 ${isActiveItem
+                                                ? 'text-purple-200 bg-gradient-to-r from-purple-500/40 to-sky-500/40 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
+                                                : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:translate-y-[-4px] hover:scale-105 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)]'
+                                                }`}
+                                        >
+                                            {t(item.key)}
+                                        </span>
                                     </Link>
                                 );
                             })}
@@ -153,16 +159,18 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-950 border-t border-white/10">
                             {navigationItems.map((item) => {
                                 const designAwareHref = getDesignAwareHref(item.href);
+                                const isActiveItem = isActive(item.href);
+
                                 return (
                                     <Link
                                         key={item.key}
                                         href={designAwareHref}
                                         onClick={(e) => handleNavClick(designAwareHref, e)}
-                                        className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${isActive(item.href)
-                                            ? 'bg-gradient-to-r from-purple-500/20 to-sky-500/20 text-purple-300'
-                                            : 'text-slate-300 hover:text-purple-200 hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-sky-500/10'
+                                        className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${isActiveItem
+                                            ? 'bg-gradient-to-r from-purple-500/40 to-sky-500/40 text-purple-200 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
+                                            : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:translate-y-[-4px] hover:scale-105 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)]'
                                             }`}
-                                        aria-current={isActive(item.href) ? 'page' : undefined}
+                                        aria-current={isActiveItem ? 'page' : undefined}
                                     >
                                         {t(item.key)}
                                     </Link>
