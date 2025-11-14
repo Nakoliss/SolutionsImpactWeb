@@ -3,6 +3,8 @@ import { CheckCircle } from 'lucide-react';
 
 import type { ServiceTier } from '@/lib/serviceLoader';
 
+import { PriceDisplay } from './PriceDisplay';
+
 interface ServiceTierMessages {
   priceAria: string;
   setupCostAria: string;
@@ -44,25 +46,25 @@ function ServiceTierComponent({
         </div>
         <div className="flex flex-col items-start text-sm text-slate-200">
           {tier.launchPrice?.original ? (
-            <span className="text-xs text-slate-400/80 line-through">
+            <PriceDisplay className="text-xs text-slate-400/80 line-through">
               {tier.launchPrice.original}
-            </span>
+            </PriceDisplay>
           ) : null}
           {tier.price ? (
-            <span
+            <PriceDisplay
               className="font-semibold text-white"
               aria-label={messages.priceAria}
             >
               {tier.price}
-            </span>
+            </PriceDisplay>
           ) : null}
           {tier.setupCost ? (
-            <span
+            <PriceDisplay
               className="text-xs text-slate-400"
               aria-label={messages.setupCostAria}
             >
               {tier.setupCost}
-            </span>
+            </PriceDisplay>
           ) : null}
         </div>
       </div>

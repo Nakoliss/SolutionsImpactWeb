@@ -341,7 +341,7 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
             <div className="space-y-6">
-              <span className="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80 text-left leading-tight whitespace-normal">
+              <span className="inline-flex flex-wrap items-center justify-center gap-2 rounded-full border border-white/20 bg-black/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-white/80 text-center leading-tight whitespace-normal">
                 {eyebrow}
               </span>
               <h1 className="text-4xl font-semibold sm:text-5xl lg:text-6xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">

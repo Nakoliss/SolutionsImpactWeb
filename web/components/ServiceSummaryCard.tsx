@@ -2,6 +2,8 @@ import { memo, useId } from 'react';
 
 import type { ServiceCategory } from '@/lib/serviceLoader';
 
+import { PriceDisplay } from './PriceDisplay';
+
 interface ServiceSummaryCardProps {
     service: ServiceCategory;
     onClick: () => void;
@@ -47,15 +49,15 @@ function ServiceSummaryCardComponent({ service, onClick, clickForDetailsText = '
                 {hasLaunch ? (
                     <span className="inline-flex items-center gap-2 rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-200 shadow-[0_0_15px_rgba(56,189,248,0.25)] animate-pulse">
                         {service.launchSpecial?.originalHeadline ? (
-                            <span className="text-slate-300/70 line-through">
+                            <PriceDisplay className="text-slate-300/70 line-through">
                                 {service.launchSpecial?.originalHeadline}
-                            </span>
+                            </PriceDisplay>
                         ) : null}
-                        <span>{service.launchSpecial?.specialHeadline}</span>
+                        <PriceDisplay>{service.launchSpecial?.specialHeadline ?? ''}</PriceDisplay>
                     </span>
                 ) : service.headlinePrice ? (
                     <span className="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-sky-200">
-                        {service.headlinePrice}
+                        <PriceDisplay>{service.headlinePrice}</PriceDisplay>
                     </span>
                 ) : null}
             </div>
