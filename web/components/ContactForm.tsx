@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Building, CheckCircle, Mail, Phone, Send, User } from 'lucide-react';
 
 import type { SupportedLocale } from '@/content';
 import { useAnalytics } from '@/lib/analytics';
+import { PhoneInput } from './PhoneInput';
 
 interface ContactFormProps {
   locale: SupportedLocale;
@@ -20,6 +21,7 @@ const CONTENT = {
       name: "Nom complet",
       email: "Adresse courriel",
       phone: "Téléphone",
+      phonePlaceholder: "(123) 456-7890",
       company: "Entreprise",
       message: "Message",
       messagePlaceholder: "Décrivez votre projet ou vos besoins...",
@@ -38,6 +40,7 @@ const CONTENT = {
       name: "Full name",
       email: "Email address",
       phone: "Phone",
+      phonePlaceholder: "(123) 456-7890",
       company: "Company",
       message: "Message",
       messagePlaceholder: "Describe your project or needs...",
@@ -63,12 +66,15 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [wantsConsultation, setWantsConsultation] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
+  const formStartRef = useRef(Date.now());
 
   const content = CONTENT[locale];
   const analytics = useAnalytics();
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
+    const phoneExample = content.form.phonePlaceholder ?? '(123) 456-7890';
 
     if (!formData.name.trim()) {
       newErrors.name = content.form.required;
@@ -78,6 +84,14 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
       newErrors.email = content.form.required;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = locale === 'fr' ? 'Adresse courriel invalide' : 'Invalid email address';
+    }
+
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length > 0 && phoneDigits.length !== 10) {
+      newErrors.phone =
+        locale === 'fr'
+          ? `Numéro de téléphone invalide (ex. : ${phoneExample})`
+          : `Invalid phone number (e.g., ${phoneExample})`;
     }
 
     if (!formData.message.trim()) {
@@ -91,6 +105,10 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (honeypot.trim()) {
+      return;
+    }
+
     if (!validateForm()) {
       return;
     }
@@ -99,11 +117,15 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
     setSubmitStatus('idle');
 
     // Track form submission
+    const submissionDelayMs = Date.now() - formStartRef.current;
+    const phoneDigits = formData.phone.replace(/\D/g, '');
     analytics.track('contact_form_submitted', {
       locale,
       has_phone: !!formData.phone,
       has_company: !!formData.company,
-      message_length: formData.message.length
+      message_length: formData.message.length,
+      phone_digits: phoneDigits.length,
+      time_to_submit_ms: submissionDelayMs
     });
 
     try {
@@ -157,6 +179,7 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
           message: ''
         });
         setSubmitStatus('idle');
+        formStartRef.current = Date.now();
       }, 3000);
 
     } catch (error) {
@@ -188,7 +211,7 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <form suppressHydrationWarning onSubmit={handleSubmit} autoComplete="off" data-lpignore="true" className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
+          <form suppressHydrationWarning onSubmit={handleSubmit} autoComplete="off" data-lpignore="true" noValidate className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div>
@@ -208,10 +231,16 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                       className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.name ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                         } bg-white dark:bg-gray-700`}
                       disabled={isSubmitting}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.name ? 'true' : undefined}
+                      aria-describedby={errors.name ? 'contact-name-error' : undefined}
                     />
                   </div>
                   {errors.name && (
-                    <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                    <p id="contact-name-error" className="mt-1 text-sm text-red-500">
+                      {errors.name}
+                    </p>
                   )}
                 </div>
 
@@ -233,10 +262,16 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                       className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.email ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                         } bg-white dark:bg-gray-700`}
                       disabled={isSubmitting}
+                      required
+                      aria-required="true"
+                      aria-invalid={errors.email ? 'true' : undefined}
+                      aria-describedby={errors.email ? 'contact-email-error' : undefined}
                     />
                   </div>
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                    <p id="contact-email-error" className="mt-1 text-sm text-red-500">
+                      {errors.email}
+                    </p>
                   )}
                 </div>
 
@@ -247,18 +282,29 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                   </label>
                   <div className="relative" suppressHydrationWarning>
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="tel"
+                    <PhoneInput
                       id="phone"
+                      name="phone"
                       value={formData.phone}
-                      onChange={(e) => handleChange('phone', e.target.value)}
-                      autoComplete="new-password"
+                      onChange={(value) => handleChange('phone', value)}
+                      autoComplete="tel"
                       data-lpignore="true"
                       data-form-type="other"
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700"
+                      className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 ${
+                        errors.phone ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
+                      }`}
                       disabled={isSubmitting}
+                      placeholder={content.form.phonePlaceholder}
+                      inputMode="tel"
+                      aria-invalid={errors.phone ? 'true' : undefined}
+                      aria-describedby={errors.phone ? 'contact-phone-error' : undefined}
                     />
                   </div>
+                  {errors.phone && (
+                    <p id="contact-phone-error" className="mt-1 text-sm text-red-500">
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
 
                 {/* Company */}
@@ -299,10 +345,31 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.message ? 'border-red-500' : 'border-gray-300 dark:border-gray-600'
                     } bg-white dark:bg-gray-700`}
                   disabled={isSubmitting}
+                  required
+                  aria-required="true"
+                  aria-invalid={errors.message ? 'true' : undefined}
+                  aria-describedby={errors.message ? 'contact-message-error' : undefined}
                 />
                 {errors.message && (
-                  <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+                  <p id="contact-message-error" className="mt-1 text-sm text-red-500">
+                    {errors.message}
+                  </p>
                 )}
+              </div>
+
+              {/* Honeypot for spam bots */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="contact-website" className="hidden">
+                  Website
+                </label>
+                <input
+                  id="contact-website"
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
               </div>
 
               {/* Consultation Checkbox */}
@@ -327,6 +394,7 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
                   type="submit"
                   disabled={isSubmitting}
                   className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
+                  aria-busy={isSubmitting ? 'true' : 'false'}
                 >
                   {isSubmitting ? (
                     <>
@@ -344,14 +412,22 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
 
               {/* Status Messages */}
               {submitStatus === 'success' && (
-                <div className="mt-4 p-4 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg flex items-center">
+                <div
+                  className="mt-4 p-4 bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg flex items-center"
+                  role="status"
+                  aria-live="polite"
+                >
                   <CheckCircle className="w-5 h-5 mr-2" />
                   {content.form.success}
                 </div>
               )}
 
               {submitStatus === 'error' && (
-                <div className="mt-4 p-4 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg">
+                <div
+                  className="mt-4 p-4 bg-red-100 dark:bg-red-900/20 text-red-700 dark:text-red-300 rounded-lg"
+                  role="alert"
+                  aria-live="assertive"
+                >
                   {content.form.error}
                 </div>
               )}
