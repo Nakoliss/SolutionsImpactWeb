@@ -196,7 +196,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
                       color: 'var(--theme-contrast-text)',
                     }}
                   >
-                    {locale === 'fr' ? 'Populaire' : 'Popular'}
+                    {locale === 'fr' ? 'Solution clé en main' : 'Popular'}
                   </div>
                 )}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
@@ -14,8 +14,23 @@ interface HeaderProps {
     currentPath: string;
 }
 
+const normalizePath = (path: string) => {
+    if (!path) {
+        return '/';
+    }
+    return path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
+};
+
+const getDefaultHash = () => {
+    if (typeof window === 'undefined') {
+        return '#services';
+    }
+    return window.location.hash || '#services';
+};
+
 export default function Header({ locale, currentPath }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeHash, setActiveHash] = useState<string>(getDefaultHash);
 
     const t = useTranslations('nav');
 
@@ -70,6 +85,23 @@ export default function Header({ locale, currentPath }: HeaderProps) {
         requestAnimationFrame(animation);
     };
 
+    useEffect(() => {
+        const updateActiveHash = () => {
+            if (typeof window === 'undefined') {
+                return;
+            }
+            const nextHash = window.location.hash && window.location.hash !== '' ? window.location.hash : '#services';
+            setActiveHash(nextHash);
+        };
+
+        updateActiveHash();
+        window.addEventListener('hashchange', updateActiveHash);
+
+        return () => {
+            window.removeEventListener('hashchange', updateActiveHash);
+        };
+    }, [locale]);
+
     const handleNavClick = (href: string, e?: React.MouseEvent) => {
         if (href.includes('#')) {
             e?.preventDefault();
@@ -84,6 +116,9 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                 const element = document.getElementById(section);
                 if (element) {
                     smoothScrollTo(element, 2200); // 2200 pixels per second - constant scroll speed
+                    const newHash = `#${section}`;
+                    window.history.replaceState(null, '', href);
+                    setActiveHash(newHash);
                 }
             }
         }
@@ -91,10 +126,19 @@ export default function Header({ locale, currentPath }: HeaderProps) {
     };
 
     const isActive = (href: string) => {
+        const normalizedCurrentPath = normalizePath(currentPath);
         if (href.includes('#')) {
-            return false;
+            const [basePath, hashFragment] = href.split('#');
+            const normalizedBasePath = normalizePath(basePath || `/${locale}`);
+
+            if (normalizedCurrentPath !== normalizedBasePath) {
+                return false;
+            }
+
+            const expectedHash = hashFragment ? `#${hashFragment}` : '#services';
+            return activeHash === expectedHash;
         }
-        return currentPath === href;
+        return normalizedCurrentPath === normalizePath(href);
     };
 
     return (
@@ -160,9 +204,9 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                                         aria-current={isActiveItem ? 'page' : undefined}
                                     >
                                         <span
-                                            className={`inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 ${isActiveItem
+                                            className={`inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${isActiveItem
                                                 ? 'text-purple-200 bg-gradient-to-r from-purple-500/40 to-sky-500/40 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
-                                                : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:translate-y-[-4px] hover:scale-105 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)]'
+                                                : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70'
                                                 }`}
                                         >
                                             {t(item.key)}
@@ -226,9 +270,9 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                                         key={item.key}
                                         href={designAwareHref}
                                         onClick={(e) => handleNavClick(designAwareHref, e)}
-                                        className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${isActiveItem
+                                        className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${isActiveItem
                                             ? 'bg-gradient-to-r from-purple-500/40 to-sky-500/40 text-purple-200 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
-                                            : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:translate-y-[-4px] hover:scale-105 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)]'
+                                            : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70'
                                             }`}
                                         aria-current={isActiveItem ? 'page' : undefined}
                                     >
