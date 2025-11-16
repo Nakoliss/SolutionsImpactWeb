@@ -185,7 +185,7 @@ function BusinessCarouselContent({
   const strengthsDisplay =
     locale === 'fr'
       ? strengths.map((s) =>
-          s.icon === '\\u269C'
+          s.icon === '\u269C'
             ? { ...s, description: 'On connaît le marché et la culture d’ici.' }
             : s,
         )
