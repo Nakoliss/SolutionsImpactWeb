@@ -175,11 +175,20 @@
     "title": "ADVERTISING & CAMPAIGNS",
     "description": "Data-driven paid acquisition",
     "shortDescription": "Google, Meta, and TikTok campaigns optimized for ROI (return on investment)",
-    "price": "Setup  + monthly  – ,000/mo",
+    "price": "Setup $560 + monthly $800 – $4,000/mo",
+    "launchSpecial": {
+      "tag": "Launch special",
+      "message": "Lock in discounted acquisition pricing while the launch offer lasts.",
+      "originalHeadline": "Setup $799",
+      "specialHeadline": "Setup $560 + monthly $800 – $4,000/mo"
+    },
     "tiers": [
       {
         "name": "Google Ads",
-        "price": "Setup  + monthly  – ,000/mo",
+        "price": "Setup $560 + monthly $800 – $4,000/mo",
+        "launchPrice": {
+          "original": "Setup $799"
+        },
         "bullets": [
           "Search & Performance Max campaigns",
           "Conversion-optimized landing pages",
@@ -189,7 +198,10 @@
       },
       {
         "name": "Meta Ads",
-        "price": "Setup  + monthly  – ,000/mo",
+        "price": "Setup $350 + monthly $600 – $2,000/mo",
+        "launchPrice": {
+          "original": "Setup $499"
+        },
         "bullets": [
           "Multi-audience funnels (cold, warm, hot)",
           "Static creatives + UGC videos",
@@ -199,7 +211,10 @@
       },
       {
         "name": "TikTok Ads",
-        "price": "Setup  + monthly  – /mo",
+        "price": "Setup $210 + monthly $300 – $800/mo",
+        "launchPrice": {
+          "original": "Setup $300"
+        },
         "bullets": [
           "Short video creations tested quickly",
           "Interest / lookalike targeting",

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import type { SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import { useThemeStyles } from '@/lib/designContext';
 
 interface HomePackagesSectionProps {
@@ -12,6 +13,7 @@ interface HomePackagesSectionProps {
 export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
   const { themeStyles, cardStyle, buttonPrimaryStyle, buttonSecondaryStyle } = useThemeStyles();
   const t = useTranslations('packages');
+  const homeHref = buildLocalePath(locale);
 
   const packages = [
     {
@@ -239,7 +241,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
                         if (contactSection) {
                           contactSection.scrollIntoView({ behavior: 'smooth' });
                         } else {
-                          window.location.href = `/${locale}#contact`;
+                          window.location.href = `${homeHref}#contact`;
                         }
                       }}
                       onMouseEnter={(e) => {
@@ -412,7 +414,7 @@ export function HomePackagesSection({ locale }: HomePackagesSectionProps) {
               if (contactSection) {
                 contactSection.scrollIntoView({ behavior: 'smooth' });
               } else {
-                window.location.href = `/${locale}#contact`;
+                window.location.href = `${homeHref}#contact`;
               }
             }}
           >

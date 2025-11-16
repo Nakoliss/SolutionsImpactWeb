@@ -3,7 +3,12 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import createMDX from '@next/mdx';
 
-const withNextIntl = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin({
+  defaultLocale: 'fr',
+  locales: ['fr', 'en'],
+  localePrefix: 'as-needed',
+  localeDetection: false,
+});
 
 const nextConfig: NextConfig = {
   typescript: {

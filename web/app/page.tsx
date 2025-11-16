@@ -1,10 +1,22 @@
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 
-export default async function RootRedirect() {
-  const cookieStore = await cookies();
-  const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value;
-  const locale = cookieLocale === 'en' || cookieLocale === 'fr' ? cookieLocale : 'fr';
-  redirect(`/${locale}`);
+import LocaleLayout from './[locale]/layout';
+import { buildHomeMetadata, renderHomePage, revalidate as localizedRevalidate } from './[locale]/page';
+
+export const revalidate = localizedRevalidate;
+
+export default async function RootHomePage() {
+  const locale = 'fr';
+  const pageChildren = await renderHomePage(locale);
+
+  return (
+    <LocaleLayout params={{ locale }}>
+      {pageChildren}
+    </LocaleLayout>
+  );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildHomeMetadata('fr');
 }
 

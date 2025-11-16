@@ -3,19 +3,20 @@ import Link from 'next/link';
 import CanonicalLink from '@/components/CanonicalLink';
 import HrefLangLinks from '@/components/HrefLangLinks';
 import StructuredData from '@/components/StructuredData';
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import { getCategoryContent } from '@/lib/mdx';
 import { generateMetadata as generateBaseMetadata } from '@/lib/metadata';
 import { buildServices, generateBreadcrumbsFromPath, getComplianceFaq } from '@/lib/seo/structuredData';
 
 interface CompliancePageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
-  }>;
+  };
 }
 
 export async function generateMetadata({ params }: CompliancePageProps) {
-  const { locale } = await params;
+  const { locale } = params;
   
   const titles = {
     fr: 'Conformité et Réglementation Québécoise',
@@ -31,12 +32,13 @@ export async function generateMetadata({ params }: CompliancePageProps) {
     title: titles[locale],
     description: descriptions[locale],
     locale,
-    canonical: '/compliance'
+    canonical: '/compliance',
+    alternateLocales: SUPPORTED_LOCALES,
   });
 }
 
 export default async function CompliancePage({ params }: CompliancePageProps) {
-  const { locale } = await params;
+  const { locale } = params;
   
   const complianceContent = getCategoryContent('compliance')
     .filter(item => item.metadata.localeAvail.includes(locale));
@@ -127,6 +129,10 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
   };
   
   const t = content[locale];
+  const contactHref = buildLocalePath(locale, '/contact');
+  const complianceHubHref = buildLocalePath(locale, '/content/compliance');
+  const heatmapHref = buildLocalePath(locale, '/compliance/heatmap');
+  const aiRoadmapHref = buildLocalePath(locale, '/ai-roadmap');
   
   const breadcrumbs = generateBreadcrumbsFromPath('/compliance', locale);
   const servicesForSchema = buildServices(locale);
@@ -165,13 +171,13 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href={`/${locale}/contact`}
+              href={contactHref}
               className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
             >
               {t.cta.primary}
             </Link>
             <Link
-              href={`/${locale}/content/compliance`}
+              href={complianceHubHref}
               className="inline-flex items-center px-8 py-4 border border-gray-300 text-lg font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
             >
               {t.cta.secondary}
@@ -243,8 +249,8 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
                 </span>
               </div>
               
-              <Link
-                href={`/${locale}/compliance/heatmap`}
+                <Link
+                  href={heatmapHref}
                 className="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
               >
                 {locale === 'fr' ? 'Utiliser l\'outil' : 'Use Tool'}
@@ -286,8 +292,8 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
                 </span>
               </div>
               
-              <Link
-                href={`/${locale}/ai-roadmap`}
+                <Link
+                  href={aiRoadmapHref}
                 className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
               >
                 {locale === 'fr' ? 'Créer ma feuille de route' : 'Create My Roadmap'}
@@ -335,8 +341,8 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
                       </div>
                     )}
                     
-                    <Link
-                      href={`/${locale}/content/compliance/${item.slug}`}
+                      <Link
+                        href={buildLocalePath(locale, `/content/compliance/${item.slug}`)}
                       className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                     >
                       {locale === 'fr' ? 'Lire le guide' : 'Read guide'}
@@ -395,8 +401,8 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
               ? 'Contactez-nous pour une évaluation gratuite de votre conformité à la Loi 25.'
               : 'Contact us for a free Law 25 compliance assessment.'}
           </p>
-          <Link
-            href={`/${locale}/contact`}
+            <Link
+            href={contactHref}
             className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-blue-600 bg-white hover:bg-gray-50 transition-colors"
           >
             {locale === 'fr' ? 'Démarrer l\'évaluation' : 'Start assessment'}

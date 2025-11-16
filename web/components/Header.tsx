@@ -1,17 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
 
 import { scrollToContact } from '@/lib/scrollToContact';
 import { useDesignAwareLinks } from '@/lib/useDesignNavigation';
+import { buildLocalePath, switchLocalePath } from '@/lib/localeRouting';
 import type { SupportedLocale } from '@/content';
 
 interface HeaderProps {
     locale: SupportedLocale;
-    currentPath: string;
 }
 
 const normalizePath = (path: string) => {
@@ -28,21 +29,66 @@ const getDefaultHash = () => {
     return window.location.hash || '#services';
 };
 
-export default function Header({ locale, currentPath }: HeaderProps) {
+export default function Header({ locale }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeHash, setActiveHash] = useState<string>(getDefaultHash);
 
     const t = useTranslations('nav');
+    const pathname = usePathname() ?? buildLocalePath(locale);
+    const searchParams = useSearchParams();
+    const searchQuery = searchParams?.toString() ?? '';
+    const currentPath = useMemo(() => {
+        if (!pathname) {
+            return buildLocalePath(locale);
+        }
+        return `${pathname}${searchQuery ? `?${searchQuery}` : ''}`;
+    }, [pathname, searchQuery, locale]);
+    const homePath = useMemo(() => buildLocalePath(locale), [locale]);
+    const languageTargets = useMemo<Record<SupportedLocale, string>>(
+        () => ({
+            fr: switchLocalePath(currentPath, 'fr'),
+            en: switchLocalePath(currentPath, 'en'),
+        }),
+        [currentPath],
+    );
+    const languageLabel = locale === 'fr' ? 'Selection de la langue' : 'Language selection';
+
+    const renderLanguageSwitcher = (variant: 'desktop' | 'mobile') => (
+        <nav
+            aria-label={languageLabel}
+            className={`flex items-center gap-2 ${variant === 'mobile' ? 'w-full justify-start' : ''}`}
+        >
+            {(['fr', 'en'] as const).map((lang) => {
+                const href = languageTargets[lang];
+                const isActiveLang = lang === locale;
+                return (
+                    <Link
+                        key={lang}
+                        href={href}
+                        lang={lang}
+                        aria-current={isActiveLang ? 'true' : undefined}
+                        className={`inline-flex min-w-[44px] justify-center rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition ${
+                            isActiveLang
+                                ? 'bg-white text-slate-900 shadow-lg'
+                                : 'border border-white/30 text-slate-200 hover:text-white hover:border-white'
+                        }`}
+                    >
+                        {lang.toUpperCase()}
+                    </Link>
+                );
+            })}
+        </nav>
+    );
 
     // Design context integration
     const { getLinkWithDesign } = useDesignAwareLinks();
 
     const navigationItems = [
-        { key: 'services', href: `/${locale}#services` },
-        { key: 'packages', href: `/${locale}#home-packages` },
-        { key: 'whyUs', href: `/${locale}#why` },
-        { key: 'process', href: `/${locale}#process` },
-        { key: 'contact', href: `/${locale}#contact` }
+        { key: 'services', href: `${homePath}#services` },
+        { key: 'packages', href: `${homePath}#home-packages` },
+        { key: 'whyUs', href: `${homePath}#why` },
+        { key: 'process', href: `${homePath}#process` },
+        { key: 'contact', href: `${homePath}#contact` }
     ];
 
     // Get design-aware navigation items
@@ -106,10 +152,11 @@ export default function Header({ locale, currentPath }: HeaderProps) {
         if (href.includes('#')) {
             e?.preventDefault();
             const section = href.split('#')[1];
-            const homePage = `/${locale}`;
+            const normalizedHomePath = normalizePath(homePath);
+            const normalizedCurrentPath = normalizePath(pathname ?? '/');
 
             // If we're not on the home page, navigate there first
-            if (currentPath !== homePage) {
+            if (normalizedCurrentPath !== normalizedHomePath) {
                 window.location.href = href;
             } else if (section) {
                 // We're on the home page, scroll to the section
@@ -126,10 +173,10 @@ export default function Header({ locale, currentPath }: HeaderProps) {
     };
 
     const isActive = (href: string) => {
-        const normalizedCurrentPath = normalizePath(currentPath);
+        const normalizedCurrentPath = normalizePath(pathname ?? homePath);
         if (href.includes('#')) {
             const [basePath, hashFragment] = href.split('#');
-            const normalizedBasePath = normalizePath(basePath || `/${locale}`);
+            const normalizedBasePath = normalizePath(basePath || homePath);
 
             if (normalizedCurrentPath !== normalizedBasePath) {
                 return false;
@@ -148,11 +195,12 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                     {/* Logo */}
                     <div className="flex-shrink-0">
                         <Link
-                            href={getLinkWithDesign(`/${locale}`)}
+                            href={getLinkWithDesign(homePath)}
                             className="text-2xl font-bold text-white hover:text-purple-300 transition-colors"
                             onClick={(e) => {
-                                const homePage = `/${locale}`;
-                                if (currentPath === homePage) {
+                                const normalizedHomePath = normalizePath(homePath);
+                                const normalizedCurrentPath = normalizePath(pathname ?? homePath);
+                                if (normalizedCurrentPath === normalizedHomePath) {
                                     e.preventDefault();
                                     // Scroll to top with constant scroll speed
                                     const scrollToTop = () => {
@@ -217,8 +265,8 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                         </div>
                     </div>
 
-                    {/* CTA Button Only - Language switcher removed */}
-                    <div className="hidden md:flex items-center ml-8">
+                    <div className="hidden md:flex items-center ml-8 gap-4">
+                        {renderLanguageSwitcher('desktop')}
                         <button
                             onClick={scrollToContact}
                             className="bg-gradient-to-r from-purple-500 to-sky-500 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
@@ -281,8 +329,9 @@ export default function Header({ locale, currentPath }: HeaderProps) {
                                 );
                             })}
 
-
-
+                            <div className="px-3 pt-4 pb-2 border-t border-white/10">
+                                {renderLanguageSwitcher('mobile')}
+                            </div>
                             {/* Mobile CTA */}
                             <div className="px-3 py-2">
                                 <button

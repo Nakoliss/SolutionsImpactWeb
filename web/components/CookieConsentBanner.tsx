@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import Link from 'next/link';
 
 import type { SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import type { ConsentState } from '@/lib/consent';
 import { createConsent, initializeConsentFromStorage, writeConsent } from '@/lib/consent';
 
@@ -204,7 +205,7 @@ export function CookieConsentProvider({ locale, children }: CookieConsentProvide
     setBannerVisible(false);
   }, [draft, updateConsent]);
 
-  const policyHref = `/${locale}/compliance/cookies`;
+  const policyHref = buildLocalePath(locale, '/compliance/cookies');
 
   const contextValue = useMemo<ConsentContextValue>(
     () => ({

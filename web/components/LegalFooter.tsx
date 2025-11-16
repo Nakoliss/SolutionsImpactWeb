@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { CookiePreferencesButton } from '@/components/CookieConsentBanner';
 import type { SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
 
 interface LegalFooterProps {
@@ -94,7 +95,7 @@ const FOOTER_COPY: Record<SupportedLocale, FooterCopy> = {
 
 export default function LegalFooter({ locale }: LegalFooterProps) {
   const copy = FOOTER_COPY[locale];
-  const basePath = `/${locale}`;
+  const basePath = buildLocalePath(locale);
   const contactEmail = brandConfig.contact.email;
   const contactPhone = brandConfig.contact.phone;
   const address = `${brandConfig.location.city}, ${brandConfig.location.region} ${brandConfig.location.country}`;

@@ -1,15 +1,16 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { CONTENT_CATEGORIES, type ContentCategory, type SupportedLocale } from '@/content';
+import { CONTENT_CATEGORIES, type ContentCategory, SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import { getCategoryContent } from '@/lib/mdx';
 import { generateMetadata as generateBaseMetadata } from '@/lib/metadata';
 
 interface CategoryPageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
     category: string;
-  }>;
+  };
 }
 
 // Generate static paths for all categories
@@ -17,7 +18,7 @@ export async function generateStaticParams() {
   const params: Array<{ locale: SupportedLocale; category: string }> = [];
   
   for (const category of Object.keys(CONTENT_CATEGORIES)) {
-    for (const locale of ['fr', 'en'] as const) {
+    for (const locale of SUPPORTED_LOCALES) {
       params.push({
         locale,
         category
@@ -30,7 +31,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: CategoryPageProps) {
-  const { locale, category } = await params;
+  const { locale, category } = params;
   
   // Validate category
   if (!Object.keys(CONTENT_CATEGORIES).includes(category)) {
@@ -77,7 +78,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const { locale, category } = await params;
+  const { locale, category } = params;
   
   // Validate category
   if (!Object.keys(CONTENT_CATEGORIES).includes(category)) {
@@ -126,6 +127,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   
   const title = titles[locale][category as keyof typeof titles[typeof locale]];
   const description = descriptions[locale][category as keyof typeof descriptions[typeof locale]];
+  const homePath = buildLocalePath(locale);
   
   return (
     <div className="min-h-screen bg-white">
@@ -134,7 +136,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <div className="max-w-6xl mx-auto px-4 py-12">
           <nav className="mb-6">
             <Link
-              href={`/${locale}`}
+              href={homePath}
               className="text-blue-600 hover:text-blue-800 text-sm font-medium"
             >
               ← {locale === 'fr' ? 'Retour à l\'accueil' : 'Back to home'}
@@ -216,7 +218,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                   )}
                   
                   <Link
-                    href={`/${locale}/content/${category}/${item.slug}`}
+                    href={buildLocalePath(locale, `/content/${category}/${item.slug}`)}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                   >
                     {locale === 'fr' ? 'Lire la suite' : 'Read more'}
@@ -254,7 +256,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 : 'Contact us for a free consultation and discover how we can help you achieve your goals.'}
             </p>
             <Link
-              href={`/${locale}/contact`}
+              href={buildLocalePath(locale, '/contact')}
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
             >
               {locale === 'fr' ? 'Consultation gratuite' : 'Free consultation'}

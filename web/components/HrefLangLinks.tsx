@@ -1,4 +1,5 @@
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
+import { buildLocaleUrl, getHrefLang } from '@/lib/localeRouting';
 import { SITE_URL } from '@/lib/metadata';
 
 interface HrefLangLinksProps {
@@ -7,14 +8,15 @@ interface HrefLangLinksProps {
   baseUrl?: string;
 }
 
-export default function HrefLangLinks({ 
-  currentLocale, 
+export default function HrefLangLinks({
+  currentLocale,
   path,
-  baseUrl = SITE_URL
+  baseUrl = SITE_URL,
 }: HrefLangLinksProps) {
-  const locales: SupportedLocale[] = ['fr'];
   const canonicalPath = path.startsWith('/') ? path : `/${path}`;
-  const normalizedLocale = locales.includes(currentLocale) ? currentLocale : 'fr';
+  const locales = SUPPORTED_LOCALES;
+  const normalizedLocale = locales.includes(currentLocale) ? currentLocale : locales[0];
+  const defaultHref = buildLocaleUrl(baseUrl, normalizedLocale, canonicalPath);
 
   return (
     <>
@@ -22,15 +24,11 @@ export default function HrefLangLinks({
         <link
           key={locale}
           rel="alternate"
-          hrefLang={locale === 'fr' ? 'fr-CA' : 'en-CA'}
-          href={`${baseUrl}/${locale}${canonicalPath}`}
+          hrefLang={getHrefLang(locale)}
+          href={buildLocaleUrl(baseUrl, locale, canonicalPath)}
         />
       ))}
-      <link
-        rel="alternate"
-        hrefLang="x-default"
-        href={`${baseUrl}/${normalizedLocale}${canonicalPath}`}
-      />
+      <link rel="alternate" hrefLang="x-default" href={defaultHref} />
     </>
   );
 }

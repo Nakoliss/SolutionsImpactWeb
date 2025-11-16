@@ -4,16 +4,17 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import CanonicalLink from '@/components/CanonicalLink';
 import DownloadGate from '@/components/DownloadGate';
 import HrefLangLinks from '@/components/HrefLangLinks';
-import { CONTENT_CATEGORIES, type ContentCategory, type SupportedLocale } from '@/content';
+import { CONTENT_CATEGORIES, type ContentCategory, SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 import { contentExists, getContentBySlug, getContentSlugs } from '@/lib/mdx';
 import { generateMetadata as generateBaseMetadata } from '@/lib/metadata';
 
 interface ContentPageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
     category: string;
     slug: string;
-  }>;
+  };
 }
 
 // Generate static paths for all content
@@ -24,7 +25,7 @@ export async function generateStaticParams() {
     const slugs = getContentSlugs(category as ContentCategory);
     
     for (const slug of slugs) {
-      for (const locale of ['fr', 'en'] as const) {
+      for (const locale of SUPPORTED_LOCALES) {
         if (contentExists(category as ContentCategory, slug, locale)) {
           params.push({
             locale,
@@ -41,7 +42,7 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: ContentPageProps) {
-  const { locale, category, slug } = await params;
+  const { locale, category, slug } = params;
   
   // Validate category
   if (!Object.keys(CONTENT_CATEGORIES).includes(category)) {
@@ -71,7 +72,7 @@ export async function generateMetadata({ params }: ContentPageProps) {
 }
 
 export default async function ContentPage({ params }: ContentPageProps) {
-  const { locale, category, slug } = await params;
+  const { locale, category, slug } = params;
   
   // Validate category
   if (!Object.keys(CONTENT_CATEGORIES).includes(category)) {
@@ -85,6 +86,8 @@ export default async function ContentPage({ params }: ContentPageProps) {
   }
   
   const categoryInfo = CONTENT_CATEGORIES[category as ContentCategory];
+  const contactHref = buildLocalePath(locale, '/contact');
+  const servicesHref = `${buildLocalePath(locale)}#services`;
   
   return (
     <div className="min-h-screen bg-white">
@@ -164,13 +167,13 @@ export default async function ContentPage({ params }: ContentPageProps) {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href={`/${locale}/contact`}
+                  href={contactHref}
                   className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                 >
                   Consultation gratuite
                 </a>
                 <a
-                  href={`/${locale}#services`}
+                  href={servicesHref}
                   className="inline-flex items-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-colors"
                 >
                   Voir nos services
@@ -188,7 +191,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
               .map(altLocale => (
                 <a
                   key={altLocale}
-                  href={`/${altLocale}/content/${category}/${slug}`}
+                  href={buildLocalePath(altLocale as SupportedLocale, `/content/${category}/${slug}`)}
                   className="text-blue-600 hover:text-blue-800 underline"
                 >
                   {altLocale === 'en' ? 'Read in English' : 'Lire en français'}

@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
+import { buildLocaleUrl } from '@/lib/localeRouting';
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http')
   ? process.env.NEXT_PUBLIC_SITE_URL
@@ -37,8 +38,7 @@ function formatTitle(pageTitle: string | null, locale: SupportedLocale): string 
 
 function resolveUrl(path: string | undefined, locale: SupportedLocale): string | undefined {
   if (!path) return undefined;
-  const normalized = path.startsWith('/') ? path : `/${path}`;
-  return `${SITE_URL.replace(/\/$/, '')}/${locale}${normalized}`;
+  return buildLocaleUrl(SITE_URL, locale, path);
 }
 
 export function generateMetadata(options: MetadataOptions): Metadata {
@@ -47,7 +47,7 @@ export function generateMetadata(options: MetadataOptions): Metadata {
     description,
     locale,
     canonical,
-    alternateLocales = ['fr'], // English temporarily disabled
+    alternateLocales = SUPPORTED_LOCALES,
     keywords = [],
     openGraph,
     twitterImage,
@@ -73,7 +73,7 @@ export function generateMetadata(options: MetadataOptions): Metadata {
   const combinedKeywords = Array.from(new Set([...baseKeywords, ...keywords]));
 
   const ogImages = [
-    openGraphImage ?? `${SITE_URL.replace(/\/$/, '')}/${locale}/opengraph-image`,
+    openGraphImage ?? buildLocaleUrl(SITE_URL, locale, '/opengraph-image'),
   ];
   const twitterImages = twitterImage ? [twitterImage] : ogImages;
 

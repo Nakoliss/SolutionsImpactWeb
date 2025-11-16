@@ -2,31 +2,26 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 
 import BusinessCarousel from '@/components/BusinessCarousel';
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { fetchServicesForStaticProps } from '@/data/services';
+import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { buildServicesItemListJsonLd } from '@/lib/seo/servicesJsonLd';
 import { SITE_URL, generateMetadata as generateSEOMetadata } from '@/lib/metadata';
 
 interface HomePageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
-  }>;
+  };
 }
 
 export const revalidate = 3600;
 
-export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = await params;
-
-  if (!['fr', 'en'].includes(locale)) {
-    notFound();
-  }
-
+export async function renderHomePage(locale: SupportedLocale) {
   const servicesResult = await fetchServicesForStaticProps(locale);
   const servicesJsonLd = buildServicesItemListJsonLd({
     locale,
     services: servicesResult.catalog.services,
-    pageUrl: `${SITE_URL.replace(/\/$/, '')}/${locale}`,
+    pageUrl: buildLocaleUrl(SITE_URL, locale),
     sectionId: 'services',
   });
 
@@ -47,9 +42,17 @@ export default async function HomePage({ params }: HomePageProps) {
   );
 }
 
-export async function generateMetadata({ params }: HomePageProps) {
-  const { locale } = await params;
+export default async function HomePage({ params }: HomePageProps) {
+  const { locale } = params;
 
+  if (!SUPPORTED_LOCALES.includes(locale)) {
+    notFound();
+  }
+
+  return renderHomePage(locale);
+}
+
+export async function buildHomeMetadata(locale: SupportedLocale) {
   const title = locale === 'fr'
     ? 'Marketing numérique bilingue et intelligent | Agence web: Solutions Impact Web'
     : 'Bilingual & intelligent digital marketing | Web agency: Solutions Impact Web';
@@ -58,10 +61,23 @@ export async function generateMetadata({ params }: HomePageProps) {
     ? 'Transformez votre présence numérique avec nos services de marketing intelligent. Expertise bilingue, technologies de pointe, résultats mesurables.'
     : 'Transform your digital presence with intelligent marketing services. Bilingual expertise, cutting-edge tech, measurable results.';
 
+  const canonicalPath = locale === 'fr' ? '/' : buildLocalePath(locale);
+
   return generateSEOMetadata({
     title,
     description,
     locale,
-    canonical: '/'
+    canonical: canonicalPath,
+    alternateLocales: SUPPORTED_LOCALES,
   });
+}
+
+export async function generateMetadata({ params }: HomePageProps) {
+  const { locale } = params;
+
+  if (!SUPPORTED_LOCALES.includes(locale)) {
+    notFound();
+  }
+
+  return buildHomeMetadata(locale);
 }

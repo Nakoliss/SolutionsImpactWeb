@@ -2,18 +2,19 @@ import Script from 'next/script';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { ServiceGrid } from '@/components/ServiceGrid';
 import { fetchServicesForStaticProps } from '@/data/services';
+import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { buildServicesItemListJsonLd } from '@/lib/seo/servicesJsonLd';
 import { SITE_URL, generateMetadata as generateSEOMetadata } from '@/lib/metadata';
 import enMessages from '@/messages/en.json';
 import frMessages from '@/messages/fr.json';
 
 interface ServicesPageProps {
-  params: Promise<{
+  params: {
     locale: SupportedLocale;
-  }>;
+  };
 }
 
 const SERVICES_COPY = {
@@ -47,9 +48,9 @@ const SERVICE_GRID_MESSAGES = {
 export const revalidate = 3600;
 
 export default async function ServicesPage({ params }: ServicesPageProps) {
-  const { locale } = await params;
+  const { locale } = params;
 
-  if (!['fr', 'en'].includes(locale)) {
+  if (!SUPPORTED_LOCALES.includes(locale)) {
     notFound();
   }
 
@@ -64,9 +65,10 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
   const jsonLd = buildServicesItemListJsonLd({
     locale,
     services: servicesResult.catalog.services,
-    pageUrl: `${SITE_URL.replace(/\/$/, '')}/${locale}/services`,
+    pageUrl: buildLocaleUrl(SITE_URL, locale, '/services'),
     sectionId: 'service',
   });
+  const homePath = buildLocalePath(locale);
 
   return (
     <>
@@ -86,13 +88,13 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
             </div>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link
-                href={`/${locale}#contact`}
+                href={`${homePath}#contact`}
                 className="inline-flex items-center gap-2 rounded-full bg-white/90 px-6 py-3 text-base font-semibold text-slate-950 transition-all duration-300 hover:bg-white hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
               >
                 {locale === 'fr' ? 'Parler à l’équipe' : 'Talk to the team'}
               </Link>
               <Link
-                href={`/${locale}#services`}
+                href={`${homePath}#services`}
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-6 py-3 text-base font-semibold text-white transition-all duration-300 hover:border-cyan-400/60 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
               >
                 {locale === 'fr'
@@ -126,7 +128,11 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
 }
 
 export async function generateMetadata({ params }: ServicesPageProps) {
-  const { locale } = await params;
+  const { locale } = params;
+
+  if (!SUPPORTED_LOCALES.includes(locale)) {
+    notFound();
+  }
 
   const title =
     locale === 'fr'
@@ -141,7 +147,8 @@ export async function generateMetadata({ params }: ServicesPageProps) {
     title,
     description,
     locale,
-    canonical: `/${locale}/services`,
+    canonical: buildLocalePath(locale, '/services'),
+    alternateLocales: SUPPORTED_LOCALES,
   });
 }
 

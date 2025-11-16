@@ -87,7 +87,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="themed-page" className="themed-page">
-                        <Header locale="en" currentPath="/en/pricing" />
+                        <Header locale="en" />
                         <PricingTable />
                     </div>
                 </TestWrapper>
@@ -118,7 +118,7 @@ describe('Theme Consistency Integration Tests', () => {
                 <TestWrapper>
                     <div data-testid="switchable-theme" className="themed-page">
                         <BusinessCarousel locale="en" />
-                        <Header locale="en" currentPath="/en" />
+                        <Header locale="en" />
                     </div>
                 </TestWrapper>
             );
@@ -139,7 +139,7 @@ describe('Theme Consistency Integration Tests', () => {
                 <TestWrapper>
                     <div data-testid="switchable-theme" className="themed-page">
                         <BusinessCarousel locale="en" />
-                        <Header locale="en" currentPath="/en" />
+                        <Header locale="en" />
                     </div>
                 </TestWrapper>
             );
@@ -175,7 +175,7 @@ describe('Theme Consistency Integration Tests', () => {
                 const { container } = render(
                     <TestWrapper>
                         <div data-testid={`theme-${type}`} className="themed-page">
-                            <Header locale="en" currentPath="/en" />
+                            <Header locale="en" />
                         </div>
                     </TestWrapper>
                 );
@@ -241,7 +241,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="default-theme" className="themed-page">
-                        <Header locale="en" currentPath="/en" />
+                        <Header locale="en" />
                     </div>
                 </TestWrapper>
             );
@@ -264,7 +264,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="fallback-theme" className="themed-page">
-                        <Header locale="en" currentPath="/en" />
+                        <Header locale="en" />
                     </div>
                 </TestWrapper>
             );
@@ -289,7 +289,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="navigation-theme" className="themed-page">
-                        <Header locale="en" currentPath="/en" />
+                        <Header locale="en" />
                     </div>
                 </TestWrapper>
             );
@@ -320,7 +320,7 @@ describe('Theme Consistency Integration Tests', () => {
             const { container } = render(
                 <TestWrapper>
                     <div data-testid="reload-theme" className="themed-page">
-                        <Header locale="en" currentPath="/en/pricing" />
+                        <Header locale="en" />
                         <PricingTable />
                     </div>
                 </TestWrapper>

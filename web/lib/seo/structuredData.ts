@@ -1,4 +1,5 @@
 import type { SupportedLocale } from '@/content';
+import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
 import { SITE_URL } from '@/lib/metadata';
 
@@ -437,12 +438,13 @@ export function generateBreadcrumbsFromPath(
 ): BreadcrumbList {
   const pathSegments = path.split('/').filter(Boolean);
   const breadcrumbs: BreadcrumbItem[] = [];
+  const normalizedBase = baseUrl.replace(/\/$/, '');
 
   breadcrumbs.push({
     '@type': 'ListItem',
     position: 1,
     name: locale === 'fr' ? 'Accueil' : 'Home',
-    item: `${baseUrl.replace(/\/$/, '')}/${locale}`,
+    item: buildLocaleUrl(baseUrl, locale, '/'),
   });
 
   const labels: Record<SupportedLocale, Record<string, string>> = {
@@ -464,21 +466,24 @@ export function generateBreadcrumbsFromPath(
     },
   };
 
-  let currentPath = `/${locale}`;
+  const relativeSegments: string[] = [];
 
   for (const segment of pathSegments) {
     if (segment === locale) continue;
 
-    currentPath += `/${segment}`;
+    relativeSegments.push(segment);
     const position = breadcrumbs.length + 1;
     const dictionary = labels[locale];
     const label = dictionary[segment] ?? segment.charAt(0).toUpperCase() + segment.slice(1);
+    const localizedPath = `/${relativeSegments.join('/')}`;
 
     breadcrumbs.push({
       '@type': 'ListItem',
       position,
       name: label,
-      item: `${baseUrl.replace(/\/$/, '')}${currentPath}`,
+      item: relativeSegments.length
+        ? buildLocaleUrl(baseUrl, locale, localizedPath)
+        : normalizedBase,
     });
   }
 

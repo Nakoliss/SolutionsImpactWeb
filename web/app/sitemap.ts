@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 
 import { CONTENT_CATEGORIES, type ContentCategory, SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
+import { buildLocaleUrl } from '@/lib/localeRouting';
 import { getCategoryContent } from '@/lib/mdx';
 import { SITE_URL } from '@/lib/metadata';
 
@@ -34,7 +35,8 @@ function getBaseUrl(): string {
 function resolveStaticRoutes(locale: SupportedLocale, baseUrl: string): MetadataRoute.Sitemap {
   const now = new Date();
   return STATIC_ROUTES.map((route) => {
-    const url = `${baseUrl}/${locale}${route.path ? `/${route.path}` : ''}`;
+    const localizedPath = route.path ? `/${route.path}` : '/';
+    const url = buildLocaleUrl(baseUrl, locale, localizedPath);
     return {
       url,
       priority: route.priority,
@@ -64,7 +66,7 @@ function resolveContentRoutes(baseUrl: string): MetadataRoute.Sitemap {
       const validDate = Number.isNaN(updatedAt.getTime()) ? new Date() : updatedAt;
 
       for (const locale of availableLocales) {
-        const url = `${baseUrl}/${locale}/content/${category}/${item.metadata.slug}`;
+        const url = buildLocaleUrl(baseUrl, locale, `/content/${category}/${item.metadata.slug}`);
         routes.push({
           url,
           priority: 0.7,
@@ -80,7 +82,7 @@ function resolveContentRoutes(baseUrl: string): MetadataRoute.Sitemap {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getBaseUrl();
-  const locales = ['fr'] as const;
+  const locales = SUPPORTED_LOCALES;
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
 

@@ -52,11 +52,11 @@ export const CONTENT_CATEGORIES = {
 
 /**
  * Supported locales for content
- * Note: English is temporarily disabled - only French is available
  */
-export const SUPPORTED_LOCALES = ['fr'] as const;
+export const SUPPORTED_LOCALES = ['fr', 'en'] as const;
 
 export type SupportedLocale = typeof SUPPORTED_LOCALES[number];
+export const DEFAULT_LOCALE: SupportedLocale = 'fr';
 export type ContentCategory = keyof typeof CONTENT_CATEGORIES;
 
 /**
@@ -64,12 +64,12 @@ export type ContentCategory = keyof typeof CONTENT_CATEGORIES;
  */
 export function createDefaultMetadata(
   category: ContentCategory,
-  _locale: SupportedLocale = 'fr'
+  _locale: SupportedLocale = DEFAULT_LOCALE
 ): Partial<ContentMetadata> {
   const now = new Date().toISOString();
 
   return {
-    localeAvail: ['fr'], // English temporarily disabled
+    localeAvail: SUPPORTED_LOCALES.slice(),
     leadForm: CONTENT_CATEGORIES[category].leadFormDefault,
     category,
     publishedAt: now,

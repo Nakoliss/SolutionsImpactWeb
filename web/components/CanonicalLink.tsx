@@ -1,4 +1,5 @@
 import type { SupportedLocale } from '@/content';
+import { buildLocaleUrl } from '@/lib/localeRouting';
 import { SITE_URL } from '@/lib/metadata';
 
 interface CanonicalLinkProps {
@@ -12,9 +13,7 @@ export default function CanonicalLink({
   path,
   baseUrl = SITE_URL
 }: CanonicalLinkProps) {
-  const normalizedBase = baseUrl.replace(/\/$/, '');
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  const canonicalUrl = `${normalizedBase}/${locale}${normalizedPath}`;
+  const canonicalUrl = buildLocaleUrl(baseUrl, locale, path);
   
   return (
     <link

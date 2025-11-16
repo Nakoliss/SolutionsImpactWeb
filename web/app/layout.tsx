@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
 
 import StructuredData from "@/components/StructuredData";
 import { brandConfig } from "@/lib/brand";
@@ -49,16 +50,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale().catch(() => 'fr');
+
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang={locale ?? 'fr'} suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
-        <StructuredData locale="fr" organization localBusiness services={buildServices("fr")} />
+        <StructuredData locale={locale ?? 'fr'} organization localBusiness services={buildServices(locale ?? 'fr')} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
