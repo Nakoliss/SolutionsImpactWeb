@@ -53,3 +53,4 @@ web/data/*
 # allow committing semantic docs index artifacts
 !web/data/docs-index/
 !web/data/docs-index/**
+!web/data/services.ts

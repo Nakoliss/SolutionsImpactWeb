@@ -1,4 +1,4 @@
-﻿import type { SupportedLocale } from '@/content';
+import type { SupportedLocale } from '@/content';
 
 export interface BrandConfig {
   name: string;
@@ -35,7 +35,7 @@ export interface BrandConfig {
 }
 
 export const brandConfig: BrandConfig = {
-  name: 'Agence web: Solutions Impact Web',
+  name: 'Solutions Impact Web',
   legalName: '',
   tagline: {
     fr: 'Sites web modernes, visibilité Google et moteurs de réponses propulsés par l’intelligence artificielle, avec conformité Loi 25.',
@@ -65,7 +65,7 @@ export const brandConfig: BrandConfig = {
     en: [
       'solutions impact web',
       'Quebec Google visibility',
-      'Québec google visibility',
+      'Québec Google visibility',
       'marketing automation',
       'law 25 compliance',
       'montreal digital agency',
@@ -85,8 +85,8 @@ export const brandConfig: BrandConfig = {
   },
   meta: {
     defaultTitle: {
-      fr: 'Solutions Impact Web - Agence web et marketing automatisé',
-      en: 'Solutions Impact Web - Web agency and marketing automation',
+      fr: 'Solutions Impact Web',
+      en: 'Solutions Impact Web',
     },
     titleTemplate: {
       fr: '%s | Solutions Impact Web',

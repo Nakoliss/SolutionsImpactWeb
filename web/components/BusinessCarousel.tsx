@@ -24,10 +24,11 @@ import { ServiceGrid } from './ServiceGrid';
 import { useDesignContext } from '@/lib/designContext';
 import { useThemeTransition } from '@/hooks/useThemeTransition';
 import { InlineThemeLoader } from './ThemeTransitionLoader';
-import { setDesignInURL } from '@/lib/urlUtils';
 
 interface BusinessCarouselProps {
   locale: SupportedLocale;
+  initialServiceCatalog?: ServiceCatalog;
+  disableClientPrefetch?: boolean;
 }
 
 type BusinessMessages = typeof enMessages.business;
@@ -42,16 +43,39 @@ const BUSINESS_MESSAGES: Record<SupportedLocale, BusinessMessages> = {
 const EMPTY_CATALOG: ServiceCatalog = { services: [], totalServices: 0 };
 
 // Internal component that uses design context
-function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
+function BusinessCarouselContent({
+  locale,
+  initialServiceCatalog,
+  disableClientPrefetch = false,
+}: BusinessCarouselProps) {
   const businessMessages = BUSINESS_MESSAGES[locale] ?? BUSINESS_MESSAGES.fr;
-  const { currentDesign, setCurrentDesign } = useDesignContext();
-  const { startTransition, isTransitioning } = useThemeTransition();
+  const { currentDesign } = useDesignContext();
+  const { isTransitioning } = useThemeTransition();
 
-  const [serviceCatalog, setServiceCatalog] =
-    useState<ServiceCatalog>(EMPTY_CATALOG);
+  const hasInitialServices = Boolean(initialServiceCatalog?.totalServices);
+  const shouldShowClientLoading = !disableClientPrefetch && !hasInitialServices;
+  const [serviceCatalog, setServiceCatalog] = useState<ServiceCatalog>(
+    initialServiceCatalog ?? EMPTY_CATALOG,
+  );
+  const [isClientLoading, setIsClientLoading] = useState<boolean>(
+    shouldShowClientLoading,
+  );
 
   useEffect(() => {
+    if (initialServiceCatalog) {
+      setServiceCatalog(initialServiceCatalog);
+    }
+  }, [initialServiceCatalog]);
+
+  useEffect(() => {
+    if (!shouldShowClientLoading) {
+      setIsClientLoading(false);
+      return;
+    }
+
     let isMounted = true;
+    setIsClientLoading(true);
+
     loadServicesDynamic(locale)
       .then((catalog) => {
         if (isMounted) {
@@ -63,12 +87,17 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
         if (isMounted) {
           setServiceCatalog(EMPTY_CATALOG);
         }
+      })
+      .finally(() => {
+        if (isMounted) {
+          setIsClientLoading(false);
+        }
       });
 
     return () => {
       isMounted = false;
     };
-  }, [locale]);
+  }, [locale, shouldShowClientLoading]);
 
 
 
@@ -79,7 +108,6 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
 
   const designMessages = businessMessages[designConfig.i18nKey as keyof typeof businessMessages] as Record<string, any>;
-  const selectorMessages = businessMessages.designSelector;
 
 
   const servicesLoaded = serviceCatalog.totalServices > 0;
@@ -175,7 +203,6 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 
 
 
-  const serviceEntries = Object.entries(designMessages.services);
   const catalogServices = serviceCatalog.services;
 
   const highlights = locale === 'fr'
@@ -292,8 +319,6 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
     'Blocking consent banner with granular cookie controls.',
     'Documented data access and deletion workflows.',
   ];
-
-  const testimonial = null;
 
   const svcMessages =
     locale === 'fr'
@@ -422,9 +447,22 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
           </div>
           <ServiceGrid
             services={catalogServices}
-            isLoading={!servicesLoaded}
+            isLoading={
+              shouldShowClientLoading && isClientLoading && !servicesLoaded
+            }
             messages={svcMessages}
           />
+          <div className="mt-10 flex justify-end">
+            <Link
+              href={`/${locale}/services`}
+              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-cyan-400/60 hover:bg-white/10 hover:-translate-y-1 hover:shadow-2xl hover:shadow-cyan-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+            >
+              {locale === 'fr'
+                ? 'Voir tous nos services'
+                : 'View the full services list'}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          </div>
           <div className="mt-16 space-y-16">
             <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-8 text-center shadow-lg shadow-cyan-500/10">
               <h3 className="text-2xl font-semibold text-white sm:text-3xl">
@@ -702,6 +740,6 @@ function BusinessCarouselContent({ locale }: BusinessCarouselProps) {
 }
 
 // Main component (design context now provided at layout level)
-export default function BusinessCarousel({ locale }: BusinessCarouselProps) {
-  return <BusinessCarouselContent locale={locale} />;
+export default function BusinessCarousel(props: BusinessCarouselProps) {
+  return <BusinessCarouselContent {...props} />;
 }

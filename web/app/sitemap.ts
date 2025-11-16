@@ -13,6 +13,7 @@ interface StaticRouteConfig {
 
 const STATIC_ROUTES: StaticRouteConfig[] = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' },
+  { path: 'services', priority: 0.85, changeFrequency: 'weekly' },
   { path: 'pricing', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'assessment', priority: 0.7, changeFrequency: 'monthly' },
   { path: 'ai-roadmap', priority: 0.6, changeFrequency: 'monthly' },

@@ -34,7 +34,7 @@ export interface ServiceCatalog {
   totalServices: number;
 }
 
-type RawServiceTier = {
+export type RawServiceTier = {
   name: string;
   price?: string;
   setupCost?: string;
@@ -44,7 +44,7 @@ type RawServiceTier = {
   };
 };
 
-type RawServiceCategory = {
+export type RawServiceCategory = {
   title: string;
   description?: string;
   shortDescription?: string;
@@ -58,7 +58,7 @@ type RawServiceCategory = {
   };
 };
 
-type RawServices = Record<string, RawServiceCategory>;
+export type RawServices = Record<string, RawServiceCategory>;
 
 type ServicesModule = { default: RawServices };
 
@@ -160,7 +160,7 @@ function normalizeCategory(
   };
 }
 
-function buildCatalog(source: RawServices): ServiceCatalog {
+export function buildCatalog(source: RawServices): ServiceCatalog {
   const services: ServiceCategory[] = [];
 
   for (const [id, rawCategory] of Object.entries(source)) {
