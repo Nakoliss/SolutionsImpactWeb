@@ -11,16 +11,12 @@ const intlMiddleware = createMiddleware({
 });
 
 export function middleware(request: NextRequest) {
-  // IN DEVELOPMENT: DO ABSOLUTELY NOTHING - NO REDIRECTS EVER
-  if (process.env.NODE_ENV !== 'production') {
-    return NextResponse.next();
-  }
-
   const pathname = request.nextUrl.pathname;
   
   // Root redirect: Redirect / to /fr (explicit redirect)
   // This ensures the Header component's smooth scrolling works correctly
-  // since it expects /fr as the home path for path comparisons
+  // since it expects /fr as the home path for path comparisons.
+  // Applied in both dev and prod to maintain consistency.
   // Note: Domain redirects (.com to .ca, non-www to www) should be handled
   // by Vercel's domain settings to avoid redirect loops
   if (pathname === '/') {
