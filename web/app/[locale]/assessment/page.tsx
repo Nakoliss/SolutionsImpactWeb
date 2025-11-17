@@ -37,12 +37,6 @@ export default async function AssessmentPage({ params }: AssessmentPageProps) {
     notFound();
   }
 
-  const handleRequestConsultation = async (result: AssessmentResult) => {
-    // TODO: Implement consultation request logic
-    // This could open a contact form or redirect to a consultation booking page
-    console.log('Consultation requested with result:', result);
-  };
-
   const content = {
     fr: {
       title: 'Évaluation de maturité IA',
@@ -171,7 +165,6 @@ export default async function AssessmentPage({ params }: AssessmentPageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AIReadinessAssessmentComplete
             locale={locale}
-            onRequestConsultation={handleRequestConsultation}
           />
         </div>
       </div>

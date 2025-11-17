@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import AIRoadmapGenerator from '@/components/AIRoadmapGenerator';
 import PageViewTracker from '@/components/PageViewTracker';
 import ProgressiveEnhancement from '@/components/ProgressiveEnhancement';
+import ScrollToRoadmapButton from '@/components/ScrollToRoadmapButton';
 import { type SupportedLocale } from '@/content';
 import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
 
@@ -200,18 +201,9 @@ export default async function AIRoadmapPage({ params }: AIRoadmapPageProps) {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             {pageContent.cta.description}
           </p>
-          <button 
-            onClick={() => {
-              // Scroll to the roadmap generator
-              const element = document.querySelector('[data-roadmap-generator]');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-          >
+          <ScrollToRoadmapButton className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
             {pageContent.cta.button}
-          </button>
+          </ScrollToRoadmapButton>
         </div>
       </div>
     </div>

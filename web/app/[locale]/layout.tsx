@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
@@ -29,7 +30,9 @@ export default async function LocaleLayout({
       <NextIntlClientProvider locale={locale} messages={messages as Record<string, unknown>}>
         <DesignContextWrapper>
           <CookieConsentProvider locale={locale as SupportedLocale}>
-            <Header locale={locale as SupportedLocale} />
+            <Suspense fallback={null}>
+              <Header locale={locale as SupportedLocale} />
+            </Suspense>
             {children}
             <LegalFooter locale={locale as SupportedLocale} />
           </CookieConsentProvider>

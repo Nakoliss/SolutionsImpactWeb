@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 import AIReadinessAssessment, { type AssessmentResult } from '@/components/AIReadinessAssessment';
 import AssessmentResults from '@/components/AssessmentResults';
 import type { SupportedLocale } from '@/content';
+import { buildLocalePath } from '@/lib/localeRouting';
 
 interface AIReadinessAssessmentCompleteProps {
   locale: SupportedLocale;
@@ -15,6 +17,7 @@ export default function AIReadinessAssessmentComplete({
   locale, 
   onRequestConsultation 
 }: AIReadinessAssessmentCompleteProps) {
+  const router = useRouter();
   const [assessmentResult, setAssessmentResult] = useState<AssessmentResult | null>(null);
   const [showResults, setShowResults] = useState(false);
 
@@ -32,6 +35,10 @@ export default function AIReadinessAssessmentComplete({
   const handleRequestConsultation = () => {
     if (assessmentResult && onRequestConsultation) {
       onRequestConsultation(assessmentResult);
+    } else {
+      // Redirect to contact page if no handler provided
+      const contactPath = buildLocalePath(locale, '/contact');
+      router.push(contactPath);
     }
     setShowResults(false);
   };
