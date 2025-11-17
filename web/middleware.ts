@@ -15,18 +15,13 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const pathname = request.nextUrl.pathname;
-  
-  // Root redirect: Redirect / to /fr (explicit redirect)
+  // Let next-intl handle all locale routing
+  // With localePrefix: 'as-needed' and defaultLocale: 'fr':
+  // - / serves French content (no prefix needed for default locale)
+  // - /fr redirects to / (default locale doesn't need prefix)
+  // - /en serves English content (prefix required for non-default locale)
   // Note: Domain redirects (.com to .ca, non-www to www) should be handled
   // by Vercel's domain settings to avoid redirect loops
-  if (pathname === '/') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/fr';
-    return NextResponse.redirect(url, 308);
-  }
-
-  // Run next-intl middleware for locale handling in production
   return intlMiddleware(request);
 }
 
