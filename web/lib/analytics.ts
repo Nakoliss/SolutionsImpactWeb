@@ -45,6 +45,13 @@ export const ANALYTICS_EVENTS = {
   CONTENT_SHARED: 'content_shared',
   VIDEO_PLAYED: 'video_played',
   SECTION_VIEWED: 'section_viewed',
+
+  // Booking + contact events
+  BOOKING_VIEWED: 'view_booking',
+  BOOKING_STARTED: 'start_booking',
+  BOOKING_CONFIRMED: 'book_call',
+  CONTACT_CALL_CLICKED: 'click_call',
+  CONTACT_EMAIL_CLICKED: 'click_email',
   
   // Error events
   ERROR_OCCURRED: 'error_occurred',
@@ -311,6 +318,39 @@ class AnalyticsManager {
     });
   }
 
+  trackBookingViewed(locale: string, surface: string): void {
+    this.track(ANALYTICS_EVENTS.BOOKING_VIEWED, {
+      locale,
+      surface,
+    });
+  }
+
+  trackBookingStarted(locale: string, surface: string): void {
+    this.track(ANALYTICS_EVENTS.BOOKING_STARTED, {
+      locale,
+      surface,
+    });
+  }
+
+  trackBookingConfirmed(locale: string, surface: string): void {
+    this.track(ANALYTICS_EVENTS.BOOKING_CONFIRMED, {
+      locale,
+      surface,
+    });
+  }
+
+  trackContactChannelClick(channel: 'call' | 'email', locale: string, surface: string): void {
+    const eventName = channel === 'call'
+      ? ANALYTICS_EVENTS.CONTACT_CALL_CLICKED
+      : ANALYTICS_EVENTS.CONTACT_EMAIL_CLICKED;
+
+    this.track(eventName, {
+      locale,
+      surface,
+      channel,
+    });
+  }
+
   trackError(error: string, context?: Record<string, string | number | boolean>): void {
     this.track(ANALYTICS_EVENTS.ERROR_OCCURRED, {
       error_message: error,
@@ -337,6 +377,10 @@ export function useAnalytics() {
       analytics.trackLeadFormSubmitted(formType, fields, locale),
     trackDownloadRequested: analytics.trackDownloadRequested.bind(analytics),
     trackCTAClicked: analytics.trackCTAClicked.bind(analytics),
+    trackBookingViewed: analytics.trackBookingViewed.bind(analytics),
+    trackBookingStarted: analytics.trackBookingStarted.bind(analytics),
+    trackBookingConfirmed: analytics.trackBookingConfirmed.bind(analytics),
+    trackContactChannelClick: analytics.trackContactChannelClick.bind(analytics),
     trackError: analytics.trackError.bind(analytics)
   };
 }
@@ -344,9 +388,7 @@ export function useAnalytics() {
 // Type augmentation for window object
 declare global {
   interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    gtag?: (...args: any[]) => void;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    plausible?: (event: string, options?: { props?: Record<string, any>; u?: string }) => void;
+    gtag?: (...args: unknown[]) => void;
+    plausible?: (event: string, options?: { props?: Record<string, unknown>; u?: string }) => void;
   }
 }

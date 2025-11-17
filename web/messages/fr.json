@@ -89,6 +89,39 @@
     "phone": "Appeler l'équipe",
     "email": "Nous ecrire"
   },
+  "contactPage": {
+    "title": "Réservez un diagnostic ou échangez avec notre équipe bilingue",
+    "subtitle": "Chaque collaboration débute avec un parcours protégé qui respecte la Loi 25 et votre réalité d'affaires.",
+    "lead": "Choisissez le moment qui vous convient ou contactez-nous directement. Nous répondons en moins d'une journée ouvrable.",
+    "scheduler": {
+      "title": "Planifier une rencontre",
+      "description": "Partagez vos objectifs; nous préparons un plan d'action, un aperçu conformité et des gains rapides avant l'appel.",
+      "fallbackLabel": "L'iframe ne se charge pas?",
+      "fallbackCta": "Ouvrir la page de réservation"
+    },
+    "law25": {
+      "notice": "En réservant un appel, vous consentez à ce que nous recueillions votre nom, vos coordonnées, vos préférences de rencontre et toute information que vous fournissez. Ces données sont conservées de façon sécurisée dans Cal.com et notre CRM uniquement pour préparer la rencontre, assurer le suivi convenu et documenter votre consentement selon la Loi 25.",
+      "link": "Politique de confidentialité"
+    },
+    "channels": {
+      "introTitle": "Parler à un humain",
+      "introDescription": "Appelez ou écrivez si vous avez besoin d’un NDA, d’une réponse rapide ou d’un accompagnement pour vos processus d’approvisionnement.",
+      "call": {
+        "title": "Appeler l'équipe",
+        "description": "Parlez directement avec un stratège basé à Montréal. Si nous sommes en atelier, nous rappelons dans les prochaines heures.",
+        "cta": "Composer le studio"
+      },
+      "email": {
+        "title": "Écrire un courriel",
+        "description": "Envoyez votre contexte, un RFP ou une question de conformité. Vos informations restent confidentielles.",
+        "cta": "Écrire à l'équipe"
+      }
+    },
+    "meta": {
+      "title": "Contact | Solutions Impact Web",
+      "description": "Planifiez un diagnostic bilingue, posez vos questions conformité ou parlez à notre équipe de Montréal. Intake conforme à la Loi 25."
+    }
+  },
   "footer": {
     "rights": "Tous droits réservés",
     "company": "Web Impact Solutions",

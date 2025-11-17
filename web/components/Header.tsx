@@ -6,7 +6,6 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
 
-import { scrollToContact } from '@/lib/scrollToContact';
 import { useDesignAwareLinks } from '@/lib/useDesignNavigation';
 import { buildLocalePath, switchLocalePath } from '@/lib/localeRouting';
 import type { SupportedLocale } from '@/content';
@@ -267,12 +266,12 @@ export default function Header({ locale }: HeaderProps) {
 
                     <div className="hidden md:flex items-center ml-8 gap-4">
                         {renderLanguageSwitcher('desktop')}
-                        <button
-                            onClick={scrollToContact}
+                        <Link
+                            href={buildLocalePath(locale, '/contact')}
                             className="bg-gradient-to-r from-purple-500 to-sky-500 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                         >
                             {t('book')}
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}
@@ -334,15 +333,13 @@ export default function Header({ locale }: HeaderProps) {
                             </div>
                             {/* Mobile CTA */}
                             <div className="px-3 py-2">
-                                <button
-                                    onClick={() => {
-                                        scrollToContact();
-                                        setIsMenuOpen(false);
-                                    }}
-                                    className="w-full bg-gradient-to-r from-purple-500 to-sky-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-purple-600 hover:to-sky-600 transition-all duration-300"
+                                <Link
+                                    href={buildLocalePath(locale, '/contact')}
+                                    onClick={() => setIsMenuOpen(false)}
+                                    className="block w-full rounded-md bg-gradient-to-r from-purple-500 to-sky-500 px-4 py-2 text-center text-sm font-medium text-white transition hover:from-purple-600 hover:to-sky-600"
                                 >
                                     {t('book')}
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

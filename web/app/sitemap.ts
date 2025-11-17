@@ -18,6 +18,7 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
   { path: 'pricing', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'assessment', priority: 0.7, changeFrequency: 'monthly' },
   { path: 'ai-roadmap', priority: 0.6, changeFrequency: 'monthly' },
+  { path: 'contact', priority: 0.7, changeFrequency: 'weekly' },
   { path: 'compliance', priority: 0.8, changeFrequency: 'monthly' },
   { path: 'compliance/privacy', priority: 0.6, changeFrequency: 'yearly', lastModified: new Date('2025-09-24') },
   { path: 'compliance/cookies', priority: 0.6, changeFrequency: 'yearly' },

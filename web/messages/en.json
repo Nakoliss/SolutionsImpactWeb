@@ -89,6 +89,39 @@
     "phone": "Call the team",
     "email": "Email us"
   },
+  "contactPage": {
+    "title": "Book a diagnostic or talk to a bilingual strategist",
+    "subtitle": "Every engagement starts with a protected intake that meets Quebec Law 25 expectations.",
+    "lead": "Pick a time that works for you or contact us directly. We respond within one business day.",
+    "scheduler": {
+      "title": "Schedule a working session",
+      "description": "Share your priorities and we'll prepare a roadmap, compliance checklist, and quick wins before we meet.",
+      "fallbackLabel": "Prefer a separate window?",
+      "fallbackCta": "Open the booking portal"
+    },
+    "law25": {
+      "notice": "By booking a meeting, you consent to us collecting your name, contact details, meeting preferences, and any context you provide. We store this information securely in Cal.com and our CRM only to prepare your session, follow up on agreed actions, and maintain the consent log required by Law 25.",
+      "link": "Privacy policy"
+    },
+    "channels": {
+      "introTitle": "Talk to a human",
+      "introDescription": "Call or email us if you need an NDA in place, a procurement document reviewed, or urgent support.",
+      "call": {
+        "title": "Call us",
+        "description": "Tap to connect with our Montréal team. If we miss you, we return the call within a few hours.",
+        "cta": "Dial the studio"
+      },
+      "email": {
+        "title": "Email us",
+        "description": "Send context, RFP details, or procurement questions. We keep all requests confidential.",
+        "cta": "Write to the team"
+      }
+    },
+    "meta": {
+      "title": "Contact | Solutions Impact Web",
+      "description": "Schedule a bilingual diagnostic, ask compliance questions, or reach our Montréal team. Law 25-ready intake and analytics."
+    }
+  },
   "footer": {
     "rights": "All rights reserved",
     "company": "Web Impact Solutions",

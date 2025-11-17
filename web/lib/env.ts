@@ -31,6 +31,10 @@ const envSchema = z.object({
     .enum(['google', 'plausible', 'console', 'none'])
     .default('console'),
   
+  // Scheduling configuration
+  NEXT_PUBLIC_CAL_BOOKING_URL: z.string().url().optional(),
+  NEXT_PUBLIC_CAL_BOOKING_URL_FR: z.string().url().optional(),
+  
   // API endpoints (optional)
   NEXT_PUBLIC_API_BASE_URL: z.string().url().optional(),
   

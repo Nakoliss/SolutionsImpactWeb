@@ -20,6 +20,15 @@ npm run start
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Environment Variables
+
+Create a `.env.local` file in the project root and set:
+
+| Variable | Description |
+| --- | --- |
+| `NEXT_PUBLIC_CAL_BOOKING_URL` | Public Cal.com link used for the embedded scheduler and fallback links. Required for production. |
+| `NEXT_PUBLIC_CAL_BOOKING_URL_FR` | Optional Cal.com link used when the locale is `fr`. Defaults to `NEXT_PUBLIC_CAL_BOOKING_URL` if omitted. |
+
 ## Architecture
 
 - **Framework**: Next.js 15 with App Router
