@@ -6,6 +6,41 @@ Write-Host "Starting Solutions Impact Web App..." -ForegroundColor Green
 $originalLocation = Get-Location
 Set-Location -Path "web"
 
+# Free up port 3000 specifically (common Chrome bookmark) before proceeding
+function Stop-PortListeners {
+  param([int]$Port)
+  $pids = @()
+  try {
+    $pids = (Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction Stop).OwningProcess | Select-Object -Unique
+  } catch {
+    $netstat = netstat -ano | Select-String ":$Port\s+LISTENING"
+    if ($netstat) {
+      $pids = $netstat | ForEach-Object {
+        $parts = $_.ToString().Trim() -split '\s+'
+        $parts[-1]
+      } | Select-Object -Unique
+    }
+  }
+
+  foreach ($pid in $pids) {
+    try {
+      Write-Host "Stopping process $pid using port $Port..." -ForegroundColor Yellow
+      Stop-Process -Id $pid -Force -ErrorAction Stop
+    } catch {
+      Write-Host ("Could not stop process {0}: {1}" -f $pid, $_) -ForegroundColor Red
+    }
+  }
+}
+
+Stop-PortListeners -Port 3000
+
+# Clean stale build output that can block startup
+$nextDir = Join-Path (Get-Location) ".next"
+if (Test-Path $nextDir) {
+  Write-Host "Removing stale .next directory..." -ForegroundColor Yellow
+  Remove-Item -Recurse -Force $nextDir -ErrorAction SilentlyContinue
+}
+
 # Ensure dependencies are installed
 if (-not (Test-Path -Path "node_modules")) {
   Write-Host "Installing dependencies..." -ForegroundColor Yellow

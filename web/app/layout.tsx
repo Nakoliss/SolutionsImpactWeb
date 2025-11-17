@@ -63,7 +63,7 @@ export default async function RootLayout({
         <meta charSet="utf-8" />
         <StructuredData locale={locale ?? 'fr'} organization localBusiness services={buildServices(locale ?? 'fr')} />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
