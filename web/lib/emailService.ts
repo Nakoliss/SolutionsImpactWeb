@@ -340,7 +340,7 @@ export async function sendDataRequestEmail(payload: DataRequestEmail): Promise<{
 export async function sendWaitlistConfirmationEmail(toEmail: string, confirmUrl?: string): Promise<{ success: boolean; messageId?: string; error?: string }> {
   try {
     const transporter = createTransporter();
-    if (!toEmail || !EMAIL_CONFIG.auth.user) {
+    if (!toEmail) {
       console.log('[email disabled] Waitlist confirmation would be sent to:', toEmail, confirmUrl);
       return { success: true, messageId: 'disabled' };
     }
