@@ -161,8 +161,6 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   locale={locale}
                   href={`tel:${telHref}`}
                   value={phone}
-                  href={`tel:${telHref}`}
-                  value={phone}
                   title={t('channels.call.title')}
                   description={t('channels.call.description')}
                   ctaLabel={t('channels.call.cta')}
