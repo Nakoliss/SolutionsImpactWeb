@@ -39,13 +39,11 @@ export function middleware(request: NextRequest) {
   return intlMiddleware(request);
 }
 
-// IN DEVELOPMENT: Empty matcher means middleware NEVER runs
-// IN PRODUCTION: Normal matcher
-export const config = process.env.NODE_ENV === 'production' ? {
+// Export static config (Next.js requires static config, not conditional)
+// The middleware function handles dev/prod logic internally
+export const config = {
   matcher: [
     '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
   ],
-} : {
-  matcher: [],
 };
 
