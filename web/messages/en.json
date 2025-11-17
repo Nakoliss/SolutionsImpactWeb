@@ -97,7 +97,11 @@
       "title": "Schedule a working session",
       "description": "Share your priorities and we'll prepare a roadmap, compliance checklist, and quick wins before we meet.",
       "fallbackLabel": "Prefer a separate window?",
-      "fallbackCta": "Open the booking portal"
+      "fallbackCta": "Open the booking portal",
+      "manualTitle": "Manual booking",
+      "manualDescription": "Our secure booking embed is temporarily unavailable. Reach out to the team to lock in a time.",
+      "manualCallCta": "Call the studio",
+      "manualEmailCta": "Email the team"
     },
     "law25": {
       "notice": "By booking a meeting, you consent to us collecting your name, contact details, meeting preferences, and any context you provide. We store this information securely in Cal.com and our CRM only to prepare your session, follow up on agreed actions, and maintain the consent log required by Law 25.",

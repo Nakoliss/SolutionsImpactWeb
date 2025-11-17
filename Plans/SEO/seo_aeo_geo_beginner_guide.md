@@ -168,7 +168,8 @@ By combining advanced SEO with AEO and GEO, you cover all bases: you attract reg
 - [ ] **Social Media** (Weekly posting/engagement; consistent branding)
 - [ ] **Email Marketing** (Forms + monthly newsletter; consent honored)
 - [ ] **Monitoring & Reporting** (Monthly KPI review + plan next steps)
-- [ ] **Loi 25 Compliance** (Annual review; consent logs; secure data handling)
+- [ ] **Email Deliverability** (Quarterly check: SPF/DKIM/DMARC records; run `npx tsx scripts/check-email-deliverability.ts`)
+- [ ] **Loi 25 Compliance** (Annual review; consent logs; secure data handling)
 - [ ] **AEO/GEO Presence** (Quarterly check how AI/answer engines reference your content)
 
 ---

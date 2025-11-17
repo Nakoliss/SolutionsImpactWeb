@@ -1,0 +1,51 @@
+import { NextRequest, NextResponse } from 'next/server';
+import createMiddleware from 'next-intl/middleware';
+
+const CANONICAL_HOST = 'www.solutionsimpactweb.ca';
+
+// Create next-intl middleware
+const intlMiddleware = createMiddleware({
+  locales: ['fr', 'en'],
+  defaultLocale: 'fr',
+  localePrefix: 'as-needed',
+  localeDetection: false,
+});
+
+export function middleware(request: NextRequest) {
+  // IN DEVELOPMENT: DO ABSOLUTELY NOTHING - NO REDIRECTS EVER
+  if (process.env.NODE_ENV !== 'production') {
+    return NextResponse.next();
+  }
+
+  const hostname = request.nextUrl.hostname;
+  const pathname = request.nextUrl.pathname;
+  
+  // PRODUCTION ONLY: Domain redirects
+  const url = request.nextUrl.clone();
+  if (hostname !== CANONICAL_HOST) {
+    url.hostname = CANONICAL_HOST;
+    url.protocol = 'https:';
+    url.port = '';
+    return NextResponse.redirect(url, 308);
+  }
+
+  // Root redirect: Redirect / to /fr (explicit redirect)
+  if (pathname === '/') {
+    url.pathname = '/fr';
+    return NextResponse.redirect(url, 308);
+  }
+
+  // Run next-intl middleware for locale handling in production
+  return intlMiddleware(request);
+}
+
+// IN DEVELOPMENT: Empty matcher means middleware NEVER runs
+// IN PRODUCTION: Normal matcher
+export const config = process.env.NODE_ENV === 'production' ? {
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
+  ],
+} : {
+  matcher: [],
+};
+

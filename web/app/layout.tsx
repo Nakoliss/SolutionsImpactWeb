@@ -19,7 +19,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "latin-ext"],
 });
 
-const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://webimpactsolutions.ca";
+// In development, use localhost; in production, use canonical domain
+const isDev = process.env.NODE_ENV === 'development';
+const rawSiteUrl = isDev 
+  ? (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000")
+  : (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.solutionsimpactweb.ca");
 const normalizedSiteUrl = rawSiteUrl.startsWith("http")
   ? rawSiteUrl
   : `https://${rawSiteUrl.replace(new RegExp("^/+"), "")}`;

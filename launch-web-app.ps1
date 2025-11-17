@@ -100,11 +100,13 @@ $browserJob = Start-Job -ScriptBlock {
     $chromePath1 = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
     $chromePath2 = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
     if (Test-Path $chromePath1) {
-      Start-Process -FilePath $chromePath1 -ArgumentList $targetUri
-      Write-Host "Opened $targetUri in Chrome" -ForegroundColor Green
+      # Open in incognito mode to bypass cached redirects
+      Start-Process -FilePath $chromePath1 -ArgumentList "--incognito", $targetUri
+      Write-Host "Opened $targetUri in Chrome (Incognito mode)" -ForegroundColor Green
     } elseif (Test-Path $chromePath2) {
-      Start-Process -FilePath $chromePath2 -ArgumentList $targetUri
-      Write-Host "Opened $targetUri in Chrome" -ForegroundColor Green
+      # Open in incognito mode to bypass cached redirects
+      Start-Process -FilePath $chromePath2 -ArgumentList "--incognito", $targetUri
+      Write-Host "Opened $targetUri in Chrome (Incognito mode)" -ForegroundColor Green
     } else {
       Start-Process $targetUri
       Write-Host "Opened $targetUri in default browser" -ForegroundColor Green

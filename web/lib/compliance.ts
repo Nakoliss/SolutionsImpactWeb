@@ -152,11 +152,11 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
     },
     paragraphs: {
       en: [
-        'You may request access, rectification, portability, or deletion of your personal information at any time. Contact us via privacy@webimpactsolutions.ca or by using the data request form below.',
+        'You may request access, rectification, portability, or deletion of your personal information at any time. Contact us via privacy@solutionsimpactweb.com or by using the data request form below.',
         'We respond to formal requests within 30 days. Identity verification may be required to protect your information.',
       ],
       fr: [
-        'Vous pouvez demander l acces, la rectification, la portabilite ou la suppression de vos renseignements personnels en tout temps. Communiquez avec nous a privacy@webimpactsolutions.ca ou via le formulaire ci-dessous.',
+        'Vous pouvez demander l acces, la rectification, la portabilite ou la suppression de vos renseignements personnels en tout temps. Communiquez avec nous a privacy@solutionsimpactweb.com ou via le formulaire ci-dessous.',
         'Nous repondons aux demandes officielles dans un delai de 30 jours. Une verification d identite peut etre requise pour proteger vos informations.',
       ],
     },
@@ -187,12 +187,12 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
     paragraphs: {
       en: [
         'Privacy Officer: Daniel Germain, Founder.',
-        'Email: privacy@webimpactsolutions.ca',
+        'Email: privacy@solutionsimpactweb.com',
         'Postal address: 400 Rue Montfort, Suite 220, Montreal, QC, H3C 4J8, Canada.',
       ],
       fr: [
         'Responsable de la protection des renseignements personnels : Daniel Germain, Fondateur.',
-        'Courriel : privacy@webimpactsolutions.ca',
+        'Courriel : privacy@solutionsimpactweb.com',
         'Adresse postale : 400 Rue Montfort, Bureau 220, Montreal (QC) H3C 4J8, Canada.',
       ],
     },

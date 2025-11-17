@@ -15,14 +15,19 @@ interface ContactPageProps {
   params: Promise<{ locale: SupportedLocale }>;
 }
 
-const DEFAULT_CAL_LINK = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL');
-const FR_CAL_LINK = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL_FR');
-
 function resolveCalLink(locale: SupportedLocale): string | undefined {
-  if (locale === 'fr') {
-    return FR_CAL_LINK || DEFAULT_CAL_LINK;
+  try {
+    const defaultCalLink = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL');
+    const frCalLink = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL_FR');
+    
+    if (locale === 'fr') {
+      return (frCalLink && frCalLink !== '') ? frCalLink : (defaultCalLink && defaultCalLink !== '') ? defaultCalLink : undefined;
+    }
+    return (defaultCalLink && defaultCalLink !== '') ? defaultCalLink : undefined;
+  } catch (error) {
+    console.error('Error resolving Cal.com link:', error);
+    return undefined;
   }
-  return DEFAULT_CAL_LINK;
 }
 
 export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
@@ -54,7 +59,13 @@ export default async function ContactPage({ params }: ContactPageProps) {
   const calLink = resolveCalLink(locale);
 
   const phone = brandConfig.contact.phone ?? '';
+  const numericPhone = phone.replace(/[^0-9]/g, '');
   const sanitizedPhone = phone.replace(/[^+\d]/g, '');
+  const telHref = sanitizedPhone.startsWith('+')
+    ? sanitizedPhone
+    : numericPhone
+      ? `+1${numericPhone}`
+      : '';
   const email = brandConfig.contact.email ?? '';
   const hasPhone = Boolean(sanitizedPhone);
   const hasEmail = Boolean(email);
@@ -86,12 +97,41 @@ export default async function ContactPage({ params }: ContactPageProps) {
               </p>
             </div>
 
-            <ContactBookingEmbed
-              locale={locale}
-              calLink={calLink}
-              fallbackLabel={t('scheduler.fallbackLabel')}
-              fallbackCta={t('scheduler.fallbackCta')}
-            />
+            {calLink ? (
+              <ContactBookingEmbed
+                locale={locale}
+                calLink={calLink}
+                fallbackLabel={t('scheduler.fallbackLabel')}
+                fallbackCta={t('scheduler.fallbackCta')}
+              />
+            ) : (
+              <div className="rounded-3xl border border-yellow-400/40 bg-yellow-900/10 p-6 text-slate-100">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-yellow-200">
+                  {t('scheduler.manualTitle')}
+                </p>
+                <p className="mt-3 text-base text-slate-100">
+                  {t('scheduler.manualDescription')}
+                </p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {hasPhone ? (
+                    <a
+                      href={`tel:${telHref}`}
+                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition hover:border-sky-300 hover:text-sky-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+                    >
+                      {t('scheduler.manualCallCta')}
+                    </a>
+                  ) : null}
+                  {hasEmail ? (
+                    <a
+                      href={`mailto:${email}`}
+                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition hover:border-sky-300 hover:text-sky-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+                    >
+                      {t('scheduler.manualEmailCta')}
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+            )}
 
             <p className="mt-4 rounded-2xl border border-sky-400/40 bg-sky-400/10 p-4 text-sm text-slate-100">
               {t('law25.notice')}{' '}
@@ -119,7 +159,10 @@ export default async function ContactPage({ params }: ContactPageProps) {
                 <ContactChannelCard
                   type="call"
                   locale={locale}
-                  href={`tel:${sanitizedPhone}`}
+                  href={`tel:${telHref}`}
+                  value={phone}
+                  href={`tel:${telHref}`}
+                  value={phone}
                   title={t('channels.call.title')}
                   description={t('channels.call.description')}
                   ctaLabel={t('channels.call.cta')}
@@ -131,6 +174,7 @@ export default async function ContactPage({ params }: ContactPageProps) {
                   type="email"
                   locale={locale}
                   href={`mailto:${email}`}
+                  value={email}
                   title={t('channels.email.title')}
                   description={t('channels.email.description')}
                   ctaLabel={t('channels.email.cta')}

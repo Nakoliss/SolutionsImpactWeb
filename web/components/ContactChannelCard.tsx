@@ -11,6 +11,7 @@ type ContactChannelType = 'call' | 'email';
 interface ContactChannelCardProps {
   type: ContactChannelType;
   href: string;
+  value: string;
   title: string;
   description: string;
   ctaLabel: string;
@@ -22,6 +23,7 @@ interface ContactChannelCardProps {
 export default function ContactChannelCard({
   type,
   href,
+  value,
   title,
   description,
   ctaLabel,
@@ -57,7 +59,10 @@ export default function ContactChannelCard({
       </div>
       <p className="text-sm text-slate-200">{description}</p>
       <span className="inline-flex items-center gap-2 text-sm font-semibold text-sky-300">
-        {type === 'call' ? 'tel' : 'mailto'} — {href.replace(`${type === 'call' ? 'tel:' : 'mailto:'}`, '')}
+        <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-300">
+          {type === 'call' ? (locale === 'fr' ? 'TÉL' : 'TEL') : 'MAIL'}
+        </span>
+        <span className="font-medium text-white">{value}</span>
         <span
           aria-hidden="true"
           className="transition group-hover:translate-x-1"

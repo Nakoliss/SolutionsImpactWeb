@@ -32,8 +32,8 @@ const envSchema = z.object({
     .default('console'),
   
   // Scheduling configuration
-  NEXT_PUBLIC_CAL_BOOKING_URL: z.string().url().optional(),
-  NEXT_PUBLIC_CAL_BOOKING_URL_FR: z.string().url().optional(),
+  NEXT_PUBLIC_CAL_BOOKING_URL: z.union([z.string().url(), z.literal('')]).optional(),
+  NEXT_PUBLIC_CAL_BOOKING_URL_FR: z.union([z.string().url(), z.literal('')]).optional(),
   
   // API endpoints (optional)
   NEXT_PUBLIC_API_BASE_URL: z.string().url().optional(),

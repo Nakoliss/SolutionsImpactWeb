@@ -3,7 +3,16 @@ import Link from 'next/link';
 import { CookiePreferencesButton } from '@/components/CookieConsentBanner';
 import type { SupportedLocale } from '@/content';
 import { buildLocalePath } from '@/lib/localeRouting';
-import { brandConfig, pickBrandLocale } from '@/lib/brand';
+
+// HARDCODE values directly - no imports that can fail
+const BRAND_CONTACT = { email: 'info@solutionsimpactweb.com', phone: '(438)503-3898' };
+const BRAND_LOCATION = { city: 'Montreal', region: 'QC', country: 'Canada' };
+const BRAND_TAGLINE = { 
+  fr: 'Sites web modernes, visibilité Google et moteurs de réponses propulsés par l\'intelligence artificielle, avec conformité Loi 25.',
+  en: 'Modern websites, Google visibility and AI-powered answer engine coverage, plus Law 25 compliance.'
+};
+const BRAND_NAME = 'Solutions Impact Web';
+const BRAND_LEGAL_NAME = '';
 
 interface LegalFooterProps {
   locale: SupportedLocale;
@@ -94,25 +103,31 @@ const FOOTER_COPY: Record<SupportedLocale, FooterCopy> = {
 };
 
 export default function LegalFooter({ locale }: LegalFooterProps) {
-  const copy = FOOTER_COPY[locale];
+  const resolvedLocale: SupportedLocale = (locale in FOOTER_COPY ? locale : 'fr') as SupportedLocale;
+  const copy = FOOTER_COPY[resolvedLocale];
   const basePath = buildLocalePath(locale);
-  const contactEmail = brandConfig.contact.email;
-  const contactPhone = brandConfig.contact.phone;
-  const address = `${brandConfig.location.city}, ${brandConfig.location.region} ${brandConfig.location.country}`;
+  
+  // Use hardcoded values - NO imports that can fail
+  const contactEmail = BRAND_CONTACT.email;
+  const contactPhone = BRAND_CONTACT.phone;
+  const address = `${BRAND_LOCATION.city}, ${BRAND_LOCATION.region} ${BRAND_LOCATION.country}`;
   const currentYear = new Date().getFullYear().toString();
+  
+  // Simple locale picker
+  const getTagline = (loc: SupportedLocale) => BRAND_TAGLINE[loc] || BRAND_TAGLINE.fr;
 
   return (
     <footer className="border-t border-slate-800 bg-slate-950 text-slate-300">
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[2fr_1fr_1fr]">
           <div>
-            {brandConfig.legalName ? (
+            {BRAND_LEGAL_NAME ? (
               <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                {brandConfig.legalName}
+                {BRAND_LEGAL_NAME}
               </p>
             ) : null}
             <h2 className="mt-3 text-lg font-semibold text-white">
-              {brandConfig.name}
+              {BRAND_NAME}
             </h2>
             <p className="mt-1 text-xs text-slate-400">
               {locale === 'fr'
@@ -120,7 +135,7 @@ export default function LegalFooter({ locale }: LegalFooterProps) {
                 : 'A division of Nakoliss Studios — Founded by Daniel Germain'}
             </p>
             <p className="mt-3 text-sm text-slate-400">
-              {pickBrandLocale(locale, brandConfig.tagline)}
+              {getTagline(locale)}
             </p>
             <div className="mt-5 space-y-2 text-sm text-slate-400">
               {contactEmail ? (

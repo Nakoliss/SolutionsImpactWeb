@@ -4,11 +4,15 @@ import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
 import { buildLocaleUrl } from '@/lib/localeRouting';
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http')
-  ? process.env.NEXT_PUBLIC_SITE_URL
-  : process.env.NEXT_PUBLIC_SITE_URL
-    ? `https://${process.env.NEXT_PUBLIC_SITE_URL.replace(/^\/+/, '')}`
-    : 'https://webimpactsolutions.ca';
+// In development, use localhost; in production, use canonical domain
+const isDev = process.env.NODE_ENV === 'development';
+export const SITE_URL = isDev
+  ? (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
+  : (process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http')
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : process.env.NEXT_PUBLIC_SITE_URL
+        ? `https://${process.env.NEXT_PUBLIC_SITE_URL.replace(/^\/+/, '')}`
+        : 'https://www.solutionsimpactweb.ca');
 
 interface MetadataOptions {
   title: string | null;

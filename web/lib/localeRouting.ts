@@ -16,14 +16,11 @@ function normalizePath(path?: string): string {
 }
 
 export function getLocalePrefix(locale: SupportedLocale): string {
-  return locale === DEFAULT_LOCALE ? '' : `/${locale}`;
+  return `/${locale}`;
 }
 
 export function buildLocalePath(locale: SupportedLocale, path: string = '/'): string {
   const normalizedPath = normalizePath(path);
-  if (locale === DEFAULT_LOCALE) {
-    return normalizedPath;
-  }
 
   if (normalizedPath === '/') {
     return `/${locale}`;

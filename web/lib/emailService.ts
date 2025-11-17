@@ -44,9 +44,12 @@ const EMAIL_CONFIG = {
   }
 };
 
-// Destination email (configurable via env, fallback to info@solutionsimpactweb.com)
+// Destination emails (configurable via env, fallback to @solutionsimpactweb.com addresses)
 const CONTACT_FORM_TO_EMAIL =
   process.env.CONTACT_FORM_EMAIL_TO?.trim() || 'info@solutionsimpactweb.com';
+
+const TO_EMAIL =
+  process.env.DATA_REQUEST_EMAIL_TO?.trim() || 'privacy@solutionsimpactweb.com';
 
 /**
  * Create nodemailer transporter
@@ -203,8 +206,11 @@ export async function sendContactFormEmail(formData: ContactFormEmail): Promise<
 
     const { subject, html, text } = formatEmailContent(formData);
 
+    // Use SMTP_USER if configured, otherwise default to info@solutionsimpactweb.com
+    const fromEmail = EMAIL_CONFIG.auth.user || 'info@solutionsimpactweb.com';
+    
     const mailOptions = {
-      from: `"Solutions Impact Web — Contact" <${EMAIL_CONFIG.auth.user}>`,
+      from: `"Solutions Impact Web — Contact" <${fromEmail}>`,
       to: CONTACT_FORM_TO_EMAIL,
       replyTo: formData.email, // Allow replying directly to the person who submitted
       subject,
@@ -312,8 +318,11 @@ export async function sendDataRequestEmail(payload: DataRequestEmail): Promise<{
       return { success: true, messageId: 'logged-only', error: 'Email service not configured - logged to console' };
     }
 
+    // Use SMTP_USER if configured, otherwise default to privacy@solutionsimpactweb.com
+    const fromEmail = EMAIL_CONFIG.auth.user || 'privacy@solutionsimpactweb.com';
+    
     const info = await transporter.sendMail({
-      from: `"Solutions Impact Web — Conformité" <${EMAIL_CONFIG.auth.user}>`,
+      from: `"Solutions Impact Web — Conformité" <${fromEmail}>`,
       to: TO_EMAIL,
       replyTo: payload.email,
       subject,
@@ -346,8 +355,11 @@ export async function sendWaitlistConfirmationEmail(toEmail: string, confirmUrl?
       return { success: true, messageId: 'logged-only', error: 'Email service not configured - logged to console' };
     }
 
+    // Use SMTP_USER if configured, otherwise default to support@solutionsimpactweb.com
+    const fromEmail = EMAIL_CONFIG.auth.user || 'support@solutionsimpactweb.com';
+    
     const info = await transporter.sendMail({
-      from: EMAIL_CONFIG.auth.user,
+      from: `"Solutions Impact Web" <${fromEmail}>`,
       to: toEmail,
       subject,
       html,
