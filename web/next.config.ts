@@ -6,7 +6,7 @@ import createMDX from '@next/mdx';
 const withNextIntl = createNextIntlPlugin({
   defaultLocale: 'fr',
   locales: ['fr', 'en'],
-  localePrefix: 'as-needed',
+  localePrefix: 'always',
   localeDetection: false,
 });
 
