@@ -21,16 +21,11 @@ const normalizePath = (path: string) => {
     return path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
 };
 
-const getDefaultHash = () => {
-    if (typeof window === 'undefined') {
-        return '#services';
-    }
-    return window.location.hash || '#services';
-};
-
 export default function Header({ locale }: HeaderProps) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [activeHash, setActiveHash] = useState<string>(getDefaultHash);
+    // Initialize with a consistent value for SSR, will be updated on mount
+    const [activeHash, setActiveHash] = useState<string>('#services');
+    const [isMounted, setIsMounted] = useState(false);
 
     const t = useTranslations('nav');
     const pathname = usePathname() ?? buildLocalePath(locale);
@@ -131,6 +126,7 @@ export default function Header({ locale }: HeaderProps) {
     };
 
     useEffect(() => {
+        setIsMounted(true);
         const updateActiveHash = () => {
             if (typeof window === 'undefined') {
                 return;
@@ -172,6 +168,10 @@ export default function Header({ locale }: HeaderProps) {
     };
 
     const isActive = (href: string) => {
+        // During SSR, always return false to ensure consistent hydration
+        if (!isMounted) {
+            return false;
+        }
         const normalizedCurrentPath = normalizePath(pathname ?? homePath);
         if (href.includes('#')) {
             const [basePath, hashFragment] = href.split('#');
