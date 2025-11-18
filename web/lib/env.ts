@@ -35,6 +35,9 @@ const envSchema = z.object({
   NEXT_PUBLIC_CAL_BOOKING_URL: z.union([z.string().url(), z.literal('')]).optional(),
   NEXT_PUBLIC_CAL_BOOKING_URL_FR: z.union([z.string().url(), z.literal('')]).optional(),
   
+  // Chatbot configuration (optional)
+  NEXT_PUBLIC_CRISP_ID: z.string().optional(),
+  
   // API endpoints (optional)
   NEXT_PUBLIC_API_BASE_URL: z.string().url().optional(),
   

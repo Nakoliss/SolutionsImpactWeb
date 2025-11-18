@@ -321,5 +321,19 @@
         "additionalServices": "Intégrations terrain"
       }
     }
+  },
+  "chatbot": {
+    "banner": {
+      "title": "Activer la réceptionniste IA",
+      "description": "Discutez avec notre assistant IA bilingue. Nous utilisons Crisp pour offrir le support par chat. En activant le chat, vous consentez à ce que Crisp traite vos messages et vos coordonnées.",
+      "privacyLink": "En savoir plus dans notre politique de confidentialité",
+      "enable": "Activer le chat",
+      "decline": "Non merci"
+    },
+    "preChat": {
+      "projectQuestion": "Parlez-nous de votre projet",
+      "bookingPrompt": "Préférez-vous planifier un diagnostic?",
+      "bookingButton": "Réserver un diagnostic"
+    }
   }
 }

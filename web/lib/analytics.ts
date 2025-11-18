@@ -55,7 +55,12 @@ export const ANALYTICS_EVENTS = {
   
   // Error events
   ERROR_OCCURRED: 'error_occurred',
-  FORM_ERROR: 'form_error'
+  FORM_ERROR: 'form_error',
+  
+  // Chatbot events
+  CHAT_CONSENT_GRANTED: 'chat_consent_granted',
+  CHAT_LOADED: 'chat_loaded',
+  CHAT_BOOKING_CLICK: 'chat_booking_click'
 } as const;
 
 // Console provider for development

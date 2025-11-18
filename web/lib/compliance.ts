@@ -65,6 +65,17 @@ export const SUBCONTRACTORS: Subcontractor[] = [
     location: 'European Union data storage (Frankfurt) with US processing safeguards',
     privacyUrl: 'https://sentry.io/privacy/',
   },
+  {
+    name: 'Crisp',
+    service: 'AI chatbot and live chat support',
+    purpose: {
+      en: 'Provides bilingual AI receptionist and live chat functionality. Processes chat messages and contact information only after explicit user consent.',
+      fr: 'Fournit une receptionniste IA bilingue et fonctionnalite de chat en direct. Traite les messages de chat et les coordonnees uniquement apres consentement explicite de l utilisateur.',
+    },
+    dataHandled: ['Name', 'Email', 'Chat messages', 'IP address', 'Browser metadata'],
+    location: 'European Union (GDPR compliant, ISO 27001)',
+    privacyUrl: 'https://crisp.chat/en/privacy/',
+  },
 ];
 
 export interface PrivacySection {
@@ -101,11 +112,13 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
       en: [
         'Contact forms: name, email, company, phone (optional), project details, and consent preferences.',
         'Scheduling: preferred time slot, meeting agenda, and optional notes to prepare our consultation.',
+        'Chatbot: name, email, chat messages, and project information (collected only after explicit consent to enable chat).',
         'Analytics: aggregated traffic metrics captured only when visitors accept analytics cookies.',
       ],
       fr: [
         'Formulaires de contact : nom, courriel, entreprise, telephone (facultatif), details du projet et preferences de consentement.',
         'Prise de rendez-vous : plage horaire souhaitee, objectifs de la rencontre et notes optionnelles pour la preparation.',
+        'Chatbot : nom, courriel, messages de chat et informations sur le projet (recueillis uniquement apres consentement explicite pour activer le chat).',
         'Analytiques : mesures de trafic agregees uniquement lorsque les visiteurs acceptent les temoins analytiques.',
       ],
     },
@@ -154,10 +167,12 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
       en: [
         'You may request access, rectification, portability, or deletion of your personal information at any time. Contact us via privacy@solutionsimpactweb.com or by using the data request form below.',
         'We respond to formal requests within 30 days. Identity verification may be required to protect your information.',
+        'For chatbot data (Crisp): You can request access or deletion of your chat history and contact information. We process these requests within 30 days and will coordinate with Crisp to ensure your data is removed from their systems as well.',
       ],
       fr: [
         'Vous pouvez demander l acces, la rectification, la portabilite ou la suppression de vos renseignements personnels en tout temps. Communiquez avec nous a privacy@solutionsimpactweb.com ou via le formulaire ci-dessous.',
         'Nous repondons aux demandes officielles dans un delai de 30 jours. Une verification d identite peut etre requise pour proteger vos informations.',
+        'Pour les donnees du chatbot (Crisp) : Vous pouvez demander l acces ou la suppression de votre historique de chat et de vos coordonnees. Nous traitons ces demandes dans un delai de 30 jours et coordonnerons avec Crisp pour garantir que vos donnees sont egalement supprimees de leurs systemes.',
       ],
     },
   },

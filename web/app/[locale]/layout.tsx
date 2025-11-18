@@ -5,6 +5,7 @@ import { getMessages } from 'next-intl/server';
 import { CookieConsentProvider } from '@/components/CookieConsentBanner';
 import Header from '@/components/Header';
 import LegalFooter from '@/components/LegalFooter';
+import ChatbotGate from '@/components/ChatbotGate';
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { repairLocalizedMessages } from '@/lib/messages';
 import DesignContextWrapper from '@/components/DesignContextWrapper';
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
             </Suspense>
             {children}
             <LegalFooter locale={locale as SupportedLocale} />
+            <ChatbotGate provider="crisp" locale={locale as SupportedLocale} />
           </CookieConsentProvider>
         </DesignContextWrapper>
       </NextIntlClientProvider>

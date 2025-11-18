@@ -321,6 +321,20 @@
         "additionalServices": "Field integrations"
       }
     }
+  },
+  "chatbot": {
+    "banner": {
+      "title": "Enable AI receptionist",
+      "description": "Chat with our bilingual AI assistant. We use Crisp to provide chat support. By enabling chat, you consent to Crisp processing your messages and contact information.",
+      "privacyLink": "Learn more in our privacy policy",
+      "enable": "Enable chat",
+      "decline": "No thanks"
+    },
+    "preChat": {
+      "projectQuestion": "Tell us about your project",
+      "bookingPrompt": "Prefer to schedule a diagnostic?",
+      "bookingButton": "Book a diagnostic"
+    }
   }
 }
 
