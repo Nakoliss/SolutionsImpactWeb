@@ -41,7 +41,7 @@ const COPY: Record<SupportedLocale, FormContent> = {
       submit: 'Submit my request',
       submitting: 'Submitting...',
       success: 'Your request was received. Our privacy officer will follow up shortly.',
-      error: 'We could not process your request. Please try again or email privacy@webimpactsolutions.ca.',
+      error: 'We could not process your request. Please try again or email privacy@solutionsimpactweb.com.',
     },
     help: 'Explain your request so we can respond quickly. Never include passwords or highly sensitive information in this form.',
     types: [
@@ -64,7 +64,7 @@ const COPY: Record<SupportedLocale, FormContent> = {
       submit: 'Soumettre ma demande',
       submitting: 'Envoi en cours...',
       success: 'Votre demande a ete recue. Notre responsable de la protection des renseignements personnels vous contactera sous peu.',
-      error: 'Nous navons pas pu traiter votre demande. Reessayez ou ecrivez a privacy@webimpactsolutions.ca.',
+      error: 'Nous navons pas pu traiter votre demande. Reessayez ou ecrivez a privacy@solutionsimpactweb.com.',
     },
     help: 'Decrivez votre demande pour que nous puissions repondre rapidement. N inscrivez pas de mots de passe ni dinformations tres sensibles dans ce formulaire.',
     types: [

@@ -200,6 +200,31 @@ export default function LeadCaptureForm({
         const result = await response.json();
         console.log('Lead submitted successfully:', result);
       }
+
+      // Also log to Supabase via /api/lead
+      try {
+        const { getUTMParams } = await import('@/lib/utmUtils');
+        const utm = getUTMParams();
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            locale,
+            source,
+            utm_source: utm.utm_source,
+            utm_medium: utm.utm_medium,
+            utm_campaign: utm.utm_campaign,
+            notes: formData.interest || null,
+          }),
+        });
+      } catch (leadError) {
+        // Don't fail the form submission if Supabase logging fails
+        console.warn('Failed to log lead to Supabase:', leadError);
+      }
       
       // Track successful form submission
       const completedFields = Object.keys(formData).filter(key => 

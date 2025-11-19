@@ -3,6 +3,8 @@
     "home": "Accueil",
     "services": "Services",
     "packages": "Forfaits",
+    "guides": "Guides",
+    "faq": "FAQ",
     "whyUs": "Pourquoi nous",
     "process": "Approche",
     "assessment": "Diagnostic IA",
@@ -334,6 +336,44 @@
       "projectQuestion": "Parlez-nous de votre projet",
       "bookingPrompt": "Préférez-vous planifier un diagnostic?",
       "bookingButton": "Réserver un diagnostic"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Connexion Admin",
+      "email": "Courriel",
+      "password": "Mot de passe",
+      "signIn": "Se connecter",
+      "signingIn": "Connexion...",
+      "error": "Courriel ou mot de passe invalide",
+      "emailRequired": "Le courriel est requis",
+      "passwordRequired": "Le mot de passe est requis"
+    },
+    "dashboard": {
+      "title": "Tableau de bord Ops",
+      "leadsWeek": "Leads (7 jours)",
+      "bookingsWeek": "Réservations (7 jours)",
+      "revenueWeek": "Revenu (7 jours)",
+      "latestLeads": "Derniers leads",
+      "latestBookings": "Dernières réservations",
+      "latestPayments": "Derniers paiements",
+      "tasks": "Tâches",
+      "when": "Quand",
+      "name": "Nom",
+      "email": "Courriel",
+      "source": "Source",
+      "utm": "UTM",
+      "amount": "Montant",
+      "bundle": "Forfait",
+      "modality": "Modalité",
+      "status": "Statut",
+      "category": "Catégorie",
+      "dueDate": "Échéance",
+      "assignee": "Assigné à",
+      "todo": "À faire",
+      "doing": "En cours",
+      "done": "Terminé",
+      "signOut": "Déconnexion"
     }
   }
 }

@@ -27,6 +27,14 @@ const STATIC_ROUTES: StaticRouteConfig[] = [
   { path: 'content/guides', priority: 0.7, changeFrequency: 'weekly' },
   { path: 'content/pricing', priority: 0.65, changeFrequency: 'weekly' },
   { path: 'content/compliance', priority: 0.7, changeFrequency: 'weekly' },
+  { path: 'faq', priority: 0.75, changeFrequency: 'monthly' },
+  { path: 'lp/loi-25-essentials', priority: 0.8, changeFrequency: 'monthly' },
+  { path: 'merci', priority: 0.5, changeFrequency: 'yearly' },
+  { path: 'thank-you', priority: 0.5, changeFrequency: 'yearly' },
+  { path: 'blog/loi-25-erreurs-courantes', priority: 0.7, changeFrequency: 'monthly' },
+  { path: 'blog/aeogeo-visible-chatgpt', priority: 0.7, changeFrequency: 'monthly' },
+  { path: 'blog/law25-common-mistakes', priority: 0.7, changeFrequency: 'monthly' },
+  { path: 'blog/aeogeo-visibility-chatgpt', priority: 0.7, changeFrequency: 'monthly' },
 ];
 
 function getBaseUrl(): string {

@@ -80,6 +80,8 @@ export default function Header({ locale }: HeaderProps) {
     const navigationItems = [
         { key: 'services', href: `${homePath}#services` },
         { key: 'packages', href: `${homePath}#home-packages` },
+        { key: 'guides', href: buildLocalePath(locale, '/content/guides') },
+        { key: 'faq', href: buildLocalePath(locale, '/faq') },
         { key: 'whyUs', href: `${homePath}#why` },
         { key: 'process', href: `${homePath}#process` },
         { key: 'contact', href: `${homePath}#contact` }
@@ -268,6 +270,7 @@ export default function Header({ locale }: HeaderProps) {
                         {renderLanguageSwitcher('desktop')}
                         <Link
                             href={buildLocalePath(locale, '/contact')}
+                            onClick={() => trackMetaLead('header_cta')}
                             className="bg-gradient-to-r from-purple-500 to-sky-500 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
                         >
                             {t('book')}
@@ -335,7 +338,10 @@ export default function Header({ locale }: HeaderProps) {
                             <div className="px-3 py-2">
                                 <Link
                                     href={buildLocalePath(locale, '/contact')}
-                                    onClick={() => setIsMenuOpen(false)}
+                                    onClick={() => {
+                                        setIsMenuOpen(false);
+                                        trackMetaLead('header_mobile_cta');
+                                    }}
                                     className="block w-full rounded-md bg-gradient-to-r from-purple-500 to-sky-500 px-4 py-2 text-center text-sm font-medium text-white transition hover:from-purple-600 hover:to-sky-600"
                                 >
                                     {t('book')}

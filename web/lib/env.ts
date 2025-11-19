@@ -38,6 +38,13 @@ const envSchema = z.object({
   // Chatbot configuration (optional)
   NEXT_PUBLIC_CRISP_ID: z.string().optional(),
   
+  // Meta Pixel configuration (optional)
+  NEXT_PUBLIC_META_PIXEL_ID: z.string().optional(),
+  
+  // MailerLite embed forms (optional)
+  NEXT_PUBLIC_MAILERLITE_EMBED_FR: z.union([z.string().url(), z.literal('')]).optional(),
+  NEXT_PUBLIC_MAILERLITE_EMBED_EN: z.union([z.string().url(), z.literal('')]).optional(),
+  
   // API endpoints (optional)
   NEXT_PUBLIC_API_BASE_URL: z.string().url().optional(),
   
@@ -53,6 +60,21 @@ const envSchema = z.object({
   // Security configuration
   NEXTAUTH_SECRET: z.string().min(32).optional(),
   NEXTAUTH_URL: z.string().url().optional(),
+  
+  // Supabase configuration (required for admin ops)
+  NEXT_PUBLIC_SUPABASE_URL: z.string().url().optional(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().optional(),
+  SUPABASE_SERVICE_ROLE: z.string().optional(),
+  
+  // Stripe configuration (required for payments)
+  STRIPE_SECRET_KEY: z.string().optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().optional(),
+  
+  // Cal.com webhook configuration
+  CALCOM_WEBHOOK_SECRET: z.string().optional(),
+  
+  // Cron secret for monthly report generation
+  CRON_SECRET: z.string().optional(),
   
   // Feature flags
   NEXT_PUBLIC_MAINTENANCE_MODE: z
@@ -139,6 +161,15 @@ export const validateEnvironment = () => {
     if (!env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && env.NEXT_PUBLIC_ANALYTICS_PROVIDER === 'plausible') {
       issues.push('Plausible provider selected but NEXT_PUBLIC_PLAUSIBLE_DOMAIN is not set');
     }
+    
+    // Check Supabase configuration (required for admin ops)
+    if (!env.NEXT_PUBLIC_SUPABASE_URL) {
+      issues.push('NEXT_PUBLIC_SUPABASE_URL is not set (required for admin dashboard)');
+    }
+    
+    if (!env.SUPABASE_SERVICE_ROLE) {
+      issues.push('SUPABASE_SERVICE_ROLE is not set (required for admin operations)');
+    }
   }
   
   if (issues.length > 0) {
@@ -177,6 +208,8 @@ export const getConfigSummary = () => {
       database: !!env.DATABASE_URL,
       smtp: !!env.SMTP_HOST,
       auth: !!env.NEXTAUTH_SECRET,
+      supabase: !!env.NEXT_PUBLIC_SUPABASE_URL && !!env.SUPABASE_SERVICE_ROLE,
+      stripe: !!env.STRIPE_SECRET_KEY && !!env.STRIPE_WEBHOOK_SECRET,
     },
   };
   

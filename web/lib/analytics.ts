@@ -45,6 +45,8 @@ export const ANALYTICS_EVENTS = {
   CONTENT_SHARED: 'content_shared',
   VIDEO_PLAYED: 'video_played',
   SECTION_VIEWED: 'section_viewed',
+  VIEW_CONTENT: 'view_content',
+  FAQ_VIEW: 'faq_view',
 
   // Booking + contact events
   BOOKING_VIEWED: 'view_booking',
@@ -60,7 +62,13 @@ export const ANALYTICS_EVENTS = {
   // Chatbot events
   CHAT_CONSENT_GRANTED: 'chat_consent_granted',
   CHAT_LOADED: 'chat_loaded',
-  CHAT_BOOKING_CLICK: 'chat_booking_click'
+  CHAT_BOOKING_CLICK: 'chat_booking_click',
+  CHAT_DECLINED: 'chat_declined',
+  
+  // Lead generation events
+  LEAD_SUBMIT: 'lead_submit',
+  LEAD_CONFIRMED: 'lead_confirmed',
+  LEAD_DOWNLOAD: 'lead_download'
 } as const;
 
 // Console provider for development

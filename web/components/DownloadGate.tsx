@@ -126,6 +126,31 @@ export default function DownloadGate({
         throw new Error('Failed to submit form');
       }
       
+      // Also log to Supabase via /api/lead
+      try {
+        const { getUTMParams } = await import('@/lib/utmUtils');
+        const utm = getUTMParams();
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: name.trim(),
+            email: email.trim().toLowerCase(),
+            locale,
+            source,
+            utm_source: utm.utm_source,
+            utm_medium: utm.utm_medium,
+            utm_campaign: utm.utm_campaign,
+            notes: `Download: ${fileName}`,
+          }),
+        });
+      } catch (leadError) {
+        // Don't fail the form submission if Supabase logging fails
+        console.warn('Failed to log lead to Supabase:', leadError);
+      }
+      
       setSubmitted(true);
       setDownloadReady(true);
       

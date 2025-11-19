@@ -1,0 +1,228 @@
+---
+title: "Law 25 and Analytics: Consent and Compliant Measurement Guide"
+description: "Understand how to use Google Analytics, Google Business Profile, and other measurement tools while complying with Quebec Law 25 and consent requirements."
+slug: "loi-25-analytics-consentement"
+localeAvail: ["fr", "en"]
+leadForm: true
+category: "guides"
+publishedAt: "2025-01-15T00:00:00.000Z"
+updatedAt: "2025-01-15T00:00:00.000Z"
+tags: ["law-25", "analytics", "consent", "google-analytics", "compliance", "privacy"]
+author: "Solutions Impact Web Team"
+readTime: 12
+---
+
+# Law 25 and Analytics: Consent and Compliant Measurement Guide
+
+**Quebec Law 25** (formerly Bill 64) imposes strict requirements regarding consent and personal data protection. For businesses using Google Analytics, Google Business Profile, and other measurement tools, understanding these requirements is essential to remain compliant while effectively measuring performance.
+
+## What is Law 25?
+
+Law 25 modernizes Quebec's personal information protection regulations. It applies to any organization that collects, holds, uses, or communicates personal information of Quebec residents, regardless of where the organization is located.
+
+### Key Law 25 Requirements
+
+1. **Explicit Consent**: You must obtain explicit consent before collecting personal data via non-essential cookies (analytics, marketing, preferences).
+
+2. **Transparency**: You must clearly inform users of what you collect, why, and how you use it.
+
+3. **User Rights**: Users have the right to request access, correction, portability, or deletion of their data within **30 days**.
+
+4. **Subcontractor Registry**: You must maintain a registry of vendors that process personal data on your behalf.
+
+## Google Analytics and Consent
+
+### How Google Analytics Collects Data
+
+Google Analytics 4 (GA4) collects several types of data:
+- **Navigation data**: Pages visited, time spent, navigation paths
+- **Technical data**: Browser type, operating system, screen resolution
+- **Demographic data**: Age, gender, interests (if available)
+- **Location data**: City, region (approximate)
+
+This data is considered **personal information** under Law 25 because it can indirectly identify an individual.
+
+### Compliant Implementation with Consent
+
+To use Google Analytics in compliance with Law 25:
+
+1. **Consent Banner**
+   - Display a cookie banner before loading any analytics scripts
+   - Offer granular choices (analytics, marketing, preferences)
+   - Do not load Google Analytics until the user has consented
+
+2. **IP Anonymization**
+   - Enable IP anonymization in your GA4 configuration
+   - This reduces location accuracy but improves privacy protection
+
+3. **Privacy Policy**
+   - Clearly document the use of Google Analytics in your [privacy policy](/en/compliance/privacy)
+   - Mention the data collected, purposes, and user rights
+
+4. **Request Form**
+   - Offer an easily accessible [data request form](/en/compliance/data-request)
+   - Respond to requests within 30 days
+
+## Google Business Profile and Data
+
+### Data Collected by Google Business Profile
+
+Google Business Profile collects data when users interact with your profile:
+- **Views and Searches**: Number of times your profile is viewed
+- **Actions**: Calls, directions requests, website clicks
+- **Messages**: Conversations via Google Business Profile messaging
+- **Reviews**: Reviews left by clients
+
+### Law 25 Compliance for GBP
+
+1. **Transparency**: Inform in your privacy policy that you use Google Business Profile
+2. **Aggregated Data**: GBP statistics are generally aggregated and anonymized
+3. **Messages**: If you collect messages via GBP, treat them according to the same rules as your other client communications
+
+## Setting Up a Compliant Consent System
+
+### Step 1: Cookie Banner
+
+Your banner must:
+- Display before loading any non-essential scripts
+- Offer clear choices: "Accept all", "Reject non-essential", "Manage preferences"
+- Be available in French and English
+- Link to your privacy policy
+
+### Step 2: Preference Management
+
+Allow users to:
+- Modify their consent preferences at any time
+- Withdraw consent for certain categories
+- View their consent history
+
+### Step 3: Documentation
+
+Document:
+- Cookie categories used (essential, analytics, marketing, preferences)
+- Purpose of each category
+- Third-party vendors involved (Google Analytics, Google Business Profile, etc.)
+
+## Subcontractor Registry
+
+Law 25 requires you to maintain a registry of subcontractors that process personal data. For Google Analytics and Google Business Profile, you must document:
+
+- **Vendor name**: Google LLC
+- **Service**: Google Analytics 4, Google Business Profile
+- **Purpose**: Performance measurement, traffic analysis, local presence management
+- **Data processed**: Navigation data, technical data, approximate location data
+- **Location**: United States (with equivalent protection guarantees)
+- **Privacy policy link**: [Google Privacy Policy](https://policies.google.com/privacy)
+
+Consult our [privacy policy](/en/compliance/privacy) to see our complete subcontractor registry.
+
+## Post-Consent Measurement
+
+### Compliant Measurement Strategy
+
+1. **Before Consent**
+   - Do not collect any analytics data
+   - Do not load any tracking scripts
+   - Measure only essential metrics (server errors, technical logs)
+
+2. **After Consent**
+   - Load Google Analytics only if the user has consented to "Analytics"
+   - Enable conversion events
+   - Track user interactions in a compliant manner
+
+3. **Respecting Consent Withdrawal**
+   - If a user withdraws consent, immediately stop collection
+   - Delete or anonymize collected data if requested
+
+## Best Practices for Compliance
+
+### 1. Default Consent: Denied
+
+Never assume consent. By default, all non-essential cookies must be disabled.
+
+### 2. Granularity
+
+Offer granular choices:
+- Essential cookies (always enabled)
+- Analytics cookies (optional)
+- Marketing cookies (optional)
+- Preference cookies (optional)
+
+### 3. Complete Documentation
+
+Maintain up-to-date documentation of:
+- Your privacy policy
+- Your subcontractor registry
+- Your data request response procedures
+
+### 4. Team Training
+
+Ensure your team understands:
+- Law 25 requirements
+- How to handle data requests
+- How to respond to privacy questions
+
+## Responding to Data Requests
+
+### 30-Day Deadline
+
+Law 25 requires you to respond to access, correction, or deletion requests within **30 days**.
+
+### Recommended Process
+
+1. **Acknowledgment**: Confirm receipt of the request within 7 days
+2. **Identity Verification**: Verify the requester's identity to protect their data
+3. **Processing**: Process the request according to type (access, correction, deletion)
+4. **Response**: Provide a complete response within 30 days
+
+Use our [data request form](/en/compliance/data-request) to facilitate the process.
+
+## Impact on Your Measurement Strategy
+
+### Consent Rate
+
+Expect a consent rate of 30-50% for analytics cookies. This means you will only measure a portion of your actual traffic.
+
+### Improvement Strategies
+
+1. **Transparency**: Clearly explain why you collect data
+2. **Value**: Show the added value (service improvement, personalized content)
+3. **Trust**: Build trust with a clear privacy policy
+
+## Resources and Support
+
+### Legal Documentation
+
+- [Act respecting the protection of personal information in the private sector](https://www.legisquebec.gouv.qc.ca/en/document/lc/P-39.1)
+- [Quebec Access to Information Commission](https://www.cai.gouv.qc.ca/)
+
+### Compliance Services
+
+Our team can help you:
+- Audit your current Law 25 compliance
+- Implement a compliant consent system
+- Draft or update your privacy policy
+- Train your team on best practices
+
+Discover our [Law 25 compliance services](/en/services) to learn more.
+
+## Conclusion
+
+Respecting Law 25 while effectively measuring your performance is possible with a thoughtful approach to consent and transparency. By implementing compliant cookie banners, clearly documenting your practices, and respecting user rights, you can maintain compliance while collecting useful data for your business.
+
+## Next Steps
+
+1. **Compliance Audit**: Have your current site analyzed by our experts
+2. **Implementation**: Set up a compliant consent system
+3. **Documentation**: Update your privacy policy and subcontractor registry
+4. **Training**: Train your team on Law 25 requirements
+
+[Contact us](/en/contact) for a free consultation on Law 25 compliance and analytical measurement.
+
+## Additional Resources
+
+- [Complete Privacy Policy](/en/compliance/privacy)
+- [Data Request Form](/en/compliance/data-request)
+- [Data Residency Guide - Law 25](/en/content/compliance/bill-64-data-residency-guide)
+- [Compliance Services](/en/services)
+

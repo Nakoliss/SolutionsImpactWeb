@@ -4,10 +4,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import CanonicalLink from '@/components/CanonicalLink';
 import DownloadGate from '@/components/DownloadGate';
 import HrefLangLinks from '@/components/HrefLangLinks';
+import StructuredData from '@/components/StructuredData';
 import { CONTENT_CATEGORIES, type ContentCategory, SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
-import { buildLocalePath } from '@/lib/localeRouting';
+import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { contentExists, getContentBySlug, getContentSlugs } from '@/lib/mdx';
-import { generateMetadata as generateBaseMetadata } from '@/lib/metadata';
+import { generateMetadata as generateBaseMetadata, SITE_URL } from '@/lib/metadata';
+import { buildOrganization, type Article } from '@/lib/seo/structuredData';
 
 interface ContentPageProps {
   params: {
@@ -89,6 +91,28 @@ export default async function ContentPage({ params }: ContentPageProps) {
   const contactHref = buildLocalePath(locale, '/contact');
   const servicesHref = `${buildLocalePath(locale)}#services`;
   
+  // Build Article structured data
+  const articleUrl = buildLocaleUrl(SITE_URL, locale, `/content/${category}/${slug}`);
+  const publisher = buildOrganization(locale);
+  const article: Article = {
+    headline: content.metadata.title,
+    description: content.metadata.description,
+    datePublished: content.metadata.publishedAt,
+    dateModified: content.metadata.updatedAt,
+    publisher,
+    mainEntityOfPage: articleUrl,
+    articleSection: categoryInfo.name,
+    ...(content.metadata.author && {
+      author: {
+        '@type': 'Person',
+        name: content.metadata.author,
+      },
+    }),
+    ...(content.metadata.tags && content.metadata.tags.length > 0 && {
+      keywords: content.metadata.tags,
+    }),
+  };
+  
   return (
     <div className="min-h-screen bg-white">
       <CanonicalLink 
@@ -99,6 +123,7 @@ export default async function ContentPage({ params }: ContentPageProps) {
         currentLocale={locale} 
         path={`/content/${category}/${slug}`} 
       />
+      <StructuredData locale={locale} article={article} />
       {/* Header */}
       <header className="bg-gray-50 border-b">
         <div className="max-w-4xl mx-auto px-4 py-8">

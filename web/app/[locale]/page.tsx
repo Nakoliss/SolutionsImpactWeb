@@ -2,6 +2,7 @@ import Script from 'next/script';
 import { notFound } from 'next/navigation';
 
 import BusinessCarousel from '@/components/BusinessCarousel';
+import ResourcesSection from '@/components/ResourcesSection';
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { fetchServicesForStaticProps } from '@/data/services';
 import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
@@ -33,6 +34,7 @@ export async function renderHomePage(locale: SupportedLocale) {
         initialServiceCatalog={servicesResult.catalog}
         disableClientPrefetch
       />
+      <ResourcesSection locale={locale} />
       <Script
         id={`services-list-jsonld-${locale}`}
         type="application/ld+json"
@@ -61,7 +63,8 @@ export async function buildHomeMetadata(locale: SupportedLocale) {
     ? 'Transformez votre présence numérique avec nos services de marketing intelligent. Expertise bilingue, technologies de pointe, résultats mesurables.'
     : 'Transform your digital presence with intelligent marketing services. Bilingual expertise, cutting-edge tech, measurable results.';
 
-  const canonicalPath = locale === 'fr' ? '/' : buildLocalePath(locale);
+  // Use '/' for canonical - resolveUrl will add the locale prefix
+  const canonicalPath = '/';
 
   return generateSEOMetadata({
     title,

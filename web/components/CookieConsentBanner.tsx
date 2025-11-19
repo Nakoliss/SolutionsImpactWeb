@@ -64,7 +64,7 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
       },
       analytics: {
         title: 'Analytics',
-        description: 'Help us measure performance, debug issues, and improve the experience.',
+        description: 'Help us measure performance, debug issues, and improve the experience. Includes Google Analytics 4, Google Search Console, and Google Business Profile insights.',
       },
       preferences: {
         title: 'Preferences',
@@ -72,7 +72,7 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
       },
       marketing: {
         title: 'Marketing',
-        description: 'Enable remarketing audiences and conversion tracking when you interact with our campaigns.',
+        description: 'Enable remarketing audiences and conversion tracking when you interact with our campaigns. May include Google Business Profile engagement data for marketing purposes.',
       },
     },
     modal: {
@@ -104,7 +104,7 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
       },
       analytics: {
         title: 'Analytiques',
-        description: 'Mesurent la performance, détectent les anomalies et guident les améliorations.',
+        description: 'Mesurent la performance, détectent les anomalies et guident les améliorations. Inclut Google Analytics 4, Google Search Console et les statistiques Google Business Profile.',
       },
       preferences: {
         title: 'Préférences',
@@ -112,7 +112,7 @@ const COPY: Record<SupportedLocale, LocalizedCopy> = {
       },
       marketing: {
         title: 'Marketing',
-        description: 'Activent le remarketing et le suivi des conversions lorsque vous interagissez avec nos campagnes.',
+        description: 'Activent le remarketing et le suivi des conversions lorsque vous interagissez avec nos campagnes. Peuvent inclure les données d\'engagement Google Business Profile à des fins marketing.',
       },
     },
     modal: {

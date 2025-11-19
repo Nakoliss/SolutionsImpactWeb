@@ -86,8 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }
   
   // const categoryInfo = CONTENT_CATEGORIES[category as ContentCategory];
-  const content = getCategoryContent(category as ContentCategory)
-    .filter(item => item.metadata.localeAvail.includes(locale));
+  const content = getCategoryContent(category as ContentCategory, locale);
   
   // Group content by slug to handle bilingual versions
   const contentBySlug = content.reduce((acc, item) => {

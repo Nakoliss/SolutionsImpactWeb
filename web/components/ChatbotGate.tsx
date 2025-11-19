@@ -211,6 +211,49 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
       setHasConsent(granted);
 
+      // Log consent to Supabase for Loi 25 compliance
+      import('@/lib/utmUtils')
+        .then(({ getCookieId }) => {
+          const actor = getCookieId();
+          fetch('/api/consent', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              category: 'chatbot',
+              granted,
+              actor,
+              meta: {
+                provider: 'crisp',
+                locale,
+                timestamp: consent.timestamp,
+              },
+            }),
+          }).catch((error) => {
+            console.warn('Failed to log chatbot consent to Supabase:', error);
+          });
+        })
+        .catch(() => {
+          // Fallback
+          fetch('/api/consent', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              category: 'chatbot',
+              granted,
+              actor: 'unknown',
+              meta: {
+                timestamp: consent.timestamp,
+              },
+            }),
+          }).catch(() => {
+            // Silent fail
+          });
+        });
+
       if (granted) {
         // Track consent granted event (only after user consent)
         analytics.track('chat_consent_granted', {
@@ -297,7 +340,13 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
           </div>
           <div className="flex flex-col gap-2 sm:flex-row">
             <button
-              onClick={() => saveConsent(false)}
+              onClick={() => {
+                analytics.track('chat_declined', {
+                  provider: 'crisp',
+                  locale,
+                });
+                saveConsent(false);
+              }}
               className="rounded-lg border border-white/20 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
             >
               {t('banner.decline')}

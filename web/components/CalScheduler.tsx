@@ -143,12 +143,27 @@ export default function CalScheduler({
         },
       });
 
+      // Listen for Cal.com events to track booking interactions
+      if (onStart) {
+        window.Cal('on', {
+          action: '*',
+          callback: (event: { detail?: { type?: string } }) => {
+            const eventType = event?.detail?.type;
+            // Track when user selects an event type (starts booking)
+            if (eventType === 'eventTypeSelected' && !hasStartedRef.current) {
+              hasStartedRef.current = true;
+              onStart();
+            }
+          },
+        });
+      }
+
       setReady(true);
     } catch (error) {
       console.error('Failed to initialize Cal.com embed', error);
       setHasError(true);
     }
-  }, [calLink]);
+  }, [calLink, onStart]);
 
   useEffect(() => {
     initializeEmbed();

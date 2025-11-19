@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { ServiceGrid } from '@/components/ServiceGrid';
+import ResourcesSection from '@/components/ResourcesSection';
 import { fetchServicesForStaticProps } from '@/data/services';
 import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { buildServicesItemListJsonLd } from '@/lib/seo/servicesJsonLd';
@@ -118,6 +119,7 @@ export default async function ServicesPage({ params }: ServicesPageProps) {
           </div>
         </section>
       </div>
+      <ResourcesSection locale={locale} />
       <Script
         id={`services-page-jsonld-${locale}`}
         type="application/ld+json"

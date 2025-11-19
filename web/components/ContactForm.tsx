@@ -6,6 +6,7 @@ import { Building, CheckCircle, Mail, Phone, Send, User } from 'lucide-react';
 import type { SupportedLocale } from '@/content';
 import { useAnalytics } from '@/lib/analytics';
 import { PhoneInput } from './PhoneInput';
+import { trackMetaLead } from './MetaPixelGate';
 
 interface ContactFormProps {
   locale: SupportedLocale;
@@ -128,6 +129,11 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
       time_to_submit_ms: submissionDelayMs
     });
 
+    // Track Meta Pixel Lead event if consultation requested
+    if (wantsConsultation) {
+      trackMetaLead('contact_form_consultation');
+    }
+
     try {
       // Prepare message with consultation preference
       let finalMessage = formData.message;
@@ -144,7 +150,7 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
         : "\n\n[Form sent in English]";
       finalMessage += languageInfo;
 
-      // Save to leads API
+      // Save to leads API (existing endpoint for email/legacy storage)
       const response = await fetch('/api/leads', {
         method: 'POST',
         headers: {
@@ -166,6 +172,32 @@ export default function ContactForm({ locale, className = '', id }: ContactFormP
 
       if (!response.ok) {
         throw new Error('Failed to submit form');
+      }
+
+      // Also log to Supabase via /api/lead
+      try {
+        const { getUTMParams } = await import('@/lib/utmUtils');
+        const utm = getUTMParams();
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            locale,
+            source: 'contact_form',
+            utm_source: utm.utm_source,
+            utm_medium: utm.utm_medium,
+            utm_campaign: utm.utm_campaign,
+            notes: finalMessage,
+          }),
+        });
+      } catch (leadError) {
+        // Don't fail the form submission if Supabase logging fails
+        console.warn('Failed to log lead to Supabase:', leadError);
       }
 
       setSubmitStatus('success');

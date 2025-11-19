@@ -81,11 +81,29 @@ export function parseMDXFile(
 /**
  * Get all content for a specific category
  */
-export function getCategoryContent(category: ContentCategory): MDXContent[] {
+export function getCategoryContent(category: ContentCategory, locale?: SupportedLocale): MDXContent[] {
   const files = getMDXFiles(category);
   const content: MDXContent[] = [];
+  const processedSlugs = new Set<string>();
 
   for (const file of files) {
+    // Extract locale from filename
+    const localeMatch = file.match(/\.(fr|en)\.mdx$/);
+    const fileLocale = localeMatch ? (localeMatch[1] as SupportedLocale) : 'fr';
+    
+    // If a specific locale is requested, only process files for that locale
+    if (locale && fileLocale !== locale) {
+      continue;
+    }
+    
+    // Extract slug to avoid processing both translations
+    const slug = file.replace(/\.(fr|en)\.mdx$/, '');
+    if (!locale && processedSlugs.has(slug)) {
+      // Skip if we already processed this slug (prefer first file found)
+      continue;
+    }
+    processedSlugs.add(slug);
+    
     const parsed = parseMDXFile(category, file);
     if (parsed) {
       content.push(parsed);

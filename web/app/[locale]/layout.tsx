@@ -6,6 +6,8 @@ import { CookieConsentProvider } from '@/components/CookieConsentBanner';
 import Header from '@/components/Header';
 import LegalFooter from '@/components/LegalFooter';
 import ChatbotGate from '@/components/ChatbotGate';
+import ConsentGate from '@/components/ConsentGate';
+import MetaPixelGate from '@/components/MetaPixelGate';
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { repairLocalizedMessages } from '@/lib/messages';
 import DesignContextWrapper from '@/components/DesignContextWrapper';
@@ -31,6 +33,8 @@ export default async function LocaleLayout({
       <NextIntlClientProvider locale={locale} messages={messages as Record<string, unknown>}>
         <DesignContextWrapper>
           <CookieConsentProvider locale={locale as SupportedLocale}>
+            <ConsentGate />
+            <MetaPixelGate />
             <Suspense fallback={null}>
               <Header locale={locale as SupportedLocale} />
             </Suspense>

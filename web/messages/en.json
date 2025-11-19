@@ -3,6 +3,8 @@
     "home": "Home",
     "services": "Services",
     "packages": "Packages",
+    "guides": "Guides",
+    "faq": "FAQ",
     "whyUs": "Why us",
     "process": "Process",
     "assessment": "AI assessment",
@@ -334,6 +336,44 @@
       "projectQuestion": "Tell us about your project",
       "bookingPrompt": "Prefer to schedule a diagnostic?",
       "bookingButton": "Book a diagnostic"
+    }
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Login",
+      "email": "Email",
+      "password": "Password",
+      "signIn": "Sign In",
+      "signingIn": "Signing in...",
+      "error": "Invalid email or password",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required"
+    },
+    "dashboard": {
+      "title": "Ops Dashboard",
+      "leadsWeek": "Leads (7 days)",
+      "bookingsWeek": "Bookings (7 days)",
+      "revenueWeek": "Revenue (7 days)",
+      "latestLeads": "Latest Leads",
+      "latestBookings": "Latest Bookings",
+      "latestPayments": "Latest Payments",
+      "tasks": "Tasks",
+      "when": "When",
+      "name": "Name",
+      "email": "Email",
+      "source": "Source",
+      "utm": "UTM",
+      "amount": "Amount",
+      "bundle": "Bundle",
+      "modality": "Modality",
+      "status": "Status",
+      "category": "Category",
+      "dueDate": "Due Date",
+      "assignee": "Assignee",
+      "todo": "Todo",
+      "doing": "Doing",
+      "done": "Done",
+      "signOut": "Sign Out"
     }
   }
 }

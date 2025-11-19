@@ -68,6 +68,64 @@ export function writeConsent(consent: ConsentState): void {
   persistConsent(consent);
   updateDomAttributes(consent);
   listeners.forEach((listener) => listener(consent));
+
+  // Log consent changes to Supabase for Loi 25 compliance
+  if (typeof window !== 'undefined') {
+    // Log each category change
+    const categories = ['analytics', 'marketing', 'preferences'] as const;
+    categories.forEach((category) => {
+      // Map our consent categories to Supabase categories
+      const supabaseCategory =
+        category === 'analytics'
+          ? 'analytics'
+          : category === 'marketing'
+            ? 'ads'
+            : 'email';
+
+      // Get cookie ID for actor tracking
+      import('@/lib/utmUtils')
+        .then(({ getCookieId }) => {
+          const actor = getCookieId();
+          fetch('/api/consent', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              category: supabaseCategory,
+              granted: consent[category],
+              actor,
+              meta: {
+                userAgent: navigator.userAgent,
+                timestamp: consent.updatedAt,
+              },
+            }),
+          }).catch((error) => {
+            // Don't fail consent if logging fails
+            console.warn('Failed to log consent to Supabase:', error);
+          });
+        })
+        .catch(() => {
+          // Fallback if utmUtils fails
+          fetch('/api/consent', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              category: supabaseCategory,
+              granted: consent[category],
+              actor: 'unknown',
+              meta: {
+                timestamp: consent.updatedAt,
+              },
+            }),
+          }).catch(() => {
+            // Silent fail
+          });
+        });
+    });
+  }
 }
 
 export function clearStoredConsent(): void {

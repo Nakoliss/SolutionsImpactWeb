@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
-import { buildLocaleUrl } from '@/lib/localeRouting';
+import { buildLocaleUrl, getHrefLang } from '@/lib/localeRouting';
 
 // In development, use localhost; in production, use canonical domain
 const isDev = process.env.NODE_ENV === 'development';
@@ -63,11 +63,19 @@ export function generateMetadata(options: MetadataOptions): Metadata {
   const languageAlternates: Record<string, string> = {};
 
   if (canonical) {
+    // Add current locale's hreflang
+    const currentHreflang = getHrefLang(locale);
+    if (canonicalUrl) {
+      languageAlternates[currentHreflang] = canonicalUrl;
+    }
+    
+    // Add alternate locales
     for (const alt of alternateLocales) {
       if (alt !== locale) {
         const altUrl = resolveUrl(canonical, alt as SupportedLocale);
         if (altUrl) {
-          languageAlternates[alt] = altUrl;
+          const hreflangCode = getHrefLang(alt as SupportedLocale);
+          languageAlternates[hreflangCode] = altUrl;
         }
       }
     }
@@ -94,7 +102,8 @@ export function generateMetadata(options: MetadataOptions): Metadata {
         canonical: canonicalUrl,
         languages: {
           ...languageAlternates,
-          'x-default': canonicalUrl,
+          // x-default should always point to FR (default locale)
+          'x-default': locale === 'fr' ? canonicalUrl : resolveUrl(canonical, 'fr'),
         },
       },
     }),

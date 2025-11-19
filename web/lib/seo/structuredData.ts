@@ -94,6 +94,22 @@ export interface Answer {
   text: string;
 }
 
+export interface Article {
+  headline: string;
+  description: string;
+  datePublished: string;
+  dateModified: string;
+  author?: {
+    '@type': 'Person' | 'Organization';
+    name: string;
+  };
+  publisher: Organization;
+  mainEntityOfPage: string;
+  image?: string;
+  articleSection?: string;
+  keywords?: string[];
+}
+
 const ORGANIZATION_LOGO = `${SITE_URL.replace(/\/$/, '')}/favicon.ico`;
 const ORGANIZATION_ADDRESS: PostalAddress = {
   '@type': 'PostalAddress',
@@ -351,6 +367,149 @@ export function getComplianceFaq(locale: SupportedLocale): FAQPage {
   return COMPLIANCE_FAQ[locale];
 }
 
+const SEO_FAQ: Record<SupportedLocale, FAQPage> = {
+  fr: {
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Qu\'est-ce que le SEO local et pourquoi est-ce important pour les PME du Québec ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Le SEO local (Search Engine Optimization local) est une stratégie de marketing numérique qui aide les entreprises à apparaître dans les résultats de recherche Google pour les requêtes locales. Pour les PME du Québec, c\'est essentiel car plus de 80% des recherches incluent des termes locaux comme "à Montréal" ou "près de moi". Un bon SEO local augmente votre visibilité, génère plus de trafic qualifié et améliore vos chances d\'attirer des clients locaux.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment optimiser mon profil Google Business Profile pour le marché québécois ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Pour optimiser votre Google Business Profile au Québec : 1) Utilisez un NAP (Nom, Adresse, Téléphone) cohérent partout, 2) Ajoutez des catégories précises en français et en anglais, 3) Publiez régulièrement du contenu (posts, photos, vidéos), 4) Activez la messagerie et les réservations, 5) Répondez aux avis clients rapidement, 6) Assurez-vous que vos informations sont à jour et complètes.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Dois-je avoir un site web bilingue (FR/EN) pour le SEO au Québec ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Oui, un site bilingue est fortement recommandé pour le marché québécois. Cela vous permet de toucher à la fois les clients francophones et anglophones, d\'améliorer votre classement dans les résultats de recherche pour les deux langues, et de respecter les attentes du marché québécois. Utilisez des balises hreflang pour indiquer à Google les versions linguistiques de vos pages.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment la Loi 25 affecte-t-elle mon utilisation de Google Analytics et Google Business Profile ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'La Loi 25 exige que vous obteniez le consentement explicite des visiteurs avant d\'activer Google Analytics ou d\'autres cookies non essentiels. Vous devez afficher une bannière de cookies conforme, offrir des choix granulaires (analytics, marketing, préférences), documenter votre utilisation dans votre politique de confidentialité, et permettre aux utilisateurs de retirer leur consentement à tout moment. Les statistiques Google Business Profile sont généralement agrégées et conformes.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Qu\'est-ce que l\'AEO (Answer Engine Optimization) et comment ça fonctionne ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'L\'AEO (Answer Engine Optimization) est l\'optimisation de votre contenu pour apparaître dans les moteurs de réponses comme Google Assistant, les extraits enrichis et les résultats de recherche vocale. Pour optimiser l\'AEO, créez du contenu FAQ avec des réponses courtes et directes, utilisez le balisage FAQPage JSON-LD, structurez vos réponses avec des en-têtes clairs, et ciblez les questions que vos clients posent réellement.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Combien de temps faut-il pour voir des résultats SEO local ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Les résultats SEO local varient généralement entre 3 à 6 mois pour voir des améliorations significatives, mais certains éléments comme l\'optimisation Google Business Profile peuvent montrer des résultats plus rapidement (1-2 mois). Les facteurs clés incluent la concurrence dans votre secteur, la qualité de votre contenu, la cohérence de vos citations locales (NAP), et la régularité de vos publications.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Quels sont les outils essentiels pour mesurer le succès de mon SEO local ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Les outils essentiels incluent : Google Search Console (impressions, clics, positions), Google Analytics 4 (trafic organique local, conversions), Google Business Profile Insights (vues, recherches, actions), et des outils de suivi de citations comme BrightLocal ou Moz Local. Assurez-vous de respecter la Loi 25 en obtenant le consentement avant d\'activer Google Analytics.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Comment puis-je améliorer ma visibilité dans les résultats de recherche Google au Québec ?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Pour améliorer votre visibilité Google au Québec : 1) Optimisez votre Google Business Profile avec un NAP cohérent, 2) Créez du contenu bilingue (FR/EN) optimisé SEO, 3) Obtenez des avis clients authentiques, 4) Construisez des citations locales cohérentes, 5) Utilisez des mots-clés locaux dans votre contenu, 6) Publiez régulièrement du contenu de qualité, 7) Assurez-vous que votre site est rapide et mobile-friendly.',
+        },
+      },
+    ],
+  },
+  en: {
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'What is local SEO and why is it important for Quebec SMEs?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Local SEO (Local Search Engine Optimization) is a digital marketing strategy that helps businesses appear in Google search results for local queries. For Quebec SMEs, it\'s essential because more than 80% of searches include local terms like "in Montreal" or "near me". Good local SEO increases your visibility, generates more qualified traffic, and improves your chances of attracting local clients.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I optimize my Google Business Profile for the Quebec market?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'To optimize your Google Business Profile in Quebec: 1) Use consistent NAP (Name, Address, Phone) everywhere, 2) Add precise categories in French and English, 3) Regularly publish content (posts, photos, videos), 4) Enable messaging and bookings, 5) Respond to customer reviews quickly, 6) Ensure your information is up-to-date and complete.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Do I need a bilingual website (FR/EN) for SEO in Quebec?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Yes, a bilingual website is strongly recommended for the Quebec market. This allows you to reach both French and English-speaking clients, improve your ranking in search results for both languages, and meet Quebec market expectations. Use hreflang tags to indicate to Google the language versions of your pages.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How does Law 25 affect my use of Google Analytics and Google Business Profile?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Law 25 requires you to obtain explicit consent from visitors before activating Google Analytics or other non-essential cookies. You must display a compliant cookie banner, offer granular choices (analytics, marketing, preferences), document your use in your privacy policy, and allow users to withdraw their consent at any time. Google Business Profile statistics are generally aggregated and compliant.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is AEO (Answer Engine Optimization) and how does it work?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'AEO (Answer Engine Optimization) is optimizing your content to appear in answer engines like Google Assistant, featured snippets, and voice search results. To optimize AEO, create FAQ content with short, direct answers, use FAQPage JSON-LD markup, structure your answers with clear headings, and target questions your clients actually ask.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How long does it take to see local SEO results?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Local SEO results typically vary between 3 to 6 months to see significant improvements, but some elements like Google Business Profile optimization can show results more quickly (1-2 months). Key factors include competition in your sector, content quality, consistency of your local citations (NAP), and regularity of your publications.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What are the essential tools to measure the success of my local SEO?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Essential tools include: Google Search Console (impressions, clicks, positions), Google Analytics 4 (local organic traffic, conversions), Google Business Profile Insights (views, searches, actions), and citation tracking tools like BrightLocal or Moz Local. Ensure you comply with Law 25 by obtaining consent before activating Google Analytics.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How can I improve my visibility in Google search results in Quebec?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'To improve your Google visibility in Quebec: 1) Optimize your Google Business Profile with consistent NAP, 2) Create bilingual (FR/EN) SEO-optimized content, 3) Get authentic customer reviews, 4) Build consistent local citations, 5) Use local keywords in your content, 6) Regularly publish quality content, 7) Ensure your site is fast and mobile-friendly.',
+        },
+      },
+    ],
+  },
+};
+
+export function getSeoFaq(locale: SupportedLocale): FAQPage {
+  return SEO_FAQ[locale];
+}
+
 export function generateOrganizationSchema(org: Organization): string {
   const schema = {
     '@context': 'https://schema.org',
@@ -431,6 +590,45 @@ export function generateFAQSchema(faq: FAQPage): string {
   return JSON.stringify(schema, null, 2);
 }
 
+export function generateArticleSchema(article: Article): string {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.headline,
+    description: article.description,
+    datePublished: article.datePublished,
+    dateModified: article.dateModified,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': article.mainEntityOfPage,
+    },
+    publisher: {
+      '@type': article.publisher.contactPoint ? 'Organization' : 'Organization',
+      name: article.publisher.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: article.publisher.logo,
+      },
+    },
+    ...(article.author && {
+      author: {
+        '@type': article.author['@type'],
+        name: article.author.name,
+      },
+    }),
+    ...(article.image && {
+      image: {
+        '@type': 'ImageObject',
+        url: article.image,
+      },
+    }),
+    ...(article.articleSection && { articleSection: article.articleSection }),
+    ...(article.keywords && article.keywords.length > 0 && { keywords: article.keywords.join(', ') }),
+  };
+
+  return JSON.stringify(schema, null, 2);
+}
+
 export function generateBreadcrumbsFromPath(
   path: string,
   locale: SupportedLocale = 'fr',
@@ -497,6 +695,7 @@ export function generatePageStructuredData(options: {
   services?: Service[];
   breadcrumbs?: BreadcrumbList;
   faq?: FAQPage;
+  article?: Article;
 }): string[] {
   const locale = options.locale ?? 'fr';
   const schemas: string[] = [];
@@ -527,6 +726,10 @@ export function generatePageStructuredData(options: {
 
   if (options.faq) {
     schemas.push(generateFAQSchema(options.faq));
+  }
+
+  if (options.article) {
+    schemas.push(generateArticleSchema(options.article));
   }
 
   return schemas;

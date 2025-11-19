@@ -1,5 +1,6 @@
 import type { SupportedLocale } from '@/content';
 import type {
+  Article,
   BreadcrumbList,
   FAQPage,
   LocalBusiness,
@@ -15,6 +16,7 @@ interface StructuredDataProps {
   services?: Service[];
   breadcrumbs?: BreadcrumbList;
   faq?: FAQPage;
+  article?: Article;
 }
 
 export default function StructuredData({
@@ -24,6 +26,7 @@ export default function StructuredData({
   services,
   breadcrumbs,
   faq,
+  article,
 }: StructuredDataProps) {
   const schemas = generatePageStructuredData({
     locale,
@@ -32,6 +35,7 @@ export default function StructuredData({
     ...(services && { services }),
     ...(breadcrumbs && { breadcrumbs }),
     ...(faq && { faq }),
+    ...(article && { article }),
   });
 
   if (schemas.length === 0) {
