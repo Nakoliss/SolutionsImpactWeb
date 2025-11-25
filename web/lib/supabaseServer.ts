@@ -10,7 +10,7 @@ import { getEnv } from './env';
  */
 export async function createServerSupabaseClient() {
   const supabaseUrl = getEnv('NEXT_PUBLIC_SUPABASE_URL');
-  
+
   if (!supabaseUrl) {
     throw new Error('NEXT_PUBLIC_SUPABASE_URL is not configured');
   }
@@ -46,7 +46,7 @@ export async function createServerSupabaseClient() {
  * ONLY use this in API routes or server actions that need admin privileges
  * NEVER expose this to the client
  */
-export function createAdminClient() {
+export async function createAdminClient() {
   const supabaseUrl = getEnv('NEXT_PUBLIC_SUPABASE_URL');
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE;
 
@@ -66,7 +66,7 @@ export function createAdminClient() {
  * Uses service role key for admin operations
  */
 export async function supabaseRestInsert(table: string, data: Record<string, unknown>) {
-  const { url, serviceRoleKey } = createAdminClient();
+  const { url, serviceRoleKey } = await createAdminClient();
 
   const response = await fetch(`${url}/rest/v1/${table}`, {
     method: 'POST',
@@ -99,7 +99,7 @@ export async function supabaseRestQuery(
     filter?: string;
   } = {}
 ) {
-  const { url, serviceRoleKey } = createAdminClient();
+  const { url, serviceRoleKey } = await createAdminClient();
 
   const params = new URLSearchParams();
   if (options.select) params.append('select', options.select);

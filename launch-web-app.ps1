@@ -22,12 +22,12 @@ function Stop-PortListeners {
     }
   }
 
-  foreach ($pid in $pids) {
+  foreach ($processId in $pids) {
     try {
-      Write-Host "Stopping process $pid using port $Port..." -ForegroundColor Yellow
-      Stop-Process -Id $pid -Force -ErrorAction Stop
+      Write-Host "Stopping process $processId using port $Port..." -ForegroundColor Yellow
+      Stop-Process -Id $processId -Force -ErrorAction Stop
     } catch {
-      Write-Host ("Could not stop process {0}: {1}" -f $pid, $_) -ForegroundColor Red
+      Write-Host ("Could not stop process {0}: {1}" -f $processId, $_) -ForegroundColor Red
     }
   }
 }
