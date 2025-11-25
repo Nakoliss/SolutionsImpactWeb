@@ -12,7 +12,7 @@ export const SITE_URL = isDev
       ? process.env.NEXT_PUBLIC_SITE_URL
       : process.env.NEXT_PUBLIC_SITE_URL
         ? `https://${process.env.NEXT_PUBLIC_SITE_URL.replace(/^\/+/, '')}`
-        : 'https://www.solutionsimpactweb.ca');
+        : 'https://solutionsimpactweb.ca');
 
 interface MetadataOptions {
   title: string | null;

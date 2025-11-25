@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { createServerClient } from '@supabase/ssr';
 
-const CANONICAL_HOST = 'www.solutionsimpactweb.ca';
+// Production domain defaults to apex to match Vercel's domain redirect
+const CANONICAL_HOST = 'solutionsimpactweb.ca';
+const ALLOWED_HOSTS = new Set([CANONICAL_HOST, `www.${CANONICAL_HOST}`]);
 
 // Create next-intl middleware
 // Using 'always' prefix to prevent redirect loop with manual / -> /fr redirect
@@ -63,6 +65,7 @@ async function isAdminAuthenticated(request: NextRequest): Promise<boolean> {
 export async function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
   const url = request.nextUrl.clone();
+  const vercelEnv = process.env.VERCEL_ENV;
 
   // Protect /admin routes (except /admin/login)
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
@@ -84,8 +87,13 @@ export async function middleware(request: NextRequest) {
 
   // PRODUCTION ONLY: Force canonical host and HTTPS
   // In development, skip host checks to allow localhost testing
-  if (process.env.NODE_ENV === 'production') {
-    if (hostname !== CANONICAL_HOST) {
+  if (vercelEnv === 'production') {
+    const normalizedHost = hostname.toLowerCase();
+
+    // Only redirect if host is not one of the allowed domains.
+    // Vercel already canonicalizes www -> apex, so forcing a host redirect here
+    // would cause an infinite loop (www -> apex by Vercel -> www by middleware).
+    if (!ALLOWED_HOSTS.has(normalizedHost)) {
       url.hostname = CANONICAL_HOST;
       url.protocol = 'https:';
       url.port = '';
@@ -121,4 +129,3 @@ export const config = {
     '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
   ],
 };
-

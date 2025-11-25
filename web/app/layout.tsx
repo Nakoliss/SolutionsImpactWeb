@@ -23,7 +23,7 @@ const geistMono = Geist_Mono({
 const isDev = process.env.NODE_ENV === 'development';
 const rawSiteUrl = isDev 
   ? (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000")
-  : (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.solutionsimpactweb.ca");
+  : (process.env.NEXT_PUBLIC_SITE_URL ?? "https://solutionsimpactweb.ca");
 const normalizedSiteUrl = rawSiteUrl.startsWith("http")
   ? rawSiteUrl
   : `https://${rawSiteUrl.replace(new RegExp("^/+"), "")}`;
