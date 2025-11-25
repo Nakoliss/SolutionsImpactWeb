@@ -135,7 +135,8 @@ export const getDesignFromURLWithFallback = (fallback: BusinessType = BusinessTy
 
         const { design, error } = validateDesignWithFallback(designParam, fallback);
 
-        if (error) {
+        // Only log when there's an actual validation error (invalid parameter), not when it's simply missing (null)
+        if (error && designParam !== null) {
             // Error is already logged by validateDesignWithFallback
             console.info(`Using fallback design: ${design} (original: ${designParam})`);
         }
