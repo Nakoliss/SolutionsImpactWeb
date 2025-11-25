@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -13,20 +13,14 @@ interface MerciPageProps {
   params: Promise<{ locale: SupportedLocale }>;
 }
 
-export default function MerciPage({ params }: MerciPageProps) {
-  const [locale, setLocale] = useState<SupportedLocale>('fr');
+function MerciContent({ locale }: { locale: SupportedLocale }) {
   const searchParams = useSearchParams();
   const analytics = useAnalytics();
   const { consent } = useConsent();
 
   useEffect(() => {
-    // Get locale from params
-    params.then(({ locale: loc }) => setLocale(loc));
-  }, [params]);
-
-  useEffect(() => {
     const asset = searchParams.get('asset');
-    
+
     // Only track if analytics consent is granted
     if (consent?.analytics && asset) {
       // Track lead_confirmed event
@@ -83,7 +77,7 @@ export default function MerciPage({ params }: MerciPageProps) {
           {currentCopy.downloadLink}
         </Link>.
       </p>
-      
+
       <div className="mt-8">
         <Link
           href={buildLocalePath(locale, '/contact')}
@@ -93,6 +87,25 @@ export default function MerciPage({ params }: MerciPageProps) {
         </Link>
       </div>
     </main>
+  );
+}
+
+export default function MerciPage({ params }: MerciPageProps) {
+  const [locale, setLocale] = useState<SupportedLocale>('fr');
+
+  useEffect(() => {
+    // Get locale from params
+    params.then(({ locale: loc }) => setLocale(loc));
+  }, [params]);
+
+  return (
+    <Suspense fallback={
+      <main className="mx-auto max-w-3xl px-4 py-12">
+        <h1 className="text-3xl font-semibold mb-4">Loading...</h1>
+      </main>
+    }>
+      <MerciContent locale={locale} />
+    </Suspense>
   );
 }
 
