@@ -3,10 +3,11 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabaseClient';
-import { useTranslations } from 'next-intl';
+
+// Disable static generation for admin pages
+export const dynamic = 'force-dynamic';
 
 export default function AdminLoginPage() {
-  const t = useTranslations('admin.login');
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +27,7 @@ export default function AdminLoginPage() {
       });
 
       if (signInError) {
-        setError(t('error'));
+        setError('Invalid email or password');
         setIsLoading(false);
         return;
       }
@@ -38,7 +39,7 @@ export default function AdminLoginPage() {
       }
     } catch (err) {
       console.error('Login error:', err);
-      setError(t('error'));
+      setError('An error occurred during login');
       setIsLoading(false);
     }
   };
@@ -48,7 +49,7 @@ export default function AdminLoginPage() {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {t('title')}
+            Admin Login
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -60,7 +61,7 @@ export default function AdminLoginPage() {
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <label htmlFor="email" className="sr-only">
-                {t('email')}
+                Email address
               </label>
               <input
                 id="email"
@@ -69,14 +70,14 @@ export default function AdminLoginPage() {
                 autoComplete="email"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder={t('email')}
+                placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">
-                {t('password')}
+                Password
               </label>
               <input
                 id="password"
@@ -85,7 +86,7 @@ export default function AdminLoginPage() {
                 autoComplete="current-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder={t('password')}
+                placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -98,7 +99,7 @@ export default function AdminLoginPage() {
               disabled={isLoading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? t('signingIn') : t('signIn')}
+              {isLoading ? 'Signing in...' : 'Sign in'}
             </button>
           </div>
         </form>

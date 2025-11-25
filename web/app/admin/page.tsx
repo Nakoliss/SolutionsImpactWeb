@@ -3,9 +3,10 @@ import 'server-only';
 import { redirect } from 'next/navigation';
 import { createServerSupabaseClient } from '@/lib/supabaseServer';
 import { supabaseRestQuery } from '@/lib/supabaseServer';
-import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import AdminDashboardClient from './AdminDashboardClient';
+
+// Disable static generation for admin pages
+export const dynamic = 'force-dynamic';
 
 /**
  * Admin Dashboard - Server Component
@@ -56,13 +57,11 @@ export default async function AdminDashboard() {
 
   const revenueWeek = Array.isArray(payments)
     ? payments
-        .filter((p: { created_at: string; amount_cents: number }) => {
-          return new Date(p.created_at) >= sevenDaysAgo && p.amount_cents;
-        })
-        .reduce((sum: number, p: { amount_cents: number }) => sum + (p.amount_cents || 0), 0) / 100
+      .filter((p: { created_at: string; amount_cents: number }) => {
+        return new Date(p.created_at) >= sevenDaysAgo && p.amount_cents;
+      })
+      .reduce((sum: number, p: { amount_cents: number }) => sum + (p.amount_cents || 0), 0) / 100
     : 0;
-
-  const t = await getTranslations('admin.dashboard');
 
   return (
     <AdminDashboardClient
