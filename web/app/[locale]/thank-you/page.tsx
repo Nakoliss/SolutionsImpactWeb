@@ -99,22 +99,15 @@ export default function ThankYouPage({ params }: ThankYouPageProps) {
   }, [params]);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
-      <Suspense fallback={
-        <>
-          <h1 className="text-3xl font-semibold mb-4">
-            {locale === 'fr' ? 'Merci — vérification confirmée ✅' : 'Thank you — verification confirmed ✅'}
-          </h1>
-          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
-            {locale === 'fr' 
-              ? 'Le téléchargement démarre automatiquement. Sinon, cliquez ici.'
-              : 'The download starts automatically. Otherwise, click here.'}
-          </p>
-        </>
-      }>
+    <Suspense fallback={
+      <main className="mx-auto max-w-3xl px-4 py-12">
+        <h1 className="text-3xl font-semibold mb-4">Loading...</h1>
+      </main>
+    }>
+      <main className="mx-auto max-w-3xl px-4 py-12">
         <ThankYouContent locale={locale} />
-      </Suspense>
-    </main>
+      </main>
+    </Suspense>
   );
 }
 
