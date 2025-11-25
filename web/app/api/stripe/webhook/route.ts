@@ -3,9 +3,18 @@ import Stripe from 'stripe';
 import { supabaseRestInsert } from '@/lib/supabaseServer';
 import { getEnv } from '@/lib/env';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2023-10-16',
-});
+/**
+ * Get Stripe client instance (lazy initialization)
+ */
+function getStripeClient(): Stripe {
+  const secretKey = process.env.STRIPE_SECRET_KEY;
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured');
+  }
+  return new Stripe(secretKey, {
+    apiVersion: '2023-10-16',
+  });
+}
 
 /**
  * Stripe webhook handler
@@ -18,6 +27,17 @@ export async function POST(req: NextRequest) {
     console.error('STRIPE_WEBHOOK_SECRET is not configured');
     return NextResponse.json(
       { error: 'Webhook secret not configured' },
+      { status: 500 }
+    );
+  }
+
+  let stripe: Stripe;
+  try {
+    stripe = getStripeClient();
+  } catch (error) {
+    console.error('Failed to initialize Stripe client:', error);
+    return NextResponse.json(
+      { error: 'Stripe not configured' },
       { status: 500 }
     );
   }
