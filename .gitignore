@@ -54,3 +54,4 @@ web/data/*
 !web/data/docs-index/
 !web/data/docs-index/**
 !web/data/services.ts
+!web/data/bundles.ts
