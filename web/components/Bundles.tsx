@@ -197,3 +197,4 @@ export default function Bundles({ locale }: BundlesProps) {
   );
 }
 
+

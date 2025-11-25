@@ -194,3 +194,4 @@
 7. `web/lib/compliance.ts` (modifié — double opt-in mentionné)
 8. `web/app/sitemap.ts` (modifié — routes ajoutées)
 
+

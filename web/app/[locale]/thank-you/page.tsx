@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 
@@ -13,16 +13,10 @@ interface ThankYouPageProps {
   params: Promise<{ locale: SupportedLocale }>;
 }
 
-export default function ThankYouPage({ params }: ThankYouPageProps) {
-  const [locale, setLocale] = useState<SupportedLocale>('en');
+function ThankYouContent({ locale }: { locale: SupportedLocale }) {
   const searchParams = useSearchParams();
   const analytics = useAnalytics();
   const { consent } = useConsent();
-
-  useEffect(() => {
-    // Get locale from params
-    params.then(({ locale: loc }) => setLocale(loc));
-  }, [params]);
 
   useEffect(() => {
     const asset = searchParams.get('asset');
@@ -71,7 +65,7 @@ export default function ThankYouPage({ params }: ThankYouPageProps) {
   const currentCopy = copy[locale];
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12">
+    <>
       <h1 className="text-3xl font-semibold mb-4">{currentCopy.title}</h1>
       <p className="mt-2 text-neutral-700 dark:text-neutral-300">
         {currentCopy.description}{' '}
@@ -92,7 +86,36 @@ export default function ThankYouPage({ params }: ThankYouPageProps) {
           {currentCopy.contactLink}
         </Link>
       </div>
+    </>
+  );
+}
+
+export default function ThankYouPage({ params }: ThankYouPageProps) {
+  const [locale, setLocale] = useState<SupportedLocale>('en');
+
+  useEffect(() => {
+    // Get locale from params
+    params.then(({ locale: loc }) => setLocale(loc));
+  }, [params]);
+
+  return (
+    <main className="mx-auto max-w-3xl px-4 py-12">
+      <Suspense fallback={
+        <>
+          <h1 className="text-3xl font-semibold mb-4">
+            {locale === 'fr' ? 'Merci — vérification confirmée ✅' : 'Thank you — verification confirmed ✅'}
+          </h1>
+          <p className="mt-2 text-neutral-700 dark:text-neutral-300">
+            {locale === 'fr' 
+              ? 'Le téléchargement démarre automatiquement. Sinon, cliquez ici.'
+              : 'The download starts automatically. Otherwise, click here.'}
+          </p>
+        </>
+      }>
+        <ThankYouContent locale={locale} />
+      </Suspense>
     </main>
   );
 }
+
 

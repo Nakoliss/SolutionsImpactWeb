@@ -436,3 +436,4 @@ Tous les critères sont satisfaits :
 **Date:** 2025-11-18  
 **Environnement:** Next.js 15 (App Router) + TypeScript strict  
 
+

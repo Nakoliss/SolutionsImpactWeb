@@ -512,3 +512,4 @@ You have in your hands **86 pages of professional documentation** covering every
 *Correctif: #1 — SSR/SSG Services with JSON-LD*  
 *Quality: Professional, Production-Grade Documentation*
 
+
