@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "home": "Accueil",
     "services": "Services",
@@ -9,12 +9,13 @@
     "process": "Approche",
     "assessment": "Diagnostic IA",
     "contact": "Contact",
+    "loi25": "Loi 25",
     "book": "Diagnostic gratuit"
   },
   "hero": {
     "title": "Agence web IA",
     "subtitle": "Web Impact Solutions",
-    "description": "Nous créons des expériences web conformes à la Loi 25 et optimisées par l'IA — spécialement pour les PME du Québec.",
+    "description": "Sites web intelligents et automatisations IA qui font croître votre entreprise.",
     "ctaPrimary": "Planifier un diagnostic",
     "ctaSecondary": "Découvrir notre approche",
     "stats": {
@@ -80,7 +81,7 @@
       "description": "Vos résultats suivis sur vos indicateurs, avec tableaux de bord et points réguliers."
     },
     "support": {
-      "title": "Équipe au Québec",
+      "title": "Support dédié",
       "description": "Des gens d’ici qui comprennent votre réalité et la Loi 25."
     }
   },

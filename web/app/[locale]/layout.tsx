@@ -21,16 +21,22 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   const rawMessages = await getMessages({ locale });
   const fallbackEn = await getMessages({ locale: 'en' });
-  const messages = locale === 'fr' ? repairLocalizedMessages(rawMessages, fallbackEn) : rawMessages;
+  const messages =
+    locale === 'fr'
+      ? repairLocalizedMessages(rawMessages, fallbackEn)
+      : rawMessages;
 
   return (
     <>
-      <NextIntlClientProvider locale={locale} messages={messages as Record<string, unknown>}>
+      <NextIntlClientProvider
+        locale={locale}
+        messages={messages as Record<string, unknown>}
+      >
         <DesignContextWrapper>
           <CookieConsentProvider locale={locale as SupportedLocale}>
             <ConsentGate />

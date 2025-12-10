@@ -9,12 +9,13 @@
     "process": "Process",
     "assessment": "AI assessment",
     "contact": "Contact",
+    "loi25": "Law 25",
     "book": "Book a diagnostic"
   },
   "hero": {
     "title": "AI web agency",
     "subtitle": "Web Impact Solutions",
-    "description": "We build compliance-ready digital experiences and AI automations for Québec SMBs.",
+    "description": "Intelligent websites and AI automations that grow your business.",
     "ctaPrimary": "Plan a free diagnostic",
     "ctaSecondary": "See how we work",
     "stats": {
@@ -80,8 +81,8 @@
       "description": "Dashboards and growth rituals that connect marketing to revenue, not vanity metrics."
     },
     "support": {
-      "title": "Québec-based team",
-      "description": "On-the-ground experts who understand local regulations, culture, and expectations."
+      "title": "Dedicated support",
+      "description": "Responsive expertise that delivers on time, every time."
     }
   },
   "contact": {
@@ -377,4 +378,3 @@
     }
   }
 }
-

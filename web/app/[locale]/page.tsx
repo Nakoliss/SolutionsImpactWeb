@@ -7,12 +7,15 @@ import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import { fetchServicesForStaticProps } from '@/data/services';
 import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { buildServicesItemListJsonLd } from '@/lib/seo/servicesJsonLd';
-import { SITE_URL, generateMetadata as generateSEOMetadata } from '@/lib/metadata';
+import {
+  SITE_URL,
+  generateMetadata as generateSEOMetadata,
+} from '@/lib/metadata';
 
 interface HomePageProps {
-  params: {
+  params: Promise<{
     locale: SupportedLocale;
-  };
+  }>;
 }
 
 export const revalidate = 3600;
@@ -45,7 +48,7 @@ export async function renderHomePage(locale: SupportedLocale) {
 }
 
 export default async function HomePage({ params }: HomePageProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!SUPPORTED_LOCALES.includes(locale)) {
     notFound();
@@ -55,13 +58,15 @@ export default async function HomePage({ params }: HomePageProps) {
 }
 
 export async function buildHomeMetadata(locale: SupportedLocale) {
-  const title = locale === 'fr'
-    ? 'Marketing numérique bilingue et intelligent | Agence web: Solutions Impact Web'
-    : 'Bilingual & intelligent digital marketing | Web agency: Solutions Impact Web';
+  const title =
+    locale === 'fr'
+      ? 'Marketing numérique bilingue et intelligent | Agence web: Solutions Impact Web'
+      : 'Bilingual & intelligent digital marketing | Web agency: Solutions Impact Web';
 
-  const description = locale === 'fr'
-    ? 'Transformez votre présence numérique avec nos services de marketing intelligent. Expertise bilingue, technologies de pointe, résultats mesurables.'
-    : 'Transform your digital presence with intelligent marketing services. Bilingual expertise, cutting-edge tech, measurable results.';
+  const description =
+    locale === 'fr'
+      ? 'Transformez votre présence numérique avec nos services de marketing intelligent. Expertise bilingue, technologies de pointe, résultats mesurables.'
+      : 'Transform your digital presence with intelligent marketing services. Bilingual expertise, cutting-edge tech, measurable results.';
 
   // Use '/' for canonical - resolveUrl will add the locale prefix
   const canonicalPath = '/';
@@ -76,7 +81,7 @@ export async function buildHomeMetadata(locale: SupportedLocale) {
 }
 
 export async function generateMetadata({ params }: HomePageProps) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!SUPPORTED_LOCALES.includes(locale)) {
     notFound();
