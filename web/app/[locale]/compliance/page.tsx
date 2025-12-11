@@ -187,7 +187,7 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={contactHref}
-              className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-white bg-gradient-to-r from-[#2563eb] to-[#38bdf8] hover:from-[#1e40af] hover:to-[#0ea5e9] hover:shadow-lg transition-all duration-300 transform hover:scale-105"
             >
               {t.cta.primary}
             </Link>
@@ -285,7 +285,7 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
 
               <Link
                 href={heatmapHref}
-                className="inline-flex items-center bg-gradient-to-r from-purple-500 to-sky-500 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center bg-gradient-to-r from-[#2563eb] to-[#38bdf8] text-white px-6 py-3 rounded-lg font-medium hover:from-[#1e40af] hover:to-[#0ea5e9] hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 {locale === 'fr' ? "Utiliser l'outil" : 'Use Tool'}
                 <svg
@@ -349,7 +349,7 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
 
               <Link
                 href={aiRoadmapHref}
-                className="inline-flex items-center bg-gradient-to-r from-purple-500 to-sky-500 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="inline-flex items-center bg-gradient-to-r from-[#2563eb] to-[#38bdf8] text-white px-6 py-3 rounded-lg font-medium hover:from-[#1e40af] hover:to-[#0ea5e9] hover:shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 {locale === 'fr'
                   ? 'Créer ma feuille de route'
@@ -481,7 +481,7 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-purple-600 via-blue-600 to-sky-600 border-t border-white/10">
+      <section className="py-16 bg-gradient-to-r from-[#1e40af] via-[#2563eb] to-[#0ea5e9] border-t border-white/10">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             {locale === 'fr'

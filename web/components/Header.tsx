@@ -6,6 +6,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
 
+import { trackMetaLead } from './MetaPixelGate';
 import { useDesignAwareLinks } from '@/lib/useDesignNavigation';
 import { buildLocalePath, switchLocalePath } from '@/lib/localeRouting';
 import type { SupportedLocale } from '@/content';
@@ -198,12 +199,12 @@ export default function Header({ locale }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-slate-950 shadow-sm border-b border-white/10">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
               href={getLinkWithDesign(homePath)}
-              className="text-2xl font-bold text-white hover:text-purple-300 transition-colors"
+              className="text-xl lg:text-2xl font-bold text-white hover:text-[#38bdf8] transition-colors"
               onClick={(e) => {
                 const normalizedHomePath = normalizePath(homePath);
                 const normalizedCurrentPath = normalizePath(
@@ -245,9 +246,9 @@ export default function Header({ locale }: HeaderProps) {
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-6">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex flex-1 justify-center px-8">
+            <div className="flex items-center space-x-3">
               {navigationItems.map((item) => {
                 const designAwareHref = getDesignAwareHref(item.href);
                 const isActiveItem = isActive(item.href);
@@ -261,10 +262,10 @@ export default function Header({ locale }: HeaderProps) {
                     aria-current={isActiveItem ? 'page' : undefined}
                   >
                     <span
-                      className={`inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-medium transition-all duration-300 transform will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-500 hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${
+                      className={`inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-300 transform will-change-transform focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#38bdf8] hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-[#2563eb] hover:to-[#38bdf8] hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${
                         isActiveItem
-                          ? 'text-purple-200 bg-gradient-to-r from-purple-500/40 to-sky-500/40 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
-                          : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70'
+                          ? 'text-[#38bdf8] bg-gradient-to-r from-[#2563eb]/40 to-[#38bdf8]/40 shadow-[0_8px_24px_rgba(37,99,235,0.25)]'
+                          : 'text-slate-200 bg-gradient-to-r from-[#2563eb]/70 via-[#1e3a8a]/70 to-[#0ea5e9]/70'
                       }`}
                     >
                       {t(item.key)}
@@ -275,12 +276,13 @@ export default function Header({ locale }: HeaderProps) {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center ml-8 gap-4">
+          {/* Right side - Language Switcher + CTA */}
+          <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
             {renderLanguageSwitcher('desktop')}
             <Link
               href={buildLocalePath(locale, '/contact')}
               onClick={() => trackMetaLead('header_cta')}
-              className="bg-gradient-to-r from-purple-500 to-sky-500 text-white px-5 py-2.5 rounded-md text-sm font-medium hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-[#2563eb] to-[#38bdf8] text-white px-5 py-2.5 rounded-md text-sm font-medium hover:from-[#1e40af] hover:to-[#0ea5e9] hover:shadow-lg transition-all duration-300 transform hover:scale-105 whitespace-nowrap"
             >
               {t('book')}
             </Link>
@@ -290,7 +292,7 @@ export default function Header({ locale }: HeaderProps) {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-purple-200 hover:bg-gradient-to-r hover:from-purple-500/10 hover:to-sky-500/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-[#38bdf8] hover:bg-gradient-to-r hover:from-[#2563eb]/10 hover:to-[#38bdf8]/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#38bdf8]"
               aria-expanded="false"
               aria-label="Toggle navigation menu"
             >
@@ -339,10 +341,10 @@ export default function Header({ locale }: HeaderProps) {
                     key={item.key}
                     href={designAwareHref}
                     onClick={(e) => handleNavClick(designAwareHref, e)}
-                    className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-purple-500 hover:to-sky-500 hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${
+                    className={`block px-3 py-2 rounded-md text-base font-medium whitespace-nowrap transition-all duration-300 transform hover:translate-y-[-4px] hover:scale-105 hover:text-white hover:from-[#2563eb] hover:to-[#38bdf8] hover:shadow-[0_12px_36px_rgba(56,189,248,0.35)] ${
                       isActiveItem
-                        ? 'bg-gradient-to-r from-purple-500/40 to-sky-500/40 text-purple-200 shadow-[0_8px_24px_rgba(99,102,241,0.25)]'
-                        : 'text-slate-200 bg-gradient-to-r from-purple-700/70 via-indigo-900/70 to-sky-900/70'
+                        ? 'bg-gradient-to-r from-[#2563eb]/40 to-[#38bdf8]/40 text-[#38bdf8] shadow-[0_8px_24px_rgba(37,99,235,0.25)]'
+                        : 'text-slate-200 bg-gradient-to-r from-[#2563eb]/70 via-[#1e3a8a]/70 to-[#0ea5e9]/70'
                     }`}
                     aria-current={isActiveItem ? 'page' : undefined}
                   >
@@ -362,7 +364,7 @@ export default function Header({ locale }: HeaderProps) {
                     setIsMenuOpen(false);
                     trackMetaLead('header_mobile_cta');
                   }}
-                  className="block w-full rounded-md bg-gradient-to-r from-purple-500 to-sky-500 px-4 py-2 text-center text-sm font-medium text-white transition hover:from-purple-600 hover:to-sky-600"
+                  className="block w-full rounded-md bg-gradient-to-r from-[#2563eb] to-[#38bdf8] px-4 py-2 text-center text-sm font-medium text-white transition hover:from-[#1e40af] hover:to-[#0ea5e9]"
                 >
                   {t('book')}
                 </Link>

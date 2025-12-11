@@ -20,7 +20,7 @@ function ThankYouContent({ locale }: { locale: SupportedLocale }) {
 
   useEffect(() => {
     const asset = searchParams.get('asset');
-    
+
     // Only track if analytics consent is granted
     if (consent?.analytics && asset) {
       // Track lead_confirmed event
@@ -33,7 +33,8 @@ function ThankYouContent({ locale }: { locale: SupportedLocale }) {
       if (asset === 'loi25' || asset === 'law25') {
         const downloadLink = document.createElement('a');
         downloadLink.href = '/downloads/loi25-essentials.pdf';
-        downloadLink.download = locale === 'fr' ? 'Loi25-Essentials.pdf' : 'Law25-Essentials.pdf';
+        downloadLink.download =
+          locale === 'fr' ? 'Loi25-Essentials.pdf' : 'Law25-Essentials.pdf';
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
@@ -75,13 +76,14 @@ function ThankYouContent({ locale }: { locale: SupportedLocale }) {
           download
         >
           {currentCopy.downloadLink}
-        </Link>.
+        </Link>
+        .
       </p>
-      
+
       <div className="mt-8">
         <Link
           href={buildLocalePath(locale, '/contact')}
-          className="inline-block bg-gradient-to-r from-purple-500 to-sky-500 text-white px-6 py-3 rounded-md font-medium hover:from-purple-600 hover:to-sky-600 transition-all"
+          className="inline-block bg-gradient-to-r from-[#2563eb] to-[#38bdf8] text-white px-6 py-3 rounded-md font-medium hover:from-[#1e40af] hover:to-[#0ea5e9] transition-all"
         >
           {currentCopy.contactLink}
         </Link>
@@ -99,16 +101,16 @@ export default function ThankYouPage({ params }: ThankYouPageProps) {
   }, [params]);
 
   return (
-    <Suspense fallback={
-      <main className="mx-auto max-w-3xl px-4 py-12">
-        <h1 className="text-3xl font-semibold mb-4">Loading...</h1>
-      </main>
-    }>
+    <Suspense
+      fallback={
+        <main className="mx-auto max-w-3xl px-4 py-12">
+          <h1 className="text-3xl font-semibold mb-4">Loading...</h1>
+        </main>
+      }
+    >
       <main className="mx-auto max-w-3xl px-4 py-12">
         <ThankYouContent locale={locale} />
       </main>
     </Suspense>
   );
 }
-
-

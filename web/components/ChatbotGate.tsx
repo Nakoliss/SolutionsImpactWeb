@@ -32,10 +32,16 @@ declare global {
   }
 }
 
-export default function ChatbotGate({ provider, locale, crispId }: ChatbotGateProps) {
+export default function ChatbotGate({
+  provider,
+  locale,
+  crispId,
+}: ChatbotGateProps) {
   const t = useTranslations('chatbot');
   // null = still loading, undefined = no consent stored (show banner), true = granted, false = declined
-  const [hasConsent, setHasConsent] = useState<boolean | null | undefined>(null);
+  const [hasConsent, setHasConsent] = useState<boolean | null | undefined>(
+    null
+  );
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [showDemoSuccess, setShowDemoSuccess] = useState(false);
 
@@ -56,71 +62,74 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
 
   const configureCrisp = useCallback(() => {
     if (typeof window === 'undefined' || !websiteId) return;
-    
+
     const doConfigure = () => {
       if (!window.$crisp) return;
 
-    try {
-      // Set website ID (must be set before any Crisp API calls)
-      window.CRISP_WEBSITE_ID = websiteId;
+      try {
+        // Set website ID (must be set before any Crisp API calls)
+        window.CRISP_WEBSITE_ID = websiteId;
 
-      // Configure locale
-      if (!window.CRISP_RUNTIME_CONFIG) {
-        window.CRISP_RUNTIME_CONFIG = {};
-      }
-      window.CRISP_RUNTIME_CONFIG.locale = locale === 'fr' ? 'fr' : 'en';
+        // Configure locale
+        if (!window.CRISP_RUNTIME_CONFIG) {
+          window.CRISP_RUNTIME_CONFIG = {};
+        }
+        window.CRISP_RUNTIME_CONFIG.locale = locale === 'fr' ? 'fr' : 'en';
 
-      // Track chat loaded event when chat opens
-      window.$crisp.push([
-        'on',
-        'chat:opened',
-        () => {
-          analytics.track('chat_loaded', {
-            provider: 'crisp',
-            locale,
-          });
-        },
-      ]);
-
-      // Track booking-related messages
-      window.$crisp.push([
-        'on',
-        'message:composed',
-        (message: { content?: string }) => {
-          const content = message.content?.toLowerCase() || '';
-          if (content.includes('book') || content.includes('réservation') || content.includes('diagnostic')) {
-            analytics.track('chat_booking_click', {
+        // Track chat loaded event when chat opens
+        window.$crisp.push([
+          'on',
+          'chat:opened',
+          () => {
+            analytics.track('chat_loaded', {
               provider: 'crisp',
               locale,
             });
-          }
-        },
-      ]);
+          },
+        ]);
 
-      // Configure pre-chat form fields (Name + Email)
-      // These will be requested before the chat starts
-      window.$crisp.push(['set', 'user:nickname', '']);
-      window.$crisp.push(['set', 'user:email', '']);
+        // Track booking-related messages
+        window.$crisp.push([
+          'on',
+          'message:composed',
+          (message: { content?: string }) => {
+            const content = message.content?.toLowerCase() || '';
+            if (
+              content.includes('book') ||
+              content.includes('réservation') ||
+              content.includes('diagnostic')
+            ) {
+              analytics.track('chat_booking_click', {
+                provider: 'crisp',
+                locale,
+              });
+            }
+          },
+        ]);
 
-      // Set session data for project question
-      // This can be used in Crisp's pre-chat form configuration
-      window.$crisp.push([
-        'set',
-        'session:data',
-        [
-          ['project_question', t('preChat.projectQuestion')],
-          ['locale', locale],
-        ],
-      ]);
+        // Configure pre-chat form fields (Name + Email)
+        // These will be requested before the chat starts
+        window.$crisp.push(['set', 'user:nickname', '']);
+        window.$crisp.push(['set', 'user:email', '']);
 
-      // Note: Pre-chat form configuration (Name + Email fields and project question)
-      // should be configured in the Crisp dashboard under Settings > Pre-chat form
-      // The booking button link to /{locale}/contact should be added as a custom
-      // message or via Crisp's automation rules in the dashboard
+        // Set session data for project question
+        // This can be used in Crisp's pre-chat form configuration
+        window.$crisp.push([
+          'set',
+          'session:data',
+          [
+            ['project_question', t('preChat.projectQuestion')],
+            ['locale', locale],
+          ],
+        ]);
 
-    } catch (error) {
-      console.error('Failed to configure Crisp:', error);
-    }
+        // Note: Pre-chat form configuration (Name + Email fields and project question)
+        // should be configured in the Crisp dashboard under Settings > Pre-chat form
+        // The booking button link to /{locale}/contact should be added as a custom
+        // message or via Crisp's automation rules in the dashboard
+      } catch (error) {
+        console.error('Failed to configure Crisp:', error);
+      }
     };
 
     // Wait for Crisp to be ready (max 5 seconds)
@@ -142,10 +151,12 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
 
   const loadCrispScript = useCallback(() => {
     if (typeof window === 'undefined' || isScriptLoaded) return;
-    
+
     // Don't load script in demo mode without a valid ID
     if (!websiteId) {
-      console.warn('[ChatbotGate] Cannot load Crisp script: No website ID provided');
+      console.warn(
+        '[ChatbotGate] Cannot load Crisp script: No website ID provided'
+      );
       return;
     }
 
@@ -199,121 +210,128 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
     }
   }, [websiteId, loadCrispScript]);
 
-  const saveConsent = useCallback((granted: boolean) => {
-    if (typeof window === 'undefined') return;
+  const saveConsent = useCallback(
+    (granted: boolean) => {
+      if (typeof window === 'undefined') return;
 
-    const consent: ChatbotConsent = {
-      granted,
-      timestamp: new Date().toISOString(),
-    };
+      const consent: ChatbotConsent = {
+        granted,
+        timestamp: new Date().toISOString(),
+      };
 
-    try {
-      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
-      setHasConsent(granted);
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(consent));
+        setHasConsent(granted);
 
-      // Log consent to Supabase for Loi 25 compliance
-      import('@/lib/utmUtils')
-        .then(({ getCookieId }) => {
-          const actor = getCookieId();
-          fetch('/api/consent', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              category: 'chatbot',
-              granted,
-              actor,
-              meta: {
-                provider: 'crisp',
-                locale,
-                timestamp: consent.timestamp,
+        // Log consent to Supabase for Loi 25 compliance
+        import('@/lib/utmUtils')
+          .then(({ getCookieId }) => {
+            const actor = getCookieId();
+            fetch('/api/consent', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
               },
-            }),
-          }).catch((error) => {
-            console.warn('Failed to log chatbot consent to Supabase:', error);
-          });
-        })
-        .catch(() => {
-          // Fallback
-          fetch('/api/consent', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              category: 'chatbot',
-              granted,
-              actor: 'unknown',
-              meta: {
-                timestamp: consent.timestamp,
+              body: JSON.stringify({
+                category: 'chatbot',
+                granted,
+                actor,
+                meta: {
+                  provider: 'crisp',
+                  locale,
+                  timestamp: consent.timestamp,
+                },
+              }),
+            }).catch((error) => {
+              console.warn('Failed to log chatbot consent to Supabase:', error);
+            });
+          })
+          .catch(() => {
+            // Fallback
+            fetch('/api/consent', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
               },
-            }),
-          }).catch(() => {
-            // Silent fail
+              body: JSON.stringify({
+                category: 'chatbot',
+                granted,
+                actor: 'unknown',
+                meta: {
+                  timestamp: consent.timestamp,
+                },
+              }),
+            }).catch(() => {
+              // Silent fail
+            });
           });
-        });
 
-      if (granted) {
-        // Track consent granted event (only after user consent)
-        analytics.track('chat_consent_granted', {
-          provider: 'crisp',
-          locale,
-        });
+        if (granted) {
+          // Track consent granted event (only after user consent)
+          analytics.track('chat_consent_granted', {
+            provider: 'crisp',
+            locale,
+          });
 
-        // Only load script if we have a valid Crisp ID
-        if (websiteId) {
-          loadCrispScript();
-        } else if (isDemoMode) {
-          // In demo mode, show success message and log
-          console.log('[ChatbotGate Demo] Consent granted. In production, Crisp script would load here.');
-          setShowDemoSuccess(true);
-          // Hide success message after 5 seconds
-          setTimeout(() => setShowDemoSuccess(false), 5000);
+          // Only load script if we have a valid Crisp ID
+          if (websiteId) {
+            loadCrispScript();
+          } else if (isDemoMode) {
+            // In demo mode, show success message and log
+            console.log(
+              '[ChatbotGate Demo] Consent granted. In production, Crisp script would load here.'
+            );
+            setShowDemoSuccess(true);
+            // Hide success message after 5 seconds
+            setTimeout(() => setShowDemoSuccess(false), 5000);
+          }
         }
+      } catch (error) {
+        console.error('Failed to save chatbot consent:', error);
       }
-    } catch (error) {
-      console.error('Failed to save chatbot consent:', error);
-    }
-  }, [locale, websiteId, isDemoMode, loadCrispScript]);
+    },
+    [locale, websiteId, isDemoMode, loadCrispScript]
+  );
 
   // Don't render banner if still initializing
   if (hasConsent === null) {
     return null;
   }
-  
+
   // Hide banner if consent was explicitly declined
   if (hasConsent === false) {
     return null;
   }
-  
+
   // In production: hide banner if consent already granted (chat widget will be visible)
   if (!isDemoMode && hasConsent === true) {
     return null;
   }
-  
+
   // In demo mode with consent granted: show success message for a few seconds, then hide
   if (isDemoMode && hasConsent === true && !showDemoSuccess) {
     return null;
   }
-  
+
   // Show the banner if:
   // - hasConsent === undefined (no consent stored, first visit)
   // - hasConsent === true in demo mode with success message showing
 
   const privacyHref = buildLocalePath(locale, '/compliance/privacy');
-  
+
   // Show demo mode indicator in development
   const demoModeIndicator = isDemoMode ? (
     <div className="mb-2 rounded-lg bg-yellow-500/20 border border-yellow-500/40 px-3 py-2 text-xs text-yellow-200">
-      🧪 Demo Mode: Banner visible for testing. Set NEXT_PUBLIC_CRISP_ID to enable full functionality.
+      🧪 Demo Mode: Banner visible for testing. Set NEXT_PUBLIC_CRISP_ID to
+      enable full functionality.
     </div>
   ) : null;
 
   // Show demo success message
   const demoSuccessMessage = showDemoSuccess ? (
     <div className="mb-2 rounded-lg bg-green-500/20 border border-green-500/40 px-3 py-2 text-xs text-green-200">
-      ✅ Chat enabled! In production, the Crisp chat widget would appear here. Set NEXT_PUBLIC_CRISP_ID to test the real widget.
+      ✅ Chat enabled! In production, the Crisp chat widget would appear here.
+      Set NEXT_PUBLIC_CRISP_ID to test the real widget.
     </div>
   ) : null;
 
@@ -353,7 +371,7 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
             </button>
             <button
               onClick={() => saveConsent(true)}
-              className="rounded-lg bg-gradient-to-r from-purple-500 to-sky-500 px-4 py-2 text-sm font-semibold text-white transition hover:from-purple-600 hover:to-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
+              className="rounded-lg bg-gradient-to-r from-[#2563eb] to-[#38bdf8] px-4 py-2 text-sm font-semibold text-white transition hover:from-[#1e40af] hover:to-[#0ea5e9] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
             >
               {t('banner.enable')}
             </button>
@@ -363,4 +381,3 @@ export default function ChatbotGate({ provider, locale, crispId }: ChatbotGatePr
     </div>
   );
 }
-

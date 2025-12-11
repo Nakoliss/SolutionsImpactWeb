@@ -142,7 +142,7 @@ export default function ResourcesSection({
           <p className="text-slate-300 mb-4">{content.cta.text}</p>
           <Link
             href={buildLocalePath(locale, content.cta.link)}
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-500 to-sky-500 hover:from-purple-600 hover:to-sky-600 hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-[#2563eb] to-[#38bdf8] hover:from-[#1e40af] hover:to-[#0ea5e9] hover:shadow-lg transition-all duration-300 transform hover:scale-105"
           >
             {content.cta.label}
           </Link>
