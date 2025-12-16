@@ -23,13 +23,13 @@ export async function generateMetadata({ params }: CompliancePageProps) {
   const { locale } = await params;
 
   const titles = {
-    fr: 'Conformité et Réglementation Québécoise',
-    en: 'Quebec Compliance and Regulation',
+    fr: 'Expertise en Confidentialité et Conformité',
+    en: 'Data Privacy & Compliance Expertise',
   };
 
   const descriptions = {
-    fr: 'Centre de ressources pour la conformité à la Loi 25 (Projet de loi 64) et autres réglementations québécoises en matière de protection des données.',
-    en: 'Resource center for Law 25 (Bill 64) compliance and other Quebec data protection regulations.',
+    fr: 'Expertise mondiale en protection des données : GDPR, PIPEDA et Loi 25 du Québec. Nous appliquons les normes les plus strictes pour protéger vos clients.',
+    en: 'Global data protection expertise: GDPR, PIPEDA, and Quebec Law 25. We apply the highest privacy standards to protect your customers.',
   };
 
   return generateBaseMetadata({
@@ -63,11 +63,33 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
 
   const content = {
     fr: {
-      title: 'Conformité et Réglementation Québécoise',
+      title: 'Expertise en Confidentialité et Conformité',
       subtitle:
-        'Ressources complètes pour respecter les lois québécoises sur la protection des données',
+        'Des normes mondiales de protection des données, appliquées avec rigueur',
       description:
-        'Naviguez en toute confiance dans le paysage réglementaire québécois avec nos guides spécialisés et notre expertise en conformité.',
+        'Nous maîtrisons les réglementations les plus strictes en matière de protection des données : GDPR, PIPEDA et Loi 25 du Québec. Cette expertise globale nous permet de vous accompagner dans tous vos marchés.',
+      globalStandards: {
+        title: 'Normes Mondiales de Confidentialité',
+        items: [
+          {
+            name: 'GDPR',
+            region: 'Europe',
+            description: 'Règlement européen sur la protection des données',
+          },
+          {
+            name: 'PIPEDA',
+            region: 'Canada',
+            description:
+              'Loi fédérale canadienne sur la protection des renseignements personnels',
+          },
+          {
+            name: 'Loi 25',
+            region: 'Québec',
+            description:
+              'La référence en matière de protection de la vie privée au Canada',
+          },
+        ],
+      },
       features: {
         law25: {
           title: 'Loi 25 (Projet de loi 64)',
@@ -103,12 +125,36 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
           'Démontrer votre professionnalisme et expertise',
         ],
       },
+      quebecSection: {
+        title: 'Expertise Québec : Loi 25 en Profondeur',
+        subtitle: 'Notre spécialité locale pour les entreprises québécoises',
+      },
     },
     en: {
-      title: 'Quebec Compliance and Regulation',
-      subtitle: 'Complete resources to comply with Quebec data protection laws',
+      title: 'Data Privacy & Compliance Expertise',
+      subtitle: 'Global data protection standards, rigorously applied',
       description:
-        "Navigate Quebec's regulatory landscape with confidence using our specialized guides and compliance expertise.",
+        'We master the strictest data protection regulations: GDPR, PIPEDA, and Quebec Law 25. This global expertise enables us to support you across all your markets.',
+      globalStandards: {
+        title: 'Global Privacy Standards',
+        items: [
+          {
+            name: 'GDPR',
+            region: 'Europe',
+            description: 'European data protection regulation',
+          },
+          {
+            name: 'PIPEDA',
+            region: 'Canada',
+            description: 'Canadian federal privacy law for the private sector',
+          },
+          {
+            name: 'Law 25',
+            region: 'Quebec',
+            description: "Canada's gold standard for privacy protection",
+          },
+        ],
+      },
       features: {
         law25: {
           title: 'Law 25 (Bill 64)',
@@ -143,6 +189,10 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
           'Access public markets and government contracts',
           'Demonstrate professionalism and expertise',
         ],
+      },
+      quebecSection: {
+        title: 'Quebec Expertise: Law 25 Deep Dive',
+        subtitle: 'Our local specialty for Quebec businesses',
       },
     },
   };
@@ -198,6 +248,61 @@ export default async function CompliancePage({ params }: CompliancePageProps) {
               {t.cta.secondary}
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Tier 1: Global Privacy Standards */}
+      <section className="py-16 bg-gradient-to-br from-slate-950 via-slate-900/80 to-slate-950 border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent text-center mb-4">
+            {t.globalStandards.title}
+          </h2>
+          <p className="text-center text-slate-300 mb-12 max-w-2xl mx-auto">
+            {locale === 'fr'
+              ? 'Les réglementations que nous maîtrisons pour protéger vos clients dans tous vos marchés'
+              : 'The regulations we master to protect your customers across all your markets'}
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {t.globalStandards.items.map((standard) => (
+              <div
+                key={standard.name}
+                className="rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 p-6 text-center transition-all duration-300 hover:border-cyan-400/30 hover:shadow-2xl hover:shadow-cyan-500/20"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-sky-400/20 to-cyan-500/20 rounded-full ring-1 ring-sky-400/20 flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-sky-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-sky-500/20 text-sky-300 mb-2">
+                  {standard.region}
+                </span>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {standard.name}
+                </h3>
+                <p className="text-slate-300 text-sm">{standard.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tier 2: Quebec Specifics Header */}
+      <section className="py-8 bg-gradient-to-r from-[#1e40af]/20 via-[#2563eb]/20 to-[#0ea5e9]/20 border-b border-white/10">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-2xl font-bold text-white mb-2">
+            {t.quebecSection.title}
+          </h2>
+          <p className="text-slate-300">{t.quebecSection.subtitle}</p>
         </div>
       </section>
 

@@ -3,8 +3,8 @@
 @import '../styles/theme-transitions.css';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #020617;
+  --foreground: #ededed;
 }
 
 @theme inline {

@@ -247,7 +247,7 @@ export default function Header({ locale }: HeaderProps) {
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex flex-1 justify-center px-8">
+          <div className="hidden xl:flex flex-1 justify-center px-8">
             <div className="flex items-center space-x-3">
               {navigationItems.map((item) => {
                 const designAwareHref = getDesignAwareHref(item.href);
@@ -277,7 +277,7 @@ export default function Header({ locale }: HeaderProps) {
           </div>
 
           {/* Right side - Language Switcher + CTA */}
-          <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
+          <div className="hidden xl:flex items-center gap-4 flex-shrink-0">
             {renderLanguageSwitcher('desktop')}
             <Link
               href={buildLocalePath(locale, '/contact')}
@@ -289,7 +289,7 @@ export default function Header({ locale }: HeaderProps) {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="xl:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="inline-flex items-center justify-center p-2 rounded-md text-slate-300 hover:text-[#38bdf8] hover:bg-gradient-to-r hover:from-[#2563eb]/10 hover:to-[#38bdf8]/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#38bdf8]"
@@ -330,7 +330,7 @@ export default function Header({ locale }: HeaderProps) {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="xl:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-slate-950 border-t border-white/10">
               {navigationItems.map((item) => {
                 const designAwareHref = getDesignAwareHref(item.href);

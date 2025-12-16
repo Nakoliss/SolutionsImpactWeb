@@ -9,13 +9,13 @@
     "process": "Approche",
     "assessment": "Diagnostic IA",
     "contact": "Contact",
-    "loi25": "Loi 25",
+    "loi25": "Conformité",
     "book": "Diagnostic gratuit"
   },
   "hero": {
     "title": "Agence web IA",
     "subtitle": "Web Impact Solutions",
-    "description": "Sites web intelligents et automatisations IA qui font croître votre entreprise.",
+    "description": "Sites web intelligents. Conformes aux normes les plus strictes (Loi 25, GDPR, PIPEDA).",
     "ctaPrimary": "Planifier un diagnostic",
     "ctaSecondary": "Découvrir notre approche",
     "stats": {
@@ -25,6 +25,40 @@
       "growthLabel": "Conformité intégrée",
       "expertise": "IA",
       "expertiseLabel": "Automatisation responsable"
+    }
+  },
+  "clientSegments": {
+    "title": "À qui s'adresse notre expertise",
+    "subtitle": "Sélectionnez votre profil pour découvrir nos solutions",
+    "quebec": {
+      "title": "Entreprise québécoise / PME",
+      "description": "Expertise locale pour les entreprises du Québec",
+      "highlights": [
+        "Conformité Loi 25",
+        "Accès aux subventions",
+        "SEO français/anglais"
+      ],
+      "cta": "Commencer"
+    },
+    "international": {
+      "title": "International & Grandes entreprises",
+      "description": "Expertise mondiale en confidentialité à grande échelle",
+      "highlights": [
+        "Conformité GDPR",
+        "Solutions IA évolutives",
+        "Stratégie multi-marchés"
+      ],
+      "cta": "En savoir plus"
+    },
+    "startups": {
+      "title": "Startups & Croissance",
+      "description": "Avancez vite sans compromettre la conformité",
+      "highlights": [
+        "Développement MVP",
+        "Automatisation IA",
+        "Rapidité de mise en marché"
+      ],
+      "cta": "Commencer"
     }
   },
   "services": {
@@ -166,8 +200,8 @@
     },
     "aiAgency": {
       "name": "Solutions Impact Web",
-      "tagline": "Sites web modernes, visibilité Google et moteurs de réponses propulsés par l'intelligence artificielle, avec conformité Loi 25.",
-      "heroTitle": "Confiance et visibilité pour PME québécoises",
+      "tagline": "Sites web intelligents conformes aux normes de confidentialité GDPR, PIPEDA et Loi 25.",
+      "heroTitle": "Expertise mondiale en confidentialité. Impact local.",
       "heroBadge": "IA + humain",
       "ctaText": "Solutions Impact Web",
       "services": {

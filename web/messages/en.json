@@ -9,13 +9,13 @@
     "process": "Process",
     "assessment": "AI assessment",
     "contact": "Contact",
-    "loi25": "Law 25",
+    "loi25": "Compliance",
     "book": "Book a diagnostic"
   },
   "hero": {
     "title": "AI web agency",
     "subtitle": "Web Impact Solutions",
-    "description": "Intelligent websites and AI automations that grow your business.",
+    "description": "Intelligent Websites. Built to the highest privacy standards (Loi 25, GDPR, PIPEDA).",
     "ctaPrimary": "Plan a free diagnostic",
     "ctaSecondary": "See how we work",
     "stats": {
@@ -25,6 +25,36 @@
       "growthLabel": "Compliance built in",
       "expertise": "AI",
       "expertiseLabel": "Responsible automation"
+    }
+  },
+  "clientSegments": {
+    "title": "Who We Help",
+    "subtitle": "Select your profile to see how we can help",
+    "quebec": {
+      "title": "Quebec Business / PME",
+      "description": "Local expertise for Quebec-based businesses",
+      "highlights": [
+        "Loi 25 Compliance",
+        "Local Grants Access",
+        "French/English SEO"
+      ],
+      "cta": "Get Started"
+    },
+    "international": {
+      "title": "International & Enterprise",
+      "description": "Global privacy expertise for scale",
+      "highlights": [
+        "GDPR Compliance",
+        "Scalable AI Solutions",
+        "Multi-Market Strategy"
+      ],
+      "cta": "Learn More"
+    },
+    "startups": {
+      "title": "Startups & Growth",
+      "description": "Move fast without breaking compliance",
+      "highlights": ["MVP Development", "AI Automation", "Speed to Market"],
+      "cta": "Get Started"
     }
   },
   "services": {
@@ -166,8 +196,8 @@
     },
     "aiAgency": {
       "name": "Solutions Impact Web",
-      "tagline": "Modern websites, Google visibility and AI-powered answer engine coverage, plus Law 25 compliance.",
-      "heroTitle": "Trust and visibility for Québec SMBs",
+      "tagline": "Intelligent websites built to GDPR, PIPEDA and Law 25 privacy standards.",
+      "heroTitle": "Global Privacy Expertise. Local Impact.",
       "heroBadge": "AI + human delivery",
       "ctaText": "Solutions Impact Web",
       "services": {

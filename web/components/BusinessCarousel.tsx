@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Globe, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle, Globe, Shield, Sparkles } from 'lucide-react';
 
 import type { SupportedLocale } from '@/content';
 import { brandConfig, pickBrandLocale } from '@/lib/brand';
@@ -422,6 +422,33 @@ function BusinessCarouselContent({
                 <Sparkles className="h-4 w-4" aria-hidden="true" />
                 {designMessages.heroBadge}
               </div>
+              {/* Compliance Standards Badges */}
+              <div className="mt-4 flex flex-wrap gap-2">
+                {[
+                  {
+                    label: 'Loi 25',
+                    color: 'from-blue-500/20 to-cyan-500/20 ring-blue-400/30',
+                  },
+                  {
+                    label: 'GDPR',
+                    color:
+                      'from-purple-500/20 to-indigo-500/20 ring-purple-400/30',
+                  },
+                  {
+                    label: 'PIPEDA',
+                    color:
+                      'from-emerald-500/20 to-teal-500/20 ring-emerald-400/30',
+                  },
+                ].map((badge) => (
+                  <span
+                    key={badge.label}
+                    className={`inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r ${badge.color} ring-1 px-3 py-1 text-xs font-medium text-white/90`}
+                  >
+                    <Shield className="h-3 w-3" aria-hidden="true" />
+                    {badge.label}
+                  </span>
+                ))}
+              </div>
               <div className="flex flex-wrap gap-3 pt-4">
                 <button
                   type="button"
@@ -464,6 +491,175 @@ function BusinessCarouselContent({
                 {contactMessages.cta}
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Segmentation Section */}
+      <section
+        id="client-segments"
+        className="border-b border-white/10 bg-gradient-to-br from-slate-950 via-slate-900/60 to-slate-950 scroll-mt-16"
+      >
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent">
+              {locale === 'fr'
+                ? "À qui s'adresse notre expertise"
+                : 'Who We Help'}
+            </h2>
+            <p className="mt-4 text-base text-slate-300 max-w-2xl mx-auto">
+              {locale === 'fr'
+                ? 'Sélectionnez votre profil pour découvrir nos solutions'
+                : 'Select your profile to see how we can help'}
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Quebec Business / PME Card */}
+            <div className="group rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 p-6 transition-all duration-300 hover:border-blue-400/40 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 ring-1 ring-blue-400/30 mb-4">
+                <span className="text-2xl" aria-hidden="true">
+                  ⚜️
+                </span>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {locale === 'fr'
+                  ? 'Entreprise québécoise / PME'
+                  : 'Quebec Business / PME'}
+              </h3>
+              <p className="text-sm text-slate-300 mb-4">
+                {locale === 'fr'
+                  ? 'Expertise locale pour les entreprises du Québec'
+                  : 'Local expertise for Quebec-based businesses'}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {(locale === 'fr'
+                  ? [
+                      'Conformité Loi 25',
+                      'Accès aux subventions',
+                      'SEO français/anglais',
+                    ]
+                  : [
+                      'Loi 25 Compliance',
+                      'Local Grants Access',
+                      'French/English SEO',
+                    ]
+                ).map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-slate-200"
+                  >
+                    <CheckCircle
+                      className="h-4 w-4 text-blue-400"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={`${buildLocalePath(locale, '/contact')}?segment=quebec`}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:from-blue-400 hover:to-cyan-400 hover:shadow-lg"
+              >
+                {locale === 'fr' ? 'Commencer' : 'Get Started'}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* International & Enterprise Card */}
+            <div className="group rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 p-6 transition-all duration-300 hover:border-purple-400/40 hover:shadow-2xl hover:shadow-purple-500/20 hover:-translate-y-2">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-purple-500/20 to-indigo-500/20 ring-1 ring-purple-400/30 mb-4">
+                <Globe className="h-6 w-6 text-purple-300" aria-hidden="true" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {locale === 'fr'
+                  ? 'International & Grandes entreprises'
+                  : 'International & Enterprise'}
+              </h3>
+              <p className="text-sm text-slate-300 mb-4">
+                {locale === 'fr'
+                  ? 'Expertise mondiale en confidentialité à grande échelle'
+                  : 'Global privacy expertise for scale'}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {(locale === 'fr'
+                  ? [
+                      'Conformité GDPR',
+                      'Solutions IA évolutives',
+                      'Stratégie multi-marchés',
+                    ]
+                  : [
+                      'GDPR Compliance',
+                      'Scalable AI Solutions',
+                      'Multi-Market Strategy',
+                    ]
+                ).map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-slate-200"
+                  >
+                    <CheckCircle
+                      className="h-4 w-4 text-purple-400"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={`${buildLocalePath(locale, '/contact')}?segment=international`}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:from-purple-400 hover:to-indigo-400 hover:shadow-lg"
+              >
+                {locale === 'fr' ? 'En savoir plus' : 'Learn More'}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
+            </div>
+
+            {/* Startups & Growth Card */}
+            <div className="group rounded-2xl border border-white/15 bg-gradient-to-br from-black/40 via-black/30 to-black/20 p-6 transition-all duration-300 hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/20 hover:-translate-y-2">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 ring-1 ring-emerald-400/30 mb-4">
+                <span className="text-2xl" aria-hidden="true">
+                  🚀
+                </span>
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                {locale === 'fr'
+                  ? 'Startups & Croissance'
+                  : 'Startups & Growth'}
+              </h3>
+              <p className="text-sm text-slate-300 mb-4">
+                {locale === 'fr'
+                  ? 'Avancez vite sans compromettre la conformité'
+                  : 'Move fast without breaking compliance'}
+              </p>
+              <ul className="space-y-2 mb-6">
+                {(locale === 'fr'
+                  ? [
+                      'Développement MVP',
+                      'Automatisation IA',
+                      'Rapidité de mise en marché',
+                    ]
+                  : ['MVP Development', 'AI Automation', 'Speed to Market']
+                ).map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-center gap-2 text-sm text-slate-200"
+                  >
+                    <CheckCircle
+                      className="h-4 w-4 text-emerald-400"
+                      aria-hidden="true"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={`${buildLocalePath(locale, '/contact')}?segment=startup`}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2 text-sm font-semibold text-white transition-all duration-300 hover:from-emerald-400 hover:to-teal-400 hover:shadow-lg"
+              >
+                {locale === 'fr' ? 'Commencer' : 'Get Started'}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
           </div>
         </div>
