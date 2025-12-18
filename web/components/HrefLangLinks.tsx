@@ -9,15 +9,15 @@ interface HrefLangLinksProps {
 }
 
 export default function HrefLangLinks({
-  currentLocale,
+  currentLocale: _currentLocale, // Kept for API compatibility; not used when x-default is omitted
   path,
   baseUrl = SITE_URL,
 }: HrefLangLinksProps) {
   const canonicalPath = path.startsWith('/') ? path : `/${path}`;
   const locales = SUPPORTED_LOCALES;
-  const normalizedLocale = locales.includes(currentLocale) ? currentLocale : locales[0];
-  const defaultHref = buildLocaleUrl(baseUrl, normalizedLocale, canonicalPath);
 
+  // No x-default: Site doesn't have a neutral language selector page
+  // Only output fr-CA and en-CA hreflang tags per GSC guidelines
   return (
     <>
       {locales.map((locale) => (
@@ -28,7 +28,6 @@ export default function HrefLangLinks({
           href={buildLocaleUrl(baseUrl, locale, canonicalPath)}
         />
       ))}
-      <link rel="alternate" hrefLang="x-default" href={defaultHref} />
     </>
   );
 }
