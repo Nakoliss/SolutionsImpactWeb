@@ -108,12 +108,28 @@ export async function middleware(request: NextRequest) {
   }
 
   // Root redirect: Redirect / to /fr (explicit redirect)
-  // This ensures the Header component's smooth scrolling works correctly
-  // since it expects /fr as the home path for path comparisons.
-  // Applied in both dev and prod to maintain consistency.
   if (pathname === '/') {
     url.pathname = '/fr';
     return NextResponse.redirect(url, 308);
+  }
+
+  // Canonical Locale Redirect:
+  // If path is missing a locale prefix (e.g. /compliance), redirect to /fr/compliance (or detected locale).
+  // This ensures strict canonical paths and prevents duplicate content issues.
+  const hasLocalePrefix = ['/fr', '/en'].some(
+    (prefix) => pathname.startsWith(prefix) || pathname === prefix
+  );
+
+  if (!hasLocalePrefix) {
+    // Attempt to detect preference from Accept-Language header or defaulting to 'fr'
+    const acceptLanguage = request.headers.get('accept-language');
+    const preferredLocale = acceptLanguage?.startsWith('en') ? 'en' : 'fr';
+
+    // Construct new URL with locale prefix
+    // We use the preferred locale, but you could also enforce 'fr' strictly if that's the canonical policy.
+    // Given the requirement "If users locale can be inferred... redirect accordingly", we use detection.
+    url.pathname = `/${preferredLocale}${pathname}`;
+    return NextResponse.redirect(url, 301);
   }
 
   // Run next-intl middleware for locale handling
@@ -126,6 +142,6 @@ export async function middleware(request: NextRequest) {
 // The middleware function handles dev/prod logic internally
 export const config = {
   matcher: [
-    '/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
+    '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
   ],
 };

@@ -34,8 +34,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
       ? 'Guide pratique pour optimiser votre présence dans ChatGPT, Claude et autres moteurs de réponses IA. Stratégies AEO (Answer Engine Optimization) pour PME du Québec.'
       : 'Practical guide to optimize your presence in ChatGPT, Claude and other AI answer engines. AEO (Answer Engine Optimization) strategies for Quebec SMEs.';
 
-  const canonicalPath =
-    locale === 'fr' ? `/blog/${ARTICLE_SLUG}` : `/blog/${ARTICLE_SLUG_EN}`;
+  const canonicalPath = `/blog/${ARTICLE_SLUG}`;
 
   return generateBaseMetadata({
     title,
@@ -217,7 +216,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
       '@id': articleUrl,
     },
     author: {
-      '@type': 'Organization',
+      '@type': 'Organization' as const,
       name: brandConfig.name,
     },
     publisher: {

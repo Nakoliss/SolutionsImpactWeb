@@ -8,7 +8,10 @@ import ResourcesSection from '@/components/ResourcesSection';
 import { fetchServicesForStaticProps } from '@/data/services';
 import { buildLocalePath, buildLocaleUrl } from '@/lib/localeRouting';
 import { buildServicesItemListJsonLd } from '@/lib/seo/servicesJsonLd';
-import { SITE_URL, generateMetadata as generateSEOMetadata } from '@/lib/metadata';
+import {
+  SITE_URL,
+  generateMetadata as generateSEOMetadata,
+} from '@/lib/metadata';
 import enMessages from '@/messages/en.json';
 import frMessages from '@/messages/fr.json';
 
@@ -149,8 +152,7 @@ export async function generateMetadata({ params }: ServicesPageProps) {
     title,
     description,
     locale,
-    canonical: buildLocalePath(locale, '/services'),
-    alternateLocales: SUPPORTED_LOCALES,
+    canonical: '/services',
+    alternateLocales: [...SUPPORTED_LOCALES],
   });
 }
-

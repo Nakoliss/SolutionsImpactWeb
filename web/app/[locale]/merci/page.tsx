@@ -9,8 +9,24 @@ import { useConsent } from '@/components/CookieConsentBanner';
 import { buildLocalePath } from '@/lib/localeRouting';
 import type { SupportedLocale } from '@/content';
 
+import type { Metadata } from 'next';
+import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
+
 interface MerciPageProps {
   params: Promise<{ locale: SupportedLocale }>;
+}
+
+export async function generateMetadata({
+  params,
+}: MerciPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  return generateSEOMetadata({
+    title: 'Merci',
+    description: 'Confirmation',
+    locale,
+    noindex: true,
+  });
 }
 
 function MerciContent({ locale }: { locale: SupportedLocale }) {

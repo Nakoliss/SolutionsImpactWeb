@@ -34,8 +34,7 @@ export async function generateMetadata({ params }: BlogPostProps) {
       ? 'Guide simple pour rendre votre site conforme à la Loi 25 tout en améliorant votre visibilité. Checklist rapide pour sécuriser votre site et gagner en crédibilité.'
       : 'Simple guide to make your site Law 25 compliant while improving your visibility. Quick checklist to secure your site and gain credibility.';
 
-  const canonicalPath =
-    locale === 'fr' ? `/blog/${ARTICLE_SLUG}` : `/blog/${ARTICLE_SLUG_EN}`;
+  const canonicalPath = `/blog/${ARTICLE_SLUG}`;
 
   return generateBaseMetadata({
     title,
@@ -203,11 +202,6 @@ export default async function BlogPost({ params }: BlogPostProps) {
     locale,
     `/blog/${locale === 'fr' ? ARTICLE_SLUG : ARTICLE_SLUG_EN}`
   );
-  const alternateUrl = buildLocaleUrl(
-    SITE_URL,
-    locale === 'fr' ? 'en' : 'fr',
-    `/blog/${locale === 'fr' ? ARTICLE_SLUG_EN : ARTICLE_SLUG}`
-  );
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -219,7 +213,7 @@ export default async function BlogPost({ params }: BlogPostProps) {
       '@id': articleUrl,
     },
     author: {
-      '@type': 'Organization',
+      '@type': 'Organization' as const,
       name: brandConfig.name,
     },
     publisher: {

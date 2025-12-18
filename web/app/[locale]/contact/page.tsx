@@ -9,6 +9,7 @@ import ContactBookingEmbed from '@/components/ContactBookingEmbed';
 import ContactChannelCard from '@/components/ContactChannelCard';
 import { brandConfig } from '@/lib/brand';
 import { buildLocalePath } from '@/lib/localeRouting';
+import { generateMetadata as generateBaseMetadata } from '@/lib/metadata';
 import { getEnv } from '@/lib/env';
 
 interface ContactPageProps {
@@ -19,18 +20,24 @@ function resolveCalLink(locale: SupportedLocale): string | undefined {
   try {
     const defaultCalLink = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL');
     const frCalLink = getEnv('NEXT_PUBLIC_CAL_BOOKING_URL_FR');
-    
+
     if (locale === 'fr') {
-      return (frCalLink && frCalLink !== '') ? frCalLink : (defaultCalLink && defaultCalLink !== '') ? defaultCalLink : undefined;
+      return frCalLink && frCalLink !== ''
+        ? frCalLink
+        : defaultCalLink && defaultCalLink !== ''
+          ? defaultCalLink
+          : undefined;
     }
-    return (defaultCalLink && defaultCalLink !== '') ? defaultCalLink : undefined;
+    return defaultCalLink && defaultCalLink !== '' ? defaultCalLink : undefined;
   } catch (error) {
     console.error('Error resolving Cal.com link:', error);
     return undefined;
   }
 }
 
-export async function generateMetadata({ params }: ContactPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: ContactPageProps): Promise<Metadata> {
   const { locale } = await params;
 
   if (!SUPPORTED_LOCALES.includes(locale)) {
@@ -39,13 +46,13 @@ export async function generateMetadata({ params }: ContactPageProps): Promise<Me
 
   const t = await getTranslations({ locale, namespace: 'contactPage' });
 
-  return {
+  return generateBaseMetadata({
     title: t('meta.title'),
     description: t('meta.description'),
-    alternates: {
-      canonical: buildLocalePath(locale, '/contact'),
-    },
-  };
+    locale,
+    canonical: '/contact',
+    alternateLocales: [...SUPPORTED_LOCALES],
+  });
 }
 
 export default async function ContactPage({ params }: ContactPageProps) {
@@ -186,4 +193,3 @@ export default async function ContactPage({ params }: ContactPageProps) {
     </main>
   );
 }
-

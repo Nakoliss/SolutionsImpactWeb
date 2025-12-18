@@ -7,12 +7,12 @@ import { buildLocaleUrl, getHrefLang } from '@/lib/localeRouting';
 // In development, use localhost; in production, use canonical domain
 const isDev = process.env.NODE_ENV === 'development';
 export const SITE_URL = isDev
-  ? (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000')
-  : (process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http')
-      ? process.env.NEXT_PUBLIC_SITE_URL
-      : process.env.NEXT_PUBLIC_SITE_URL
-        ? `https://${process.env.NEXT_PUBLIC_SITE_URL.replace(/^\/+/, '')}`
-        : 'https://solutionsimpactweb.ca');
+  ? process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  : process.env.NEXT_PUBLIC_SITE_URL?.startsWith('http')
+    ? process.env.NEXT_PUBLIC_SITE_URL
+    : process.env.NEXT_PUBLIC_SITE_URL
+      ? `https://${process.env.NEXT_PUBLIC_SITE_URL.replace(/^\/+/, '')}`
+      : 'https://solutionsimpactweb.ca';
 
 interface MetadataOptions {
   title: string | null;
@@ -30,9 +30,13 @@ interface MetadataOptions {
   };
   twitterImage?: string;
   openGraphImage?: string;
+  noindex?: boolean;
 }
 
-function formatTitle(pageTitle: string | null, locale: SupportedLocale): string {
+function formatTitle(
+  pageTitle: string | null,
+  locale: SupportedLocale
+): string {
   if (!pageTitle || !pageTitle.trim()) {
     return pickBrandLocale(locale, brandConfig.meta.defaultTitle);
   }
@@ -40,7 +44,10 @@ function formatTitle(pageTitle: string | null, locale: SupportedLocale): string 
   return template.replace('%s', pageTitle.trim());
 }
 
-function resolveUrl(path: string | undefined, locale: SupportedLocale): string | undefined {
+function resolveUrl(
+  path: string | undefined,
+  locale: SupportedLocale
+): string | undefined {
   if (!path) return undefined;
   return buildLocaleUrl(SITE_URL, locale, path);
 }
@@ -56,7 +63,15 @@ export function generateMetadata(options: MetadataOptions): Metadata {
     openGraph,
     twitterImage,
     openGraphImage,
+    noindex = false,
   } = options;
+
+  // Enforce canonical for indexable pages
+  if (!noindex && !canonical) {
+    throw new Error(
+      `[SEO] Missing canonical URL for indexable page. Locale: ${locale}, Title: ${title}`
+    );
+  }
 
   const finalTitle = formatTitle(title, locale);
   const canonicalUrl = resolveUrl(canonical, locale);
@@ -68,7 +83,7 @@ export function generateMetadata(options: MetadataOptions): Metadata {
     if (canonicalUrl) {
       languageAlternates[currentHreflang] = canonicalUrl;
     }
-    
+
     // Add alternate locales
     for (const alt of alternateLocales) {
       if (alt !== locale) {
@@ -93,7 +108,7 @@ export function generateMetadata(options: MetadataOptions): Metadata {
     title: finalTitle,
     description,
     robots: {
-      index: true,
+      index: !noindex,
       follow: true,
     },
     keywords: combinedKeywords,
@@ -102,8 +117,6 @@ export function generateMetadata(options: MetadataOptions): Metadata {
         canonical: canonicalUrl,
         languages: {
           ...languageAlternates,
-          // x-default should always point to FR (default locale)
-          'x-default': locale === 'fr' ? canonicalUrl : resolveUrl(canonical, 'fr'),
         },
       },
     }),
@@ -115,7 +128,9 @@ export function generateMetadata(options: MetadataOptions): Metadata {
       locale: locale === 'fr' ? 'fr_CA' : 'en_CA',
       type: openGraph?.type ?? 'website',
       images: ogImages,
-      ...(openGraph?.publishedTime && { publishedTime: openGraph.publishedTime }),
+      ...(openGraph?.publishedTime && {
+        publishedTime: openGraph.publishedTime,
+      }),
       ...(openGraph?.modifiedTime && { modifiedTime: openGraph.modifiedTime }),
       ...(openGraph?.authors && { authors: openGraph.authors }),
       ...(openGraph?.tags && { tags: openGraph.tags }),

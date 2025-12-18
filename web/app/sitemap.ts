@@ -10,8 +10,10 @@ import { buildLocaleUrl } from '@/lib/localeRouting';
 import { getCategoryContent } from '@/lib/mdx';
 import { SITE_URL } from '@/lib/metadata';
 
+type LocalePaths = Partial<Record<SupportedLocale, string>>;
+
 interface StaticRouteConfig {
-  path: string;
+  pathByLocale: LocalePaths;
   changeFrequency: NonNullable<
     MetadataRoute.Sitemap[number]['changeFrequency']
   >;
@@ -20,37 +22,112 @@ interface StaticRouteConfig {
 }
 
 const STATIC_ROUTES: StaticRouteConfig[] = [
-  { path: '', priority: 1.0, changeFrequency: 'weekly' },
-  { path: 'services', priority: 0.85, changeFrequency: 'weekly' },
-  { path: 'offres', priority: 0.85, changeFrequency: 'weekly' },
-  { path: 'assessment', priority: 0.7, changeFrequency: 'monthly' },
-  { path: 'ai-roadmap', priority: 0.6, changeFrequency: 'monthly' },
-  { path: 'contact', priority: 0.7, changeFrequency: 'weekly' },
-  { path: 'compliance', priority: 0.8, changeFrequency: 'monthly' },
   {
-    path: 'compliance/privacy',
-    priority: 0.6,
-    changeFrequency: 'yearly',
-    lastModified: new Date('2025-09-24'),
+    pathByLocale: { fr: '', en: '' },
+    priority: 1.0,
+    changeFrequency: 'weekly',
   },
-  { path: 'compliance/cookies', priority: 0.6, changeFrequency: 'yearly' },
-  { path: 'compliance/data-request', priority: 0.5, changeFrequency: 'yearly' },
-  { path: 'compliance/heatmap', priority: 0.5, changeFrequency: 'monthly' },
-  { path: 'content/guides', priority: 0.7, changeFrequency: 'weekly' },
-  { path: 'content/pricing', priority: 0.65, changeFrequency: 'weekly' },
-  { path: 'content/compliance', priority: 0.7, changeFrequency: 'weekly' },
-  { path: 'faq', priority: 0.75, changeFrequency: 'monthly' },
-  { path: 'lp/loi-25-essentials', priority: 0.8, changeFrequency: 'monthly' },
-  { path: 'merci', priority: 0.5, changeFrequency: 'yearly' },
-  { path: 'thank-you', priority: 0.5, changeFrequency: 'yearly' },
-  { path: 'commande-reussie', priority: 0.5, changeFrequency: 'yearly' },
+
   {
-    path: 'blog/loi-25-erreurs-courantes',
+    pathByLocale: { fr: 'services', en: 'services' },
+    priority: 0.85,
+    changeFrequency: 'weekly',
+  },
+
+  // Only include 'offres' for French, as there is no English equivalent page yet
+  {
+    pathByLocale: { fr: 'offres' },
+    priority: 0.85,
+    changeFrequency: 'weekly',
+  },
+
+  {
+    pathByLocale: { fr: 'assessment', en: 'assessment' },
     priority: 0.7,
     changeFrequency: 'monthly',
   },
   {
-    path: 'blog/aeogeo-visible-chatgpt',
+    pathByLocale: { fr: 'ai-roadmap', en: 'ai-roadmap' },
+    priority: 0.6,
+    changeFrequency: 'monthly',
+  },
+  {
+    pathByLocale: { fr: 'contact', en: 'contact' },
+    priority: 0.7,
+    changeFrequency: 'weekly',
+  },
+
+  {
+    pathByLocale: { fr: 'compliance', en: 'compliance' },
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  },
+  {
+    pathByLocale: { fr: 'compliance/privacy', en: 'compliance/privacy' },
+    priority: 0.6,
+    changeFrequency: 'yearly',
+    lastModified: new Date('2025-09-24'),
+  },
+  {
+    pathByLocale: { fr: 'compliance/cookies', en: 'compliance/cookies' },
+    priority: 0.6,
+    changeFrequency: 'yearly',
+  },
+  {
+    pathByLocale: {
+      fr: 'compliance/data-request',
+      en: 'compliance/data-request',
+    },
+    priority: 0.5,
+    changeFrequency: 'yearly',
+  },
+  {
+    pathByLocale: { fr: 'compliance/heatmap', en: 'compliance/heatmap' },
+    priority: 0.5,
+    changeFrequency: 'monthly',
+  },
+
+  {
+    pathByLocale: { fr: 'content/guides', en: 'content/guides' },
+    priority: 0.7,
+    changeFrequency: 'weekly',
+  },
+  {
+    pathByLocale: { fr: 'content/pricing', en: 'content/pricing' },
+    priority: 0.65,
+    changeFrequency: 'weekly',
+  },
+  {
+    pathByLocale: { fr: 'content/compliance', en: 'content/compliance' },
+    priority: 0.7,
+    changeFrequency: 'weekly',
+  },
+
+  {
+    pathByLocale: { fr: 'faq', en: 'faq' },
+    priority: 0.75,
+    changeFrequency: 'monthly',
+  },
+
+  {
+    pathByLocale: { fr: 'lp/loi-25-essentials', en: 'lp/loi-25-essentials' },
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  },
+
+  {
+    pathByLocale: {
+      fr: 'blog/loi-25-erreurs-courantes',
+      en: 'blog/loi-25-erreurs-courantes',
+    },
+    priority: 0.7,
+    changeFrequency: 'monthly',
+  },
+  {
+    pathByLocale: {
+      fr: 'blog/aeogeo-visible-chatgpt',
+      en: 'blog/aeogeo-visible-chatgpt',
+    },
     priority: 0.7,
     changeFrequency: 'monthly',
   },
@@ -64,16 +141,24 @@ function resolveStaticRoutes(
   locale: SupportedLocale,
   baseUrl: string
 ): MetadataRoute.Sitemap {
-  const now = new Date();
-  return STATIC_ROUTES.map((route) => {
-    const localizedPath = route.path ? `/${route.path}` : '/';
+  return STATIC_ROUTES.flatMap((route) => {
+    const path = route.pathByLocale[locale];
+
+    // If path is explicitly undefined for this locale, do not generate a route
+    if (path === undefined) return [];
+
+    const localizedPath = path ? `/${path}` : '/';
     const url = buildLocaleUrl(baseUrl, locale, localizedPath);
-    return {
+
+    const entry: MetadataRoute.Sitemap[number] = {
       url,
       priority: route.priority,
       changeFrequency: route.changeFrequency,
-      lastModified: route.lastModified ?? now,
     };
+
+    if (route.lastModified) entry.lastModified = route.lastModified;
+
+    return [entry];
   });
 }
 

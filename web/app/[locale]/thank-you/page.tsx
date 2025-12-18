@@ -9,8 +9,24 @@ import { useConsent } from '@/components/CookieConsentBanner';
 import { buildLocalePath } from '@/lib/localeRouting';
 import type { SupportedLocale } from '@/content';
 
+import type { Metadata } from 'next';
+import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
+
 interface ThankYouPageProps {
   params: Promise<{ locale: SupportedLocale }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ThankYouPageProps): Promise<Metadata> {
+  const { locale } = await params;
+
+  return generateSEOMetadata({
+    title: 'Thank You',
+    description: 'Confirmation',
+    locale,
+    noindex: true,
+  });
 }
 
 function ThankYouContent({ locale }: { locale: SupportedLocale }) {
