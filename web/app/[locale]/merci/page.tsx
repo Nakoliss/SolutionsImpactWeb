@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import MerciContent from './MerciContent';
 
 interface MerciPageProps {
@@ -17,6 +17,8 @@ export async function generateMetadata({
     description: 'Confirmation',
     locale,
     noindex: true,
+    canonical: '/merci',
+    alternateLocales: [...SUPPORTED_LOCALES],
   });
 }
 

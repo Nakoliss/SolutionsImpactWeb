@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { generateMetadata as generateSEOMetadata } from '@/lib/metadata';
-import type { SupportedLocale } from '@/content';
+import { SUPPORTED_LOCALES, type SupportedLocale } from '@/content';
 import CommandeReussieContent from './CommandeReussieContent';
 
 interface CommandeReussiePageProps {
@@ -17,6 +17,8 @@ export async function generateMetadata({
     description: 'Confirmation de commande',
     locale,
     noindex: true,
+    canonical: '/commande-reussie',
+    alternateLocales: [...SUPPORTED_LOCALES],
   });
 }
 

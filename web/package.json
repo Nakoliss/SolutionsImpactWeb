@@ -25,7 +25,10 @@
     "i18n:fix-fr": "tsx scripts/fix-fr-encoding.ts",
     "i18n:check": "tsx scripts/check-mojibake.ts",
     "i18n:fix-mojibake": "tsx scripts/fix-mojibake.ts",
-    "i18n:translate-fr": "tsx scripts/translate-to-fr.ts messages/en.json messages/fr.json"
+    "i18n:translate-fr": "tsx scripts/translate-to-fr.ts messages/en.json messages/fr.json",
+    "seo:verify": "tsx scripts/verify-seo-comprehensive.ts",
+    "seo:verify:playwright": "playwright test scripts/verify-seo-playwright.ts",
+    "seo:ci": "node scripts/seo-checks.mjs"
   },
   "engines": {
     "node": ">=20.14 <21",
