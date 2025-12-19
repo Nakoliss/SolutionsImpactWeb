@@ -1,4 +1,8 @@
-export type ConsentCategory = 'essential' | 'analytics' | 'marketing' | 'preferences';
+export type ConsentCategory =
+  | 'essential'
+  | 'analytics'
+  | 'marketing'
+  | 'preferences';
 
 export interface ConsentState {
   essential: true;
@@ -15,14 +19,19 @@ type ConsentListener = (consent: ConsentState | null) => void;
 let consentState: ConsentState | null = null;
 const listeners = new Set<ConsentListener>();
 
-function sanitizeConsent(value: Partial<ConsentState> | null | undefined): ConsentState | null {
+function sanitizeConsent(
+  value: Partial<ConsentState> | null | undefined
+): ConsentState | null {
   if (!value) return null;
   return {
     essential: true,
     analytics: Boolean(value.analytics),
     marketing: Boolean(value.marketing),
     preferences: Boolean(value.preferences),
-    updatedAt: typeof value.updatedAt === 'string' ? value.updatedAt : new Date().toISOString(),
+    updatedAt:
+      typeof value.updatedAt === 'string'
+        ? value.updatedAt
+        : new Date().toISOString(),
   };
 }
 
@@ -55,7 +64,22 @@ export function readStoredConsent(): ConsentState | null {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw) as Partial<ConsentState>;
-    return sanitizeConsent(parsed);
+    const sanitized = sanitizeConsent(parsed);
+
+    // Check expiry (12 months)
+    if (sanitized) {
+      const lastUpdated = new Date(sanitized.updatedAt).getTime();
+      const now = new Date().getTime();
+      const oneYearMs = 365 * 24 * 60 * 60 * 1000;
+
+      if (now - lastUpdated > oneYearMs) {
+        console.log('Consent expired (older than 1 year), clearing storage.');
+        window.localStorage.removeItem(STORAGE_KEY);
+        return null;
+      }
+    }
+
+    return sanitized;
   } catch (error) {
     console.warn('Failed to parse stored consent, clearing value.', error);
     window.localStorage.removeItem(STORAGE_KEY);
@@ -158,7 +182,9 @@ export function onConsentChange(listener: ConsentListener): () => void {
   return () => listeners.delete(listener);
 }
 
-export function createConsent(partial?: Partial<Omit<ConsentState, 'updatedAt'>>): ConsentState {
+export function createConsent(
+  partial?: Partial<Omit<ConsentState, 'updatedAt'>>
+): ConsentState {
   return sanitizeConsent({
     essential: true,
     analytics: partial?.analytics ?? false,
